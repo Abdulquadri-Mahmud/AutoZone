@@ -767,6 +767,404 @@ export const getAllSignalLight = async (req, res, next) => {
     }
 }
 
+// ---------------------------------------------------------------------------------------------------Get Single Accessory--------------------------------------------------------------------------------------------
+export const getStereo = async (req, res, next) => {
+    const { id } = req.params;
+
+    try {
+        if (!mongoose.Types.ObjectId.isValid(id)) {
+            return next(errorHandler(404, 'Item Not Found!'));
+        }
+        const findId = await Stereo.findOne({_id: id});
+
+        if (!findId) {
+            return next(errorHandler(404, 'Item Not Found!'))
+        }
+        res.status(200).json(findId);
+    } catch (error) {
+        next(error)
+    }
+}
+export const getSpeaker = async (req, res, next) => {
+    const { id } = req.params;
+
+    try {
+        if (!mongoose.Types.ObjectId.isValid(id)) {
+            return next(errorHandler(404, 'Item Not Found!'));
+        }
+        const findId = await Speaker.findOne({_id: id});
+
+        if (!findId) {
+            return next(errorHandler(404, 'Item Not Found!'))
+        }
+        res.status(200).json(findId);
+    } catch (error) {
+        next(error)
+    }
+}
+export const getAmplifier = async (req, res, next) => {
+    const { id } = req.params;
+
+    try {
+        if (!mongoose.Types.ObjectId.isValid(id)) {
+            return next(errorHandler(404, 'Item Not Found!'));
+        }
+        const findId = await Amplifier.findOne({_id: id});
+
+        if (!findId) {
+            return next(errorHandler(404, 'Item Not Found!'))
+        }
+        res.status(200).json(findId);
+    } catch (error) {
+        next(error)
+    }
+}
+export const getSubwoofer = async (req, res, next) => {
+    const { id } = req.params;
+
+    try {
+        if (!mongoose.Types.ObjectId.isValid(id)) {
+            return next(errorHandler(404, 'Item Not Found!'));
+        }
+        const findId = await Subwoofer.findOne({_id: id});
+
+        if (!findId) {
+            return next(errorHandler(404, 'Item Not Found!'))
+        }
+        res.status(200).json(findId);
+    } catch (error) {
+        next(error)
+    }
+}
+
+export const getBumper = async (req, res, next) => {
+    const { id } = req.params;
+
+    try {
+        if (!mongoose.Types.ObjectId.isValid(id)) {
+            return next(errorHandler(404, 'Item Not Found!'));
+        }
+        const findId = await Bumper.findOne({_id: id});
+
+        if (!findId) {
+            return next(errorHandler(404, 'Item Not Found!'))
+        }
+        res.status(200).json(findId);
+    } catch (error) {
+        next(error)
+    }
+}
+export const getDoor = async (req, res, next) => {
+    const { id } = req.params;
+
+    try {
+        if (!mongoose.Types.ObjectId.isValid(id)) {
+            return next(errorHandler(404, 'Item Not Found!'));
+        }
+        const findId = await Door.findOne({_id: id});
+
+        if (!findId) {
+            return next(errorHandler(404, 'Item Not Found!'))
+        }
+        res.status(200).json(findId);
+    } catch (error) {
+        next(error)
+    }
+}
+
+export const getFender = async (req, res, next) => {
+    const { id } = req.params;
+
+    try {
+        if (!mongoose.Types.ObjectId.isValid(id)) {
+            return next(errorHandler(404, 'Item Not Found!'));
+        }
+        const findId = await Fender.findOne({_id: id});
+
+        if (!findId) {
+            return next(errorHandler(404, 'Item Not Found!'))
+        }
+        res.status(200).json(findId);
+    } catch (error) {
+        next(error)
+    }
+}
+export const getGrill = async (req, res, next) => {
+    const { id } = req.params;
+
+    try {
+        if (!mongoose.Types.ObjectId.isValid(id)) {
+            return next(errorHandler(404, 'Item Not Found!'));
+        }
+        const findId = await Grill.findOne({_id: id});
+
+        if (!findId) {
+            return next(errorHandler(404, 'Item Not Found!'))
+        }
+        res.status(200).json(findId);
+    } catch (error) {
+        next(error)
+    }
+}
+
+export const getHoods = async (req, res, next) => {
+    const { id } = req.params;
+
+    try {
+        if (!mongoose.Types.ObjectId.isValid(id)) {
+            return next(errorHandler(404, 'Item Not Found!'));
+        }
+        const findId = await Hoods.findOne({_id: id});
+
+        if (!findId) {
+            return next(errorHandler(404, 'Item Not Found!'))
+        }
+        res.status(200).json(findId);
+    } catch (error) {
+        next(error)
+    }
+}
+
+export const getBodyKit = async (req, res, next) => {
+    const { id } = req.params;
+
+    try {
+        if (!mongoose.Types.ObjectId.isValid(id)) {
+            return next(errorHandler(404, 'Item Not Found!'));
+        }
+        const findId = await BodyKit.findOne({_id: id});
+
+        if (!findId) {
+            return next(errorHandler(404, 'Item Not Found!'))
+        }
+        res.status(200).json(findId);
+    } catch (error) {
+        next(error)
+    }
+}
+export const getCustomGrill = async (req, res, next) => {
+    const { id } = req.params;
+
+    try {
+        if (!mongoose.Types.ObjectId.isValid(id)) {
+            return next(errorHandler(404, 'Item Not Found!'));
+        }
+        const findId = await CustomGrill.findOne({_id: id});
+
+        if (!findId) {
+            return next(errorHandler(404, 'Item Not Found!'))
+        }
+        res.status(200).json(findId);
+    } catch (error) {
+        next(error)
+    }
+}
+export const getCarCover = async (req, res, next) => {
+    const { id } = req.params;
+
+    try {
+        if (!mongoose.Types.ObjectId.isValid(id)) {
+            return next(errorHandler(404, 'Item Not Found!'));
+        }
+        const findId = await CarCover.findOne({_id: id});
+
+        if (!findId) {
+            return next(errorHandler(404, 'Item Not Found!'))
+        }
+        res.status(200).json(findId);
+    } catch (error) {
+        next(error)
+    }
+}
+export const getOffRoadBumper = async (req, res, next) => {
+    const { id } = req.params;
+
+    try {
+        if (!mongoose.Types.ObjectId.isValid(id)) {
+            return next(errorHandler(404, 'Item Not Found!'));
+        }
+        const findId = await OffRoadBumper.findOne({_id: id});
+
+        if (!findId) {
+            return next(errorHandler(404, 'Item Not Found!'))
+        }
+        res.status(200).json(findId);
+    } catch (error) {
+        next(error)
+    }
+}
+
+export const getCustomGauges = async (req, res, next) => {
+    const { id } = req.params;
+
+    try {
+        if (!mongoose.Types.ObjectId.isValid(id)) {
+            return next(errorHandler(404, 'Item Not Found!'));
+        }
+        const findId = await CustomGauges.findOne({_id: id});
+
+        if (!findId) {
+            return next(errorHandler(404, 'Item Not Found!'))
+        }
+        res.status(200).json(findId);
+    } catch (error) {
+        next(error)
+    }
+}
+export const getDashKits = async (req, res, next) => {
+    const { id } = req.params;
+
+    try {
+        if (!mongoose.Types.ObjectId.isValid(id)) {
+            return next(errorHandler(404, 'Item Not Found!'));
+        }
+        const findId = await DashKits.findOne({_id: id});
+
+        if (!findId) {
+            return next(errorHandler(404, 'Item Not Found!'))
+        }
+        res.status(200).json(findId);
+    } catch (error) {
+        next(error)
+    }
+}
+export const getSteeringWheels = async (req, res, next) => {
+    const { id } = req.params;
+
+    try {
+        if (!mongoose.Types.ObjectId.isValid(id)) {
+            return next(errorHandler(404, 'Item Not Found!'));
+        }
+        const findId = await SteeringWheels.findOne({_id: id});
+
+        if (!findId) {
+            return next(errorHandler(404, 'Item Not Found!'))
+        }
+        res.status(200).json(findId);
+    } catch (error) {
+        next(error)
+    }
+}
+export const getSeatCover = async (req, res, next) => {
+    const { id } = req.params;
+
+    try {
+        if (!mongoose.Types.ObjectId.isValid(id)) {
+            return next(errorHandler(404, 'Item Not Found!'));
+        }
+        const findId = await SeatCover.findOne({_id: id});
+
+        if (!findId) {
+            return next(errorHandler(404, 'Item Not Found!'))
+        }
+        res.status(200).json(findId);
+    } catch (error) {
+        next(error)
+    }
+}
+export const getSunShades = async (req, res, next) => {
+    const { id } = req.params;
+
+    try {
+        if (!mongoose.Types.ObjectId.isValid(id)) {
+            return next(errorHandler(404, 'Item Not Found!'));
+        }
+        const findId = await SunShades.findOne({_id: id});
+
+        if (!findId) {
+            return next(errorHandler(404, 'Item Not Found!'))
+        }
+        res.status(200).json(findId);
+    } catch (error) {
+        next(error)
+    }
+}
+export const getFogLight = async (req, res, next) => {
+    const { id } = req.params;
+
+    try {
+        if (!mongoose.Types.ObjectId.isValid(id)) {
+            return next(errorHandler(404, 'Item Not Found!'));
+        }
+        const findId = await fogLight.findOne({_id: id});
+
+        if (!findId) {
+            return next(errorHandler(404, 'Item Not Found!'))
+        }
+        res.status(200).json(findId);
+    } catch (error) {
+        next(error)
+    }
+}
+export const getHeadlight = async (req, res, next) => {
+    const { id } = req.params;
+
+    try {
+        if (!mongoose.Types.ObjectId.isValid(id)) {
+            return next(errorHandler(404, 'Item Not Found!'));
+        }
+        const findId = await Headlight.findOne({_id: id});
+
+        if (!findId) {
+            return next(errorHandler(404, 'Item Not Found!'))
+        }
+        res.status(200).json(findId);
+    } catch (error) {
+        next(error)
+    }
+}
+export const getLedLight = async (req, res, next) => {
+    const { id } = req.params;
+
+    try {
+        if (!mongoose.Types.ObjectId.isValid(id)) {
+            return next(errorHandler(404, 'Item Not Found!'));
+        }
+        const findId = await LedLight.findOne({_id: id});
+
+        if (!findId) {
+            return next(errorHandler(404, 'Item Not Found!'))
+        }
+        res.status(200).json(findId);
+    } catch (error) {
+        next(error)
+    }
+}
+export const getOffRoadLight = async (req, res, next) => {
+    const { id } = req.params;
+
+    try {
+        if (!mongoose.Types.ObjectId.isValid(id)) {
+            return next(errorHandler(404, 'Item Not Found!'));
+        }
+        const findId = await OffRoadLight.findOne({_id: id});
+
+        if (!findId) {
+            return next(errorHandler(404, 'Item Not Found!'))
+        }
+        res.status(200).json(findId);
+    } catch (error) {
+        next(error)
+    }
+}
+export const getSignalLight = async (req, res, next) => {
+    const { id } = req.params;
+
+    try {
+        if (!mongoose.Types.ObjectId.isValid(id)) {
+            return next(errorHandler(404, 'Item Not Found!'));
+        }
+        const findId = await SignalLight.findOne({_id: id});
+
+        if (!findId) {
+            return next(errorHandler(404, 'Item Not Found!'))
+        }
+        res.status(200).json(findId);
+    } catch (error) {
+        next(error)
+    }
+}
+
 // ---------------------------------------------------------------------------------------------------Delete Accessories--------------------------------------------------------------------------------------------
 export const deleteStereo = async (req, res, next) => {
     try {

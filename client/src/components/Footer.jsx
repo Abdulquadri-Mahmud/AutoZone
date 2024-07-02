@@ -1,14 +1,14 @@
 import {Box, Flex, Heading, Text, Image, Button, useColorModeValue, Input} from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
 
-import img from '/car7.jpg';
+import img from '/car4.jpg';
 import { color } from 'framer-motion';
 import { FaPhoneVolume } from 'react-icons/fa';
 
 export default function Footer() {
   return (
-    <Box mt={'5rem'} bg={useColorModeValue('blue.700', 'gray.800')} color={'white'}>
-      <Box position={'relative'} backgroundPosition="left" backgroundRepeat="no-repeat" backgroundSize="cover" backgroundImage={`url(${img})`} h={{md:'40vh', base: '30vh'}} w={'full'}>
+    <Box mt={'3rem'} bg={useColorModeValue('blue.700', 'gray.800')} color={'white'}>
+      <Box position={'relative'} backgroundPosition="left" backgroundRepeat="no-repeat" backgroundSize="cover" backgroundImage={`url(${img})`} h={{md:'40vh', base: '45vh'}} w={'full'}>
         <Box position="absolute" top={0} left={0} w="full" h="full" bg="#0f0f0f" opacity={0.8} bgBlendMode="multiply"/>
         <Box width={'100%'} position={'absolute'} top={'50%'} left={'50%'} className='translate-x-[-50%] translate-y-[-50%]'>
           <Heading fontWeight={500} fontSize={25} textAlign={'center'}>NEWSLETTER</Heading> 

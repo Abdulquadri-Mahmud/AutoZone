@@ -49,6 +49,7 @@ import {
     getAllLedLight,
     getAllOffRoadLight,
     getAllSignalLight,
+
     deleteStereo,
     deleteSpeaker,
     deleteAmplifier,
@@ -72,6 +73,29 @@ import {
     deleteLedLight,
     deleteOffRoadLight,
     deleteSignalLight,
+
+    getStereo,
+    getSpeaker,
+    getAmplifier,
+    getSubwoofer,
+    getBumper,
+    getDoor,
+    getFender,
+    getBodyKit,
+    getCustomGrill,
+    getCarCover,
+    getGrill,
+    getOffRoadBumper,
+    getCustomGauges,
+    getDashKits,
+    getSteeringWheels,
+    getSunShades,
+    getFogLight,
+    getHeadlight,
+    getLedLight,
+    getOffRoadLight,
+    getSignalLight,
+    getHoods,
     
 } from '../controller/accessories-controller.js';
 import { verifyAdmin } from '../utils/verifyUserError.js';
@@ -135,6 +159,35 @@ app.get('/car-headlight', getAllHeadlight);
 app.get('/car-ledlight', getAllLedLight);
 app.get('/car-offroadlight', getAllOffRoadLight);
 app.get('/car-signallight', getAllSignalLight);
+
+// -----------------------------------------------------------------------Delete Accessories Request----------------------------------------------------------
+app.get('/car-stereo/:id', getStereo);
+app.get('/car-speaker/:id', getSpeaker);
+app.get('/car-amplifier/:id', getAmplifier);
+app.get('/car-subwoofer/:id', getSubwoofer);
+app.get('/car-bumper/:id', getBumper);
+
+app.get('/car-door/:id', getDoor);
+app.get('/car-fender/:id', getFender);
+app.get('/car-grill/:id', getGrill);
+app.get('/car-hood/:id', getHoods);
+
+app.get('/car-body-kit/:id', getBodyKit);
+app.get('/car-custom-grill/:id', getCustomGrill);
+app.get('/car-car-cover/:id', getCarCover);
+app.get('/car-offroadbumper/:id', getOffRoadBumper);
+
+app.get('/car-custom-gauges/:id', getCustomGauges);
+app.get('/car-dash-kits/:id', getDashKits);
+app.get('/car-seat-cover/:id', getAllSeatCover);
+app.get('/car-steeringwheel/:id', getSteeringWheels);
+app.get('/car-sunshade/:id', getSunShades);
+
+app.get('/car-foglight/:id', getFogLight);
+app.get('/car-headlight/:id', getHeadlight);
+app.get('/car-ledlight/:id', getLedLight);
+app.get('/car-offroadlight/:id', getOffRoadLight);
+app.get('/car-signallight/:id', getSignalLight);
 
 // -----------------------------------------------------------------------Delete Accessories Request----------------------------------------------------------
 app.delete('/car-stereo/:id',verifyAdmin, deleteStereo);

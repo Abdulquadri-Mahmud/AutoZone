@@ -45,6 +45,7 @@ import LedlightPage from '../pages/Accessories/LedlightPage'
 import OffRoadLightPage from '../pages/Accessories/OffRoadLightPage'
 import SignalLightPage from '../pages/Accessories/SignalLightPage'
 import ReviewsPage from '../pages/Accessories/ReviewsPage'
+import StereoReviewPage from '../pages/Accessories/Reviews/StereoReviewPage'
 
 export default function RoutesPages() {
 
@@ -103,7 +104,7 @@ export default function RoutesPages() {
           <Route path='/signallights' element={<SignalLightPage/>}/>
 
           {/* Accessories Reviews */}
-          <Route path='/accessories-reviews/:accessoriesId' element={<ReviewsPage/>}/>
+          <Route path='/stereo-reviews/:accessoryId' element={<StereoReviewPage/>}/>
 
           {/* admin routes */}
           <Route path='/admin' element={<Admin/>}/>
