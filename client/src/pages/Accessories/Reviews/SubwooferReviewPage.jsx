@@ -4,11 +4,11 @@ import { Link, useParams } from 'react-router-dom';
 
 import { BsCurrencyDollar } from 'react-icons/bs';
 import { LuShoppingCart } from 'react-icons/lu';
-import Amplifier from '../../../components/Accessories/Reviews/Amplifier';
+import SubwooferReview from '../../../components/Accessories/Reviews/SubwooferReview';
 
-export const AmplifierReviewContext = createContext();
+export const SubwooferReviewContext = createContext();
 
-export default function AmplifierReviewPage() {
+export default function SubwooferReviewPage() {
     const [review, setReview] = useState({});
     const [item, setItem] = useState({});
 
@@ -17,7 +17,7 @@ export default function AmplifierReviewPage() {
 
     useEffect(() => {
         const getItem = async () => {
-        const fetchItem = await fetch(`/api/accessories/car-amplifier/${accessoryId}`);
+        const fetchItem = await fetch(`/api/accessories/car-subwoofer/${accessoryId}`);
         const item = await fetchItem.json();
         setReview(item);
         }
@@ -28,7 +28,7 @@ export default function AmplifierReviewPage() {
     useEffect(()=> {
         const getItem = async () => {
             try {
-                const res = await fetch('/api/accessories/car-amplifier');
+                const res = await fetch('/api/accessories/car-subwoofer');
                 const data =  await res.json();
                 setItem(data);
             } catch (error) {
@@ -37,12 +37,12 @@ export default function AmplifierReviewPage() {
         }
         getItem();
     }, []);
-    
+
   return (
     <Box>
-      <AmplifierReviewContext.Provider value={review}>
-        <Amplifier review={review}/>
-      </AmplifierReviewContext.Provider>
+      <SubwooferReviewContext.Provider value={review}>
+        <SubwooferReview review={review}/>
+      </SubwooferReviewContext.Provider>
 
       {/* <Box>
         <Text>{review.amplifierImage}</Text>
@@ -59,7 +59,7 @@ export default function AmplifierReviewPage() {
                     item.map((item) => (
                         <Box key={item._id} width={{md: '300px', base: '100%'}} bg={useColorModeValue('gray.200')} padding={3} rounded={5}>
                             <Flex justifyContent={'center'} width={'100%'} height={'200px'} bg={useColorModeValue('white')} p={2} rounded={5}>
-                                <Image src={item.amplifierImage[0]} maxW={'100%'} rounded={5}/>
+                                <Image src={item.subwooferImage[0]} maxW={'100%'} rounded={5}/>
                             </Flex>
                             <Box mt={4} color={'gray.800'}>
                                 <Heading mb={2} fontWeight={500} fontSize={16} color={'blue.500'}>{item.year} {item.name} {item.make}</Heading>
@@ -76,7 +76,7 @@ export default function AmplifierReviewPage() {
                                 </Flex>
                                 <Flex justifyContent={'space-between'} alignItems={'center'} pt={3} mt={2} borderTop={'2px'} borderTopColor={'gray.300'}>
                                     <Box fontWeight={500} >
-                                        <Link to={`/review-amplifier-reviews/${item._id}`} className='text-blue-500'>Review</Link>
+                                        <Link to={`/review-subwoofer-reviews/${item._id}`} className='text-blue-500'>Review</Link>
                                     </Box>
                                     <Box>
                                         <Button bg={useColorModeValue('white')}>
