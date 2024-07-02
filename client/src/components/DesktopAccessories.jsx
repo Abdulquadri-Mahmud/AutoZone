@@ -22,8 +22,8 @@ export default function DesktopAccessories() {
     const [placement, setPlacement] = useState('top');
 
   return (
-    <>
-        <Button colorScheme='blue' onClick={onOpen}> Open </Button>
+    <Box display={{md: 'block', base: 'none'}}>
+        <Button colorScheme='blue' onClick={onOpen} color={'black'} px={0} bg={'transparent'} _hover={{bg: 'tranparent'}} _focus={{bg: 'transparent'}}> Accessories </Button>
             <Drawer placement={placement} onClose={onClose} isOpen={isOpen} >
                 <DrawerOverlay />
                 <DrawerContent>
@@ -97,6 +97,6 @@ export default function DesktopAccessories() {
                 </DrawerBody>
                 </DrawerContent>
         </Drawer>
-    </>
+    </Box>
   )
 }

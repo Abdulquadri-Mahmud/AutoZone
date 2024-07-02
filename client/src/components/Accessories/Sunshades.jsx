@@ -34,7 +34,7 @@ export default function Sunshades() {
                                 </Flex>
                                 <Flex justifyContent={'space-between'} alignItems={'center'} pt={3} mt={2} borderTop={'2px'} borderTopColor={'gray.300'}>
                                     <Box fontWeight={500} >
-                                        <Link to={`/car-details/${sunshade._id}`} className='text-blue-500'>Review</Link>
+                                        <Link to={`/accessories-reviews/${sunshade._id}`} className='text-blue-500'>Review</Link>
                                     </Box>
                                     <Box>
                                         <Button bg={useColorModeValue('white')}>

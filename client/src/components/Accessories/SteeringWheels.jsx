@@ -34,7 +34,7 @@ export default function SteeringWheels() {
                                 </Flex>
                                 <Flex justifyContent={'space-between'} alignItems={'center'} pt={3} mt={2} borderTop={'2px'} borderTopColor={'gray.300'}>
                                     <Box fontWeight={500} >
-                                        <Link to={`/car-details/${steeringwheel._id}`} className='text-blue-500'>Review</Link>
+                                        <Link to={`/accessories-reviews/${steeringwheel._id}`} className='text-blue-500'>Review</Link>
                                     </Box>
                                     <Box>
                                         <Button bg={useColorModeValue('white')}>

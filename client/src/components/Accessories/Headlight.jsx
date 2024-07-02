@@ -33,7 +33,7 @@ export default function Headlight() {
                                 </Flex>
                                 <Flex justifyContent={'space-between'} alignItems={'center'} pt={3} mt={2} borderTop={'2px'} borderTopColor={'gray.300'}>
                                     <Box fontWeight={500} >
-                                        <Link to={`/car-details/${headlight._id}`} className='text-blue-500'>Review</Link>
+                                        <Link to={`/accessories-reviews/${headlight._id}`} className='text-blue-500'>Review</Link>
                                     </Box>
                                     <Box>
                                         <Button bg={useColorModeValue('white')}>

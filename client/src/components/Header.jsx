@@ -68,18 +68,17 @@ export default function Header() {
           </Flex>
         </Box>
         <Flex width={'100%'} justifyContent={'space-around'} alignItems={'center'} bg={useColorModeValue('')} padding={{md: '16px', base: 0}} position={'sticky'} zIndex={100} color={useColorModeValue('black')} className=''>
-          {/* <Box>
-            <Link to={'/'}>
-            <Heading fontWeight={500} fontSize={{md:35, base: 25}} fontStyle={'oblique'} color={useColorModeValue('blue.500')}>AutoBlog</Heading>
-          </Link>
-          </Box> */}
           <Box display={{md: 'block', base:'none'}}>
-            <Flex alignItems={'center'} gap={8} fontWeight={600}>
+            <Flex alignItems={'center'} gap={6} fontWeight={600}>
                 <Link to='/' className='hover:text-blue-500 duration-150'>Home</Link>
                 <Box className='accessParent'>
                   <Box>
-                    <Accessories/>
-                    <DesktopAccessories/>
+                    <Box display={{md: 'none', base: 'block'}}>
+                      <Accessories/>
+                    </Box>
+                    <Box display={{md: 'block', base: 'none'}}>
+                      <DesktopAccessories/>
+                    </Box>
                   </Box>
                 </Box>
                 <Box>
