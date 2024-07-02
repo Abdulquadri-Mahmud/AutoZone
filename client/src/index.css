@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body{
+    position: relative;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+input, textarea{
+    border: 2px solid black;
+    border-radius: 10px;
+    /* background-color: #e05b09; */
+    /* color: #3b82f6; */
+}
+.clip-path{
+    clip-path: polygon(0% 0%, 75% 0%, 100% 50%, 75% 100%, 0% 100%);
+}
+.herotext{
+    background: rgba(255,255,255,0.25);
+    -webkit-backdrop-filter: blur(7px);
+    backdrop-filter: blur(7px);
+    border: 1px solid rgba(255,255,255,0.125);
+    width: 45%;
+}
+.about{
+    background-blend-mode: multiply;
+    height: 100%;
+    width: 100%;
+    background-color: rgb(85, 83, 83);
+    color: #fff;
+}
+.accessParent{
+    transition: all 0.3;
+}
+.accessParent:hover > .accessChild{
+    width: 100%;
+    padding: 15px;
+}
+
+.testimonial{
+    background: rgba(255,255,255,0.25);
+    -webkit-backdrop-filter: blur(7px);
+    backdrop-filter: blur(7px);
+    border: 1px solid rgba(255,255,255,0.125);
+}
+
+/* admin log in styles */
+
+
+@media screen and (max-width: 320px) {
+    .smaller-screen{
+        /* width: 70%;
+        background-color: black; */
+    }
+}
