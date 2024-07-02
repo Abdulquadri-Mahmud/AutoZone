@@ -1,7 +1,7 @@
 import { Box, Flex, Heading, Text, useColorModeValue } from '@chakra-ui/react'
 import React from 'react';
 
-import car5 from '/car7.jpg'
+import car5 from '/car4.jpg'
 import { Link } from 'react-router-dom';
 
 import { FaChevronRight } from "react-icons/fa";

@@ -1,21 +1,64 @@
 import { Box, Button, Flex, Heading, Image, Text, useColorModeValue } from '@chakra-ui/react';
-import React, { useContext } from 'react'
-import { LuShoppingCart } from 'react-icons/lu';
+import React, { createContext, useContext, useEffect, useState } from 'react'
+import { Link, useParams } from 'react-router-dom';
+
 import { BsCurrencyDollar } from 'react-icons/bs';
-import { Link } from 'react-router-dom';
-import { SpeakerContext } from '../../pages/Accessories/SpeakerPage';
+import { LuShoppingCart } from 'react-icons/lu';
+import SpeakerReview from '../../../components/Accessories/Reviews/SpeakerReview';
 
+export const SpeakerReviewContext = createContext();
 
-export default function Speaker() {
-    const speakers = useContext(SpeakerContext);
+export default function SpeakerReviewPage() {
+    const [review, setReview] = useState({});
+    const [speaker, setSpeaker] = useState({});
 
+    const {accessoryId} = useParams();
+
+    useEffect(() => {
+        const getItem = async () => {
+          const fetchItem = await fetch(`/api/accessories/car-speaker/${accessoryId}`);
+          const item = await fetchItem.json();
+
+          console.log(item.name);
+          setReview(item);
+        }
+        getItem();
+      }, []);
+
+    useEffect(()=> {
+        const Speaker = async () => {
+            try {
+                const res = await fetch('/api/accessories/car-speaker');
+                const data =  await res.json();
+                setSpeaker(data);
+            } catch (error) {
+                console.log(error);
+            }
+        }
+        Speaker();
+    }, []);
+
+    try {
+        console.log(review.speakerImage[0]);
+    } catch (error) {
+        console.log('error', error);
+    }
   return (
-    <Box py={'3rem'} px={3}>
-        <Flex gap={3} justifyContent={'center'} flexWrap={'wrap'}>
+    <Box>
+        <SpeakerReviewContext.Provider value={review}>
+            <SpeakerReview review={review} key={review._id}/>
+        </SpeakerReviewContext.Provider>
+
+        <Box maxW={'100%'} mx={'auto'} mt={6}>
+            <Flex justifyContent={'center'} position={'relative'}>
+                <Heading fontWeight={500} fontSize={26} textAlign={'center'}>YOU MAY ALSO LIKE</Heading>
+                <Image src='/zigzag.png' position={'absolute'} bottom={-10}/>
+            </Flex>
+            <Flex mt={10} gap={3} mx={5} justifyContent={'center'} flexWrap={'wrap'}>
             {
-                speakers.length > 0 ? (
-                    speakers.map((speaker) => (
-                        <Box width={{md: '300px', base: '100%'}} bg={useColorModeValue('gray.200')} padding={3} rounded={5}>
+                speaker.length > 0 ? (
+                    speaker.map((speaker) => (
+                        <Box key={speaker._id} width={{md: '300px', base: '100%'}} bg={useColorModeValue('gray.200')} padding={3} rounded={5}>
                             <Flex justifyContent={'center'} width={'100%'} height={'200px'} bg={useColorModeValue('white')} p={2} rounded={5}>
                                 <Image src={speaker.speakerImage[0]} maxW={'100%'} rounded={5}/>
                             </Flex>
@@ -34,7 +77,7 @@ export default function Speaker() {
                                 </Flex>
                                 <Flex justifyContent={'space-between'} alignItems={'center'} pt={3} mt={2} borderTop={'2px'} borderTopColor={'gray.300'}>
                                     <Box fontWeight={500} >
-                                        <Link to={`/speaker-reviews/${speaker._id}`} className='text-blue-500'>Review</Link>
+                                        <Link to={`/review-speaker-reviews/${speaker._id}`} className='text-blue-500'>Review</Link>
                                     </Box>
                                     <Box>
                                         <Button bg={useColorModeValue('white')}>
@@ -50,6 +93,7 @@ export default function Speaker() {
                 )
             }
         </Flex>
+        </Box>
     </Box>
   )
 }

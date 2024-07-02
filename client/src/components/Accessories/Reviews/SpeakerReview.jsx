@@ -1,25 +1,24 @@
 import React, { useContext } from 'react'
-import { StereoReviewContext } from '../../../pages/Accessories/Reviews/StereoReviewPage'
-import { Box, Button, Flex, Heading, Image, Text, useColorModeValue } from '@chakra-ui/react';
+import { SpeakerReviewContext } from '../../../pages/Accessories/Reviews/SpeakerReviewPage';
+import { Box, Button, Flex, Heading, Image, Text, space, useColorModeValue } from '@chakra-ui/react';
 import { LuShoppingCart } from 'react-icons/lu';
 import { BsCurrencyDollar } from 'react-icons/bs';
 import { GrStatusGood } from "react-icons/gr";
 
-export default function StereoReview() {
-    const item = useContext(StereoReviewContext);
-    console.log(item);
-    // console.log(item.steroeImage[0]);
-    
+export default function SpeakerReview() {
+    const item = useContext(SpeakerReviewContext);
+
+    console.log(item.speakerImage);
   return (
     <Box mt={10} px={3} py={7} width={{md: '70%', base: '100%'}} mx={'auto'} bg={'gray.200'}>
         <Box>
             <Box bg={useColorModeValue('white')} width={'260px'} p={2} rounded={5}>
                 <Heading fontSize={30} fontWeight={500}>Category: <span className='font-medium text-blue-500'>{item.category}</span></Heading>
             </Box>
-            <Flex position={'relative'} justifyContent={'center'} height={'200px'} mt={5} bg={useColorModeValue('white')} width={'300px'} padding={3} rounded={5}>
-                <Image src={item.steroeImage} maxW={'100%'} maxH={'100%'} rounded={5}/>
+            <Flex position={'relative'} justifyContent={'center'} mt={5} bg={useColorModeValue('white')} width={'300px'} padding={3} rounded={5}>
+                <Image src={item.speakerImage} maxW={'100%'} rounded={5}/>
                 <Box position={'absolute'}>
-                    {/* {item.steroeImage.length} */}
+                    
                 </Box>
             </Flex>
         </Box>
@@ -35,7 +34,7 @@ export default function StereoReview() {
                     )
                 }
                 <Text fontWeight={500} my={3} className='flex items-center'>Price: <BsCurrencyDollar/> {item.price}</Text>
-                <Button bg={useColorModeValue('white')} color={useColorModeValue('blue.500')}>
+                <Button bg={useColorModeValue('gray.200')} color={useColorModeValue('blue.500')}>
                     <LuShoppingCart className='text-xl'/>
                 </Button>
             </Flex>

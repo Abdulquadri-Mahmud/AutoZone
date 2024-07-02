@@ -10,7 +10,7 @@ export default function Stereos() {
     const stereos = useContext(StereosContext);
 
     return (
-        <Box py={'3rem'}>
+        <Box py={'3rem'} px={3}>
             <Flex gap={3} justifyContent={'center'} flexWrap={'wrap'}>
                 {
                     stereos.length > 0 ? (

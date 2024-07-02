@@ -46,6 +46,11 @@ import OffRoadLightPage from '../pages/Accessories/OffRoadLightPage'
 import SignalLightPage from '../pages/Accessories/SignalLightPage'
 import ReviewsPage from '../pages/Accessories/ReviewsPage'
 import StereoReviewPage from '../pages/Accessories/Reviews/StereoReviewPage'
+import StereoReviewsPage2 from '../pages/Accessories/Reviews/reviews2/StereoReviewsPage2'
+import SpeakerReviewPage from '../pages/Accessories/Reviews/SpeakerReviewPage'
+import SpeakerReviewPage2 from '../pages/Accessories/Reviews/reviews2/SpeakerReviewPage2'
+import AmplifierReviewPage from '../pages/Accessories/Reviews/AmplifierReviewPage'
+import AmplifierPage2 from '../pages/Accessories/Reviews/reviews2/AmplifierPage2'
 
 export default function RoutesPages() {
 
@@ -105,6 +110,12 @@ export default function RoutesPages() {
 
           {/* Accessories Reviews */}
           <Route path='/stereo-reviews/:accessoryId' element={<StereoReviewPage/>}/>
+          <Route path='/speaker-reviews/:accessoryId' element={<SpeakerReviewPage/>}/>
+          <Route path='/amplifier-reviews/:accessoryId' element={<AmplifierReviewPage/>}/>
+
+          <Route path='/review-stereo-reviews/:accessoryId' element={<StereoReviewsPage2/>}/>
+          <Route path='/review-speaker-reviews/:accessoryId' element={<SpeakerReviewPage2/>}/>
+          <Route path='/review-amplifier-reviews/:accessoryId' element={<AmplifierPage2/>}/>
 
           {/* admin routes */}
           <Route path='/admin' element={<Admin/>}/>
