@@ -55,6 +55,9 @@ import SubwooferReviewPage from '../pages/Accessories/Reviews/SubwooferReviewPag
 import SubwooferReviewPage2 from '../pages/Accessories/Reviews/reviews2/SubwooferReviewPage2'
 import HoodsReviewPage2 from '../pages/Accessories/Reviews/reviews2/HoodsReviewPage2'
 import HoodsReviewPage from '../pages/Accessories/Reviews/HoodsReviewPage'
+import DoorReviewsPage2 from '../pages/Accessories/Reviews/reviews2/DoorReviewsPage2'
+import BumperReviewPage from '../pages/Accessories/Reviews/BumperReviewPage'
+import BumperReviewPage2 from '../pages/Accessories/Reviews/reviews2/BumperReviewPage2'
 
 export default function RoutesPages() {
 
@@ -118,12 +121,16 @@ export default function RoutesPages() {
           <Route path='/amplifier-reviews/:accessoryId' element={<AmplifierReviewPage/>}/>
           <Route path='/subwoofer-reviews/:accessoryId' element={<SubwooferReviewPage/>}/>
           <Route path='/hoods-reviews/:accessoryId' element={<HoodsReviewPage/>}/>
+          <Route path='/bumper-reviews/:accessoryId' element={<BumperReviewPage/>}/>
+          <Route path='/door-reviews/:accessoryId' element={<HoodsReviewPage/>}/>
 
           <Route path='/review-stereo-reviews/:accessoryId' element={<StereoReviewsPage2/>}/>
           <Route path='/review-speaker-reviews/:accessoryId' element={<SpeakerReviewPage2/>}/>
           <Route path='/review-amplifier-reviews/:accessoryId' element={<AmplifierPage2/>}/>
           <Route path='/review-subwoofer-reviews/:accessoryId' element={<SubwooferReviewPage2/>}/>
           <Route path='/review-hoods-reviews/:accessoryId' element={<HoodsReviewPage2/>}/>
+          <Route path='/review-bumper-reviews/:accessoryId' element={<BumperReviewPage2/>}/>
+          <Route path='/review-door-reviews/:accessoryId' element={<DoorReviewsPage2/>}/>
 
           {/* admin routes */}
           <Route path='/admin' element={<Admin/>}/>
