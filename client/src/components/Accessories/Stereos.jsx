@@ -20,7 +20,7 @@ export default function Stereos() {
                                     <Image src={stereo.steroeImage[0]} maxW={'100%'} rounded={5}/>
                                 </Flex>
                                 <Box mt={4} color={'gray.800'}>
-                                    <Heading mb={2} fontWeight={500} fontSize={16} color={'blue.500'}>{stereo.year} {stereo.name} {stereo.make}</Heading>
+                                    <Heading mb={2} fontWeight={500} fontSize={16} color={'red.500'}>{stereo.year} {stereo.name} {stereo.make}</Heading>
                                     <Box>
                                         <Text fontWeight={500}>{stereo.descriptions.slice(0, 100)}...</Text>
                                     </Box>
@@ -34,11 +34,11 @@ export default function Stereos() {
                                     </Flex>
                                     <Flex justifyContent={'space-between'} alignItems={'center'} pt={3} mt={2} borderTop={'2px'} borderTopColor={'gray.300'}>
                                         <Box fontWeight={500} >
-                                            <Link to={`/stereo-reviews/${stereo._id}`} className='text-blue-500'>Review</Link>
+                                            <Link to={`/stereo-reviews/${stereo._id}`} className='text-red-500'>Review</Link>
                                         </Box>
                                         <Box>
                                             <Button bg={useColorModeValue('white')}>
-                                                <LuShoppingCart className='text-xl text-blue-500'/>
+                                                <LuShoppingCart className='text-xl text-red-500'/>
                                             </Button>
                                         </Box>
                                     </Flex>

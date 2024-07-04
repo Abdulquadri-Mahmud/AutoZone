@@ -17,7 +17,11 @@ export default function Amplifier() {
                     <Heading fontSize={30} fontWeight={500}>Category: <span className='font-medium text-blue-500'>{item.category}</span></Heading>
                 </Box>
                 <Flex position={'relative'} justifyContent={'center'} height={'250px'} mt={5} bg={useColorModeValue('white')} width={'300px'} padding={3} rounded={5}>
-                    <Image src={item.amplifierImage} maxW={'100%'} rounded={5}/>
+                    {
+                        item.amplifierImage === undefined ? '' : (
+                            <Image src={item.amplifierImage[0]} maxW={'100%'} rounded={5}/>
+                        )
+                    }
                     <Box position={'absolute'}>
                         {/* {item.steroeImage.length} */}
                     </Box>

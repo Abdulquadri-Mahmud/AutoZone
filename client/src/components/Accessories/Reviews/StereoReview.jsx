@@ -11,13 +11,17 @@ export default function StereoReview() {
     // console.log(item.steroeImage[0]);
     
   return (
-    <Box mt={10} px={3} py={7} width={{md: '70%', base: '100%'}} mx={'auto'} bg={'gray.200'}>
+    <Flex mt={10} gap={6} alignItems={'center'} px={3} py={7} width={{md: '70%', base: '100%'}} mx={'auto'} bg={'gray.200'}>
         <Box>
             <Box bg={useColorModeValue('white')} width={'260px'} p={2} rounded={5}>
                 <Heading fontSize={30} fontWeight={500}>Category: <span className='font-medium text-blue-500'>{item.category}</span></Heading>
             </Box>
             <Flex position={'relative'} justifyContent={'center'} height={'200px'} mt={5} bg={useColorModeValue('white')} width={'300px'} padding={3} rounded={5}>
-                <Image src={item.steroeImage} maxW={'100%'} maxH={'100%'} rounded={5}/>
+                {
+                    item.steroeImage === undefined ? '' : (
+                        <Image src={item.steroeImage[0]} maxW={'100%'} rounded={5}/>
+                    )
+                }
                 <Box position={'absolute'}>
                     {/* {item.steroeImage.length} */}
                 </Box>
@@ -40,6 +44,6 @@ export default function StereoReview() {
                 </Button>
             </Flex>
         </Box>
-    </Box>
+    </Flex>
   )
 }

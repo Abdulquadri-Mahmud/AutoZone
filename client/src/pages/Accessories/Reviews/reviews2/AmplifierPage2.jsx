@@ -34,7 +34,7 @@ export default function AmplifierPage2() {
         }
         Stereo();
     }, []);
-    
+
   return (
     <Box>
         <Box mt={10} px={3} py={7} width={{md: '70%', base: '100%'}} mx={'auto'} bg={'gray.200'}>
@@ -42,7 +42,11 @@ export default function AmplifierPage2() {
                 <Heading fontSize={30} fontWeight={500}>Category: <span className='font-medium text-blue-500'>{review.category}</span></Heading>
             </Box>
             <Flex justifyContent={'center'} mt={5} bg={useColorModeValue('white')} width={'300px'} padding={3} rounded={5}>
-                <Image src={review.amplifierImage} maxW={'100%'} rounded={5}/>
+                {
+                    review.amplifierImage === undefined ? '' : (
+                        <Image src={review.amplifierImage[0]} maxW={'100%'} rounded={5}/>
+                    )
+                }
             </Flex>
             <Box width={{md:'60%', base:'97%'}} mt={5}>
                 <Heading fontWeight={500} fontSize={30}>{review.year} {review.name} {review.make}</Heading>

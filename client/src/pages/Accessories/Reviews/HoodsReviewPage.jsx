@@ -1,5 +1,5 @@
 import { Box, Button, Flex, Heading, Image, Text, useColorModeValue } from '@chakra-ui/react';
-import React, { createContext, useEffect, useState } from 'react'
+import { createContext, useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom';
 
 import { BsCurrencyDollar } from 'react-icons/bs';
@@ -16,14 +16,17 @@ export default function HoodsReviewPage() {
 
 
     useEffect(() => {
-        const getItem = async () => {
-        const fetchItem = await fetch(`/api/accessories/car-hood/${accessoryId}`);
-        const item = await fetchItem.json();
-        setReview(item);
+        const getItemId = async () => {
+            try {
+                const fetchItem = await fetch(`/api/accessories/car-hood/${accessoryId}`);
+                const item = await fetchItem.json();
+                setReview(item);
+            } catch (error) {
+                console.log(error);
+            }
         }
-        getItem();
+        getItemId();
     }, []);
-
 
     useEffect(()=> {
         const getItem = async () => {
@@ -43,10 +46,6 @@ export default function HoodsReviewPage() {
         <HoodsReviewContext.Provider value={review}>
             <HoodsReview review={review}/>
         </HoodsReviewContext.Provider>
-
-        {/* <Box>
-        <Text>{review.amplifierImage}</Text>
-        </Box> */}
 
         <Box maxW={'100%'} mx={'auto'} mt={10}>
             <Flex justifyContent={'center'} position={'relative'}>

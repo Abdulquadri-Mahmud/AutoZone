@@ -58,6 +58,11 @@ import HoodsReviewPage from '../pages/Accessories/Reviews/HoodsReviewPage'
 import DoorReviewsPage2 from '../pages/Accessories/Reviews/reviews2/DoorReviewsPage2'
 import BumperReviewPage from '../pages/Accessories/Reviews/BumperReviewPage'
 import BumperReviewPage2 from '../pages/Accessories/Reviews/reviews2/BumperReviewPage2'
+import DoorReviewsPage from '../pages/Accessories/Reviews/DoorReviewsPage'
+import FenderReviewPage from '../pages/Accessories/Reviews/FenderReviewPage'
+import FenderReviewPage2 from '../pages/Accessories/Reviews/reviews2/FenderReviewPage2'
+import GrillsReviewPage from '../pages/Accessories/Reviews/GrillsReviewPage'
+import GrillsReviewPage2 from '../pages/Accessories/Reviews/reviews2/GrillsReviewPage2'
 
 export default function RoutesPages() {
 
@@ -122,7 +127,9 @@ export default function RoutesPages() {
           <Route path='/subwoofer-reviews/:accessoryId' element={<SubwooferReviewPage/>}/>
           <Route path='/hoods-reviews/:accessoryId' element={<HoodsReviewPage/>}/>
           <Route path='/bumper-reviews/:accessoryId' element={<BumperReviewPage/>}/>
-          <Route path='/door-reviews/:accessoryId' element={<HoodsReviewPage/>}/>
+          <Route path='/door-reviews/:accessoryId' element={<DoorReviewsPage/>}/>
+          <Route path='/fender-reviews/:accessoryId' element={<FenderReviewPage/>}/>
+          <Route path='/grill-reviews/:accessoryId' element={<GrillsReviewPage/>}/>
 
           <Route path='/review-stereo-reviews/:accessoryId' element={<StereoReviewsPage2/>}/>
           <Route path='/review-speaker-reviews/:accessoryId' element={<SpeakerReviewPage2/>}/>
@@ -131,6 +138,8 @@ export default function RoutesPages() {
           <Route path='/review-hoods-reviews/:accessoryId' element={<HoodsReviewPage2/>}/>
           <Route path='/review-bumper-reviews/:accessoryId' element={<BumperReviewPage2/>}/>
           <Route path='/review-door-reviews/:accessoryId' element={<DoorReviewsPage2/>}/>
+          <Route path='/review-fender-reviews/:accessoryId' element={<FenderReviewPage2/>}/>
+          <Route path='/review-grill-reviews/:accessoryId' element={<GrillsReviewPage2/>}/>
 
           {/* admin routes */}
           <Route path='/admin' element={<Admin/>}/>

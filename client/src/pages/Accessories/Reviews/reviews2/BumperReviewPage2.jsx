@@ -44,14 +44,11 @@ export default function BumperReviewPage2() {
                 <Heading fontSize={30} fontWeight={500}>Category: <span className='font-medium text-blue-500'>{review.category}</span></Heading>
             </Box>
             <Flex justifyContent={'center'} mt={5} bg={useColorModeValue('white')} width={'300px'} padding={3} rounded={5}>
-                {/* {
-                    review.BumperImage.length > 0 ? (
-                        <Text>Greater than</Text>
-                    ) : (
-                        <Text>Not less than </Text>
+                {
+                    review.BumperImage === undefined ? '' : (
+                        <Image src={review.BumperImage[0]} maxW={'100%'} rounded={5}/>
                     )
-                } */}
-                <Image src={review.BumperImage} maxW={'100%'} rounded={5}/>
+                }
             </Flex>
             <Box width={{md:'60%', base:'97%'}} mt={5}>
                 <Heading fontWeight={500} fontSize={30}>{review.year} {review.name} {review.make}</Heading>

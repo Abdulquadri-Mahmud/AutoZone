@@ -16,7 +16,7 @@ export default function Hoods() {
                     hoods.map((hood) => (
                         <Box key={hood._id} width={{md: '300px', base: '100%'}} bg={useColorModeValue('gray.200')} padding={3} rounded={5}>
                             <Flex justifyContent={'center'} width={'100%'} height={'200px'} bg={useColorModeValue('white')} p={2} rounded={5}>
-                                <Image src={hood.HoodsImage} maxW={'100%'} rounded={5}/>
+                                <Image src={hood.HoodsImage[0]} maxW={'100%'} rounded={5}/>
                             </Flex>
                             <Box mt={4} color={'gray.800'}>
                                 <Heading mb={2} fontWeight={500} fontSize={16} color={'blue.500'}>{hood.year} {hood.name} {hood.make}</Heading>

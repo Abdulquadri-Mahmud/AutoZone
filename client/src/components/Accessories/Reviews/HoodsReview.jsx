@@ -8,7 +8,7 @@ import { HoodsReviewContext } from '../../../pages/Accessories/Reviews/HoodsRevi
 
 export default function HoodsReview() {
     const item = useContext(HoodsReviewContext);
-
+    
   return (
     <Box mt={10} px={3} py={7} width={{md: '70%', base: '100%'}} mx={'auto'} bg={'gray.200'}>
         <Box>
@@ -16,7 +16,11 @@ export default function HoodsReview() {
                 <Heading fontSize={30} fontWeight={500}>Category: <span className='font-medium text-blue-500'>{item.category}</span></Heading>
             </Box>
             <Flex position={'relative'} justifyContent={'center'} height={'250px'} mt={5} bg={useColorModeValue('white')} width={'300px'} padding={3} rounded={5}>
-                <Image src={item.HoodsImage} maxW={'100%'} rounded={5}/>
+                {
+                    item.HoodsImage === undefined ? '' : (
+                        <Image src={item.HoodsImage[0]} maxW={'100%'} rounded={5}/>
+                    )
+                }
                 <Box position={'absolute'}>
                     {/* {item.steroeImage.length} */}
                 </Box>

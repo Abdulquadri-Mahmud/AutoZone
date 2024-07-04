@@ -160,7 +160,7 @@ app.get('/car-ledlight', getAllLedLight);
 app.get('/car-offroadlight', getAllOffRoadLight);
 app.get('/car-signallight', getAllSignalLight);
 
-// -----------------------------------------------------------------------Delete Accessories Request----------------------------------------------------------
+// -----------------------------------------------------------------------get single Accessories Request----------------------------------------------------------
 app.get('/car-stereo/:id', getStereo);
 app.get('/car-speaker/:id', getSpeaker);
 app.get('/car-amplifier/:id', getAmplifier);

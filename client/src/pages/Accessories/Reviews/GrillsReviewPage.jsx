@@ -4,22 +4,21 @@ import { Link, useParams } from 'react-router-dom';
 
 import { BsCurrencyDollar } from 'react-icons/bs';
 import { LuShoppingCart } from 'react-icons/lu';
-import DoorReviews from '../../../components/Accessories/Reviews/DoorReviews';
+import HoodsReview from '../../../components/Accessories/Reviews/HoodsReview';
+import GrillsReview from '../../../components/Accessories/Reviews/GrillsReview';
 
-export const DoorsReviewContext = createContext();
+export const GrillReviewContext = createContext();
 
-export default function DoorReviewsPage() {
-    
+export default function GrillsReviewPage() {
     const [review, setReview] = useState({});
     const [item, setItem] = useState({});
 
     const {accessoryId} = useParams();
 
-
     useEffect(() => {
         const getItemId = async () => {
             try {
-                const fetchItem = await fetch(`/api/accessories/car-door/${accessoryId}`);
+                const fetchItem = await fetch(`/api/accessories/car-grill/${accessoryId}`);
                 const item = await fetchItem.json();
                 setReview(item);
             } catch (error) {
@@ -32,7 +31,7 @@ export default function DoorReviewsPage() {
     useEffect(()=> {
         const getItem = async () => {
             try {
-                const res = await fetch('/api/accessories/car-door');
+                const res = await fetch('/api/accessories/car-grill');
                 const data =  await res.json();
                 setItem(data);
             } catch (error) {
@@ -42,11 +41,11 @@ export default function DoorReviewsPage() {
         getItem();
     }, []);
 
-    return (
-        <Box>
-        <DoorsReviewContext.Provider value={review}>
-            <DoorReviews review={review}/>
-        </DoorsReviewContext.Provider>
+  return (
+    <Box>
+        <GrillReviewContext.Provider value={review}>
+            <GrillsReview review={review}/>
+        </GrillReviewContext.Provider>
 
         <Box maxW={'100%'} mx={'auto'} mt={10}>
             <Flex justifyContent={'center'} position={'relative'}>
@@ -59,7 +58,7 @@ export default function DoorReviewsPage() {
                         item.map((item) => (
                             <Box key={item._id} width={{md: '300px', base: '100%'}} bg={useColorModeValue('gray.200')} padding={3} rounded={5}>
                                 <Flex justifyContent={'center'} width={'100%'} height={'200px'} bg={useColorModeValue('white')} p={2} rounded={5}>
-                                    <Image src={item.DoorImage[0]} maxW={'100%'} rounded={5}/>
+                                    <Image src={item.GrillsImage[0]} maxW={'100%'} rounded={5}/>
                                 </Flex>
                                 <Box mt={4} color={'gray.800'}>
                                     <Heading mb={2} fontWeight={500} fontSize={16} color={'blue.500'}>{item.year} {item.name} {item.make}</Heading>
@@ -76,7 +75,7 @@ export default function DoorReviewsPage() {
                                     </Flex>
                                     <Flex justifyContent={'space-between'} alignItems={'center'} pt={3} mt={2} borderTop={'2px'} borderTopColor={'gray.300'}>
                                         <Box fontWeight={500} >
-                                            <Link to={`/review-door-reviews/${item._id}`} className='text-blue-500'>Review</Link>
+                                            <Link to={`/review-grill-reviews/${item._id}`} className='text-blue-500'>Review</Link>
                                         </Box>
                                         <Box>
                                             <Button bg={useColorModeValue('white')}>

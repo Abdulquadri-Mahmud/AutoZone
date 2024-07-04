@@ -5,7 +5,7 @@ import { GrStatusGood } from 'react-icons/gr';
 import { LuShoppingCart } from 'react-icons/lu';
 import { Link, useParams } from 'react-router-dom';
 
-export default function HoodsReviewPage2() {
+export default function FenderReviewPage2() {
     const [review, setReview] = useState({});
     const [item, setItem] = useState({});
 
@@ -14,7 +14,7 @@ export default function HoodsReviewPage2() {
 
     useEffect(() => {
         const getItem = async () => {
-            const fetchItem = await fetch(`/api/accessories/car-hood/${accessoryId}`);
+            const fetchItem = await fetch(`/api/accessories/car-fender/${accessoryId}`);
             const item = await fetchItem.json();
             setReview(item);
         }
@@ -24,13 +24,13 @@ export default function HoodsReviewPage2() {
 
     useEffect(()=> {
         const Stereo = async () => {
-            try {
-                const res = await fetch('/api/accessories/car-hoods');
-                const data =  await res.json();
-                setItem(data);
-            } catch (error) {
-                console.log(error);
-            }
+        try {
+            const res = await fetch('/api/accessories/car-fenders');
+            const data =  await res.json();
+            setItem(data);
+        } catch (error) {
+            console.log(error);
+        }
         }
         Stereo();
     }, []);
@@ -43,8 +43,8 @@ export default function HoodsReviewPage2() {
             </Box>
             <Flex justifyContent={'center'} mt={5} bg={useColorModeValue('white')} width={'300px'} padding={3} rounded={5}>
                 {
-                    review.HoodsImage === undefined ? '' : (
-                        <Image src={review.HoodsImage[0]} maxW={'100%'} rounded={5}/>
+                    review.FenderImage === undefined ? '' : (
+                        <Image src={review.FenderImage[0]} maxW={'100%'} rounded={5}/>
                     )
                 }
             </Flex>
