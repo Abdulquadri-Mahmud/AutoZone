@@ -10,7 +10,7 @@ export default function OffRoadBumperPage() {
     useEffect(()=> {
         const OffRoadBumber = async () => {
         try {
-            const res = await fetch('/api/accessories/car-offroadbumber');
+            const res = await fetch('/api/accessories/car-offroadbumper');
             const data =  await res.json();
             setOffRoadBumber(data);
         } catch (error) {

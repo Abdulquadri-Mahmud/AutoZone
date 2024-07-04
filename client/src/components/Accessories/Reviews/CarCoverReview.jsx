@@ -3,22 +3,21 @@ import { Box, Button, Flex, Heading, Image, Text, useColorModeValue } from '@cha
 import { LuShoppingCart } from 'react-icons/lu';
 import { BsCurrencyDollar } from 'react-icons/bs';
 import { GrStatusGood } from "react-icons/gr";
+import { CarCoverReviewContext } from '../../../pages/Accessories/Reviews/CarCoverReviewPage';
 
-import { HoodsReviewContext } from '../../../pages/Accessories/Reviews/HoodsReviewPage';
-
-export default function HoodsReview() {
-    const item = useContext(HoodsReviewContext);
+export default function CarCoverReview() {
+    const item = useContext(CarCoverReviewContext);
     
   return (
     <Flex gap={6} mt={10} px={3} py={7} width={{md: '70%', base: '100%'}} mx={'auto'} bg={'gray.200'}>
         <Box>
             <Box bg={useColorModeValue('white')} width={'260px'} p={2} rounded={5}>
-                <Heading fontSize={30} fontWeight={500}>Category: <span className='font-medium text-red-500'>{item.category}</span></Heading>
+                <Heading fontSize={30} fontWeight={500}>Category: <span className='font-medium text-blue-500'>{item.category}</span></Heading>
             </Box>
             <Flex position={'relative'} justifyContent={'center'} height={'250px'} mt={5} bg={useColorModeValue('white')} width={'300px'} padding={3} rounded={5}>
                 {
-                    item.HoodsImage === undefined ? '' : (
-                        <Image src={item.HoodsImage[0]} maxW={'100%'} rounded={5}/>
+                    item.CarCoverImage === undefined ? '' : (
+                        <Image src={item.CarCoverImage[0]} maxW={'100%'} rounded={5}/>
                     )
                 }
                 <Box position={'absolute'}>
@@ -34,7 +33,7 @@ export default function HoodsReview() {
                     item.deal === 'Great' ? (
                         <Text fontWeight={500} my={3} className='flex items-center gap-1'>Deal: <GrStatusGood className='text-green-500'/>{item.deal}</Text>
                     ) : (
-                        <Text fontWeight={500} my={3} className='flex items-center gap-1'>Deal: <GrStatusGood className='text-red-500'/>{item.deal}</Text>
+                        <Text fontWeight={500} my={3} className='flex items-center gap-1'>Deal: <GrStatusGood className='text-blue-500'/>{item.deal}</Text>
                     )
                 }
                 <Text fontWeight={500} my={3} className='flex items-center'>Price: <sup><BsCurrencyDollar/> </sup> {item.price}</Text>

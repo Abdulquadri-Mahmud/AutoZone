@@ -16,7 +16,11 @@ export default function OffRoadBumper() {
                     offroadbumbers.map((offroadbumber) => (
                         <Box key={offroadbumber._id} width={{md: '300px', base: '100%'}} bg={useColorModeValue('gray.200')} padding={3} rounded={5}>
                             <Flex justifyContent={'center'} width={'100%'} height={'200px'} bg={useColorModeValue('white')} p={2} rounded={5}>
-                                <Image src={offroadbumber.offroadbumbersImage} maxW={'100%'} rounded={5}/>
+                                {
+                                    offroadbumbers.OffRoadBumperImage === undefined ? '' : (
+                                        <Image src={offroadbumbers.OffRoadBumperImage[0]} maxW={'100%'} rounded={5}/>
+                                    )
+                                }
                             </Flex>
                             <Box mt={4} color={'gray.800'}>
                                 <Heading mb={2} fontWeight={500} fontSize={16} color={'blue.500'}>{offroadbumber.year} {offroadbumber.name} {offroadbumber.make}</Heading>
@@ -33,7 +37,7 @@ export default function OffRoadBumper() {
                                 </Flex>
                                 <Flex justifyContent={'space-between'} alignItems={'center'} pt={3} mt={2} borderTop={'2px'} borderTopColor={'gray.300'}>
                                     <Box fontWeight={500} >
-                                        <Link to={`/accessories-reviews/${offroadbumber._id}`} className='text-blue-500'>Review</Link>
+                                        <Link to={`/offroadbumper-reviews/${offroadbumber._id}`} className='text-blue-500'>Review</Link>
                                     </Box>
                                     <Box>
                                         <Button bg={useColorModeValue('white')}>
@@ -45,7 +49,7 @@ export default function OffRoadBumper() {
                         </Box>
                     ))
                 ):(
-                    <Text>No Off-Road Bumber Accessoriess to diaplay!</Text>
+                    <Text>No Off-Road Bumber Accessoriess to display!</Text>
                 )
             }
         </Flex>

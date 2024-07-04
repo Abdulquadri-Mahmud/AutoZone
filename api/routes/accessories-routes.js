@@ -117,7 +117,7 @@ app.post('/car-hood', hoodsAccessory);
 app.post('/car-body-kit', bodyKitAccessory);
 app.post('/car-custom-grill', customGrillAccessory);
 app.post('/car-car-cover', carCoverAccessory);
-app.post('/car-offroadbumber', offRoadBumpersAccessory);
+app.post('/car-offroadbumper', offRoadBumpersAccessory);
 
 app.post('/car-custom-gauges', customGauges);
 app.post('/car-dash-kits', dashKit);
@@ -146,7 +146,7 @@ app.get('/car-hoods', getAllHoods);
 app.get('/car-body-kit', getAllBodyKit);
 app.get('/car-custom-grill', getAllCustomGrill);
 app.get('/car-car-cover', getAllCarCover);
-app.get('/car-offroadbumber', getAllOffRoadBumper);
+app.get('/car-offroadbumper', getAllOffRoadBumper);
 
 app.get('/car-custom-gauges', getAllCustomGauges);
 app.get('/car-dash-kits', getAllDashKits);
@@ -204,7 +204,7 @@ app.delete('/car-hoods/:id',verifyAdmin, deleteHoods);
 app.delete('/car-body-kit/:id',verifyAdmin, deleteBodyKit);
 app.delete('/car-custom-grill/:id',verifyAdmin, deleteCustomGrill);
 app.delete('/car-car-cover/:id',verifyAdmin, deleteCarCover);
-app.delete('/car-offroadbumber/:id',verifyAdmin, deleteOffRoadBumper);
+app.delete('/car-offroadbumper/:id',verifyAdmin, deleteOffRoadBumper);
 
 app.delete('/car-custom-gauges/:id',verifyAdmin, deleteCustomGauges);
 app.delete('/car-dash-kits/:id',verifyAdmin, deleteDashKits);

@@ -36,7 +36,7 @@ export default function BodyKit() {
                                 </Flex>
                                 <Flex justifyContent={'space-between'} alignItems={'center'} pt={3} mt={2} borderTop={'2px'} borderTopColor={'gray.300'}>
                                     <Box fontWeight={500} >
-                                        <Link to={`/accessories-reviews/${bodyKit._id}`} className='text-blue-500'>Review</Link>
+                                        <Link to={`/bodykit-reviews/${bodyKit._id}`} className='text-blue-500'>Review</Link>
                                     </Box>
                                     <Box>
                                         <Button bg={useColorModeValue('white')}>

@@ -1,14 +1,17 @@
+import React from 'react';
+
 import { Box, Button, Flex, Heading, Image, Text, useColorModeValue } from '@chakra-ui/react';
 import { createContext, useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom';
 
 import { BsCurrencyDollar } from 'react-icons/bs';
 import { LuShoppingCart } from 'react-icons/lu';
-import HoodsReview from '../../../components/Accessories/Reviews/HoodsReview';
+import OffRoadBumperReview from '../../../components/Accessories/Reviews/OffRoadBumperReview';
 
-export const HoodsReviewContext = createContext();
+export const OffRoadBumperReviewContext = createContext();
 
-export default function HoodsReviewPage() {
+
+export default function OffRoadBumperReviewPage() {
     const [review, setReview] = useState({});
     const [item, setItem] = useState({});
 
@@ -18,7 +21,7 @@ export default function HoodsReviewPage() {
     useEffect(() => {
         const getItemId = async () => {
             try {
-                const fetchItem = await fetch(`/api/accessories/car-hood/${accessoryId}`);
+                const fetchItem = await fetch(`/api/accessories/car-offroadbumper/${accessoryId}`);
                 const item = await fetchItem.json();
                 setReview(item);
             } catch (error) {
@@ -31,7 +34,7 @@ export default function HoodsReviewPage() {
     useEffect(()=> {
         const getItem = async () => {
             try {
-                const res = await fetch('/api/accessories/car-hoods');
+                const res = await fetch('/api/accessories/car-offroadbumper');
                 const data =  await res.json();
                 setItem(data);
             } catch (error) {
@@ -43,9 +46,9 @@ export default function HoodsReviewPage() {
 
   return (
     <Box>
-        <HoodsReviewContext.Provider value={review}>
-            <HoodsReview review={review}/>
-        </HoodsReviewContext.Provider>
+        <OffRoadBumperReviewContext.Provider value={review}>
+            <OffRoadBumperReview review={review}/>
+        </OffRoadBumperReviewContext.Provider>
 
         <Box maxW={'100%'} mx={'auto'} mt={10}>
             <Flex justifyContent={'center'} position={'relative'}>
@@ -58,10 +61,12 @@ export default function HoodsReviewPage() {
                         item.map((item) => (
                             <Box key={item._id} width={{md: '300px', base: '100%'}} bg={useColorModeValue('gray.200')} padding={3} rounded={5}>
                                 <Flex justifyContent={'center'} width={'100%'} height={'200px'} bg={useColorModeValue('white')} p={2} rounded={5}>
-                                    <Image src={item.HoodsImage[0]} maxW={'100%'} rounded={5}/>
+                                    <Image src={item.OffRoadBumperImage[0]} maxW={'100%'} rounded={5}/>
                                 </Flex>
                                 <Box mt={4} color={'gray.800'}>
-                                    <Heading mb={2} fontWeight={500} fontSize={16} color={'red.500'}>{item.year} {item.name} {item.make}</Heading>
+                                    <Link to={`/review-offroadbumper-reviews/${item._id}`}>
+                                        <Heading mb={2} fontWeight={500} fontSize={16} color={'blue.500'} isTruncated>{item.year} {item.name} {item.make}</Heading>
+                                    </Link>
                                     <Box>
                                         <Text fontWeight={500}>{item.descriptions.slice(0, 100)}...</Text>
                                     </Box>
@@ -75,11 +80,11 @@ export default function HoodsReviewPage() {
                                     </Flex>
                                     <Flex justifyContent={'space-between'} alignItems={'center'} pt={3} mt={2} borderTop={'2px'} borderTopColor={'gray.300'}>
                                         <Box fontWeight={500} >
-                                            <Link to={`/review-hoods-reviews/${item._id}`} className='text-red-500'>Review</Link>
+                                            <Link to={`/review-offroadbumper-reviews/${item._id}`} className='text-blue-500'>Review</Link>
                                         </Box>
                                         <Box>
                                             <Button bg={useColorModeValue('white')}>
-                                                <LuShoppingCart className='text-xl text-red-500'/>
+                                                <LuShoppingCart className='text-xl text-blue-500'/>
                                             </Button>
                                         </Box>
                                     </Flex>

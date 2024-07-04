@@ -63,6 +63,14 @@ import FenderReviewPage from '../pages/Accessories/Reviews/FenderReviewPage'
 import FenderReviewPage2 from '../pages/Accessories/Reviews/reviews2/FenderReviewPage2'
 import GrillsReviewPage from '../pages/Accessories/Reviews/GrillsReviewPage'
 import GrillsReviewPage2 from '../pages/Accessories/Reviews/reviews2/GrillsReviewPage2'
+import BodyKitReviewPage from '../pages/Accessories/Reviews/BodyKitReviewPage'
+import BodyKitReviewPage2 from '../pages/Accessories/Reviews/reviews2/BodyKitReviewPage2'
+import CustomGrillReviewPage from '../pages/Accessories/Reviews/CustomGrillReviewPage'
+import CustomGrillReviewPage2 from '../pages/Accessories/Reviews/reviews2/CustomGrillReviewPage2'
+import CarCoverReviewPage from '../pages/Accessories/Reviews/CarCoverReviewPage'
+import CarCoverReviewPage2 from '../pages/Accessories/Reviews/reviews2/CarCoverReviewPage2'
+import OffRoadBumperReviewPage from '../pages/Accessories/Reviews/OffRoadBumperReviewPage'
+import OffRoadBumperReviewPage2 from '../pages/Accessories/Reviews/reviews2/OffRoadBumperReviewPage2'
 
 export default function RoutesPages() {
 
@@ -130,6 +138,10 @@ export default function RoutesPages() {
           <Route path='/door-reviews/:accessoryId' element={<DoorReviewsPage/>}/>
           <Route path='/fender-reviews/:accessoryId' element={<FenderReviewPage/>}/>
           <Route path='/grill-reviews/:accessoryId' element={<GrillsReviewPage/>}/>
+          <Route path='/bodykit-reviews/:accessoryId' element={<BodyKitReviewPage/>}/>
+          <Route path='/custom-grill-reviews/:accessoryId' element={<CustomGrillReviewPage/>}/>
+          <Route path='/car-cover-reviews/:accessoryId' element={<CarCoverReviewPage/>}/>
+          <Route path='/offroadbumper-reviews/:accessoryId' element={<OffRoadBumperReviewPage/>}/>
 
           <Route path='/review-stereo-reviews/:accessoryId' element={<StereoReviewsPage2/>}/>
           <Route path='/review-speaker-reviews/:accessoryId' element={<SpeakerReviewPage2/>}/>
@@ -140,8 +152,13 @@ export default function RoutesPages() {
           <Route path='/review-door-reviews/:accessoryId' element={<DoorReviewsPage2/>}/>
           <Route path='/review-fender-reviews/:accessoryId' element={<FenderReviewPage2/>}/>
           <Route path='/review-grill-reviews/:accessoryId' element={<GrillsReviewPage2/>}/>
+          <Route path='/review-bodykit-reviews/:accessoryId' element={<BodyKitReviewPage2/>}/>
+          <Route path='/review-custom-grill-reviews/:accessoryId' element={<CustomGrillReviewPage2/>}/>
+          <Route path='/review-car-cover-reviews/:accessoryId' element={<CarCoverReviewPage2/>}/>
+          <Route path='/review-offroadbumper-reviews/:accessoryId' element={<OffRoadBumperReviewPage2/>}/>
 
           {/* admin routes */}
+          
           <Route path='/admin' element={<Admin/>}/>
           <Route path='/admin-dashboard' element={<AdminDashboardPage/>}/>
           

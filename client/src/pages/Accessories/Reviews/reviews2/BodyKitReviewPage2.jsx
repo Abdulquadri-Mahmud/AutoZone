@@ -5,7 +5,7 @@ import { GrStatusGood } from 'react-icons/gr';
 import { LuShoppingCart } from 'react-icons/lu';
 import { Link, useParams } from 'react-router-dom';
 
-export default function HoodsReviewPage2() {
+export default function BodyKitReviewPage2() {
     const [review, setReview] = useState({});
     const [item, setItem] = useState({});
 
@@ -14,7 +14,7 @@ export default function HoodsReviewPage2() {
 
     useEffect(() => {
         const getItem = async () => {
-            const fetchItem = await fetch(`/api/accessories/car-hood/${accessoryId}`);
+            const fetchItem = await fetch(`/api/accessories/car-body-kit/${accessoryId}`);
             const item = await fetchItem.json();
             setReview(item);
         }
@@ -23,29 +23,29 @@ export default function HoodsReviewPage2() {
     }, []);
 
     useEffect(()=> {
-        const Stereo = async () => {
+        const Bodykit = async () => {
             try {
-                const res = await fetch('/api/accessories/car-hoods');
+                const res = await fetch('/api/accessories/car-body-kit');
                 const data =  await res.json();
                 setItem(data);
             } catch (error) {
                 console.log(error);
             }
         }
-        Stereo();
+        Bodykit();
     }, []);
 
   return (
     <Box>
-        <Flex gap={6} flexWrap={'wrap'} mt={10} px={3} py={7} width={{md: '70%', base: '100%'}} mx={'auto'} bg={'gray.200'}>
+        <Flex gap={6} mt={10} px={3} py={7} width={{md: '70%', base: '100%'}} mx={'auto'} bg={'gray.200'}>
             <Box>
                 <Box  bg={useColorModeValue('white')} width={'260px'} p={2} rounded={5}>
                     <Heading fontSize={30} fontWeight={500}>Category: <span className='font-medium text-blue-500'>{review.category}</span></Heading>
                 </Box>
-                <Flex justifyContent={'center'} mt={5} bg={useColorModeValue('white')} width={'300px'} padding={3} rounded={5}>
+                <Flex justifyContent={'center'} mt={5} bg={useColorModeValue('white')} width={'300px'} height={'220px'} padding={3} rounded={5}>
                     {
-                        review.HoodsImage === undefined ? '' : (
-                            <Image src={review.HoodsImage[0]} maxW={'100%'} rounded={5}/>
+                        review.BodyKitImage === undefined ? '' : (
+                            <Image src={review.BodyKitImage[0]} maxW={'100%'} rounded={5}/>
                         )
                     }
                 </Flex>
@@ -58,11 +58,11 @@ export default function HoodsReviewPage2() {
                         review.deal === 'Great' ? (
                             <Text fontWeight={500} my={3} className='flex items-center gap-1'>Deal: <GrStatusGood className='text-green-500'/>{review.deal}</Text>
                         ) : (
-                            <Text fontWeight={500} my={3} className='flex items-center gap-1'>Deal: <GrStatusGood className='text-red-500'/>{review.deal}</Text>
+                            <Text fontWeight={500} my={3} className='flex items-center gap-1'>Deal: <GrStatusGood className='text-blue-500'/>{review.deal}</Text>
                         )
                     }
-                    <Text fontWeight={500} my={3} className='flex items-center'>Price: <sup> <BsCurrencyDollar/> </sup>{review.price}</Text>
-                    <Button bg={useColorModeValue('white')} color={useColorModeValue('red.500')}>
+                    <Text fontWeight={500} my={3} className='flex items-center'>Price:<sup><BsCurrencyDollar/> </sup> {review.price}</Text>
+                    <Button bg={useColorModeValue('white')} color={useColorModeValue('blue.500')}>
                         <LuShoppingCart className='text-xl'/>
                     </Button>
                 </Flex>
@@ -79,7 +79,7 @@ export default function HoodsReviewPage2() {
                         item.map((item) => (
                             <Box width={{md: '300px', base: '100%'}} bg={useColorModeValue('gray.200')} padding={3} rounded={5}>
                                 <Flex justifyContent={'center'} width={'100%'} height={'200px'} bg={useColorModeValue('white')} p={2} rounded={5}>
-                                    <Image src={item.HoodsImage[0]} maxW={'100%'} rounded={5}/>
+                                    <Image src={item.BodyKitImage[0]} maxW={'100%'} rounded={5}/>
                                 </Flex>
                                 <Box mt={4} color={'gray.800'}>
                                     <Heading mb={2} fontWeight={500} fontSize={16} color={'blue.500'}>{item.year} {item.name} {item.make}</Heading>
@@ -96,11 +96,11 @@ export default function HoodsReviewPage2() {
                                     </Flex>
                                     <Flex justifyContent={'space-between'} alignItems={'center'} pt={3} mt={2} borderTop={'2px'} borderTopColor={'gray.300'}>
                                         <Box fontWeight={500} >
-                                            <Link to={`/hoods-reviews/${item._id}`} className='text-blue-500'>Review</Link>
+                                            <Link to={`/bodykit-reviews/${item._id}`} className='text-red-500'>Review</Link>
                                         </Box>
                                         <Box>
                                             <Button bg={useColorModeValue('white')}>
-                                                <LuShoppingCart className='text-xl text-blue-500'/>
+                                                <LuShoppingCart className='text-xl text-red-500'/>
                                             </Button>
                                         </Box>
                                     </Flex>

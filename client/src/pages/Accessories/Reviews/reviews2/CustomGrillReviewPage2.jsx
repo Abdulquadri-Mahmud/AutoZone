@@ -1,14 +1,11 @@
 import { Box, Button, Flex, Heading, Image, Text, useColorModeValue } from '@chakra-ui/react';
-import { createContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { BsCurrencyDollar } from 'react-icons/bs';
+import { GrStatusGood } from 'react-icons/gr';
+import { LuShoppingCart } from 'react-icons/lu';
 import { Link, useParams } from 'react-router-dom';
 
-import { BsCurrencyDollar } from 'react-icons/bs';
-import { LuShoppingCart } from 'react-icons/lu';
-import HoodsReview from '../../../components/Accessories/Reviews/HoodsReview';
-
-export const HoodsReviewContext = createContext();
-
-export default function HoodsReviewPage() {
+export default function CustomGrillReviewPage2() {
     const [review, setReview] = useState({});
     const [item, setItem] = useState({});
 
@@ -16,38 +13,62 @@ export default function HoodsReviewPage() {
 
 
     useEffect(() => {
-        const getItemId = async () => {
-            try {
-                const fetchItem = await fetch(`/api/accessories/car-hood/${accessoryId}`);
-                const item = await fetchItem.json();
-                setReview(item);
-            } catch (error) {
-                console.log(error);
-            }
+        const getItem = async () => {
+            const fetchItem = await fetch(`/api/accessories/car-custom-grill/${accessoryId}`);
+            const item = await fetchItem.json();
+            setReview(item);
         }
-        getItemId();
+        getItem();
+
     }, []);
 
     useEffect(()=> {
-        const getItem = async () => {
+        const Stereo = async () => {
             try {
-                const res = await fetch('/api/accessories/car-hoods');
+                const res = await fetch('/api/accessories/car-custom-grill');
                 const data =  await res.json();
                 setItem(data);
             } catch (error) {
                 console.log(error);
             }
         }
-        getItem();
+        Stereo();
     }, []);
 
   return (
     <Box>
-        <HoodsReviewContext.Provider value={review}>
-            <HoodsReview review={review}/>
-        </HoodsReviewContext.Provider>
-
-        <Box maxW={'100%'} mx={'auto'} mt={10}>
+        <Flex gap={6} flexWrap={'wrap'} mt={10} px={3} py={7} width={{md: '70%', base: '100%'}} mx={'auto'} bg={'gray.200'}>
+            <Box>
+                <Box  bg={useColorModeValue('white')} width={'260px'} p={2} rounded={5}>
+                    <Heading fontSize={30} fontWeight={500}>Category: <span className='font-medium text-blue-500'>{review.category}</span></Heading>
+                </Box>
+                <Flex justifyContent={'center'} mt={5} bg={useColorModeValue('white')} width={'300px'} padding={3} rounded={5}>
+                    {
+                        review.CustomGrillImage === undefined ? '' : (
+                            <Image src={review.CustomGrillImage[0]} maxW={'100%'} rounded={5}/>
+                        )
+                    }
+                </Flex>
+            </Box>
+            <Box width={{md:'60%', base:'97%'}} mt={5}>
+                <Heading fontWeight={500} fontSize={30}>{review.year} {review.name} {review.make}</Heading>
+                <Text fontWeight={500} mt={3}>{review.descriptions}</Text>
+                <Flex gap={8} alignItems={'center'}>
+                    {
+                        review.deal === 'Great' ? (
+                            <Text fontWeight={500} my={3} className='flex items-center gap-1'>Deal: <GrStatusGood className='text-green-500'/>{review.deal}</Text>
+                        ) : (
+                            <Text fontWeight={500} my={3} className='flex items-center gap-1'>Deal: <GrStatusGood className='text-red-500'/>{review.deal}</Text>
+                        )
+                    }
+                    <Text fontWeight={500} my={3} className='flex items-center'>Price: <sup> <BsCurrencyDollar/> </sup>{review.price}</Text>
+                    <Button bg={useColorModeValue('white')} color={useColorModeValue('red.500')}>
+                        <LuShoppingCart className='text-xl'/>
+                    </Button>
+                </Flex>
+            </Box>
+        </Flex>
+        <Box maxW={'100%'} mx={'auto'} mt={6}>
             <Flex justifyContent={'center'} position={'relative'}>
                 <Heading fontWeight={500} fontSize={26} textAlign={'center'}>YOU MAY ALSO LIKE</Heading>
                 <Image src='/zigzag.png' position={'absolute'} bottom={-10}/>
@@ -58,7 +79,7 @@ export default function HoodsReviewPage() {
                         item.map((item) => (
                             <Box key={item._id} width={{md: '300px', base: '100%'}} bg={useColorModeValue('gray.200')} padding={3} rounded={5}>
                                 <Flex justifyContent={'center'} width={'100%'} height={'200px'} bg={useColorModeValue('white')} p={2} rounded={5}>
-                                    <Image src={item.HoodsImage[0]} maxW={'100%'} rounded={5}/>
+                                    <Image src={item.CustomGrillImage[0]} maxW={'100%'} rounded={5}/>
                                 </Flex>
                                 <Box mt={4} color={'gray.800'}>
                                     <Heading mb={2} fontWeight={500} fontSize={16} color={'red.500'}>{item.year} {item.name} {item.make}</Heading>
@@ -75,7 +96,7 @@ export default function HoodsReviewPage() {
                                     </Flex>
                                     <Flex justifyContent={'space-between'} alignItems={'center'} pt={3} mt={2} borderTop={'2px'} borderTopColor={'gray.300'}>
                                         <Box fontWeight={500} >
-                                            <Link to={`/review-hoods-reviews/${item._id}`} className='text-red-500'>Review</Link>
+                                            <Link to={`/custom-grill-reviews/${item._id}`} className='text-red-500'>Review</Link>
                                         </Box>
                                         <Box>
                                             <Button bg={useColorModeValue('white')}>
@@ -91,7 +112,7 @@ export default function HoodsReviewPage() {
                     )
                 }
             </Flex>
-        </Box>
+      </Box>
     </Box>
   )
 }
