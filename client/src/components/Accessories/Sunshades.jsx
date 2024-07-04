@@ -26,7 +26,7 @@ export default function Sunshades() {
                                 </Box>
                                 <Flex justifyContent={'space-between'} mt={4}>
                                     <Box>
-                                        <Text fontWeight={500} fontSize={15} className='flex items-center'>Price: <BsCurrencyDollar/>{sunshade.price}</Text>
+                                        <Text fontWeight={500} fontSize={15} className='flex items-center'>Price: <sup><BsCurrencyDollar/></sup>{sunshade.price}.00</Text>
                                     </Box>
                                     <Box>
                                         <Text fontWeight={500} fontSize={15}>Deal: {sunshade.deal}</Text>
@@ -34,7 +34,7 @@ export default function Sunshades() {
                                 </Flex>
                                 <Flex justifyContent={'space-between'} alignItems={'center'} pt={3} mt={2} borderTop={'2px'} borderTopColor={'gray.300'}>
                                     <Box fontWeight={500} >
-                                        <Link to={`/accessories-reviews/${sunshade._id}`} className='text-blue-500'>Review</Link>
+                                        <Link to={`/sunshade-reviews/${sunshade._id}`} className='text-blue-500'>Review</Link>
                                     </Box>
                                     <Box>
                                         <Button bg={useColorModeValue('white')}>
@@ -46,7 +46,7 @@ export default function Sunshades() {
                         </Box>
                     ))
                 ):(
-                    <Text>No Items to diaplay!</Text>
+                    <Text>No Items to display!</Text>
                 )
             }
         </Flex>

@@ -33,7 +33,7 @@ export default function CustomGauges() {
                                 </Flex>
                                 <Flex justifyContent={'space-between'} alignItems={'center'} pt={3} mt={2} borderTop={'2px'} borderTopColor={'gray.300'}>
                                     <Box fontWeight={500} >
-                                        <Link to={`/accessories-reviews/${customGauge._id}`} className='text-blue-500'>Review</Link>
+                                        <Link to={`/custom-gauges-reviews/${customGauge._id}`} className='text-blue-500'>Review</Link>
                                     </Box>
                                     <Box>
                                         <Button bg={useColorModeValue('white')}>

@@ -71,6 +71,16 @@ import CarCoverReviewPage from '../pages/Accessories/Reviews/CarCoverReviewPage'
 import CarCoverReviewPage2 from '../pages/Accessories/Reviews/reviews2/CarCoverReviewPage2'
 import OffRoadBumperReviewPage from '../pages/Accessories/Reviews/OffRoadBumperReviewPage'
 import OffRoadBumperReviewPage2 from '../pages/Accessories/Reviews/reviews2/OffRoadBumperReviewPage2'
+import CustomGaugesReviewPage from '../pages/Accessories/Reviews/CustomGaugesReviewPage'
+import CustomGaugesReviewPage2 from '../pages/Accessories/Reviews/reviews2/CustomGaugesReviewPage2'
+import DashkitReviewPage from '../pages/Accessories/Reviews/DashkitReviewPage'
+import DashkitReviewPage2 from '../pages/Accessories/Reviews/reviews2/DashkitReviewPage2'
+import SeatCoverReviewPage from '../pages/Accessories/Reviews/SeatCoverReviewPage'
+import SeatCoverReviewPage2 from '../pages/Accessories/Reviews/reviews2/SeatCoverReviewPage2'
+import SteeringWheelsReviewPage from '../pages/Accessories/Reviews/SteeringWheelsReviewPage'
+import SteeringWheelsReviewPage2 from '../pages/Accessories/Reviews/reviews2/SteeringWheelsReviewPage2'
+import SunshadesReviewPage from '../pages/Accessories/Reviews/SunshadesReviewPage'
+import SunshadesReviewPage2 from '../pages/Accessories/Reviews/reviews2/SunshadesReviewPage2'
 
 export default function RoutesPages() {
 
@@ -142,6 +152,11 @@ export default function RoutesPages() {
           <Route path='/custom-grill-reviews/:accessoryId' element={<CustomGrillReviewPage/>}/>
           <Route path='/car-cover-reviews/:accessoryId' element={<CarCoverReviewPage/>}/>
           <Route path='/offroadbumper-reviews/:accessoryId' element={<OffRoadBumperReviewPage/>}/>
+          <Route path='/custom-gauges-reviews/:accessoryId' element={<CustomGaugesReviewPage/>}/>
+          <Route path='/dash-kits-reviews/:accessoryId' element={<DashkitReviewPage/>}/>
+          <Route path='/seat-cover-reviews/:accessoryId' element={<SeatCoverReviewPage/>}/>
+          <Route path='/sunshade-reviews/:accessoryId' element={<SunshadesReviewPage/>}/>
+          <Route path='/steeringwheel-reviews/:accessoryId' element={<SteeringWheelsReviewPage/>}/>
 
           <Route path='/review-stereo-reviews/:accessoryId' element={<StereoReviewsPage2/>}/>
           <Route path='/review-speaker-reviews/:accessoryId' element={<SpeakerReviewPage2/>}/>
@@ -156,9 +171,14 @@ export default function RoutesPages() {
           <Route path='/review-custom-grill-reviews/:accessoryId' element={<CustomGrillReviewPage2/>}/>
           <Route path='/review-car-cover-reviews/:accessoryId' element={<CarCoverReviewPage2/>}/>
           <Route path='/review-offroadbumper-reviews/:accessoryId' element={<OffRoadBumperReviewPage2/>}/>
+          <Route path='/review-custom-gauges-reviews/:accessoryId' element={<CustomGaugesReviewPage2/>}/>
+          <Route path='/review-dash-kits-reviews/:accessoryId' element={<DashkitReviewPage2/>}/>
+          <Route path='/review-seat-cover-reviews/:accessoryId' element={<SeatCoverReviewPage2/>}/>
+          <Route path='/review-sunshade-reviews/:accessoryId' element={<SunshadesReviewPage2/>}/>
+          <Route path='/review-steeringwheel-reviews/:accessoryId' element={<SteeringWheelsReviewPage2/>}/>
 
           {/* admin routes */}
-          
+
           <Route path='/admin' element={<Admin/>}/>
           <Route path='/admin-dashboard' element={<AdminDashboardPage/>}/>
           

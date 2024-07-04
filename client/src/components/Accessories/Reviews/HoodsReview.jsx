@@ -13,7 +13,7 @@ export default function HoodsReview() {
     <Flex gap={6} mt={10} px={3} py={7} width={{md: '70%', base: '100%'}} mx={'auto'} bg={'gray.200'}>
         <Box>
             <Box bg={useColorModeValue('white')} width={'260px'} p={2} rounded={5}>
-                <Heading fontSize={30} fontWeight={500}>Category: <span className='font-medium text-red-500'>{item.category}</span></Heading>
+                <Heading fontSize={30} fontWeight={500}>Category: <span className='font-medium text-blue-500'>{item.category}</span></Heading>
             </Box>
             <Flex position={'relative'} justifyContent={'center'} height={'250px'} mt={5} bg={useColorModeValue('white')} width={'300px'} padding={3} rounded={5}>
                 {

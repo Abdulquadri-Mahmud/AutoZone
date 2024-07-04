@@ -96,6 +96,7 @@ import {
     getOffRoadLight,
     getSignalLight,
     getHoods,
+    getSeatCover,
     
 } from '../controller/accessories-controller.js';
 import { verifyAdmin } from '../utils/verifyUserError.js';
@@ -179,9 +180,9 @@ app.get('/car-offroadbumper/:id', getOffRoadBumper);
 
 app.get('/car-custom-gauges/:id', getCustomGauges);
 app.get('/car-dash-kits/:id', getDashKits);
-app.get('/car-seat-cover/:id', getAllSeatCover);
+app.get('/car-seat-cover/:id', getSeatCover);
 app.get('/car-steeringwheel/:id', getSteeringWheels);
-app.get('/car-sunshade/:id', getSunShades);
+app.get('/car-sunshades/:id', getSunShades);
 
 app.get('/car-foglight/:id', getFogLight);
 app.get('/car-headlight/:id', getHeadlight);
