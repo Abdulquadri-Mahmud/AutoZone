@@ -9,8 +9,12 @@ var stereoSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    model: {
+        type: String,
+        required: true
+    },
     year: {
-        type: Number,
+        type: String,
         required: true
     },
     category:{
@@ -22,6 +26,10 @@ var stereoSchema = new mongoose.Schema({
         required: true
     },
     price:{
+        type: Number,
+        required: true
+    },
+    prevprice:{
         type: Number,
         required: true
     },

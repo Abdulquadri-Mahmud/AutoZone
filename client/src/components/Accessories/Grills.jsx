@@ -19,7 +19,7 @@ export default function Grills() {
                                 <Image src={grill.GrillsImage} maxW={'100%'} rounded={5}/>
                             </Flex>
                             <Box mt={4} color={'gray.800'}>
-                                <Heading mb={2} fontWeight={500} fontSize={16} color={'blue.500'}>{grill.year} {grill.name} {grill.make}</Heading>
+                                <Heading mb={2} fontWeight={500} fontSize={16} color={'blue.500'} isTruncated>{grill.name}</Heading>
                                 <Box>
                                     <Text fontWeight={500}>{grill.descriptions.slice(0, 100)}...</Text>
                                 </Box>

@@ -15,9 +15,7 @@ export default function AdminHeaderAuth() {
                 </>
             ) : currentAdmin ? (
                 <>
-                    <Link to={'/admin-dashboard'}>
-                        <Button bg={'gray.200'} color={useColorModeValue('black')} _hover={{bg: 'gray.100'}}>Dashboard</Button>
-                    </Link>
+                    <Link to={'/admin-dashboard'}>Admin</Link>
                     {/* <Link to={'/createblog'}>
                         <Button bg={'gray.200'} color={useColorModeValue('black')} _hover={{bg: 'gray.100'}}>Create Blog</Button>
                     </Link> */}

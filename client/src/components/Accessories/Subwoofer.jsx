@@ -19,7 +19,7 @@ export default function Subwoofer() {
                                 <Image src={subwoofer.subwooferImage} maxW={'100%'} rounded={5}/>
                             </Flex>
                             <Box mt={4} color={'gray.800'}>
-                                <Heading mb={2} fontWeight={500} fontSize={16} color={'blue.500'}>{subwoofer.year} {subwoofer.name} {subwoofer.make}</Heading>
+                                <Heading mb={2} fontWeight={500} fontSize={16} color={'blue.500'} isTruncated>{subwoofer.name}</Heading>
                                 <Box>
                                     <Text fontWeight={500}>{subwoofer.descriptions.slice(0, 100)}...</Text>
                                 </Box>

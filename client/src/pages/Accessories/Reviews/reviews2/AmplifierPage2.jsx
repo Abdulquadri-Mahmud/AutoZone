@@ -1,7 +1,8 @@
 import { Box, Button, Flex, Heading, Image, Text, useColorModeValue } from '@chakra-ui/react';
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { BsCurrencyDollar } from 'react-icons/bs';
 import { GrStatusGood } from 'react-icons/gr';
+import { IoStar } from 'react-icons/io5';
 import { LuShoppingCart } from 'react-icons/lu';
 import { Link, useParams } from 'react-router-dom';
 
@@ -10,7 +11,6 @@ export default function AmplifierPage2() {
     const [item, setItem] = useState({});
 
     const {accessoryId} = useParams();
-
 
     useEffect(() => {
         const getItem = async () => {
@@ -32,25 +32,64 @@ export default function AmplifierPage2() {
             console.log(error);
         }
         }
-        Stereo();
+        Stereo(); 
     }, []);
+
+    let switchImage = useRef(null);
+    let display = useRef(null);
+    
+    const handleClick = (img) => {
+        display.current.src = img;
+    }
 
   return (
     <Box>
-        <Box mt={10} px={3} py={7} width={{md: '70%', base: '100%'}} mx={'auto'} bg={'gray.200'}>
-            <Box  bg={useColorModeValue('white')} width={'260px'} p={2} rounded={5}>
-                <Heading fontSize={30} fontWeight={500}>Category: <span className='font-medium text-blue-500'>{review.category}</span></Heading>
+        <Flex mt={10} flexWrap={{md: 'nowrap', base: 'wrap'}} gap={6} px={3} py={7} width={{md: '90%', base: '100%'}} mx={'auto'} bg={'gray.200'}>
+            <Box width={{md: '300px', base: '100%'}}>
+                <Flex justifyContent={{md: 'start', base: 'center'}}>
+                    {
+                        review.amplifierImage === undefined ? '' : (
+                            <Flex justifyContent={'center'} alignItems={'center'} bg={useColorModeValue('white')}
+                            position={'relative'} height={{md:'350px', base: '300px'}} width={{md:'350px', base: '300px'}} p={3} rounded={5}>
+                                <Image src={review.amplifierImage[0]} ref={display} maxW={'100%'} rounded={5}/>
+                                <Flex justifyContent={'center'} position={'absolute'} top={0} left={0} width={'70px'} borderTopLeftRadius={5} py={1} bg={'gray.200'}>
+                                    <Text fontWeight={500}>{review.amplifierImage.length} Photo</Text>
+                                </Flex>
+                            </Flex>
+                        )
+                    }
+                </Flex>
+                <Flex alignItems={'center'} justifyContent={'center'} bg={useColorModeValue('')} gap={3} flexWrap={'wrap'}  p={1}>
+                    {
+                        review.amplifierImage === undefined ? '' : (
+                            <>
+                                {
+                                    review.amplifierImage.map((img, index) => (
+                                        <Flex justifyContent={'center'} alignItems={'center'} p={2} width={'100px'} height={'100px'} rounded={5} bg={useColorModeValue('white')}>
+                                            <Image src={img} alt={''} ref={switchImage} key={index} onClick={() => handleClick(img)} maxW={'100%'} objectFit={'cover'} rounded={5}/>
+                                        </Flex>
+                                    ))
+                                }
+                            </>
+                        )
+                    }
+                </Flex>
             </Box>
-            <Flex justifyContent={'center'} mt={5} bg={useColorModeValue('white')} width={'300px'} padding={3} rounded={5}>
-                {
-                    review.amplifierImage === undefined ? '' : (
-                        <Image src={review.amplifierImage[0]} maxW={'100%'} rounded={5}/>
-                    )
-                }
-            </Flex>
             <Box width={{md:'60%', base:'97%'}} mt={5}>
                 <Heading fontWeight={500} fontSize={30}>{review.year} {review.name} {review.make}</Heading>
+                <Flex alignItems={'center'} gap={1} className="rate" mt={4}>
+                    <Text className='font-medium'>rating: </Text>
+                    <IoStar className='text-yellow-300'/>
+                    <IoStar className='text-yellow-300'/>
+                    <IoStar className='text-yellow-300'/>
+                    <IoStar className='text-yellow-300'/>
+                    <IoStar className='text-gray-300'/>
+                </Flex>
                 <Text fontWeight={500} mt={3}>{review.descriptions}</Text>
+                <Flex gap={4} mt={2}>
+                    <Text className='font-medium'>Make: <span className='font-normal'>{item.make}</span></Text> |
+                    <Text className='font-medium'>Year: <span className='font-normal'>{item.year}</span></Text>
+                </Flex>
                 <Flex gap={8} alignItems={'center'}>
                     {
                         review.deal === 'Great' ? (
@@ -65,7 +104,7 @@ export default function AmplifierPage2() {
                     </Button>
                 </Flex>
             </Box>
-        </Box>
+        </Flex>
         <Box maxW={'100%'} mx={'auto'} mt={6}>
             <Flex justifyContent={'center'} position={'relative'}>
                 <Heading fontWeight={500} fontSize={26} textAlign={'center'}>YOU MAY ALSO LIKE</Heading>

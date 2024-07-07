@@ -19,7 +19,7 @@ export default function Hoods() {
                                 <Image src={hood.HoodsImage[0]} maxW={'100%'} rounded={5}/>
                             </Flex>
                             <Box mt={4} color={'gray.800'}>
-                                <Heading mb={2} fontWeight={500} fontSize={16} color={'blue.500'}>{hood.year} {hood.name} {hood.make}</Heading>
+                                <Heading mb={2} fontWeight={500} fontSize={16} color={'blue.500'} isTruncated>{hood.name}</Heading>
                                 <Box>
                                     <Text fontWeight={500}>{hood.descriptions.slice(0, 100)}...</Text>
                                 </Box>

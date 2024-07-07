@@ -28,15 +28,15 @@ import Amplifier from "../models/amplifire.js";
 
 export const stereoAccessory = async (req, res, next) => {
     const { 
-        name,make, year,category,
-        descriptions, price,
+        name,make, model, year,category,
+        descriptions, price,prevprice,
         deal,steroeImage
     } = req.body;
 
     try {
         
         const stereoAccessory = await Stereo.create({
-            name,make, year,category, descriptions, price, deal,steroeImage
+            name,make,model,prevprice, year,category, descriptions, price, deal,steroeImage
         });
 
         await stereoAccessory.save();
@@ -50,7 +50,7 @@ export const stereoAccessory = async (req, res, next) => {
 
 export const speakerAccessory = async (req, res, next) => {
     const { 
-        name,make, year,category,
+        name,make, model, year,category,
         descriptions, price,
         deal,speakerImage
     } = req.body;
@@ -58,7 +58,7 @@ export const speakerAccessory = async (req, res, next) => {
     try {
         
         const speakerAccessory = await Speaker.create({
-            name,make, year,category, 
+            name,make, model, year,category, 
             descriptions, price, deal,speakerImage
         });
 
@@ -72,7 +72,7 @@ export const speakerAccessory = async (req, res, next) => {
 }
 export const amplifierAccessory = async (req, res, next) => {
     const { 
-        name,make, year,category,
+        name,make, model, year,category,
         descriptions, price,
         deal,amplifierImage
     } = req.body;
@@ -80,7 +80,7 @@ export const amplifierAccessory = async (req, res, next) => {
     try {
         
         const amplifireAccessory = await Amplifire.create({
-            name,make, year,category, 
+            name,make, model, year,category, 
             descriptions, price, deal,amplifierImage
         });
 
@@ -95,7 +95,7 @@ export const amplifierAccessory = async (req, res, next) => {
 
 export const subwooferAccessory = async (req, res, next) => {
     const { 
-        name,make, year,category,
+        name,make, model, year,category,
         descriptions, price,
         deal,subwooferImage
     } = req.body;
@@ -103,7 +103,7 @@ export const subwooferAccessory = async (req, res, next) => {
     try {
         
         const subwooferAccessory = await Subwoofer.create({
-            name,make, year,category, 
+            name,make, model, year,category, 
             descriptions, price, deal,subwooferImage
         });
 
@@ -118,7 +118,7 @@ export const subwooferAccessory = async (req, res, next) => {
 
 export const bumpersAccessory = async (req, res, next) => {
     const { 
-        name,make, year,category,
+        name,make, model, year,category,
         descriptions, price,
         deal,BumperImage
     } = req.body;
@@ -126,7 +126,7 @@ export const bumpersAccessory = async (req, res, next) => {
     try {
         
         const bumpersAccessory = await Bumper.create({
-            name,make, year,category, 
+            name,make, model, year,category, 
             descriptions, price, deal,BumperImage
         });
 
@@ -140,7 +140,7 @@ export const bumpersAccessory = async (req, res, next) => {
 }
 export const doorsAccessory = async (req, res, next) => {
     const { 
-        name,make, year,category,
+        name,make, model, year,category,
         descriptions, price,
         deal,DoorImage
     } = req.body;
@@ -148,7 +148,7 @@ export const doorsAccessory = async (req, res, next) => {
     try {
         
         const doorsAccessory = await Door.create({
-            name,make, year,category, 
+            name,make, model, year,category, 
             descriptions, price, deal,DoorImage
         });
 
@@ -162,7 +162,7 @@ export const doorsAccessory = async (req, res, next) => {
 }
 export const fenderAccessory = async (req, res, next) => {
     const { 
-        name,make, year,category,
+        name,make,model, year,category,
         descriptions, price,
         deal,FenderImage
     } = req.body;
@@ -170,7 +170,7 @@ export const fenderAccessory = async (req, res, next) => {
     try {
         
         const fenderAccessory = await Fender.create({
-            name,make, year,category, 
+            name,make, model, year,category, 
             descriptions, price, deal,FenderImage
         });
 
@@ -208,7 +208,7 @@ export const grillAccessory = async (req, res, next) => {
 
 export const hoodsAccessory = async (req, res, next) => {
     const { 
-        name,make, year,category,
+        name,make, model, year,category,
         descriptions, price,
         deal,HoodsImage
     } = req.body;
@@ -216,7 +216,7 @@ export const hoodsAccessory = async (req, res, next) => {
     try {
         
         const hoodsAccessory = await Hoods.create({
-            name,make, year,category, 
+            name,make, model, year,category, 
             descriptions, price, deal,HoodsImage
         });
 
@@ -232,7 +232,7 @@ export const hoodsAccessory = async (req, res, next) => {
 
 export const bodyKitAccessory = async (req, res, next) => {
     const { 
-        name,make, year,category,
+        name,make, model, year,category,
         descriptions, price,
         deal,BodyKitImage
     } = req.body;
@@ -240,7 +240,7 @@ export const bodyKitAccessory = async (req, res, next) => {
     try {
         
         const bodyKitAccessory = await BodyKit.create({
-            name,make, year,category, 
+            name,make, model, year,category, 
             descriptions, price, deal,BodyKitImage
         });
 
@@ -254,7 +254,7 @@ export const bodyKitAccessory = async (req, res, next) => {
 }
 export const customGrillAccessory = async (req, res, next) => {
     const { 
-        name,make, year,category,
+        name,make, model, year,category,
         descriptions, price,
         deal,CustomGrillImage
     } = req.body;
@@ -262,7 +262,7 @@ export const customGrillAccessory = async (req, res, next) => {
     try {
         
         const customGrillAccessory = await CustomGrill.create({
-            name,make, year,category, 
+            name,make, model, year,category, 
             descriptions, price, deal,CustomGrillImage
         });
 
@@ -276,7 +276,7 @@ export const customGrillAccessory = async (req, res, next) => {
 }
 export const carCoverAccessory = async (req, res, next) => {
     const { 
-        name,make, year,category,
+        name,make, model, year,category,
         descriptions, price,
         deal,CarCoverImage
     } = req.body;
@@ -284,7 +284,7 @@ export const carCoverAccessory = async (req, res, next) => {
     try {
         
         const carCoverAccessory = await CarCover.create({
-            name,make, year,category, 
+            name,make, model, year,category, 
             descriptions, price, deal,CarCoverImage
         });
 
@@ -299,7 +299,7 @@ export const carCoverAccessory = async (req, res, next) => {
 
 export const offRoadBumpersAccessory = async (req, res, next) => {
     const { 
-        name,make, year,category,
+        name,make, model, year,category,
         descriptions, price,
         deal,OffRoadBumperImage
     } = req.body;
@@ -307,7 +307,7 @@ export const offRoadBumpersAccessory = async (req, res, next) => {
     try {
         
         const offRoadBumpersAccessory = await OffRoadBumper.create({
-            name,make, year,category, 
+            name,make, model, year,category, 
             descriptions, price, deal,OffRoadBumperImage
         });
 
@@ -321,7 +321,7 @@ export const offRoadBumpersAccessory = async (req, res, next) => {
 }
 export const customGauges = async (req, res, next) => {
     const { 
-        name,make, year,category,
+        name,make, model, year,category,
         descriptions, price,
         deal,CustomGaugesImage
     } = req.body;
@@ -329,7 +329,7 @@ export const customGauges = async (req, res, next) => {
     try {
         
         const customGauges = await CustomGauges.create({
-            name,make, year,category, 
+            name,make, model, year,category, 
             descriptions, price, deal,CustomGaugesImage
         });
 
@@ -343,7 +343,7 @@ export const customGauges = async (req, res, next) => {
 }
 export const dashKit = async (req, res, next) => {
     const { 
-        name,make, year,category,
+        name,make, model, year,category,
         descriptions, price,
         deal,DashKitImage
     } = req.body;
@@ -351,7 +351,7 @@ export const dashKit = async (req, res, next) => {
     try {
         
         const dashKit = await DashKits.create({
-            name,make, year,category, 
+            name,make, model, year,category, 
             descriptions, price, deal,DashKitImage
         });
 
@@ -366,7 +366,7 @@ export const dashKit = async (req, res, next) => {
 
 export const seatCover = async (req, res, next) => {
     const { 
-        name,make, year,category,
+        name,make, model, year,category,
         descriptions, price,
         deal,SeatCoverImage
     } = req.body;
@@ -374,7 +374,7 @@ export const seatCover = async (req, res, next) => {
     try {
         
         const seatCover = await SeatCover.create({
-            name,make, year,category, 
+            name,make, model, year,category, 
             descriptions, price, deal,SeatCoverImage
         });
 
@@ -389,7 +389,7 @@ export const seatCover = async (req, res, next) => {
 
 export const steeringwheels = async (req, res, next) => {
     const { 
-        name,make, year,category,
+        name,make, model, year,category,
         descriptions, price,
         deal,SteeringWheelsImage
     } = req.body;
@@ -397,7 +397,7 @@ export const steeringwheels = async (req, res, next) => {
     try {
         
         const steeringwheels = await SteeringWheels.create({
-            name,make, year,category, 
+            name,make, model, year,category, 
             descriptions, price, deal,SteeringWheelsImage
         });
 
@@ -411,7 +411,7 @@ export const steeringwheels = async (req, res, next) => {
 }
 export const sunShades = async (req, res, next) => {
     const { 
-        name,make, year,category,
+        name,make, model, year,category,
         descriptions, price,
         deal,SunShadesImage
     } = req.body;
@@ -419,7 +419,7 @@ export const sunShades = async (req, res, next) => {
     try {
         
         const sunShades = await SunShades.create({
-            name,make, year,category, 
+            name,make, model, year,category, 
             descriptions, price, deal,SunShadesImage
         });
 
@@ -433,7 +433,7 @@ export const sunShades = async (req, res, next) => {
 }
 export const FogLights = async (req, res, next) => {
     const { 
-        name,make, year,category,
+        name,make, model, year,category,
         descriptions, price,
         deal,fogLightImage
     } = req.body;
@@ -441,7 +441,7 @@ export const FogLights = async (req, res, next) => {
     try {
         
         const FogLight = await fogLight.create({
-            name,make, year,category, 
+            name,make, model, year,category, 
             descriptions, price, deal,fogLightImage
         });
 
@@ -455,7 +455,7 @@ export const FogLights = async (req, res, next) => {
 }
 export const LedLights = async (req, res, next) => {
     const { 
-        name,make, year,category,
+        name,make, model, year,category,
         descriptions, price,
         deal,LedLightImage
     } = req.body;
@@ -463,7 +463,7 @@ export const LedLights = async (req, res, next) => {
     try {
         
         const newLedLight = await LedLight.create({
-            name,make, year,category, 
+            name,make, model, year,category, 
             descriptions, price, deal,LedLightImage
         });
 
@@ -478,7 +478,7 @@ export const LedLights = async (req, res, next) => {
 
 export const HeadLights = async (req, res, next) => {
     const { 
-        name,make, year,category,
+        name,make, model, year,category,
         descriptions, price,
         deal,HeadLightImage
     } = req.body;
@@ -486,7 +486,7 @@ export const HeadLights = async (req, res, next) => {
     try {
         
         const newHeadLight = await HeadLight.create({
-            name,make, year,category, 
+            name,make, model, year,category, 
             descriptions, price, deal,HeadLightImage
         });
 
@@ -501,7 +501,7 @@ export const HeadLights = async (req, res, next) => {
 
 export const offRoadLight = async (req, res, next) => {
     const { 
-        name,make, year,category,
+        name,make, model, year,category,
         descriptions, price,
         deal,OffRoadLightImage
     } = req.body;
@@ -509,7 +509,7 @@ export const offRoadLight = async (req, res, next) => {
     try {
         
         const newOffRoadLight = await OffRoadLight.create({
-            name,make, year,category, 
+            name,make, model, year,category, 
             descriptions, price, deal,OffRoadLightImage
         });
 
@@ -524,7 +524,7 @@ export const offRoadLight = async (req, res, next) => {
 
 export const signalLight = async (req, res, next) => {
     const { 
-        name,make, year,category,
+        name,make, model, year,category,
         descriptions, price,
         deal,SignalLightImage
     } = req.body;
@@ -532,7 +532,7 @@ export const signalLight = async (req, res, next) => {
     try {
         
         const newSignalLight = await SignalLight.create({
-            name,make, year,category, 
+            name,make, model, year,category, 
             descriptions, price, deal,SignalLightImage
         });
 

@@ -62,7 +62,7 @@ export default function SubwooferReviewPage() {
                                 <Image src={item.subwooferImage[0]} maxW={'100%'} rounded={5}/>
                             </Flex>
                             <Box mt={4} color={'gray.800'}>
-                                <Heading mb={2} fontWeight={500} fontSize={16} color={'blue.500'}>{item.year} {item.name} {item.make}</Heading>
+                                <Heading mb={2} fontWeight={500} fontSize={16} color={'blue.500'} isTruncated>{item.name}</Heading>
                                 <Box>
                                     <Text fontWeight={500}>{item.descriptions.slice(0, 100)}...</Text>
                                 </Box>

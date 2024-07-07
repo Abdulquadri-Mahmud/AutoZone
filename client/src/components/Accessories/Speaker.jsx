@@ -20,7 +20,7 @@ export default function Speaker() {
                                 <Image src={speaker.speakerImage[0]} maxW={'100%'} rounded={5}/>
                             </Flex>
                             <Box mt={4} color={'gray.800'}>
-                                <Heading mb={2} fontWeight={500} fontSize={16} color={'blue.500'}>{speaker.year} {speaker.name} {speaker.make}</Heading>
+                                <Heading mb={2} fontWeight={500} fontSize={16} color={'blue.500'} isTruncated>{speaker.name}</Heading>
                                 <Box>
                                     <Text fontWeight={500}>{speaker.descriptions.slice(0, 100)}...</Text>
                                 </Box>
