@@ -15,6 +15,7 @@ export default function SpeakerReview() {
     const handleClick = (img) => {
         display.current.src = img;
     }
+
   return (
     <Flex mt={10} flexWrap={'wrap'} gap={6} px={3} py={7} width={{md: '90%', base: '100%'}} mx={'auto'} bg={'gray.100'}>
         <Box width={{md: '300px', base: '100%'}}>
@@ -48,7 +49,7 @@ export default function SpeakerReview() {
             </Flex>
         </Box>
         <Box mt={5} flex={1}>
-            <Heading fontWeight={500} fontSize={30}>{item.year} {item.name} {item.make}</Heading>
+            <Heading fontWeight={500} fontSize={30}>{item.name}</Heading>
             <Flex alignItems={'center'} gap={1} className="rate" mt={4}>
                 <Text className='font-medium'>rating: </Text>
                 <IoStar className='text-yellow-300'/>

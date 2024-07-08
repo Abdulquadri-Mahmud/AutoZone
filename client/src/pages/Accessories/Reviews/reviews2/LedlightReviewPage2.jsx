@@ -6,36 +6,35 @@ import { IoStar } from 'react-icons/io5';
 import { LuShoppingCart } from 'react-icons/lu';
 import { Link, useParams } from 'react-router-dom';
 
-export default function OffRoadBumperReviewPage2() {
+export default function LedlightReviewPage2() {
     const [review, setReview] = useState({});
-    const [item, setItem] = useState({});
 
     const {accessoryId} = useParams();
 
 
     useEffect(() => {
         const getItem = async () => {
-            const fetchItem = await fetch(`/api/accessories/car-offroadbumper/${accessoryId}`);
-            const item = await fetchItem.json();
-            setReview(item);
+        const fetchItem = await fetch(`/api/accessories/car-ledlight/${accessoryId}`);
+        const item = await fetchItem.json();
+        setReview(item);
         }
         getItem();
-
     }, []);
 
+    const [item, setItem] = useState({});
     useEffect(()=> {
-        const Stereo = async () => {
+        const getItem = async () => {
             try {
-                const res = await fetch('/api/accessories/car-offroadbumper');
+                const res = await fetch('/api/accessories/car-ledlight');
                 const data =  await res.json();
                 setItem(data);
             } catch (error) {
                 console.log(error);
             }
         }
-        Stereo();
+        getItem();
     }, []);
-    
+
     let switchImage = useRef(null);
     let display = useRef(null);
     
@@ -45,16 +44,16 @@ export default function OffRoadBumperReviewPage2() {
 
   return (
     <Box>
-        <Flex mt={10} gap={6} px={3} py={7} width={{md: '90%', base: '100%'}} mx={'auto'} bg={'gray.200'}>
+        <Flex mt={10} flexWrap={'wrap'} gap={6} px={3} py={7} width={{md: '90%', base: '100%'}} mx={'auto'} bg={'gray.200'}>
             <Box width={{md: '300px', base: '100%'}}>
                 <Flex justifyContent={{md: 'start', base: 'center'}}>
                     {
-                        review.OffRoadBumperImage === undefined ? '' : (
+                        review.LedLightImage === undefined ? '' : (
                             <Flex justifyContent={'center'} alignItems={'center'} bg={useColorModeValue('white')}
                             position={'relative'} height={{md:'350px', base: '300px'}} width={{md:'350px', base: '300px'}} p={3} rounded={5}>
-                                <Image src={review.OffRoadBumperImage[0]} ref={display} maxW={'100%'} rounded={5}/>
+                                <Image src={review.LedLightImage[0]} ref={display} maxW={'100%'} rounded={5}/>
                                 <Flex justifyContent={'center'} position={'absolute'} top={0} left={0} width={'70px'} borderTopLeftRadius={5} py={1} bg={'gray.200'}>
-                                    <Text fontWeight={500}>{review.OffRoadBumperImage.length} Photo</Text>
+                                    <Text fontWeight={500}>{review.LedLightImage.length} Photo</Text>
                                 </Flex>
                             </Flex>
                         )
@@ -62,10 +61,10 @@ export default function OffRoadBumperReviewPage2() {
                 </Flex>
                 <Flex alignItems={'center'} justifyContent={'center'} bg={useColorModeValue('')} gap={3} flexWrap={'wrap'}  p={1}>
                     {
-                        review.OffRoadBumperImage === undefined ? '' : (
+                        review.LedLightImage === undefined ? '' : (
                             <>
                                 {
-                                    review.OffRoadBumperImage.map((img, index) => (
+                                    review.LedLightImage.map((img, index) => (
                                         <Flex justifyContent={'center'} alignItems={'center'} p={2} width={'100px'} height={'100px'} rounded={5} bg={useColorModeValue('white')}>
                                             <Image src={img} alt={''} ref={switchImage} key={index} onClick={() => handleClick(img)} maxW={'100%'} objectFit={'cover'} rounded={5}/>
                                         </Flex>
@@ -77,7 +76,7 @@ export default function OffRoadBumperReviewPage2() {
                 </Flex>
             </Box>
             <Box width={{md:'60%', base:'97%'}} mt={5}>
-                <Heading fontWeight={500} fontSize={30} isTruncated>{review.name}</Heading>
+                <Heading fontWeight={500} fontSize={30}>{review.name}</Heading>
                 <Flex alignItems={'center'} gap={1} className="rate" mt={4}>
                     <Text className='font-medium'>rating: </Text>
                     <IoStar className='text-yellow-300'/>
@@ -88,8 +87,9 @@ export default function OffRoadBumperReviewPage2() {
                 </Flex>
                 <Text fontWeight={500} mt={3}>{review.descriptions}</Text>
                 <Flex gap={4} mt={2}>
-                    <Text className='font-medium'>Make: <span className='font-normal'>{item.make}</span></Text> |
-                    <Text className='font-medium'>Year: <span className='font-normal'>{item.year}</span></Text>
+                    <Text className='font-medium'>Make: <span className='font-normal'>{review.make}</span></Text> |
+                    <Text className='font-medium'>Year: <span className='font-normal'>{review.year}</span></Text> |
+                    <Text className='font-medium'>Model: <span className='font-normal'>{review.model}</span></Text>
                 </Flex>
                 <Flex gap={8} alignItems={'center'}>
                     {
@@ -117,18 +117,16 @@ export default function OffRoadBumperReviewPage2() {
                         item.map((item) => (
                             <Box width={{md: '300px', base: '100%'}} bg={useColorModeValue('gray.200')} padding={3} rounded={5}>
                                 <Flex justifyContent={'center'} width={'100%'} height={'200px'} bg={useColorModeValue('white')} p={2} rounded={5}>
-                                    <Image src={item.OffRoadBumperImage[0]} maxW={'100%'} rounded={5}/>
+                                    <Image src={item.LedLightImage[0]} maxW={'100%'} rounded={5}/>
                                 </Flex>
                                 <Box mt={4} color={'gray.800'}>
-                                    <Link to={`/offroadbumper-reviews/${item._id}`}>
-                                        <Heading mb={2} fontWeight={500} fontSize={16} color={'blue.500'} isTruncated>{item.name}</Heading>
-                                    </Link>
+                                    <Heading mb={2} fontWeight={500} fontSize={16} color={'blue.500'} isTruncated>{item.name}</Heading>
                                     <Box>
                                         <Text fontWeight={500}>{item.descriptions.slice(0, 100)}...</Text>
                                     </Box>
                                     <Flex justifyContent={'space-between'} mt={4}>
                                         <Box>
-                                            <Text fontWeight={500} fontSize={15} className='flex items-center'>Price: <sup><BsCurrencyDollar/> </sup>{item.price}</Text>
+                                            <Text fontWeight={500} fontSize={15} className='flex items-center'>Price: <BsCurrencyDollar/>{item.price}</Text>
                                         </Box>
                                         <Box>
                                             <Text fontWeight={500} fontSize={15}>Deal: {item.deal}</Text>
@@ -136,7 +134,7 @@ export default function OffRoadBumperReviewPage2() {
                                     </Flex>
                                     <Flex justifyContent={'space-between'} alignItems={'center'} pt={3} mt={2} borderTop={'2px'} borderTopColor={'gray.300'}>
                                         <Box fontWeight={500} >
-                                            <Link to={`/offroadbumper-reviews/${item._id}`} className='text-blue-500'>Review</Link>
+                                            <Link to={`/ledlight-reviews/${item._id}`} className='text-blue-500'>Review</Link>
                                         </Box>
                                         <Box>
                                             <Button bg={useColorModeValue('white')}>

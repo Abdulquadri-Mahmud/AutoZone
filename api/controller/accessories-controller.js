@@ -132,7 +132,7 @@ export const bumpersAccessory = async (req, res, next) => {
 
         await bumpersAccessory.save();
 
-        res.status(201).json('Speaker Accessory created successfully!');
+        res.status(201).json('Bumper Accessory created successfully!');
 
     } catch (error) {
         next(error)
@@ -154,7 +154,7 @@ export const doorsAccessory = async (req, res, next) => {
 
         await doorsAccessory.save();
 
-        res.status(201).json('Speaker Accessory created successfully!');
+        res.status(201).json('Door Accessory created successfully!');
 
     } catch (error) {
         next(error)
@@ -176,7 +176,7 @@ export const fenderAccessory = async (req, res, next) => {
 
         await fenderAccessory.save();
 
-        res.status(201).json('Speaker Accessory created successfully!');
+        res.status(201).json('Fender Accessory created successfully!');
 
     } catch (error) {
         next(error)
@@ -184,7 +184,7 @@ export const fenderAccessory = async (req, res, next) => {
 }
 export const grillAccessory = async (req, res, next) => {
     const { 
-        name,make, year,category,
+        name,make, model, year,category,
         descriptions, price,
         deal,GrillsImage
     } = req.body;
@@ -192,13 +192,13 @@ export const grillAccessory = async (req, res, next) => {
     try {
         
         const grillAccessory = await Grill.create({
-            name,make, year,category, 
+            name,make,model, year,category, 
             descriptions, price, deal,GrillsImage
         });
 
         await grillAccessory.save();
 
-        res.status(201).json('Speaker Accessory created successfully!');
+        res.status(201).json('Model Accessory created successfully!');
 
     } catch (error) {
         next(error)
@@ -222,7 +222,7 @@ export const hoodsAccessory = async (req, res, next) => {
 
         await hoodsAccessory.save();
 
-        res.status(201).json('Speaker Accessory created successfully!');
+        res.status(201).json('Hood Accessory created successfully!');
 
     } catch (error) {
         next(error)
@@ -246,7 +246,7 @@ export const bodyKitAccessory = async (req, res, next) => {
 
         await bodyKitAccessory.save();
 
-        res.status(201).json('Speaker Accessory created successfully!');
+        res.status(201).json('Body Kit Accessory created successfully!');
 
     } catch (error) {
         next(error)
@@ -268,7 +268,7 @@ export const customGrillAccessory = async (req, res, next) => {
 
         await customGrillAccessory.save();
 
-        res.status(201).json('Speaker Accessory created successfully!');
+        res.status(201).json('custom Grill Accessory created successfully!');
 
     } catch (error) {
         next(error)
@@ -290,7 +290,7 @@ export const carCoverAccessory = async (req, res, next) => {
 
         await carCoverAccessory.save();
 
-        res.status(201).json('Speaker Accessory created successfully!');
+        res.status(201).json('Car Cover Accessory created successfully!');
 
     } catch (error) {
         next(error)
@@ -1103,7 +1103,7 @@ export const getHeadlight = async (req, res, next) => {
         if (!mongoose.Types.ObjectId.isValid(id)) {
             return next(errorHandler(404, 'Item Not Found!'));
         }
-        const findId = await Headlight.findOne({_id: id});
+        const findId = await HeadLight.findOne({_id: id});
 
         if (!findId) {
             return next(errorHandler(404, 'Item Not Found!'))
@@ -1539,7 +1539,7 @@ export const deleteHeadlight = async (req, res, next) => {
             return next(errorHandler(404, 'Item Not Found!'));
         }
         // find that id in database
-        const findId = await Headlight.findByIdAndDelete({_id: id});
+        const findId = await HeadLight.findByIdAndDelete({_id: id});
 
         if (!findId) {
             return next(errorHandler(404, 'Item Not Found!'))

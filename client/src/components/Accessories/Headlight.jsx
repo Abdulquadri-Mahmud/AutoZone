@@ -19,7 +19,7 @@ export default function Headlight() {
                                 <Image src={headlight.HeadLightImage[0]} maxW={'100%'} rounded={5}/>
                             </Flex>
                             <Box mt={4} color={'gray.800'}>
-                                <Heading mb={2} fontWeight={500} fontSize={16} color={'blue.500'}>{headlight.year} {headlight.name} {headlight.make}</Heading>
+                                <Heading mb={2} fontWeight={500} fontSize={16} color={'blue.500'} isTruncated>{headlight.name}</Heading>
                                 <Box>
                                     <Text fontWeight={500}>{headlight.descriptions.slice(0, 100)}...</Text>
                                 </Box>
@@ -33,7 +33,7 @@ export default function Headlight() {
                                 </Flex>
                                 <Flex justifyContent={'space-between'} alignItems={'center'} pt={3} mt={2} borderTop={'2px'} borderTopColor={'gray.300'}>
                                     <Box fontWeight={500} >
-                                        <Link to={`/accessories-reviews/${headlight._id}`} className='text-blue-500'>Review</Link>
+                                        <Link to={`/headlight-reviews/${headlight._id}`} className='text-blue-500'>Review</Link>
                                     </Box>
                                     <Box>
                                         <Button bg={useColorModeValue('white')}>

@@ -81,6 +81,16 @@ import SteeringWheelsReviewPage from '../pages/Accessories/Reviews/SteeringWheel
 import SteeringWheelsReviewPage2 from '../pages/Accessories/Reviews/reviews2/SteeringWheelsReviewPage2'
 import SunshadesReviewPage from '../pages/Accessories/Reviews/SunshadesReviewPage'
 import SunshadesReviewPage2 from '../pages/Accessories/Reviews/reviews2/SunshadesReviewPage2'
+import FoglightReviewPage from '../pages/Accessories/Reviews/FoglightReviewPage'
+import FoglightReviewPage2 from '../pages/Accessories/Reviews/reviews2/FoglightReviewPage2'
+import HedlightReviewPage from '../pages/Accessories/Reviews/HedlightReviewPage'
+import HedlightReviewPage2 from '../pages/Accessories/Reviews/reviews2/HedlightReviewPage2'
+import LedlightReviewPage from '../pages/Accessories/Reviews/LedlightReviewPage'
+import LedlightReviewPage2 from '../pages/Accessories/Reviews/reviews2/LedlightReviewPage2'
+import OffRoadLightReviewPage from '../pages/Accessories/Reviews/OffRoadLightReviewPage'
+import OffRoadLightReviewPage2 from '../pages/Accessories/Reviews/reviews2/OffRoadLightReviewPage2'
+import SignalLightReviewPage from '../pages/Accessories/Reviews/SignalLightReviewPage'
+import SignalLightReviewPage2 from '../pages/Accessories/Reviews/reviews2/SignalLightReviewPage2'
 
 export default function RoutesPages() {
 
@@ -157,6 +167,11 @@ export default function RoutesPages() {
           <Route path='/seat-cover-reviews/:accessoryId' element={<SeatCoverReviewPage/>}/>
           <Route path='/sunshade-reviews/:accessoryId' element={<SunshadesReviewPage/>}/>
           <Route path='/steeringwheel-reviews/:accessoryId' element={<SteeringWheelsReviewPage/>}/>
+          <Route path='/foglight-reviews/:accessoryId' element={<FoglightReviewPage/>}/>
+          <Route path='/headlight-reviews/:accessoryId' element={<HedlightReviewPage/>}/>
+          <Route path='/ledlight-reviews/:accessoryId' element={<LedlightReviewPage/>}/>
+          <Route path='/offroadlight-reviews/:accessoryId' element={<OffRoadLightReviewPage/>}/>
+          <Route path='/signallight-reviews/:accessoryId' element={<SignalLightReviewPage/>}/>
 
           <Route path='/review-stereo-reviews/:accessoryId' element={<StereoReviewsPage2/>}/>
           <Route path='/review-speaker-reviews/:accessoryId' element={<SpeakerReviewPage2/>}/>
@@ -176,6 +191,11 @@ export default function RoutesPages() {
           <Route path='/review-seat-cover-reviews/:accessoryId' element={<SeatCoverReviewPage2/>}/>
           <Route path='/review-sunshade-reviews/:accessoryId' element={<SunshadesReviewPage2/>}/>
           <Route path='/review-steeringwheel-reviews/:accessoryId' element={<SteeringWheelsReviewPage2/>}/>
+          <Route path='/review-foglight-reviews/:accessoryId' element={<FoglightReviewPage2/>}/>
+          <Route path='/review-headlight-reviews/:accessoryId' element={<HedlightReviewPage2/>}/>
+          <Route path='/review-ledlight-reviews/:accessoryId' element={<LedlightReviewPage2/>}/>
+          <Route path='/review-offroadlight-reviews/:accessoryId' element={<OffRoadLightReviewPage2/>}/>
+          <Route path='/review-signallight-reviews/:accessoryId' element={<SignalLightReviewPage2/>}/>
 
           {/* admin routes */}
 

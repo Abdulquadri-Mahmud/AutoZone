@@ -16,10 +16,10 @@ export default function CustomGauges() {
                     customGauges.map((customGauge) => (
                         <Box key={customGauge._id} width={{md: '300px', base: '100%'}} bg={useColorModeValue('gray.200')} padding={3} rounded={5}>
                             <Flex justifyContent={'center'} width={'100%'} height={'200px'} bg={useColorModeValue('white')} p={2} rounded={5}>
-                                <Image src={customGauge.CustomGaugeImage} maxW={'100%'} rounded={5}/>
+                                <Image src={customGauge.CustomGaugeImage[0]} maxW={'100%'} rounded={5}/>
                             </Flex>
                             <Box mt={4} color={'gray.800'}>
-                                <Heading mb={2} fontWeight={500} fontSize={16} color={'blue.500'}>{customGauge.year} {customGauge.name} {customGauge.make}</Heading>
+                                <Heading mb={2} fontWeight={500} fontSize={16} color={'blue.500'} isTruncated>{customGauge.name}</Heading>
                                 <Box>
                                     <Text fontWeight={500}>{customGauge.descriptions.slice(0, 100)}...</Text>
                                 </Box>

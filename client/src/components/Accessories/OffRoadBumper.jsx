@@ -23,7 +23,7 @@ export default function OffRoadBumper() {
                                 }
                             </Flex>
                             <Box mt={4} color={'gray.800'}>
-                                <Heading mb={2} fontWeight={500} fontSize={16} color={'blue.500'}>{offroadbumber.year} {offroadbumber.name} {offroadbumber.make}</Heading>
+                                <Heading mb={2} fontWeight={500} fontSize={16} color={'blue.500'} isTruncated>{offroadbumber.name}</Heading>
                                 <Box>
                                     <Text fontWeight={500}>{offroadbumber.descriptions.slice(0, 100)}...</Text>
                                 </Box>

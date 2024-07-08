@@ -19,7 +19,7 @@ export default function OffRoadLight() {
                                 <Image src={offroadlight.OffRoadLightImage[0]} maxW={'100%'} rounded={5}/>
                             </Flex>
                             <Box mt={4} color={'gray.800'}>
-                                <Heading mb={2} fontWeight={500} fontSize={16} color={'blue.500'}>{offroadlight.year} {offroadlight.name} {offroadlight.make}</Heading>
+                                <Heading mb={2} fontWeight={500} fontSize={16} color={'blue.500'} isTruncated>{offroadlight.name}</Heading>
                                 <Box>
                                     <Text fontWeight={500}>{offroadlight.descriptions.slice(0, 100)}...</Text>
                                 </Box>
@@ -33,7 +33,7 @@ export default function OffRoadLight() {
                                 </Flex>
                                 <Flex justifyContent={'space-between'} alignItems={'center'} pt={3} mt={2} borderTop={'2px'} borderTopColor={'gray.300'}>
                                     <Box fontWeight={500} >
-                                        <Link to={`/accessories-reviews/${offroadlight._id}`} className='text-blue-500'>Review</Link>
+                                        <Link to={`/offroadlight-reviews/${offroadlight._id}`} className='text-blue-500'>Review</Link>
                                     </Box>
                                     <Box>
                                         <Button bg={useColorModeValue('white')}>

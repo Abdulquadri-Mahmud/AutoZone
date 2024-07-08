@@ -4,6 +4,7 @@ import { LuShoppingCart } from 'react-icons/lu';
 import { BsCurrencyDollar } from 'react-icons/bs';
 import { GrStatusGood } from "react-icons/gr";
 import { GrillReviewContext } from '../../../pages/Accessories/Reviews/GrillsReviewPage';
+import { IoStar } from 'react-icons/io5';
 
 export default function GrillsReview() {
     const item = useContext(GrillReviewContext);
@@ -48,8 +49,20 @@ export default function GrillsReview() {
             </Flex>
         </Box>
         <Box mt={5} flex={1}>
-            <Heading fontWeight={500} fontSize={30}>{item.year} {item.name} {item.make}</Heading>
+            <Heading fontWeight={500} fontSize={30} isTruncated>{item.name}</Heading>
+            <Flex alignItems={'center'} gap={1} className="rate" mt={4}>
+                <Text className='font-medium'>rating: </Text>
+                <IoStar className='text-yellow-300'/>
+                <IoStar className='text-yellow-300'/>
+                <IoStar className='text-yellow-300'/>
+                <IoStar className='text-yellow-300'/>
+                <IoStar className='text-gray-300'/>
+            </Flex>
             <Text fontWeight={500} mt={3} fontSize={{md:16, base:14}}>{item.descriptions}</Text>
+            <Flex gap={4} mt={4}>
+                <Text className='font-medium'>Make: <span className='font-normal'>{item.make}</span></Text> |
+                <Text className='font-medium'>Year: <span className='font-normal'>{item.year}</span></Text>
+            </Flex>
             <Flex gap={8} alignItems={'center'}mt={4}>
                 {
                     item.deal === 'Great' ? (

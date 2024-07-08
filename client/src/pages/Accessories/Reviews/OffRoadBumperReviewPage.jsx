@@ -65,7 +65,7 @@ export default function OffRoadBumperReviewPage() {
                                 </Flex>
                                 <Box mt={4} color={'gray.800'}>
                                     <Link to={`/review-offroadbumper-reviews/${item._id}`}>
-                                        <Heading mb={2} fontWeight={500} fontSize={16} color={'blue.500'} isTruncated>{item.year} {item.name} {item.make}</Heading>
+                                        <Heading mb={2} fontWeight={500} fontSize={16} color={'blue.500'} isTruncated>{item.name}</Heading>
                                     </Link>
                                     <Box>
                                         <Text fontWeight={500}>{item.descriptions.slice(0, 100)}...</Text>

@@ -19,7 +19,7 @@ export default function DashKit() {
                                 <Image src={dashkit.DashKitImage} maxW={'100%'} rounded={5}/>
                             </Flex>
                             <Box mt={4} color={'gray.800'}>
-                                <Heading mb={2} fontWeight={500} fontSize={16} color={'blue.500'}>{dashkit.year} {dashkit.name} {dashkit.make}</Heading>
+                                <Heading mb={2} fontWeight={500} fontSize={16} color={'blue.500'} isTruncated>{dashkit.name}</Heading>
                                 <Box>
                                     <Text fontWeight={500}>{dashkit.descriptions.slice(0, 100)}...</Text>
                                 </Box>

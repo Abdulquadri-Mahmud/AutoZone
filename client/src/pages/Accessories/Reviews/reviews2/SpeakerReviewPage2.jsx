@@ -44,7 +44,7 @@ export default function SpeakerReviewPage2() {
 
   return (
     <Box>
-        <Flex mt={10} gap={6} px={3} py={7} width={{md: '90%', base: '100%'}} mx={'auto'} bg={'gray.200'}>
+        <Flex mt={10} flexWrap={'wrap'} gap={6} px={3} py={7} width={{md: '90%', base: '100%'}} mx={'auto'} bg={'gray.200'}>
             <Box width={{md: '300px', base: '100%'}}>
                 <Flex justifyContent={{md: 'start', base: 'center'}}>
                     {
@@ -76,7 +76,7 @@ export default function SpeakerReviewPage2() {
                 </Flex>
             </Box>
             <Box width={{md:'60%', base:'97%'}} mt={5}>
-                <Heading fontWeight={500} fontSize={30} isTruncated>{review.name}</Heading>
+                <Heading fontWeight={500} fontSize={30}>{review.name}</Heading>
                 <Flex alignItems={'center'} gap={1} className="rate" mt={4}>
                     <Text className='font-medium'>rating: </Text>
                     <IoStar className='text-yellow-300'/>
@@ -119,7 +119,7 @@ export default function SpeakerReviewPage2() {
                                     <Image src={item.speakerImage[0]} maxW={'100%'} rounded={5}/>
                                 </Flex>
                                 <Box mt={4} color={'gray.800'}>
-                                    <Heading mb={2} fontWeight={500} fontSize={16} color={'blue.500'}>{item.year} {item.name} {item.make}</Heading>
+                                    <Heading mb={2} fontWeight={500} fontSize={16} color={'blue.500'} isTruncated>{item.name}</Heading>
                                     <Box>
                                         <Text fontWeight={500}>{item.descriptions.slice(0, 100)}...</Text>
                                     </Box>

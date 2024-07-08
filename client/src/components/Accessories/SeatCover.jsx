@@ -5,7 +5,6 @@ import { BsCurrencyDollar } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 import { SeatCoverContext } from '../../pages/Accessories/SeatCoverPage';
 
-
 export default function SeatCover() {
     const seatCovers = useContext(SeatCoverContext);
 
@@ -20,7 +19,7 @@ export default function SeatCover() {
                                 <Image src={seatCover.SeatCoverImage} maxW={'100%'} rounded={5}/>
                             </Flex>
                             <Box mt={4} color={'gray.800'}>
-                                <Heading mb={2} fontWeight={500} fontSize={16} color={'blue.500'}>{seatCover.year} {seatCover.name} {seatCover.make}</Heading>
+                                <Heading mb={2} fontWeight={500} fontSize={16} color={'blue.500'} isTruncated>{seatCover.name}</Heading>
                                 <Box>
                                     <Text fontWeight={500}>{seatCover.descriptions.slice(0, 100)}...</Text>
                                 </Box>

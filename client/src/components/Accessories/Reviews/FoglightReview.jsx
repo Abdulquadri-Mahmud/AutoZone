@@ -3,12 +3,13 @@ import { Box, Button, Flex, Heading, Image, Text, useColorModeValue } from '@cha
 import { LuShoppingCart } from 'react-icons/lu';
 import { BsCurrencyDollar } from 'react-icons/bs';
 import { GrStatusGood } from "react-icons/gr";
-import { OffRoadBumperReviewContext } from '../../../pages/Accessories/Reviews/OffRoadBumperReviewPage';
 import { IoStar } from 'react-icons/io5';
 
-export default function OffRoadBumperReview() {
-    const item = useContext(OffRoadBumperReviewContext);
-    
+import { FoglightReviewContext } from '../../../pages/Accessories/Reviews/FoglightReviewPage';
+
+export default function FoglightReview() {
+    const item = useContext(FoglightReviewContext);
+
     let switchImage = useRef(null);
     let display = useRef(null);
     
@@ -16,17 +17,17 @@ export default function OffRoadBumperReview() {
         display.current.src = img;
     }
 
-    return (
+  return (
     <Flex mt={10} flexWrap={'wrap'} gap={6} px={3} py={7} width={{md: '90%', base: '100%'}} mx={'auto'} bg={'gray.100'}>
         <Box width={{md: '300px', base: '100%'}}>
             <Flex justifyContent={{md: 'start', base: 'center'}}>
                 {
-                    item.OffRoadBumperImage === undefined ? '' : (
+                    item.fogLightImage === undefined ? '' : (
                         <Flex justifyContent={'center'} alignItems={'center'} bg={useColorModeValue('white')}
                         position={'relative'} height={{md:'350px', base: '300px'}} width={{md:'350px', base: '300px'}} p={3} rounded={5}>
-                            <Image src={item.OffRoadBumperImage[0]} ref={display} maxW={'100%'} rounded={5}/>
+                            <Image src={item.fogLightImage[0]} ref={display} maxW={'100%'} rounded={5}/>
                             <Flex justifyContent={'center'} position={'absolute'} top={0} left={0} width={'70px'} borderTopLeftRadius={5} py={1} bg={'gray.200'}>
-                                <Text fontWeight={500}>{item.OffRoadBumperImage.length} Photo</Text>
+                                <Text fontWeight={500}>{item.fogLightImage.length} Photo</Text>
                             </Flex>
                         </Flex>
                     )
@@ -34,10 +35,10 @@ export default function OffRoadBumperReview() {
             </Flex>
             <Flex alignItems={'center'} justifyContent={'center'} bg={useColorModeValue('')} gap={3} flexWrap={'wrap'}  p={1}>
                 {
-                    item.OffRoadBumperImage === undefined ? '' : (
+                    item.fogLightImage === undefined ? '' : (
                         <>
                             {
-                                item.OffRoadBumperImage.map((img, index) => (
+                                item.fogLightImage.map((img, index) => (
                                     <Flex justifyContent={'center'} alignItems={'center'} p={2} width={'100px'} height={'100px'} rounded={5} bg={useColorModeValue('white')}>
                                         <Image src={img} alt={''} ref={switchImage} key={index} onClick={() => handleClick(img)} maxW={'100%'} objectFit={'cover'} rounded={5}/>
                                     </Flex>
@@ -61,7 +62,8 @@ export default function OffRoadBumperReview() {
             <Text fontWeight={500} mt={3} fontSize={{md:16, base:14}}>{item.descriptions}</Text>
             <Flex gap={4} mt={4}>
                 <Text className='font-medium'>Make: <span className='font-normal'>{item.make}</span></Text> |
-                <Text className='font-medium'>Year: <span className='font-normal'>{item.year}</span></Text>
+                <Text className='font-medium'>Year: <span className='font-normal'>{item.year}</span></Text> |
+                <Text className='font-medium'>Model: <span className='font-normal'>{item.model}</span></Text>
             </Flex>
             <Flex gap={8} alignItems={'center'}mt={0}>
                 {

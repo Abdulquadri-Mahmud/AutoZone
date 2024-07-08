@@ -9,8 +9,12 @@ var offRoadLightSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    model: {
+        type: String,
+        required: true
+    },
     year: {
-        type: Number,
+        type: String,
         required: true
     },
     category:{
