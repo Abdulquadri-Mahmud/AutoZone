@@ -1,38 +1,48 @@
-import { Box, Button, Flex, Heading, Image, Text, useColorModeValue } from '@chakra-ui/react'
-import React, { useEffect, useState } from 'react'
-import { BsCurrencyDollar } from 'react-icons/bs';
-import { IoIosSpeedometer } from 'react-icons/io';
 import { IoLocationOutline, IoStar } from 'react-icons/io5';
 import { LuShoppingCart } from 'react-icons/lu';
-import { Link } from 'react-router-dom';
+import { BsCurrencyDollar } from 'react-icons/bs';
+import { IoIosSpeedometer } from 'react-icons/io';
+import { Box, Button, Flex, Heading, Image, Text, useColorModeValue } from '@chakra-ui/react'
+import React, { createContext, useEffect, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 
-export default function CarList() {
-  const [cars, setCar] = useState({});
+export default function ListOfCars() {
+  const [getAllCar, setGetAllCar] = useState({});
+
+  let navigate = useNavigate();
 
   useEffect(() => {
-    const fetCars = async () => {
-      try {
+    try {
+      const fetchAllcar = async () => {
         const res = await fetch('/api/cars/allcarlists');
-
         const data = await res.json();
-        setCar(data);
-      } catch (error) {
-        // setError(error);
-        console.log(error);
+        setGetAllCar(data);
       }
+
+      fetchAllcar();
+
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
+
+  const handleLinkClick = () => {
+    setTimeout(() => {
+      navigate(window,location.reload(true))
+    }, 100)
   }
 
-  fetCars();
-  }, []);
-  console.log(cars);
-
   return (
-    <Box py={'3rem'}>
-      <Flex flexDir={'column'} color={'gray.700'} gap={4} maxW={{md: '96%', base: '96%'}} mx={'auto'}>
-        {
-          cars.length > 0 ? (
-            cars.map((car) => (
-              <Flex gap={{md: 10, base: 3}} justifyContent={'start'} flexWrap={'wrap'} rounded={5} key={car._id} bg={useColorModeValue('gray.200')} mb={3} padding={6} position={'relative'}>
+    <Box maxW={'100%'} mx={'auto'} mt={10}>
+        <Flex justifyContent={'center'} position={'relative'}>
+            <Heading fontWeight={500} fontSize={26} textAlign={'center'}>YOU MAY ALSO LIKE</Heading>
+            <Image src='/zigzag.png' position={'absolute'} bottom={-10}/>
+        </Flex>
+        <Flex flexDir={'column'} color={'gray.700'} gap={4} maxW={{md: '96%', base: '96%'}} mx={'auto'} mt={10}>
+          {
+            getAllCar.length > 0 ? (
+              getAllCar.map((car) => (
+                <Flex gap={{md: 10, base: 3}} justifyContent={'start'} flexWrap={'wrap'} rounded={5} key={car._id} bg={useColorModeValue('gray.200')} mb={3} padding={6} position={'relative'}>
                 <Box width={{md: '30%', base: '100%'}} bg={useColorModeValue('white')} mt={4} position={'relative'}>
                   <Image src={car.carimage[0]} alt={car.name} maxW={'100%'} height={'250px'} objectFit={'contain'}></Image>
                   <Box position={'absolute'} bottom={0} bg={useColorModeValue('gray.100')} px={2} py={1} rounded={4}>
@@ -45,7 +55,7 @@ export default function CarList() {
                     <Text className='flex items-center gap-1 text-sm text-gray-500 font-medium'><span className='text-gray-400'><IoIosSpeedometer/></span> {car.miles} miles</Text>
                   </Flex>
                   <Flex alignItems={'center'} gap={1} className="rate" mt={2}>
-                    <Text fontWeight={500}>Rating</Text>
+                      <Text fontWeight={500}>Rating</Text>
                       <IoStar className='text-yellow-300'/>
                       <IoStar className='text-yellow-300'/>
                       <IoStar className='text-yellow-300'/>
@@ -75,7 +85,7 @@ export default function CarList() {
                   </Flex>
                   <Flex justifyContent={'space-between'} alignItems={'center'} pt={3} mt={2} borderTop={'2px'} borderTopColor={'gray.300'}>
                     <Box bg={'gray.100'} p={2} rounded={4}>
-                      <Link to={`/car-details/${car._id}`} className='text-blue-500 font-medium'>Review</Link>
+                      <Link onClick={handleLinkClick} to={`/car-details/${car._id}`} className='text-blue-500 font-medium'>Review</Link>
                     </Box>
                     <Box>
                       <Button><LuShoppingCart className='text-xl text-blue-500'/></Button>
@@ -86,14 +96,10 @@ export default function CarList() {
                   <Text>{car.condition}</Text>
                 </Box>
               </Flex>
-            ))
-          ) : (
-            <Box>
-              <Text>No blogs to display</Text>
-            </Box>
-          )
-        }
-      </Flex>
-    </Box>
+              ))
+            ) : ''
+          }
+        </Flex>
+      </Box>
   )
 }

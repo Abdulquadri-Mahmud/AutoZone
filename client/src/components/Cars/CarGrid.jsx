@@ -25,7 +25,6 @@ export default function CarGrid() {
     fetCars();
    }, []);
 
-
   return (
     <Flex justifyContent={'center'} flexWrap={'wrap'} gap={4} py={'5rem'}>
       {
@@ -47,15 +46,13 @@ export default function CarGrid() {
               </Flex>
 
               <Flex justifyContent={'space-between'} alignItems={'center'}>
-                <Box bg={'red.500'} px={3} py={1} color={'white'}  position={'absolute'} top={2} rounded={3} left={2}>
+                <Box bg={'blue.500'} px={3} py={1} color={'white'}  position={'absolute'} top={2} rounded={3} left={2}>
                   <Text>{car.condition}</Text>
-                </Box>
-                <Box  position={'absolute'} top={2} right={2}>
-                  {/* <SaveCar/> */}
                 </Box>
               </Flex>
 
-              <Flex gap={1} className="rate" mt={2}>
+              <Flex alignItems={'center'} gap={1} className="rate" mt={2}>
+                <Text>Rating </Text>
                 <IoStar className='text-yellow-300'/>
                 <IoStar className='text-yellow-300'/>
                 <IoStar className='text-yellow-300'/>
@@ -74,23 +71,23 @@ export default function CarGrid() {
                 <Text color={'gray.600'} fontSize={15} className='font-bold'>Transmission: <span className='font-medium'>{car.transmission}</span></Text>
                 <Text color={'gray.600'} fontSize={15} className='font-bold'>Deal: <span className='font-medium'>{car.deal}</span></Text>
               </Flex>
-              <Flex justifyContent={'space-between'} mt={2}>
+              <Flex justifyContent={'space-between'} mt={2} color={'gray.600'}>
                 <Text className='flex items-center gap-1 font-bold'>Price: <span className='flex items-center font-medium'><BsCurrencyDollar className='text-sm'/>{car.price}</span></Text>
-                <Text className='flex items-center gap-1 font-bold'><span className='flex items-center font-medium'><IoLocationOutline className='text-red-500'/>{car.location}</span></Text>
+                <Text className='flex items-center gap-1 font-bold'><span className='flex items-center font-medium'><IoLocationOutline className='text-blue-500'/>{car.location}</span></Text>
               </Flex>
               <Flex justifyContent={'space-between'} alignItems={'center'} pt={3} mt={2} borderTop={'2px'} borderTopColor={'gray.300'}>
                 <Box>
-                  <Link to={`/car-details/${car._id}`} className='text-red-500'>Review</Link>
+                  <Link to={`/car-details/${car._id}`} className='text-blue-500'>Review</Link>
                 </Box>
                 <Box>
-                  <Button><LuShoppingCart className='text-xl text-red-500'/></Button>
+                  <Button><LuShoppingCart className='text-xl text-blue-500'/></Button>
                 </Box>
               </Flex>
             </Box>
           ))
         ) : (
           <Box>
-            <Text fontSize={20} fontWeight={500} textAlign={'center'}>No Car To Display1</Text>
+            <Text fontSize={20} fontWeight={500} textAlign={'center'}>No Car To Display!</Text>
           </Box>
         )
       }

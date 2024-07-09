@@ -62,7 +62,7 @@ export default function Testimonial() {
   };
   return (
     <Box my={'5rem'} py={10} position={'relative'} bgGradient='linear(blue.700, gray.800)' height={'100%'}>
-      <Heading color={'white'} textAlign={'center'} py={6} fontWeight={500} fontSize={45}>Customers Review</Heading>
+      <Heading color={'white'} textAlign={'center'} py={6} fontWeight={500} fontSize={35}>Customers Review</Heading>
       <Box w={{md:'85%', base: '100%'}} mx={'auto'} bg={''} color={useColorModeValue('white')}>
         <Slider {...settings}>
           <Box width={'100%'} padding={{md: 6, base: 2}}>

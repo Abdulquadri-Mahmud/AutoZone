@@ -23,7 +23,6 @@ export default function Home() {
     <Box fontStyle={''} bg={useColorModeValue('gray.200', 'gray.800')}>
         <Hero/>
         <SearchHomepage/>
-        {/* <LatestBlog/> */}
         <Box maxW={{md: '80%', base: '100%'}} mx={'auto'} padding={{md: 5, base: 2}} className='grid grid-cols-2 gap-5'>
           <Box>
             <img src={speakers} alt="speaker" />
@@ -32,12 +31,10 @@ export default function Home() {
             <img src={schedule} alt="speaker" />
           </Box>
         </Box>
-        <Testimonial/>
-
         <Suspense fallback={<BlogLoader/>}>
           <AllBlogs/>
         </Suspense>
-
+        <Testimonial/>
         <PopularBrand/>
     </Box>
   )

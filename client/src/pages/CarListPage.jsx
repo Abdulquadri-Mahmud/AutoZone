@@ -7,7 +7,7 @@ const CarList = React.lazy(() => {
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve(import('../components/Cars/CarList'))
-    }, 3000);
+    }, 1000);
   })
 })
 

@@ -5,16 +5,9 @@ import { errorHandler } from "../utils/errorHanlder.js";
 export const carListController = async (req, res, next) => {
     
     const {
-        name, 
-        condition, 
-        make,
-        model, 
-        location, 
-        price, 
-        miles,
-        colors,
-        deal,
-        year, description, exteriorColor,interiorColor, transmission,engine , carimage} = req.body;
+        name, condition,make,model, location, price, miles,colors,deal,
+        year, description, exteriorColor,interiorColor, transmission,engine , carimage
+    } = req.body;
         
     try {
         const newCar = await CarLists.create({

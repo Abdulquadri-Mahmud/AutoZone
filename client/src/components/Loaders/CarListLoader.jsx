@@ -25,7 +25,7 @@ export default function CarListLoader() {
   }, []);
   return (
     <Box py={'3rem'}>
-      <Flex flexDir={'column'} gap={4} maxW={{md: '96%', base: '96%'}} mx={'auto'}>
+      <Flex flexDir={'column'} gap={4} maxW={{md: '96%', base: '96%'}} mx={'auto'} className='animate-pulse'>
         {
           cars.length > 0 ? (
             cars.map((car) => (

@@ -4,9 +4,9 @@ import React, { useState } from 'react'
 export default function SearchHomepage() {
     
    return (
-    <Box padding={{md: 10, base: 2}} pt={20} zIndex={100}>
-        <Box maxW={{md: '90%', base: '100%'}} mx={'auto'} rounded={5} bg={useColorModeValue('gray.700', 'gray.700')} padding={{md: 10, base: 5}}>
-            <Heading color={'white'} textAlign={'center'} pb={10} fontWeight={500} fontSize={30}>FIND YOUR RIGHT CAR</Heading>
+    <Box py={{md: '4rem', base: 2}} pt={20} zIndex={100}>
+        <Box maxW={{md: '90%', base: '100%'}} mx={'auto'} rounded={5} bg={useColorModeValue('white', 'gray.700')} padding={{md: 10, base: 5}}>
+            <Heading color={'black'} textAlign={'center'} pb={10} fontWeight={500} fontSize={30}>FIND YOUR RIGHT CAR</Heading>
             <form>
                 <Box className='grid md:grid-cols-3 sm;grid-cols-2 grid-cols-1 gap-3 w-full'>
                     <Box color={useColorModeValue('black', 'black')}>
@@ -46,7 +46,7 @@ export default function SearchHomepage() {
                     </Box>
                 </Box>
                 <Box pt={6} width={{md:'50%', base: '100%'}} mx={'auto'}>
-                    <Button className='uppercase' bg={'blue.500'} _hover={{bg: 'blue.600'}} fontSize={22} color={'white'} width={'100%'} p={8}>Search Vehicla</Button>
+                    <Button className='uppercase' bg={'blue.500'} _hover={{bg: 'blue.600'}} fontSize={22} color={'white'} width={'100%'} p={7}>Search Vehicla</Button>
                 </Box>
             </form>
         </Box>
