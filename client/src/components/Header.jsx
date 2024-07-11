@@ -30,6 +30,7 @@ import AdminHeaderAuth from './AdminHeaderAuth';
 import Settings from './Settings';
 import Accessories from './Accessories';
 import DesktopAccessories from './DesktopAccessories';
+import Carts from './Add Cart/Carts';
 
 export default function Header() {
   const [open, setOpen] = useState(false);
@@ -199,7 +200,7 @@ export default function Header() {
                           <FaSearch className='text-xl'/>
                         </Box>
                         <Box>
-                          <FaCartPlus className='text-xl'/>
+                          {/* <Carts/> */}
                         </Box>
                         <Box>
                           <UserAuth/>
@@ -207,9 +208,9 @@ export default function Header() {
                         <Box>
                           <AdminHeaderAuth/>
                         </Box>
-                        {/* <Box>
+                        <Box>
                           <Settings/>
-                        </Box> */}
+                        </Box>
                         </Flex>
                       </Box>
                   </Flex>
@@ -219,8 +220,9 @@ export default function Header() {
             {/* menu slider */}
             <Box display={{base: 'block', md: 'none'}} width={'100%'}>
               <Box height={'100%'}>
-                  <Flex alignItems={'center'} gap={{md: 3, base: 2}} position={'absolute'} top={'1.7rem'} right={'1rem'} cursor={'pointer'}>
+                  <Flex alignItems={'center'} gap={{md: 3, base: 1}} position={'absolute'} top={'1.7rem'} right={'1rem'} cursor={'pointer'}>
                     {/* <Settings/> */}
+                    <Carts/>
                     <AdminHeaderAuth/>
                     <UserAuth/>
                     <Box  onClick={handleClick}>
@@ -235,7 +237,7 @@ export default function Header() {
                       }
                     </Box>
                   </Flex>
-                  <Box position={'fixed'} top={'5rem'} right={0} zIndex={100} bg={'white'} height={'100%'} overflow={'hidden'} className={`${!open ? 'w-[0%]' : 'w-[70%]'} duration-200`}>
+                  <Box position={'fixed'} top={'5rem'} right={0} zIndex={100} bg={useColorModeValue('white', 'gray.800')} height={'100%'} overflow={'hidden'} className={`${!open ? 'w-[0%]' : 'w-[70%]'} duration-200`}>
                       <SideMenus/>
                   </Box>
               </Box>

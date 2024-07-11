@@ -9,8 +9,6 @@ import { Link, useNavigate } from 'react-router-dom'
 export default function ListOfCars() {
   const [getAllCar, setGetAllCar] = useState({});
 
-  let navigate = useNavigate();
-
   useEffect(() => {
     try {
       const fetchAllcar = async () => {
@@ -25,12 +23,6 @@ export default function ListOfCars() {
       console.log(error);
     }
   }, []);
-
-  const handleLinkClick = () => {
-    setTimeout(() => {
-      navigate(window,location.reload(true))
-    }, 100)
-  }
 
   return (
     <Box maxW={'100%'} mx={'auto'} mt={10}>
@@ -85,7 +77,7 @@ export default function ListOfCars() {
                   </Flex>
                   <Flex justifyContent={'space-between'} alignItems={'center'} pt={3} mt={2} borderTop={'2px'} borderTopColor={'gray.300'}>
                     <Box bg={'gray.100'} p={2} rounded={4}>
-                      <Link onClick={handleLinkClick} to={`/car-details/${car._id}`} className='text-blue-500 font-medium'>Review</Link>
+                      <Link to={`/car-reviews/${car._id}`} className='text-blue-500 font-medium'>Review</Link>
                     </Box>
                     <Box>
                       <Button><LuShoppingCart className='text-xl text-blue-500'/></Button>

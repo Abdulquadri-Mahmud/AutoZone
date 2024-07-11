@@ -3,32 +3,45 @@ import {
   Table,
   Thead,
   Tbody,
-  Tfoot,
   Tr,
   Th,
   Td,
-  TableCaption,
   TableContainer,
 } from '@chakra-ui/react'
 
-import { useContext, useRef } from 'react';
+import { useContext, useRef, useState } from 'react';
 
 import { CarDetailsContext } from '../../pages/CarDetails'
 import { IoLocationOutline, IoStar } from 'react-icons/io5';
 import { BsCurrencyDollar } from 'react-icons/bs';
+import { useSelector } from 'react-redux';
 
 export default function CarDetails() {
-
   const item = useContext(CarDetailsContext);
-  console.log(item);
+  const { currentUser } = useSelector(((state) => state.user));
 
-  // let switchImage = useRef(null);
-   
-  // let display = useRef(null);
-  
-  // const handleClick = (img) => {
-  //     display.current.src = img;
-  // }
+  let emptyCart = []
+
+  const cartItem = {
+    name: item.name,
+    make: item.make,
+    model: item.model,
+    price: item.price,
+    condition: item.condition,
+    miles: item.miles,
+    location: item.location,
+    deal: item.deal,
+    year: item.year,
+    exteriorColor: item.exteriorColor,
+    interiorColor: item.interiorColor,
+    transmission: item.transmission,
+    image: item.carimage
+  };
+  const handleAddToCart = () => {
+    emptyCart.push({...cartItem});
+    localStorage.setItem('Selected Item', JSON.stringify(emptyCart));
+  }
+  console.log(emptyCart.length);
 
   return (
     <Flex flexWrap={'wrap'} gap={5} maxW={{md: '95%', base: '97%'}} mx={'auto'} rounded={5} padding={4} color={useColorModeValue('black')} bg={useColorModeValue('gray.200')} mt={'2rem'}>
@@ -86,7 +99,7 @@ export default function CarDetails() {
             <Text className='flex items-center gap-1 font-bold'><span className='flex items-center font-medium'><IoLocationOutline className='text-blue-500'/>{item.location}</span></Text>
           </Flex>
           <Box mt={4}>
-            <Button bg={useColorModeValue('blue.500')} _hover={{bg: useColorModeValue('blue.400')}} color={useColorModeValue('white')}>Add To cart</Button>
+            <Button onClick={handleAddToCart} bg={useColorModeValue('blue.500')} _hover={{bg: useColorModeValue('blue.400')}} color={useColorModeValue('white')}>Add To cart</Button>
           </Box>
         </Box>
       </Box>

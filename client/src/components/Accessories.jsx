@@ -10,7 +10,8 @@ import {
     Box,
     Heading,
     Stack,
-    Flex
+    Flex,
+    useColorModeValue
   } from '@chakra-ui/react'
 
 import { useState } from 'react';
@@ -21,7 +22,7 @@ export default function Accessories() {
     const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <>
-        <Button colorScheme='blue' onClick={onOpen} color={'black'} px={0} bg={'transparent'} _hover={{bg: 'tranparent'}} _focus={{bg: 'transparent'}}>
+        <Button colorScheme='blue' onClick={onOpen} color={useColorModeValue('black', 'white')} px={0} bg={'transparent'} _hover={{bg: 'tranparent'}} _focus={{bg: 'transparent'}}>
             Accessories
         </Button>
         <Drawer onClose={onClose} size={{lg: 'lg',md: 'md', base: 'xs'}} isOpen={isOpen}>

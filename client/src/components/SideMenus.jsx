@@ -1,4 +1,4 @@
-import { Box, Flex, Heading, Menu, MenuButton, MenuItem, Button, MenuList, Stack, Text } from '@chakra-ui/react'
+import { Box, Flex, Heading, Menu, MenuButton, MenuItem, Button, MenuList, Stack, Text, useColorModeValue } from '@chakra-ui/react'
 import React from 'react'
 
 import { Link } from 'react-router-dom';
@@ -20,19 +20,19 @@ export default function SideMenus() {
                         Listing
                     </MenuButton>
                     <MenuList width={'100px'} px={3} border={'none'} boxShadow={'md'} bg={'blue.500'}>
-                        <MenuItem my={2} _hover={{bg: 'white', color: 'black'}} bg={'transparent'} color={'white'} rounded={'sm'} py={2} px={2}>
+                        <MenuItem my={2} _hover={{bg: 'white', color: 'black'}} bg={'transparent'} color={useColorModeValue('white', 'white')} rounded={'sm'} py={2} px={2}>
                             <Link to='/car-grid' className=''>Car Grid</Link>
                         </MenuItem>
-                        <MenuItem my={2} _hover={{bg: 'white', color: 'black'}} bg={'transparent'} color={'white'} rounded={'sm'} py={2} px={2}>
+                        <MenuItem my={2} _hover={{bg: 'white', color: 'black'}} bg={'transparent'} color={useColorModeValue('white', 'white')} rounded={'sm'} py={2} px={2}>
                             <Link to={'/car-list'}>Car List</Link>
                         </MenuItem>
-                        <MenuItem my={2} _hover={{bg: 'white', color: 'black'}} bg={'transparent'} color={'white'} rounded={'sm'} py={2} px={2}>
+                        <MenuItem my={2} _hover={{bg: 'white', color: 'black'}} bg={'transparent'} color={useColorModeValue('white', 'white')} rounded={'sm'} py={2} px={2}>
                             <Link to={'/'}>Car Detail</Link>
                         </MenuItem>
-                        <MenuItem my={2} _hover={{bg: 'white', color: 'black'}} bg={'transparent'} color={'white'} rounded={'sm'} py={2} px={2}>
+                        <MenuItem my={2} _hover={{bg: 'white', color: 'black'}} bg={'transparent'} color={useColorModeValue('white', 'white')} rounded={'sm'} py={2} px={2}>
                             <Link to={'/accessories-list'}>Accessories List</Link>
                         </MenuItem>
-                        <MenuItem my={2} _hover={{bg: 'white', color: 'black'}} bg={'transparent'} color={'white'} rounded={'sm'} py={2} px={2}>
+                        <MenuItem my={2} _hover={{bg: 'white', color: 'black'}} bg={'transparent'} color={useColorModeValue('white', 'white')} rounded={'sm'} py={2} px={2}>
                             <Link to={'/accessories-list'}>Accessories Grid</Link>
                         </MenuItem>
                     </MenuList>
@@ -45,10 +45,10 @@ export default function SideMenus() {
                     Blogs
                 </MenuButton>
                 <MenuList width={'100px'} px={3} border={'none'} boxShadow={'md'} bg={'blue.500'}>
-                    <MenuItem my={2} _hover={{bg: 'white', color: 'black'}} bg={'transparent'} color={'white'} rounded={'sm'} py={2} px={2}>
+                    <MenuItem my={2} _hover={{bg: 'white', color: 'black'}} bg={'transparent'} color={useColorModeValue('white', 'white')} rounded={'sm'} py={2} px={2}>
                         <Link to='/' className=''>Blog List</Link>
                     </MenuItem>
-                    <MenuItem _hover={{bg: 'white', color: 'black'}} bg={'transparent'} color={'white'} rounded={'sm'} py={2} px={2}>
+                    <MenuItem _hover={{bg: 'white', color: 'black'}} bg={'transparent'} color={useColorModeValue('white', 'white')} rounded={'sm'} py={2} px={2}>
                         <Link to={'/'}>Blog Details</Link>
                     </MenuItem>
                 </MenuList>
@@ -61,25 +61,25 @@ export default function SideMenus() {
                     Pages
                 </MenuButton>
                 <MenuList width={'100px'} px={2} border={'none'} boxShadow={'md'} bg={'blue.500'}>
-                    <MenuItem my={1}  _hover={{bg: 'white', color: 'black'}} bg={'transparent'} color={'white'} rounded={'sm'} py={2} px={2}>
+                    <MenuItem my={1}  _hover={{bg: 'white', color: 'black'}} bg={'transparent'} color={useColorModeValue('white', 'white')} rounded={'sm'} py={2} px={2}>
                         <Link to='/about' className=''>About Us</Link>
                     </MenuItem>
-                    <MenuItem my={1}  _hover={{bg: 'white', color: 'black'}} bg={'transparent'} color={'white'} rounded={'sm'} py={2} px={2}>
+                    <MenuItem my={1}  _hover={{bg: 'white', color: 'black'}} bg={'transparent'} color={useColorModeValue('white', 'white')} rounded={'sm'} py={2} px={2}>
                         <Link to={'/'}>Cart Page</Link>
                     </MenuItem>
-                    <MenuItem my={1}  _hover={{bg: 'white', color: 'black'}} bg={'transparent'} color={'white'} rounded={'sm'} py={2} px={2}>
+                    <MenuItem my={1}  _hover={{bg: 'white', color: 'black'}} bg={'transparent'} color={useColorModeValue('white', 'white')} rounded={'sm'} py={2} px={2}>
                         <Link to={'/'}>Check Out</Link>
                     </MenuItem>
-                    <MenuItem my={1}  _hover={{bg: 'white', color: 'black'}} bg={'transparent'} color={'white'} rounded={'sm'} py={2} px={2}>
+                    <MenuItem my={1}  _hover={{bg: 'white', color: 'black'}} bg={'transparent'} color={useColorModeValue('white', 'white')} rounded={'sm'} py={2} px={2}>
                         <Link to={'/'}>Dahsboard</Link>
                     </MenuItem>
-                    <MenuItem my={1}  _hover={{bg: 'white', color: 'black'}} bg={'transparent'} color={'white'} rounded={'sm'} py={2} px={2}>
+                    <MenuItem my={1}  _hover={{bg: 'white', color: 'black'}} bg={'transparent'} color={useColorModeValue('white', 'white')} rounded={'sm'} py={2} px={2}>
                         <Link to={'/'}>Contact Us</Link>
                     </MenuItem>
-                    <MenuItem my={1}  _hover={{bg: 'white', color: 'black'}} bg={'transparent'} color={'white'} rounded={'sm'} py={2} px={2}>
+                    <MenuItem my={1}  _hover={{bg: 'white', color: 'black'}} bg={'transparent'} color={useColorModeValue('white', 'white')} rounded={'sm'} py={2} px={2}>
                         <Link to={'/signin'}>Sign In</Link>
                     </MenuItem>
-                    <MenuItem my={1}  _hover={{bg: 'white', color: 'black'}} bg={'transparent'} color={'white'} rounded={'sm'} py={2} px={2}>Quick View</MenuItem>
+                    <MenuItem my={1}  _hover={{bg: 'white', color: 'black'}} bg={'transparent'} color={useColorModeValue('white', 'white')} rounded={'sm'} py={2} px={2}>Quick View</MenuItem>
                 </MenuList>
             </Menu>
         </Box>

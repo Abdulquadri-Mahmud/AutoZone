@@ -91,12 +91,13 @@ import OffRoadLightReviewPage from '../pages/Accessories/Reviews/OffRoadLightRev
 import OffRoadLightReviewPage2 from '../pages/Accessories/Reviews/reviews2/OffRoadLightReviewPage2'
 import SignalLightReviewPage from '../pages/Accessories/Reviews/SignalLightReviewPage'
 import SignalLightReviewPage2 from '../pages/Accessories/Reviews/reviews2/SignalLightReviewPage2'
+import CarReviews from '../pages/CarReviews'
 
 export default function RoutesPages() {
 
   return (
     <Router>
-        <Header/>
+        {/* <Header/> */}
         <Routes>
           <Route path='/' element={<Home/>}/>
           <Route path='/about' element={<About/>}/>
@@ -112,6 +113,8 @@ export default function RoutesPages() {
           {/* cars routes */}
           <Route path='/car-sales' element={<CarProducts/>}/>
           <Route path='/car-details/:carID' element={<CarDetailsPage/>}/>
+          <Route path='/car-reviews/:carID' element={<CarReviews/>}/>
+          
           <Route element={<PrivateRoute/>}>
             <Route path='/create-car-listings' element={<CreateCarListing/>}/>
           </Route>
@@ -147,7 +150,7 @@ export default function RoutesPages() {
           <Route path='/ledlights' element={<LedlightPage/>}/>
           <Route path='/offroadlights' element={<OffRoadLightPage/>}/>
           <Route path='/signallights' element={<SignalLightPage/>}/>
-
+  
           {/* Accessories Reviews */}
           <Route path='/stereo-reviews/:accessoryId' element={<StereoReviewPage/>}/>
           <Route path='/speaker-reviews/:accessoryId' element={<SpeakerReviewPage/>}/>
