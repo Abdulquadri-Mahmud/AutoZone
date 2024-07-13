@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import {Box, Flex, Heading, Button, useColorModeValue,Avatar, Text, Stack } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
 import Themes from './Themes';
@@ -7,11 +7,6 @@ import { FaCartPlus, FaFacebookF, FaRegClock, FaSearch, FaSignInAlt } from "reac
 import { FaPhoneVolume } from "react-icons/fa6";
 import { RiMenu3Line } from "react-icons/ri";
 import { MdOutlineClose } from "react-icons/md";
-// admin icon
-import { MdAdminPanelSettings } from "react-icons/md";
-
-import { useDispatch, useSelector } from 'react-redux';
-
 import {
   Menu,
   MenuButton,
@@ -31,8 +26,10 @@ import Settings from './Settings';
 import Accessories from './Accessories';
 import DesktopAccessories from './DesktopAccessories';
 import Carts from './Add Cart/Carts';
+import SearchInput from './Accessories/SearchInput';
 
 export default function Header() {
+  
   const [open, setOpen] = useState(false);
 
   const handleClick = () => {
@@ -52,24 +49,24 @@ export default function Header() {
         </Link>
       </Flex>
       <Box width={'100%'} height={'100%'} fontWeight={500} position={'relative'}>
-        <Box display={{md: 'block', base: 'none'}} width={'85%'} mx={'auto'}>
+        <Box display={{lg: 'block', base: 'none'}} width={'85%'} mx={'auto'}>
           <Flex justifyContent={'space-between'} alignItems={'center'} roundedBottomLeft={30} roundedBottomRight={30} px={8} py={2} color={useColorModeValue('white')} bg={useColorModeValue('blue.500', 'gray.700')}>
             <Box>
-              <Text fontSize={13}>Hot days! - 50% Get ready for summer!</Text>
+              <Text fontSize={12}>Hot days! - 50% Get ready for summer!</Text>
             </Box>
             <Box>
-              <Text className='flex items-center gap-2' fontSize={13}><FaRegClock/>Mon - Friday: 09am to 06px</Text>
+              <Text className='flex items-center gap-2' fontSize={12}><FaRegClock/>Mon - Friday: 09am to 06px</Text>
             </Box>
             <Link to={'tel:+2347047594667'}>
-              <Flex alignItems={'center'} gap={4}>
+              <Flex alignItems={'center'} gap={1}>
                 <FaPhoneVolume className='text-sm'/>
-                <Text fontSize={13}>+234 704 7594 667</Text>
+                <Text fontSize={12}>+234 704 7594 667</Text>
               </Flex>
             </Link>
           </Flex>
         </Box>
         <Flex width={'100%'} justifyContent={'space-around'} alignItems={'center'} bg={useColorModeValue('')} padding={{md: '16px', base: 0}} position={'sticky'} zIndex={100} color={useColorModeValue('black')} className=''>
-          <Box display={{md: 'block', base:'none'}}>
+          <Box display={{lg: 'block', base:'none'}}>
             <Flex alignItems={'center'} gap={6} fontWeight={600}>
                 <Link to='/' className='hover:text-blue-500 duration-150'>Home</Link>
                 <Box className='accessParent'>
@@ -77,7 +74,7 @@ export default function Header() {
                     <Box display={{md: 'none', base: 'block'}}>
                       <Accessories/>
                     </Box>
-                    <Box display={{md: 'block', base: 'none'}}>
+                  <Box display={{md: 'block', base: 'none'}}>
                       <DesktopAccessories/>
                     </Box>
                   </Box>
@@ -89,18 +86,16 @@ export default function Header() {
                       Listing
                     </MenuButton>
                     <MenuList width={'100px'} border={'none'} px={3}>
-                      <MenuItem my={2} _hover={{bg: 'blue.500', color: 'white'}} rounded={5} py={2} px={5}>
-                        <Link to='/car-grid' className=''>Car Grid</Link>
+                      <MenuItem my={2} _hover={{bg: 'blue.500', color: 'white'}} bg={useColorModeValue('', 'gray.800')} rounded={5} py={3} px={5}>
+                        <Link to='/search' className=''>Car Listings</Link>
                       </MenuItem>
-                      <MenuItem _hover={{bg: 'blue.500', color: 'white'}} rounded={5} py={2} px={5}>
+                      {/* <MenuItem _hover={{bg: 'blue.500', color: 'white'}} rounded={5} py={2} px={5}>
                         <Link to={'/car-list'}>Car List</Link>
-                      </MenuItem>
-                      <MenuItem _hover={{bg: 'blue.500', color: 'white'}} rounded={5} py={2} px={5}>
+                      </MenuItem> */}
+                      <MenuItem _hover={{bg: 'blue.500', color: 'white'}} bg={useColorModeValue('', 'gray.800')} rounded={5} py={3} px={5}>
                         <Link to={'/'}>Accessories List</Link>
                       </MenuItem>
-                      <MenuItem _hover={{bg: 'blue.500', color: 'white'}} rounded={5} py={2} px={5}>
-                        <Link to={'/'}>Accessories List</Link>
-                      </MenuItem>
+
                     </MenuList>
                   </Menu>
                 </Box>
@@ -121,7 +116,7 @@ export default function Header() {
                   </Menu>
                 </Box>
                 <Box>
-                  <Link to={'/car-sales'} className='hover:text-blue-500 duration-200'>Buy Car</Link>
+                  {/* <Link to={'/car-sales'} className='hover:text-blue-500 duration-200'>Buy Car</Link> */}
                 </Box>
                 <Box>
                   <Menu>
@@ -192,15 +187,15 @@ export default function Header() {
           </Box>
           
             <Flex alignItems={'center'} justifyContent={'space-between'}>
-                <Box display={{md: 'block', base: 'none'}}>
-                  <Flex alignItems={'center'} gap={3}>
+                <Box display={{lg: 'block', base: 'none'}}>
+                  <Flex alignItems={'center'} gap={1}>
                     <Box bg={useColorModeValue('white', 'gray.700')}px={useColorModeValue(0, 6)} rounded={'full'}>
-                      <Flex alignItems={'center'} gap={3}>
+                      <Flex alignItems={'center'} gap={1}>
                         <Box>
-                          <FaSearch className='text-xl'/>
+                          <SearchInput/>
                         </Box>
                         <Box>
-                          {/* <Carts/> */}
+                          <Carts/>
                         </Box>
                         <Box>
                           <UserAuth/>
@@ -218,7 +213,7 @@ export default function Header() {
             </Flex>
 
             {/* menu slider */}
-            <Box display={{base: 'block', md: 'none'}} width={'100%'}>
+            <Box display={{base: 'block', lg: 'none'}} width={'100%'}>
               <Box height={'100%'}>
                   <Flex alignItems={'center'} gap={{md: 3, base: 1}} position={'absolute'} top={'1.7rem'} right={'1rem'} cursor={'pointer'}>
                     {/* <Settings/> */}

@@ -5,16 +5,10 @@ import { IoIosSpeedometer } from 'react-icons/io';
 import { IoLocationOutline, IoStar } from 'react-icons/io5';
 import { LuShoppingCart } from 'react-icons/lu';
 import { Link } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { cartFailure, cartStart, cartSuccess } from '../../redux/user/userCart';
-
-// import { emptyCart } from './CarList';
 import Header from '../Header';
 
 export default function CarGrid() {
   const [cars, setCar] = useState({});
-
-  let dispatch = useDispatch();
 
    useEffect(() => {
     const fetCars = async () => {

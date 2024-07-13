@@ -111,7 +111,7 @@ export default function RoutesPages() {
           </Route>
 
           {/* cars routes */}
-          <Route path='/car-sales' element={<CarProducts/>}/>
+          <Route path='/search' element={<CarProducts/>}/>
           <Route path='/car-details/:carID' element={<CarDetailsPage/>}/>
           <Route path='/car-reviews/:carID' element={<CarReviews/>}/>
           

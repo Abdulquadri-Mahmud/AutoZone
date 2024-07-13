@@ -4,6 +4,7 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import Custom from './Custom';
 import Accessories from './Accessories';
+import Settings from './Settings';
 
 export default function SideMenus() {
   return (
@@ -86,6 +87,9 @@ export default function SideMenus() {
         <Box className='accessParent'>
             <Custom/>
         </Box>
+        <Flex alignItems={'center'}>
+            <Text>Settings</Text><Settings/>
+        </Flex>
     </Flex>
 </Box>
   )

@@ -1,5 +1,5 @@
 import { Box, Button, Flex, Heading, Image, Text, useColorModeValue } from '@chakra-ui/react'
-import React, { useEffect, useState } from 'react'
+import React, { createContext, useEffect, useState } from 'react'
 import { BsCurrencyDollar } from 'react-icons/bs';
 import { IoIosSpeedometer } from 'react-icons/io';
 import { IoLocationOutline, IoStar } from 'react-icons/io5';
@@ -7,7 +7,7 @@ import { LuShoppingCart } from 'react-icons/lu';
 import { Link } from 'react-router-dom';
 import Header from '../Header';
 
-// export let emptyCart = [];
+export const CartContext = createContext()
 
 export default function CarList() {
   const [cars, setCar] = useState({});
@@ -30,17 +30,25 @@ export default function CarList() {
   }, []);
 
   useEffect(() => {
-    window.localStorage.setItem('cars', modCars);
-  }, [modCars]);
-
+    const oldCars = localStorage.getItem("cars");
+    if (oldCars) {
+      setModCars(JSON.parse(oldCars));
+    }
+  }, []);
+  
   const handleAddToCart2 = (car) => {
-    setModCars(prevModCars => [...prevModCars, car]);
+    const updatedModCars = [...modCars, car];
+    setModCars(updatedModCars);
+    localStorage.setItem("cars", JSON.stringify(updatedModCars));
   } 
-  console.log(modCars);
+
+  // console.log(modCars.length);
 
   return (
     <>
-      <Header/>
+      <CartContext.Provider value={modCars}>
+        <Header modCars={modCars}/>
+      </CartContext.Provider>
       <Box py={'3rem'}>
         <Flex flexDir={'column'} mb={3} color={useColorModeValue('gray.700', 'gray.200')} gap={4} maxW={{md: '96%', base: '96%'}} mx={'auto'}>
           {
@@ -49,7 +57,7 @@ export default function CarList() {
                 <Flex gap={{md: 10, base: 3}} justifyContent={'start'} flexWrap={'wrap'} rounded={5} key={car._id} bg={useColorModeValue('gray.200', 'gray.700')} mb={3} padding={6} position={'relative'}>
                   <Box width={{md: '30%', base: '100%'}} bg={useColorModeValue('white')} mt={4} position={'relative'}>
                     <Image src={car.carimage[0]} alt={car.name} maxW={'100%'} height={'250px'} objectFit={'contain'}></Image>
-                    <Box position={'absolute'} bottom={0} bg={useColorModeValue('gray.100')} px={2} py={1} rounded={4}>
+                    <Box position={'absolute'} bottom={0} left={0} bg={useColorModeValue('gray.100', 'gray.800')} px={2} py={2} rounded={4}>
                       <Text className='text-sm font-medium'>{car.carimage.length} Photos</Text>
                     </Box>
                   </Box>

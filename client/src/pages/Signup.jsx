@@ -17,6 +17,7 @@ import {
     AlertTitle,
     AlertDescription,
 } from '@chakra-ui/react'
+import Header from '../components/Header';
 
 export default function Signup() {
     const [formData, setFormData] = useState({});
@@ -174,7 +175,7 @@ export default function Signup() {
     // bg={useColorModeValue('blue.500')}
   return (
     <>
-    
+        <Header/>
         <Box width={'350px'} mx={'auto'} bgImage={wavy} height={'100%'} bgRepeat={'no-repeat'} bgSize={'250%'} bgPos={'bottom'} mt={'3rem'} padding={3} rounded={10} className='shadow-xl'>
             <Box textAlign={'center'}>
                 <Heading pt={4} color={useColorModeValue('black', 'white')} fontWeight={500} fontSize={27}>Create Account</Heading>

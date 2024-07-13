@@ -52,3 +52,53 @@ export const getSingleCarlist = async (req, res, next) => {
         next(error)
     }
 }
+
+export const searchCar = async (req, res, next) => {
+    try {
+        const limit = parseInt(req.query.limit) || 6;
+
+        const startIndex = parseInt(req.query.startIndex) || 0;
+
+        const searchTerm = req.query.searchTerm || '';
+
+        const condition = req.query.condition || '';
+
+        const make = req.query.make || '';
+
+        const model = req.query.model || '';
+
+        const location = req.query.location || '';
+
+        const year = req.query.year || '';
+
+        const exteriorColor = req.query.exteriorColor || '';
+
+        const interiorColor = req.query.interiorColor || '';
+
+        const transmission = req.query.transmission || '';
+
+        let sort = req.query.sort || 'createdAt';
+
+        let order = req.query.order || 'desc';
+
+        // get cars 
+        const getCar = await CarLists.find({
+            name: { $regex: searchTerm, $options: 'i'},
+            condition: { $regex: condition, $options: 'i'},
+            make: { $regex: make, $options: 'i'},
+            model: { $regex: model, $options: 'i'},
+            location: { $regex: location, $options: 'i'},
+            // year: { $regex: year},
+            exteriorColor: { $regex: exteriorColor, $options: 'i'},
+            interiorColor: { $regex: interiorColor, $options: 'i'},
+            transmission: { $regex: transmission, $options: 'i'},
+        }).sort({
+            [sort]: order
+        }).limit(limit).skip(startIndex);
+
+        return res.status(200).json(getCar);
+
+    } catch (error) {
+        next(error)
+    }
+}

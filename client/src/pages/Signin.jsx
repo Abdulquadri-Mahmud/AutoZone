@@ -11,6 +11,7 @@ import { MdEmail } from "react-icons/md";
 import { RiLockPasswordFill } from "react-icons/ri";
 
 import wavy from '/wave.png';
+import Header from '../components/Header';
 
 export default function Signin() {
     const [formData, setFormData] = useState({});
@@ -144,6 +145,7 @@ export default function Signin() {
 
   return (
     <>
+        <Header/>
         <Box width={'350px'} mx={'auto'} bgImage={wavy} height={'100%'} bgRepeat={'no-repeat'} bgSize={'250%'} bgPos={'bottom'} mt={'3rem'} padding={3} rounded={10} className='shadow-xl'>
             <Box textAlign={'center'}>
                 <Heading pt={4} color={useColorModeValue('black', 'white')} fontWeight={500} fontSize={27}>Good To See You!</Heading>

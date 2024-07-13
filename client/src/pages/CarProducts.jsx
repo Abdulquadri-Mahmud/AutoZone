@@ -3,6 +3,7 @@ import React, { Suspense, createContext, useEffect, useState } from 'react';
 
 import Loader from '../components/Loaders/CarGridLoader';
 import CarSalesList from '../components/Cars/CarSalesList';
+import Header from '../components/Header';
 
 export const CarListContext = createContext();
 
@@ -36,6 +37,7 @@ export default function CarProducts() {
   
   return (
     <Box>
+      <Header/>
       <CarListContext.Provider value={cars}>
           <CarSalesList cars={cars}/>
         {/* <Suspense fallback={<Loader/>}>

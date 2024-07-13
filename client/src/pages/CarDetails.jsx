@@ -5,6 +5,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom'
 // import CarDetails from ''
 
 import CarListLoader from '../components/Loaders/CarListLoader';
+import Header from '../components/Header';
 
 export const CarDetailsContext = createContext();
 
@@ -44,6 +45,7 @@ export default function CarDetailsPage() {
 
   return (
     <Box>
+      <Header/>
       <CarDetailsContext.Provider value={getCarId}>
         <Suspense fallback={'loading'}>
           <CarDetails getCarId={getCarId}/>

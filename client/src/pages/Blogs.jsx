@@ -1,6 +1,7 @@
 import React, { Suspense, useEffect, useState } from 'react'
 
 import BlogLoader from '../components/Loaders/BlogLoader';
+import Header from '../components/Header';
 
 export default function Blogs() {
   
@@ -13,8 +14,11 @@ export default function Blogs() {
   });
 
   return (
-    <Suspense fallback={<BlogLoader/>}>
-      <ListOfBlogs/>
-    </Suspense>
+    <>
+      <Header/>
+      <Suspense fallback={<BlogLoader/>}>
+        <ListOfBlogs/>
+      </Suspense>
+    </>
   )
 }
