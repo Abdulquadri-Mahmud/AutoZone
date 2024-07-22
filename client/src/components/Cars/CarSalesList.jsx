@@ -3,6 +3,7 @@ import { Box, Flex, Button, Heading, Text, useColorModeValue, TabIndicator, Imag
 
 // import {Link} from 'react-router-dom';
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react';
+
 import { BsGrid3X3GapFill } from "react-icons/bs";
 import { FaListUl } from "react-icons/fa";
 import { IoStar } from "react-icons/io5";
@@ -11,36 +12,129 @@ import { LuShoppingCart } from "react-icons/lu";
 import { IoLocationOutline } from "react-icons/io5";
 import { IoIosSpeedometer } from "react-icons/io";
 
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useContext, useEffect, useState } from 'react';
 import { CarListContext } from '../../pages/CarProducts';
 import SaveCar from '../SaveCar';
+import { model } from 'mongoose';
 
 export default function CarSalesList() {
+  const [cars, setCar] = useState({});
+  const [loading, setLoading] = useState(false);
+  const [modCars, setModCars] = useState([]);
 
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchData, setSearchData] = useState({
+    searchTerm : '',
+    exteriorColor: '',
+    interiorColor: '',
+    condition: '',
+    make : '', 
+    model: '',
+    location: '',
+    transmission: '',
+    sort: 'created_at',
+    order: 'desc'
+  });
 
-  const [carStatus, setCarStatus] = useState('New')
-  const [carModel, setCarModel] = useState('Toyota')
-  const [carLocation, setCarLocation] = useState('Lagos')
-  const [carYear, setCarYear] = useState('2017');
-
-  const cars = useContext(CarListContext);
-
-  const carSearch = {
-    carStatus, carModel, carLocation, carYear
-  };
-
+  // console.log(cars);
   useEffect(() => {
     const urlParams = new URLSearchParams(location.search);
 
     const searchTermFromUrl = urlParams.get('searchTerm');
+    const exteriorColorFromUrl = urlParams.get('exteriorColor');
+    const interiorColorFromUrl = urlParams.get('interiorColor');
+    const conditionFromUrl = urlParams.get('condition');
+    const makeFromUrl = urlParams.get('make');
+    const modelFromUrl = urlParams.get('model');
+    const locationFromUrl = urlParams.get('location');
+    const transmissionFromUrl = urlParams.get('transmission');
+    const sortFromUrl = urlParams.get('sort');
+    const orderFromUrl = urlParams.get('order');
 
-    if (searchTermFromUrl) {
-      setSearchTerm(searchTermFromUrl)
+    if (searchTermFromUrl || exteriorColorFromUrl || interiorColorFromUrl ||
+      conditionFromUrl || makeFromUrl || modelFromUrl || locationFromUrl ||
+      transmissionFromUrl || sortFromUrl || orderFromUrl
+    ) {
+      setSearchData({ 
+        searchTerm: searchTermFromUrl || '',
+        exteriorColor : exteriorColorFromUrl || '',
+        interiorColor : interiorColorFromUrl || '',
+        condition: conditionFromUrl || 'New',
+        make: makeFromUrl || 'All Make',
+        model: modelFromUrl || 'All Model',
+        location : locationFromUrl || 'Lagos',
+        transmission: transmissionFromUrl || 'Automatic',
+        sort: sortFromUrl || 'created_at',
+        order: orderFromUrl || 'desc'
+      });
     }
+
+    const fetchData = async () => {
+      setLoading(true);
+      const searchQuery = urlParams.toString();
+      const res = await fetch(`/api/cars/search-car?${searchQuery}`)
+      const data = await res.json();
+      console.log(data);
+      setCar(data);
+      setLoading(false)
+    };
+
+    fetchData();
+
   }, [location.search]);
-    console.log(searchTerm)
+
+  let navigate = useNavigate();
+
+  // const cars = useContext(CarListContext);
+
+  const handleChange = (e) => {
+    setSearchData({
+      ...searchData,
+      [e.target.id] : e.target.value
+    });
+
+    if (e.target.id === 'sort_order') {
+      const sort = e.target.value.split('_')[0] || 'created_at';
+      const order = e.target.value.split('_')[1] || 'desc';
+
+      setSearchData({
+        ...searchData,
+        sort, order
+      })
+    }
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const urlParams = new URLSearchParams();
+
+    urlParams.set('searchTerm', searchData.searchTerm);
+    urlParams.set('exteriorColor', searchData.exteriorColor);
+    urlParams.set('interiorColor', searchData.interiorColor);
+    urlParams.set('condition', searchData.condition);
+    urlParams.set('make', searchData.make);
+    urlParams.set('model', searchData.model);
+    urlParams.set('location', searchData.location);
+    urlParams.set('transmission', searchData.transmission);
+    urlParams.set('sort', searchData.sort);
+    urlParams.set('order', searchData.order);
+
+    const searchQuery = urlParams.toString();
+    navigate(`/search?${searchQuery}`)
+  }
+
+  useEffect(() => {
+    const oldCars = localStorage.getItem("cars");
+    if (oldCars) {
+      setModCars(JSON.parse(oldCars));
+    }
+  }, []);
+  
+  const handleAddToCart = (car) => {
+    const updatedModCars = [...modCars, car];
+    setModCars(updatedModCars);
+    localStorage.setItem("cars", JSON.stringify(updatedModCars));
+  } 
 
   return (
     <Box my={{md: '2rem', base: '2rem'}}>
@@ -50,26 +144,29 @@ export default function CarSalesList() {
             <Heading fontSize={20} fontWeight={500} color={'white'} textAlign={'center'}>FIND YOUR RIGHT <br /> CAR</Heading>
           </Flex>
           <Box padding={{md: 2, base: 0}} bg={useColorModeValue('', 'gray.800')}>
-            <form bg={useColorModeValue('white', 'gray.800')} className='p-3 rounded-md flex md:flex-col flex-row flex-wrap items-start justify-start gap-2'>
+            <form onSubmit={handleSubmit} bg={useColorModeValue('white', 'gray.800')} className='p-3 rounded-md flex md:flex-col flex-row flex-wrap items-start justify-start gap-2'>
               <Flex alignItems={'center'} justifyContent={'center'} flexWrap={'wrap'} gap={3} mt={0} width={{md: '100%', base: '100%'}}>
                 <Box mt={{md:0, base: 0}} width={{xl:'100%', md: '30%', base: '48%'}}>
                   <span className='font-medium text-slate-500 text-sm'>Name:</span>
-                  <Input rounded={3} fontSize={14} bg={useColorModeValue('white', 'gray.700')} placeholder={'Name'} value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)} fontWeight={500} border={'none'} outline={'none'} _focus={'none'}/>
+                  <Input rounded={3} fontSize={14} bg={useColorModeValue('white', 'gray.700')} id='searchTerm' placeholder={'Name'} value={searchData.searchTerm}
+                  onChange={handleChange} fontWeight={500} border={'none'} outline={'none'} _focus={'none'}/>
                 </Box>
                 <Box mt={{md: 2, base: 0}} width={{xl:'100%', md: '30%', base: '48%'}}>
                   <span className='font-medium text-slate-500 text-sm'>Exterior Color:</span>
-                  <Input rounded={3} fontSize={14} bg={useColorModeValue('white', 'gray.700')} placeholder={'Exterior Color'} fontWeight={500} border={'none'} outline={'none'} _focus={'none'}/>
+                  <Input rounded={3} fontSize={14} bg={useColorModeValue('white', 'gray.700')} placeholder={'Exterior Color'} fontWeight={500} border={'none'} outline={'none'} 
+                  _focus={'none'} onChange={handleChange}  value={searchData.exteriorColor} id='exteriorColor'/>
                 </Box>
                 <Box mt={{md: 2, base: 0}} width={{xl:'100%', md: '30%', base: '100%'}}>
                   <span className='font-medium text-slate-500 text-sm'>Interior Color:</span>
-                  <Input rounded={3} fontSize={14} bg={useColorModeValue('white', 'gray.700')} placeholder={'Interior Color'} fontWeight={500} border={'none'} outline={'none'} _focus={'none'}/>
+                  <Input rounded={3} fontSize={14} bg={useColorModeValue('white', 'gray.700')} placeholder={'Interior Color'} fontWeight={500} border={'none'} outline={'none'} 
+                  _focus={'none'} onChange={handleChange} value={searchData.interiorColor} id='interiorColor'/>
                 </Box>
               </Flex>
               <Flex alignItems={'center'} justifyContent={'center'} width={'100%'} flexWrap={'wrap'} gap={3}>  
                 <Box mt={{md: 2, base: 0}} width={{xl:'100%', md: '30%', base: '48%'}}>
                   <span className="mt-2 font-medium text-center text-slate-500 text-sm">Condition:</span>
-                  <Select bg={useColorModeValue('white', 'gray.700')} color={useColorModeValue('black')} fontWeight={500} border={'none'} rounded={3} fontSize={14} onChange={(e) => setCarStatus(e.target.value)} value={carStatus}>
+                  <Select bg={useColorModeValue('white', 'gray.700')} color={useColorModeValue('black')} fontWeight={500} border={'none'} rounded={3} fontSize={14}
+                  onChange={handleChange} value={searchData.condition} id='condition'>
                     <option value="new" className='font-medium text-black'>New</option>
                     <option value="used" className='font-medium text-black'>Used</option>
                   </Select>
@@ -77,34 +174,52 @@ export default function CarSalesList() {
                 <Box mt={{md: 2, base: 0}} width={{xl:'100%', md: '30%', base: '48%'}}>
                   <span className="font-medium text-center text-slate-500 text-sm">Make</span>
                   <Select bg={useColorModeValue('white', 'gray.700')} color={useColorModeValue('black')} fontWeight={500} border={'none'} rounded={3} fontSize={14}
-                  onChange={(e) => setCarModel(e.target.value)} value={carModel}>
-                    <option className='font-medium text-black' value="all">All Make</option>
-                    <option className='font-medium text-black' value="Camry">Camry</option>
-                    <option className='font-medium text-black' value="Honda">Honda City</option>
-                    <option className='font-medium text-black' value="Honda">Honda Accord</option>
-                    <option className='font-medium text-black' value="Honda">Honda Elevate</option>
-                    <option className='font-medium text-black' value="Honda CR-V">Honda CR-V</option>
-                    <option className='font-medium text-black' value="Cheverolet">Cheverolet</option>
+                  onChange={handleChange} value={searchData.make} id='make'>
+                    <option className='font-medium text-black' value="toyota">Toyota</option>
+                    <option className='font-medium text-black' value="Honda">Honda</option>
+                    <option className='font-medium text-black' value="Acura">Acura</option>
+                    <option className='font-medium text-black' value="Audi">Audi</option>
+                    <option className='font-medium text-black' value="Bentley">Bentley</option>
+                    <option className='font-medium text-black' value="Mbw">Mbw</option>
+                    <option className='font-medium text-black' value="Cadilac">Cadilac</option>
+                    <option className='font-medium text-black' value="Hyundai">Hyundai</option>
+                    <option className='font-medium text-black' value="Hummer">Hummer</option>
+                    <option className='font-medium text-black' value="Infiniti">Infiniti</option>
+                    <option className='font-medium text-black' value="Isuzu">Isuzu</option>
+                    <option className='font-medium text-black' value="Ford">Ford</option>
+                    <option className='font-medium text-black' value="Chevrolet">Chevrolet</option>
+                    <option className='font-medium text-black' value="Lexus">Lexus</option>
+                    <option className='font-medium text-black' value="Landrover">Land Rover</option>
+                    <option className='font-medium text-black' value="Mercedes-Bnenz">Mercedes-Bnenz</option>
+                    <option className='font-medium text-black' value="Mazda">Mazda</option>
+                    <option className='font-medium text-black' value="Maserati">Maserati</option>
+                    <option className='font-medium text-black' value="Peugeot">Peugeot</option>
+                    <option className='font-medium text-black' value="Suzuki">Suzuki</option>
                   </Select>
                 </Box>
                 <Box mt={{md: 2, base: 0}} width={{xl:'100%', md: '30%', base: '48%'}}>
                   <span className="font-medium text-center text-slate-500 text-sm">Model</span>
                   <Select bg={useColorModeValue('white', 'gray.700')} color={useColorModeValue('black')} fontWeight={500} border={'none'} rounded={3} fontSize={14}
-                  onChange={(e) => setCarModel(e.target.value)} value={carModel}>
-                    <option className='font-medium text-black' value="all">All Model</option>
+                  onChange={handleChange} value={searchData.model} id='model'>
                     <option className='font-medium text-black' value="Camry">Camry</option>
-                    <option className='font-medium text-black' value="Honda">Honda City</option>
-                    <option className='font-medium text-black' value="Honda">Honda Accord</option>
-                    <option className='font-medium text-black' value="Honda">Honda Elevate</option>
+                    <option className='font-medium text-black' value="Honda City">Honda City</option>
+                    <option className='font-medium text-black' value="Honda Accord">Honda Accord</option>
+                    <option className='font-medium text-black' value="Honda Accord EX Sedan">Honda Accord EX Sedan</option>
+                    <option className='font-medium text-black' value="Honda Accord Hybrid EX-L Sedan">Honda Accord Hybrid EX-L Sedan</option>
+                    <option className='font-medium text-black' value="Honda Elevate">Honda Elevate</option>
+                    <option className='font-medium text-black' value="Mercedes-Benz A-Class 200 Sedan">Mercedes-Benz A-Class 200 Sedan</option>
+                    <option className='font-medium text-black' value="2022 Mercedes Benz A Class">Mercedes Benz A Class </option>
+                    <option className='font-medium text-black' value="Mercedes-Benz A Class Berline AMG">Mercedes-Benz A Class Berline AMG</option>
+                    <option className='font-medium text-black' value="Mercedes-Benz A Class Hatchback">Mercedes-Benz A Class Hatchback</option>
+                    <option className='font-medium text-black' value="Mercedes-Benz B-Class 200 Mini Mpv">Mercedes-Benz B-Class 200 Mini Mpv</option>
                     <option className='font-medium text-black' value="Honda CR-V">Honda CR-V</option>
                     <option className='font-medium text-black' value="Cheverolet">Cheverolet</option>
                   </Select>
                 </Box>
-                <Box mt={{md: 2, base: 0}} width={{xl:'100%', md: '30%', base: '48%'}}>
+                {/* <Box mt={{md: 2, base: 0}} width={{xl:'100%', md: '30%', base: '48%'}}>
                   <span className='font-medium text-slate-500 text-sm'>Year:</span>
                   <Select bg={useColorModeValue('white', 'gray.700')} color={useColorModeValue('black')} fontWeight={500} border={'none'} rounded={3}
-                  onChange={(e) => setCarYear(e.target.value)} value={carYear}>
-                    <option className='font-medium text-black' value="new">Year</option>
+                  onChange={handleChange} value={searchData.year} id='year'>
                     <option className='font-medium text-black' value="2017">2017</option>
                     <option className='font-medium text-black' value="2018">2018</option>
                     <option className='font-medium text-black' value="2019">2019</option>
@@ -114,11 +229,11 @@ export default function CarSalesList() {
                     <option className='font-medium text-black' value="2023">2023</option>
                     <option className='font-medium text-black' value="2024">2024</option>
                   </Select>
-                </Box>
+                </Box> */}
                 <Box mt={{md: 2, base: 0}} width={{xl:'100%', md: '30%', base: '80%'}}>
                   <span className='font-medium text-slate-500 text-sm'>Location:</span>
                   <Select bg={useColorModeValue('white', 'gray.700')} color={useColorModeValue('black')} fontWeight={500} border={'none'} rounded={3} fontSize={14}
-                  onChange={(e) => setCarLocation(e.target.value)} value={carLocation}>
+                  onChange={handleChange} value={searchData.location} id='location'>
                     <option className='font-medium text-black' value="Lagos">Lagos</option>
                     <option className='font-medium text-black' value="Ogun">Ogun</option>
                     <option className='font-medium text-black' value="Oyo">Oyo</option>
@@ -126,9 +241,25 @@ export default function CarSalesList() {
                     <option className='font-medium text-black' value="Osun">Osun</option>
                   </Select>
                 </Box>
+                <Box mt={{md: 2, base: 0}} width={{xl:'100%', md: '30%', base: '80%'}}>
+                  <span className='font-medium text-slate-500 text-sm'>Transmission:</span>
+                  <Select bg={useColorModeValue('white', 'gray.700')} color={useColorModeValue('black')} fontWeight={500} border={'none'} rounded={3} fontSize={14}
+                  onChange={handleChange} value={searchData.transmission} id='transmission'>
+                    <option className='font-medium text-black' value="Automatic">Automatic</option>
+                    <option className='font-medium text-black' value="Manual">Manual</option>
+                  </Select>
+                </Box>
+                <Box mt={{md: 2, base: 0}} width={{xl:'100%', md: '30%', base: '80%'}}>
+                  <span className='font-medium text-slate-500 text-sm'>Sort:</span>
+                  <Select bg={useColorModeValue('white', 'gray.700')} color={useColorModeValue('black')} fontWeight={500} border={'none'} rounded={3} fontSize={14}
+                  onChange={handleChange} defaultValue={'created_at_desc'} id='sort_order'>
+                    <option className='font-medium text-black' value="createdAt_desc">Latest</option>
+                    <option className='font-medium text-black' value="createdAt_asc">Older</option>
+                  </Select>
+                </Box>
               </Flex>
               <Flex justifyContent={'center'} mt={4} width={'100%'}>
-                <Button bg={useColorModeValue('blue.500')} _hover={{bg: 'blue.400'}} width={'150px'} rounded={2} color={'white'}>SEARCH</Button>
+                <Button type='submit' bg={useColorModeValue('blue.500')} _hover={{bg: 'blue.400'}} width={'150px'} rounded={2} color={'white'}>SEARCH</Button>
               </Flex>
             </form>
           </Box>
@@ -152,7 +283,7 @@ export default function CarSalesList() {
                       {
                         cars.length > 0 ? (
                           cars.map((car) => (
-                            <Box key={car._id} width={{md: '32%', base: '100%'}} padding={3} shadow={'md'} 
+                            <Box key={car._id} width={{lg: '32%',md: '45%', base: '100%'}} padding={3} shadow={'md'} 
                               rounded={5} borderWidth={1} borderColor={useColorModeValue('blue.', 'gray.600')} bg={useColorModeValue('white', 'gray.700')} borderRadi3s={5} position={'relative'} className='font-medium'>
                               <Box width={'100%'} mt={4} position={'relative'}>
                                 <Image src={car.carimage[0]} alt={car.name} maxW={'100%'} objectFit={'contain'}></Image>
@@ -200,7 +331,7 @@ export default function CarSalesList() {
                                   <Link to={`/car-details/${car._id}`} className='text-blue-500'>Review</Link>
                                 </Box>
                                 <Box>
-                                  <Button><LuShoppingCart className='text-xl text-blue-500'/></Button>
+                                  <Button onClick={() => handleAddToCart(car)}><LuShoppingCart className='text-xl text-blue-500'/></Button>
                                 </Box>
                               </Flex>
                             </Box>

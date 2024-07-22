@@ -1,6 +1,7 @@
 import { Box } from '@chakra-ui/react';
 import React, { createContext, useEffect, useState } from 'react'
 import Door from '../../components/Accessories/Door';
+import Header from '../../components/Header';
 
 export const DoorContext = createContext();
 
@@ -21,6 +22,7 @@ export default function DoorPage() {
 
   return (
     <Box>
+        <Header/>
         <DoorContext.Provider value={door}>
             <Door door={door}/>
         </DoorContext.Provider>

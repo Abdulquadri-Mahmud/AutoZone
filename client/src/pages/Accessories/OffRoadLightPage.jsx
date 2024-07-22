@@ -1,6 +1,7 @@
 import { Box } from '@chakra-ui/react';
 import React, { createContext, useEffect, useState } from 'react';
 import OffRoadLight from '../../components/Accessories/OffRoadLight';
+import Header from '../../components/Header';
 
 export const OffRoadlightContext = createContext();
 
@@ -21,6 +22,7 @@ export default function OffRoadLightPage() {
 
   return (
     <Box>
+      <Header/>
       <OffRoadlightContext.Provider value={offroadlight}>
         <OffRoadLight offroadlight={offroadlight}/>
       </OffRoadlightContext.Provider>

@@ -1,6 +1,7 @@
 import { Box } from '@chakra-ui/react';
 import React, { createContext, useEffect, useState } from 'react'
 import BodyKit from '../../components/Accessories/BodyKit';
+import Header from '../../components/Header';
 
 export const BodyKitContext = createContext();
 
@@ -21,6 +22,7 @@ export default function BodyKitPage() {
 
   return (
     <Box>
+      <Header/>
       <BodyKitContext.Provider value={bodyKit}>
         <BodyKit bodyKit={bodyKit}/>
       </BodyKitContext.Provider>

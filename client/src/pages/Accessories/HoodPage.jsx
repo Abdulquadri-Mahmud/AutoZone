@@ -1,6 +1,7 @@
 import { Box } from '@chakra-ui/react';
 import React, { createContext, useEffect, useState } from 'react'
 import Hoods from '../../components/Accessories/Hoods';
+import Header from '../../components/Header';
 
 export const HoodContext = createContext();
 
@@ -20,6 +21,7 @@ export default function HoodPage() {
     }, []);
   return (
     <Box>
+      <Header/>
       <HoodContext.Provider value={hood}>
         <Hoods hood={hood}/>
       </HoodContext.Provider>

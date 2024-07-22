@@ -33,6 +33,16 @@ export default function SearchInput() {
         navigate(`/search?${searchQuery}`)
     }
 
+    useEffect(() => {
+        const urlParams = new URLSearchParams(location.search);
+    
+        const searchTermFromUrl = urlParams.get('searchTerm');
+    
+        if (searchTermFromUrl) {
+          setSearchTerm(searchTermFromUrl)
+        }
+      }, [location.search]);
+      
   return (
     <Box>
         <Popover initialFocusRef={initialFocusRef} placement='bottom' closeOnBlur={false}>

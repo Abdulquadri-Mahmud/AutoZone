@@ -1,6 +1,7 @@
 import { Box } from '@chakra-ui/react';
 import React, { createContext, useEffect, useState } from 'react'
 import SteeringWheels from '../../components/Accessories/SteeringWheels';
+import Header from '../../components/Header';
 
 export const SteeringWheelsContext = createContext();
 
@@ -21,6 +22,7 @@ export default function SteeringWheelsPage() {
 
   return (
     <Box>
+      <Header/>
       <SteeringWheelsContext.Provider value={steeringwheels}>
         <SteeringWheels steeringwheels={steeringwheels}/>
       </SteeringWheelsContext.Provider>

@@ -1,6 +1,7 @@
 import { Box } from '@chakra-ui/react';
 import React, { createContext, useEffect, useState } from 'react'
 import CustomGauges from '../../components/Accessories/CustomGauges';
+import Header from '../../components/Header';
 
 export const CustomGaugesContext = createContext();
 
@@ -21,6 +22,7 @@ export default function CustomGaugesPage() {
 
   return (
     <Box>
+      <Header/>
       <CustomGaugesContext.Provider value={customGauges}>
         <CustomGauges customGauges={customGauges}/>
       </CustomGaugesContext.Provider>

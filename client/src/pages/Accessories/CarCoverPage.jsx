@@ -1,6 +1,7 @@
 import { Box } from '@chakra-ui/react';
 import React, { createContext, useEffect, useState } from 'react';
 import CarCover from '../../components/Accessories/CarCover';
+import Header from '../../components/Header';
 
 export const CarCoverContext = createContext();
 
@@ -21,6 +22,7 @@ export default function CarCoverPage() {
 
   return (
     <Box>
+      <Header/>
       <CarCoverContext.Provider value={carCover}>
         <CarCover carCover={carCover}/>
       </CarCoverContext.Provider>

@@ -1,6 +1,7 @@
 import { Box } from '@chakra-ui/react';
 import React, { createContext, useEffect, useState } from 'react';
 import Bumper from '../../components/Accessories/Bumper';
+import Header from '../../components/Header';
 
 export const BumpersContext = createContext();
 
@@ -21,6 +22,7 @@ export default function BumperPage() {
 
   return (
     <Box>
+        <Header/>
         <BumpersContext.Provider value={bumpers}>
             <Bumper bumpers={bumpers}/>
         </BumpersContext.Provider>

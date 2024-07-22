@@ -1,6 +1,7 @@
 import { Box } from '@chakra-ui/react';
 import React, { createContext, useEffect, useState } from 'react'
 import Foglight from '../../components/Accessories/Foglight';
+import Header from '../../components/Header';
 
 export const FoglightsContext = createContext();
 
@@ -21,6 +22,7 @@ export default function FoglightPage() {
 
   return (
     <Box>
+      <Header/>
       <FoglightsContext.Provider value={foglight}>
         <Foglight foglight={foglight}/>
       </FoglightsContext.Provider>

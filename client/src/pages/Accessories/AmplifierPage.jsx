@@ -1,6 +1,7 @@
 import { Box } from '@chakra-ui/react';
 import React, { createContext, useEffect, useState } from 'react'
 import Amplifier from '../../components/Accessories/Amplifier';
+import Header from '../../components/Header';
 
 
 export const AmplifierContext = createContext();
@@ -23,6 +24,7 @@ export default function AmplifierPage() {
     
     return (
     <Box>
+      <Header/>
       <AmplifierContext.Provider value={amplifier}>
         <Amplifier amplifier={amplifier}/>
       </AmplifierContext.Provider>

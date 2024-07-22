@@ -1,6 +1,7 @@
 import { Box } from '@chakra-ui/react';
 import React, { createContext, useEffect, useState } from 'react'
 import Sunshades from '../../components/Accessories/Sunshades';
+import Header from '../../components/Header';
 
 export const SunshadesContext = createContext();
 
@@ -21,6 +22,7 @@ export default function SunshadesPage() {
 
   return (
     <Box>
+      <Header/>
       <SunshadesContext.Provider value={sunshades}>
         <Sunshades sunshades={sunshades}/>
       </SunshadesContext.Provider>

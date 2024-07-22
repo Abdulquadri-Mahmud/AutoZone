@@ -1,6 +1,7 @@
 import { Box } from '@chakra-ui/react';
 import React, { createContext, useEffect, useState } from 'react'
 import Grills from '../../components/Accessories/Grills';
+import Header from '../../components/Header';
 
 export const GrillContext = createContext();
 
@@ -20,6 +21,7 @@ export default function GrillPage() {
     }, []);
   return (
     <Box>
+      <Header/>
       <GrillContext.Provider value={grill}>
         <Grills grill={grill}/>
       </GrillContext.Provider>

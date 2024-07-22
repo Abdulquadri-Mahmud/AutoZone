@@ -1,6 +1,7 @@
 import { Box } from '@chakra-ui/react';
 import React, { createContext, useEffect, useState } from 'react'
 import CustomGrill from '../../components/Accessories/CustomGrill';
+import Header from '../../components/Header';
 
 export const CustomGrillsContext = createContext();
 
@@ -20,6 +21,7 @@ export default function CustomGrillPage() {
     }, []);
   return (
     <Box>
+      <Header/>
       <CustomGrillsContext.Provider value={customGrill}>
         <CustomGrill customGrill={customGrill}/>
       </CustomGrillsContext.Provider>

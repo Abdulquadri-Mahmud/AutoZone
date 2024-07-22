@@ -1,6 +1,7 @@
 import { Box } from '@chakra-ui/react';
 import React, { createContext, useEffect, useState } from 'react';
 import Fender from '../../components/Accessories/Fender';
+import Header from '../../components/Header';
 
 export const FenderContext = createContext();
 
@@ -20,6 +21,7 @@ export default function FenderPage() {
     }, []);
   return (
     <Box>
+        <Header/>
         <FenderContext.Provider value={fender}>
             <Fender fender={fender}/>
         </FenderContext.Provider>

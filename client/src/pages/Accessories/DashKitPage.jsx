@@ -1,6 +1,7 @@
 import { Box } from '@chakra-ui/react';
 import React, { createContext, useEffect, useState } from 'react'
 import DashKit from '../../components/Accessories/DashKit';
+import Header from '../../components/Header';
 
 export const DashKItsContext = createContext();
 
@@ -21,6 +22,7 @@ export default function DashKitPage() {
 
   return (
     <Box>
+      <Header/>
       <DashKItsContext.Provider value={dashkit}>
         <DashKit dashkit={dashkit}/>
       </DashKItsContext.Provider>

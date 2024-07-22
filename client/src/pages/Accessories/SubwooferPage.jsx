@@ -1,6 +1,7 @@
 import { Box } from '@chakra-ui/react';
 import React, { createContext, useEffect, useState } from 'react'
 import Subwoofer from '../../components/Accessories/Subwoofer';
+import Header from '../../components/Header';
 
 export const SubwooferContext = createContext();
 
@@ -21,6 +22,7 @@ export default function SubwooferPage() {
 
   return (
     <Box>
+        <Header/>
         <SubwooferContext.Provider value={subwoofer}>
             <Subwoofer subwoofer={subwoofer}/>
         </SubwooferContext.Provider>

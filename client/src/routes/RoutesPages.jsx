@@ -92,6 +92,7 @@ import OffRoadLightReviewPage2 from '../pages/Accessories/Reviews/reviews2/OffRo
 import SignalLightReviewPage from '../pages/Accessories/Reviews/SignalLightReviewPage'
 import SignalLightReviewPage2 from '../pages/Accessories/Reviews/reviews2/SignalLightReviewPage2'
 import CarReviews from '../pages/CarReviews'
+import SearchPage from '../pages/SearchPage'
 
 export default function RoutesPages() {
 
@@ -111,7 +112,7 @@ export default function RoutesPages() {
           </Route>
 
           {/* cars routes */}
-          <Route path='/search' element={<CarProducts/>}/>
+          <Route path='/search' element={<SearchPage/>}/>
           <Route path='/car-details/:carID' element={<CarDetailsPage/>}/>
           <Route path='/car-reviews/:carID' element={<CarReviews/>}/>
           
@@ -119,7 +120,7 @@ export default function RoutesPages() {
             <Route path='/create-car-listings' element={<CreateCarListing/>}/>
           </Route>
           <Route path='/car-grid' element={<CarGridPage/>}/>
-          <Route path='/car-list' element={<CarListPage/>}/>
+          <Route path='/car-listtings' element={<CarListPage/>}/>
           
           <Route path='/signup' element={<Signup/>}/>
           <Route path='/signin' element={<Signin/>}/>
@@ -214,7 +215,7 @@ export default function RoutesPages() {
 
           <Route path='*' element={<PageNotFound/>}/>
         </Routes>
-        <Footer/>
+        {/* <Footer/> */}
     </Router>
   )
 }

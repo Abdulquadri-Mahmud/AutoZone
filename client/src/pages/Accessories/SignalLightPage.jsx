@@ -1,6 +1,7 @@
 import { Box } from '@chakra-ui/react';
 import React, { createContext, useEffect, useState } from 'react';
 import SignalLight from '../../components/Accessories/SignalLight';
+import Header from '../../components/Header';
 
 export const SignallightContext = createContext();
 
@@ -21,6 +22,7 @@ export default function SignalLightPage() {
 
   return (
     <Box>
+      <Header/>
       <SignallightContext.Provider value={signallight}>
         <SignalLight signallight={signallight}/>
       </SignallightContext.Provider>

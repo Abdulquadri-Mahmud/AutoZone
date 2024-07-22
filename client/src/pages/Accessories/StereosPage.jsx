@@ -1,6 +1,7 @@
 import { Box } from '@chakra-ui/react';
 import React, { createContext, useEffect, useState } from 'react'
 import Stereos from '../../components/Accessories/Stereos';
+import Header from '../../components/Header';
 
 export const StereosContext = createContext();
 
@@ -21,6 +22,7 @@ export default function StereosPage() {
 
   return (
     <Box>
+      <Header/>
       <StereosContext.Provider value={stereo}>
         <Stereos stereo={stereo}/>
       </StereosContext.Provider>

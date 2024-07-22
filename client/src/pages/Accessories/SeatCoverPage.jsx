@@ -1,6 +1,7 @@
 import { Box } from '@chakra-ui/react';
 import React, { createContext, useEffect, useState } from 'react'
 import SeatCover from '../../components/Accessories/SeatCover';
+import Header from '../../components/Header';
 
 export const SeatCoverContext = createContext();
 
@@ -21,6 +22,7 @@ export default function SeatCoverPage() {
 
   return (
     <Box>
+      <Header/>
       <SeatCoverContext.Provider value={seatcover}>
         <SeatCover seatcover={seatcover}/>
       </SeatCoverContext.Provider>

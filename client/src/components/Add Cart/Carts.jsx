@@ -22,7 +22,7 @@ export default function Carts() {
     // const carts = useContext(CartContext);
     // console.log(carts);
     useEffect(() => {
-        const getCart = window.localStorage.getItem('cars');
+        const getCart = localStorage.getItem('cars');
         if (getCart) {
             setCarts(JSON.parse(getCart));
         }
@@ -41,7 +41,7 @@ export default function Carts() {
                 carts.length > 0 ? (
                     <Text position={'absolute'} top={-1} right={2} color={'blue.500'}>{`${carts.length}`}</Text>
                 ) : (
-                    <Text position={'absolute'} top={-1} right={2} color={'blue.500'}>{`${carts.length}`}</Text>
+                    <Text position={'absolute'} top={-1} right={2} color={'blue.500'}>0</Text>
                 )
             }
         </Button>
@@ -51,7 +51,7 @@ export default function Carts() {
                 <DrawerCloseButton />
                 <DrawerHeader fontSize={25}>Your Cart</DrawerHeader>
                 <DrawerBody>
-                    {/* {
+                    {
                         carts.length > 0 ? (
                             carts.map((cart) => (
                                 <Flex alignItems={'center'} justifyContent={'space-between'} gap={3} key={cart._id} width={'100%'} bg={useColorModeValue('gray.200', 'gray.800')} p={2} mb={2} rounded={4}>
@@ -71,7 +71,7 @@ export default function Carts() {
                         ): (
                             <Heading fontWeight={500} fontSize={20} textAlign={'center'} mt={20}>Your Cart Is Empty!</Heading>
                         )
-                    } */}
+                    }
                 </DrawerBody>
                 <DrawerFooter>
                     <Box mb={10}>

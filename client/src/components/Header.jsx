@@ -87,7 +87,7 @@ export default function Header() {
                     </MenuButton>
                     <MenuList width={'100px'} border={'none'} px={3}>
                       <MenuItem my={2} _hover={{bg: 'blue.500', color: 'white'}} bg={useColorModeValue('', 'gray.800')} rounded={5} py={3} px={5}>
-                        <Link to='/search' className=''>Car Listings</Link>
+                        <Link to='/car-listtings' className=''>Car Listings</Link>
                       </MenuItem>
                       {/* <MenuItem _hover={{bg: 'blue.500', color: 'white'}} rounded={5} py={2} px={5}>
                         <Link to={'/car-list'}>Car List</Link>

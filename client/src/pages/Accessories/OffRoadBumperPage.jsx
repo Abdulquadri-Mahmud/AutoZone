@@ -1,6 +1,7 @@
 import { Box } from '@chakra-ui/react';
 import React, { createContext, useEffect, useState } from 'react'
 import OffRoadBumper from '../../components/Accessories/OffRoadBumper';
+import Header from '../../components/Header';
 
 export const OffRoadBumberContext = createContext();
 
@@ -20,6 +21,7 @@ export default function OffRoadBumperPage() {
     }, []);
   return (
     <Box>
+      <Header/>
       <OffRoadBumberContext.Provider value={offroadbumber}>
         <OffRoadBumper offroadbumber={offroadbumber}/>
       </OffRoadBumberContext.Provider>

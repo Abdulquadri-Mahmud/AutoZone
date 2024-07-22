@@ -1,6 +1,7 @@
 import { Box } from '@chakra-ui/react';
 import React, { createContext, useEffect, useState } from 'react';
 import Ledlight from '../../components/Accessories/Ledlight';
+import Header from '../../components/Header';
 
 export const LedlightContext = createContext();
 
@@ -21,6 +22,7 @@ export default function LedlightPage() {
 
   return (
     <Box>
+      <Header/>
       <LedlightContext.Provider value={ledlight}>
         <Ledlight ledlight={ledlight}/>
       </LedlightContext.Provider>
