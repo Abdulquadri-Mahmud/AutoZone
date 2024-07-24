@@ -67,12 +67,12 @@ export const deleteAccount = async (req, res, next) => {
 export const getAllUsers = async (req, res, next) => {
     
     try {
-        const getUsers = await User.find({}).sort({createdAt : -1});
-        // const {password: pass, ...rest} = getUsers;
-        getUsers.map((user) => {
-            const {password: pass, ...rest} = user._doc;
-            console.log(rest);
-        })
+        const excludePassword = {password : 0};
+
+        const getUsers = await User.find({}, {excludePassword});
+
+        // .sort({createdAt : -1});
+        
         res.status(200).json(getUsers);
 
     } catch (error) {

@@ -20,6 +20,7 @@ export default function CreateBlog() {
       handleUploadFile(file);
     }
   }, [file]);
+  
   // handle uplaod file
   const handleUploadFile = (file) => {
     // getting all firebase methods needed

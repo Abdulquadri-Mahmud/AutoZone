@@ -4,6 +4,8 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { MdAddPhotoAlternate } from "react-icons/md";
 import { getDownloadURL, getStorage, ref, uploadBytes, uploadBytesResumable } from 'firebase/storage';
 import { app } from '../firebase';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 export default function UpdateBlog() {
     const { blogID } = useParams();
@@ -102,7 +104,8 @@ export default function UpdateBlog() {
 
   return (
     <Box>
-      <Box maxW={{md:'50%', base: '100%'}} mx={{md:'auto', base: '3'}} my={'5rem'} rounded={5} bg={useColorModeValue('blue.500','gray.700')} className='shadow-md p-7'>
+      <Header/>
+      <Box maxW={{md:'80%', base: '100%'}} mx={{md:'auto', base: '3'}} my={'5rem'} rounded={5} bg={useColorModeValue('blue.500','gray.700')} className='shadow-md p-7'>
           <Box color={useColorModeValue('white', 'white')}>
             <h1 className='text-center text-2xl'>Update Blog</h1>
           </Box>
@@ -145,7 +148,8 @@ export default function UpdateBlog() {
               </Box>
             </Box>
         </form>
-      </Box> 
+      </Box>
+      <Footer/>
     </Box>
   )
 }

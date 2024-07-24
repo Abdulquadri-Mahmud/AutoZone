@@ -81,3 +81,10 @@ select option{
     cursor: pointer;
     user-select: none;
 }
+
+.scroll::-webkit-scrollbar{
+    width: 5px;
+}
+.scroll::-webkit-scrollbar-thumb{
+    background-color: #fff;
+}

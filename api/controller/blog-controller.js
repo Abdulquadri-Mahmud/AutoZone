@@ -3,9 +3,9 @@ import mongoose from "mongoose";
 import { errorHandler } from "../utils/errorHanlder.js";
 
 export const addBlog = (req, res) => {
-    const { title, snippet, body, imageUrl } = req.body;
+    const { title, postedBy,date, body, imageUrl } = req.body;
 
-    const blog = new Blog({title, snippet, body, imageUrl});
+    const blog = new Blog({title, postedBy,date, body, imageUrl});
     blog.save()
         .then((response) => {
             res.status(200).json('Blog created successfully')
