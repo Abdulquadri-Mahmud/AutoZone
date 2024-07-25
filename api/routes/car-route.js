@@ -7,7 +7,7 @@ import { carListController,
 
 const app = express();
 
-app.post('/carlists', carListController);
+app.post('/uploadcar', carListController);
 app.get('/allcarlists', getAllCarsControllers);
 app.get('/singlecarlists/:id', getSingleCarlist);
 app.get('/search-car', searchCar);

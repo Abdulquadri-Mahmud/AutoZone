@@ -59,11 +59,11 @@ export default function CarSalesList() {
         searchTerm: searchTermFromUrl || '',
         exteriorColor : exteriorColorFromUrl || '',
         interiorColor : interiorColorFromUrl || '',
-        condition: conditionFromUrl || 'New',
-        make: makeFromUrl || 'All Make',
-        model: modelFromUrl || 'All Model',
-        location : locationFromUrl || 'Lagos',
-        transmission: transmissionFromUrl || 'Automatic',
+        condition: conditionFromUrl || '',
+        make: makeFromUrl || '',
+        model: modelFromUrl || '',
+        location : locationFromUrl || '',
+        transmission: transmissionFromUrl || '',
         sort: sortFromUrl || 'created_at',
         order: orderFromUrl || 'desc'
       });
@@ -167,6 +167,7 @@ export default function CarSalesList() {
                   <span className="mt-2 font-medium text-center text-slate-500 text-sm">Condition:</span>
                   <Select bg={useColorModeValue('white', 'gray.700')} color={useColorModeValue('black')} fontWeight={500} border={'none'} rounded={3} fontSize={14}
                   onChange={handleChange} value={searchData.condition} id='condition'>
+                    <option value="" className='font-medium text-black'></option>
                     <option value="new" className='font-medium text-black'>New</option>
                     <option value="used" className='font-medium text-black'>Used</option>
                   </Select>
@@ -175,6 +176,7 @@ export default function CarSalesList() {
                   <span className="font-medium text-center text-slate-500 text-sm">Make</span>
                   <Select bg={useColorModeValue('white', 'gray.700')} color={useColorModeValue('black')} fontWeight={500} border={'none'} rounded={3} fontSize={14}
                   onChange={handleChange} value={searchData.make} id='make'>
+                    <option className='font-medium text-black' value=""></option>
                     <option className='font-medium text-black' value="toyota">Toyota</option>
                     <option className='font-medium text-black' value="Honda">Honda</option>
                     <option className='font-medium text-black' value="Acura">Acura</option>
@@ -201,6 +203,7 @@ export default function CarSalesList() {
                   <span className="font-medium text-center text-slate-500 text-sm">Model</span>
                   <Select bg={useColorModeValue('white', 'gray.700')} color={useColorModeValue('black')} fontWeight={500} border={'none'} rounded={3} fontSize={14}
                   onChange={handleChange} value={searchData.model} id='model'>
+                    <option className='font-medium text-black' value=""></option>
                     <option className='font-medium text-black' value="Camry">Camry</option>
                     <option className='font-medium text-black' value="Honda City">Honda City</option>
                     <option className='font-medium text-black' value="Honda Accord">Honda Accord</option>
@@ -234,6 +237,7 @@ export default function CarSalesList() {
                   <span className='font-medium text-slate-500 text-sm'>Location:</span>
                   <Select bg={useColorModeValue('white', 'gray.700')} color={useColorModeValue('black')} fontWeight={500} border={'none'} rounded={3} fontSize={14}
                   onChange={handleChange} value={searchData.location} id='location'>
+                    <option className='font-medium text-black' value=""></option>
                     <option className='font-medium text-black' value="Lagos">Lagos</option>
                     <option className='font-medium text-black' value="Ogun">Ogun</option>
                     <option className='font-medium text-black' value="Oyo">Oyo</option>
@@ -245,6 +249,7 @@ export default function CarSalesList() {
                   <span className='font-medium text-slate-500 text-sm'>Transmission:</span>
                   <Select bg={useColorModeValue('white', 'gray.700')} color={useColorModeValue('black')} fontWeight={500} border={'none'} rounded={3} fontSize={14}
                   onChange={handleChange} value={searchData.transmission} id='transmission'>
+                    <option className='font-medium text-black' value=""></option>
                     <option className='font-medium text-black' value="Automatic">Automatic</option>
                     <option className='font-medium text-black' value="Manual">Manual</option>
                   </Select>
@@ -283,8 +288,8 @@ export default function CarSalesList() {
                       {
                         cars.length > 0 ? (
                           cars.map((car) => (
-                            <Box key={car._id} width={{lg: '32%',md: '45%', base: '100%'}} padding={3} shadow={'md'} 
-                              rounded={5} borderWidth={1} borderColor={useColorModeValue('blue.', 'gray.600')} bg={useColorModeValue('white', 'gray.700')} borderRadi3s={5} position={'relative'} className='font-medium'>
+                            <Box key={car._id} width={{lg: '32%',md: '45%', base: '100%'}} height={'400px'} overflowY={'scroll'} padding={3} shadow={'md'} 
+                              rounded={5} borderWidth={1} borderColor={useColorModeValue('blue.', 'gray.600')} bg={useColorModeValue('white', 'gray.700')} borderRadi3s={5} position={'relative'} className='font-medium scroll'>
                               <Box width={'100%'} mt={4} position={'relative'}>
                                 <Image src={car.carimage[0]} alt={car.name} maxW={'100%'} objectFit={'contain'}></Image>
                                 <Box position={'absolute'} bottom={0} bg={useColorModeValue('gray.200')} px={2} py={1} rounded={4}>

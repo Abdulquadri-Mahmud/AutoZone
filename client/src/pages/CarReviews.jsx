@@ -15,6 +15,7 @@ import {
     Td,
     TableContainer,
   } from '@chakra-ui/react';
+import Header from '../components/Header';
 
 export default function CarReviews() {
     const [item, setItem] = useState({});
@@ -75,6 +76,7 @@ export default function CarReviews() {
 
     return (
     <Box>
+      <Header/>
     <Flex flexWrap={'wrap'} gap={5} maxW={{md: '95%', base: '97%'}} mx={'auto'} rounded={5} padding={4} color={useColorModeValue('black')} bg={useColorModeValue('gray.200')} mt={'2rem'}>
       <Box width={{md: '45%', base: '100%'}} position={'relative'} bg={useColorModeValue('white')} rounded={5}>
         <Flex justifyContent={{md: 'start', base: 'center'}} p={2}>

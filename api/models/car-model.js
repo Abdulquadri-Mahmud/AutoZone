@@ -22,11 +22,11 @@ var carSalesSchema = new mongoose.Schema({
         required: true
     },
     price: {
-        type: Number,
+        type: String,
         required: true
     },
     miles: {
-        type: Number,
+        type: String,
         required: true
     },
     colors: {

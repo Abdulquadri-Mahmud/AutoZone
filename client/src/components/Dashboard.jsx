@@ -62,7 +62,7 @@ export default function Dashboard() {
                     <Flex justifyContent={'center'} alignItems={'center'} boxSize={45} bg={useColorModeValue('white', 'gray.600')} color={useColorModeValue('black', 'gray.300')} rounded={8}>
                         <IoCarSportSharp className='text-3xl'/>
                     </Flex>
-                    <Text fontSize={{'2xl': 25, md: 20}} fontWeight={500} color={useColorModeValue('white', 'gray.400')}>Total Cars List</Text>
+                    <Text fontSize={{'2xl': 20, md: 20}} fontWeight={500} color={useColorModeValue('white', 'gray.400')}>Total Cars List</Text>
                 </Flex>
                 <Flex justifyContent={'end'} mt={10}>
                     <Flex justifyContent={'center'} alignItems={'center'} rounded={5} boxSize={35} bg={useColorModeValue('white', 'gray.600')}>
@@ -75,7 +75,7 @@ export default function Dashboard() {
                     <Flex justifyContent={'center'} alignItems={'center'} boxSize={45} bg={useColorModeValue('white', 'gray.600')} color={useColorModeValue('black', 'gray.300')} rounded={8}>
                         <TbAutomaticGearbox className='text-3xl'/>
                     </Flex>
-                    <Text fontSize={{'2xl': 25, md: 20}} fontWeight={500} color={useColorModeValue('white', 'gray.400')}>Automatic</Text>
+                    <Text fontSize={{'2xl': 20, md: 20}} fontWeight={500} color={useColorModeValue('white', 'gray.400')}>Automatic</Text>
                 </Flex>
                 <Flex justifyContent={'end'} mt={10}>
                     <Flex justifyContent={'center'} alignItems={'center'} rounded={5} boxSize={35} bg={useColorModeValue('white', 'gray.600')}>
@@ -88,7 +88,7 @@ export default function Dashboard() {
                     <Flex justifyContent={'center'} alignItems={'center'} boxSize={45} bg={useColorModeValue('white', 'gray.600')} color={useColorModeValue('black', 'gray.300')} rounded={8}>
                         <GrManual className='text-3xl'/>
                     </Flex>
-                    <Text fontSize={{'2xl': 25, md: 20}} fontWeight={500} color={useColorModeValue('white', 'gray.400')}>Manual</Text>
+                    <Text fontSize={{'2xl': 20, md: 20}} fontWeight={500} color={useColorModeValue('white', 'gray.400')}>Manual</Text>
                 </Flex>
                 <Flex justifyContent={'end'} mt={10}>
                     <Flex justifyContent={'center'} alignItems={'center'} rounded={5} boxSize={35} bg={useColorModeValue('white', 'gray.600')}>
@@ -101,7 +101,7 @@ export default function Dashboard() {
                     <Flex justifyContent={'center'} alignItems={'center'} boxSize={45} bg={useColorModeValue('white', 'gray.600')} color={useColorModeValue('black', 'gray.300')} rounded={8}>
                         <FaUser className='text-3xl'/>
                     </Flex>
-                    <Text fontSize={{'2xl': 25, md: 20}} fontWeight={500} color={useColorModeValue('white', 'gray.400')}>All Users</Text>
+                    <Text fontSize={{'2xl': 20, md: 20}} fontWeight={500} color={useColorModeValue('white', 'gray.400')}>All Users</Text>
                 </Flex>
                 <Flex justifyContent={'end'} mt={10}>
                     <Flex justifyContent={'center'} alignItems={'center'} rounded={5} boxSize={35} bg={useColorModeValue('white', 'gray.600')}>

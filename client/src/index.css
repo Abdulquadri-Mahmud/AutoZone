@@ -7,6 +7,10 @@ body{
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
+input.input:focus{
+    background: transparent;
+}
+
 input, textarea{
     border: 2px solid black;
     border-radius: 10px;
@@ -84,7 +88,9 @@ select option{
 
 .scroll::-webkit-scrollbar{
     width: 5px;
+    background-color: #fff;
+    border-radius: 10px;
 }
 .scroll::-webkit-scrollbar-thumb{
-    background-color: #fff;
+    background-color: #e4e4e4;
 }

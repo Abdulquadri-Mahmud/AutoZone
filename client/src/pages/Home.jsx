@@ -10,6 +10,7 @@ import schedule from '../assets/img/schedule.png';
 import PopularBrand from '../components/PopularBrand';
 import BlogLoader from '../components/Loaders/BlogLoader';
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 const AllBlogs = React.lazy(() => {
   return new Promise((resolve) => {
@@ -40,6 +41,7 @@ export default function Home() {
           <Testimonial/>
           <PopularBrand/>
       </Box>
+      <Footer/>
     </>
   )
 }

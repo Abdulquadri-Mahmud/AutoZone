@@ -32,7 +32,7 @@ export default function CreateBlog() {
   const [loading, setLoading] = useState(false);
   const [files, setFile] = useState([]);
   const [filesError, setFilesError] = useState(false);
-  const [uploadProgress, setUploadProgress] = useState(null);
+  const [uploadProgress, setUploadProgress] = useState(false);
   const [success, setSuccess] = useState(false);
   const [blogData, setBlogData] = useState({
     imageUrl: [],
@@ -149,6 +149,7 @@ export default function CreateBlog() {
       if (data.success === false) {
         setError(data.message);
         setLoading(false);
+        setSuccess(false);
         return;
       }
       setError(false);
@@ -157,7 +158,8 @@ export default function CreateBlog() {
 
     } catch (error) {
       setError(true);
-      setLoading(false)
+      setLoading(false);
+      setSuccess(false);
     }
   }
 
@@ -223,7 +225,7 @@ export default function CreateBlog() {
                       <AlertDialogOverlay>
                         <AlertDialogContent>
                           <AlertDialogBody>
-                            Blog Posted Successfully Created
+                            Blog Posted Successfully
                           </AlertDialogBody>
                           <AlertDialogFooter>
                             <Button ref={cancelRef} onClick={onClose}>

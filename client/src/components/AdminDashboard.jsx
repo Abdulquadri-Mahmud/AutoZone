@@ -213,55 +213,82 @@ export default function AdminDashboard() {
   const handleAccessListing = () => {
     accessListingFunction();
   }
+
   const handleCreateAccess = () => {
     createAccessListingFunction();
   }
 
   return (
-    <Flex width={'100%'} height={{md: '100vh', base: '100%'}} bg={useColorModeValue('blue.500', '')} p={0} fontFamily={'oblique'}>
+    <Flex width={'100%'} height={{'2xl': '110vh',md: '100vh', base: '100%'}} bg={useColorModeValue('blue.500', '')} p={0} fontFamily={'inherit'}>
       <Box width={'250px'} overflowY={'scroll'} p={3} bg={useColorModeValue('blue.500', 'gray.700')} color={useColorModeValue('white', 'gray.400')} className='scroll'>
         <Flex px={5} justifyContent={'start'} alignItems={'center'} width={'100%'}  height={'50px'} 
         rounded={5}>
-          <Heading fontSize={30} fontWeight={500} fontFamily={'oblique'} color={useColorModeValue('white', 'white')}>AutoZone</Heading>
+          <Heading fontSize={30} fontWeight={500} fontFamily={'inherit'} color={useColorModeValue('white', 'white')}>AutoZone</Heading>
         </Flex>
-        <Flex flexDir={'column'} justifyContent={'start'} alignItems={'start'} gap={{'2xl': 8, md: 1}} mt={{'2xl':20, md: 14}} width={'100%'}>
+        <Flex flexDir={'column'} justifyContent={'start'} alignItems={'start'} gap={1} mt={{'2xl':20, md: 14}} width={'100%'}>
           <Box width={'100%'}>
-            <Flex onClick={handleDashboard} cursor={'pointer'} alignItems={'center'} _hover={{color: useColorModeValue('blue.700', 'gray.100')}} gap={1} width={'100%'}rounded={4} fontWeight={500} textAlign={'start'} py={2.5} px={5} fontSize={{'2xl':20, md: 17}}>Dashborad</Flex>
+            <Flex onClick={handleDashboard} cursor={'pointer'} alignItems={'center'} _hover={{color: useColorModeValue('blue.700', 'gray.100')}} gap={1} width={'100%'}rounded={4} fontWeight={500} textAlign={'start'} py={2.5} px={5} fontSize={16}>Dashborad</Flex>
           </Box>
-          <Accordion allowMultiple width={'100%'}>
+          <Accordion allowMultiple width={'100%'} pl={1}>
             <AccordionItem border={'none'} _hover={{bg: 'transparent'}}>
                 <AccordionButton>
-                  <Box as='span' flex='1' textAlign='left'>
+                  <Box as='span' flex='1' textAlign='left' fontFamily={'inherit'} fontSize={16} fontWeight={500}>
                     Blogs
                   </Box>
                   <AccordionIcon />
                 </AccordionButton>
               <AccordionPanel pb={0}>
                 <Box width={'100%'}>
-                  <Flex onClick={handleBlogs} cursor={'pointer'} alignItems={'center'} _hover={{color: useColorModeValue('blue.700', 'gray.100')}} gap={1} width={'100%'}rounded={4} fontWeight={500} textAlign={'start'} py={2.5} px={5} fontSize={{'2xl':20, md: 17}}>Blogs</Flex>
+                  <Flex onClick={handleBlogs} cursor={'pointer'} alignItems={'center'} _hover={{color: useColorModeValue('blue.700', 'gray.100')}} gap={1} width={'100%'}rounded={4} fontWeight={500} textAlign={'start'} py={2.5} px={5} fontSize={16}>Blogs</Flex>
                 </Box>
                 <Box width={'100%'}>
-                  <Box onClick={handleCreateBlog} cursor={'pointer'} _hover={{color: useColorModeValue('blue.700', 'gray.100')}}  width={'100%'}rounded={4} fontWeight={500} textAlign={'start'} py={2.5} px={5} fontSize={{'2xl':20, md: 17}}>Create Blog</Box>
+                  <Box onClick={handleCreateBlog} cursor={'pointer'} _hover={{color: useColorModeValue('blue.700', 'gray.100')}}  width={'100%'}rounded={4} fontWeight={500} textAlign={'start'} py={2.5} px={5} fontSize={16}>Create Blog</Box>
                 </Box>
               </AccordionPanel>
             </AccordionItem>
           </Accordion>
           <Box width={'100%'}>
-            <Flex onClick={handleOrder} alignItems={'center'} _hover={{color: useColorModeValue('blue.700', 'gray.100')}} gap={1} cursor={'pointer'} width={'100%'} rounded={4} fontWeight={500} textAlign={'start'} py={1} px={5} fontSize={{'2xl':20, md: 17}}>Orders</Flex>
+            <Flex onClick={handleOrder} alignItems={'center'} _hover={{color: useColorModeValue('blue.700', 'gray.100')}} gap={1} cursor={'pointer'} width={'100%'} rounded={4} fontWeight={500} textAlign={'start'} py={1} px={5} fontSize={16}>Orders</Flex>
           </Box>
           
-          <Box width={'100%'}>
-            <Box onClick={carListings} width={'100%'} cursor={'pointer'} _hover={{color: useColorModeValue('blue.700', 'gray.100')}} rounded={4} fontWeight={500} textAlign={'start'} py={2.5} px={5} fontSize={{'2xl':20, md: 17}}>Car Listings</Box>
-          </Box>
-          <Box width={'100%'}>
-            <Box onClick={handleCarListings} width={'100%'} cursor={'pointer'} _hover={{color: useColorModeValue('blue.700', 'gray.100')}} rounded={4} fontWeight={500} textAlign={'start'} py={2.5} px={5} fontSize={{'2xl':20, md: 17}}>Create Car Listings </Box>
-          </Box>
-          <Box width={'100%'}>
-            <Box onClick={handleAccessListing} width={'100%'} cursor={'pointer'} _hover={{color: useColorModeValue('blue.700', 'gray.100')}} rounded={4} fontWeight={500} textAlign={'start'} py={2.5} px={5} fontSize={{'2xl':20, md: 17}}>Accessories Listings</Box>
-          </Box>
-          <Box width={'100%'}>
-            <Box onClick={handleCreateAccess} width={'100%'} cursor={'pointer'} _hover={{color: useColorModeValue('blue.700', 'gray.100')}} rounded={4} fontWeight={500} textAlign={'start'} py={2.5} px={5} fontSize={{'2xl':20, md: 17}}>Create Accessories</Box>
-          </Box>
+          <Accordion allowMultiple width={'100%'} pl={1}>
+            <AccordionItem border={'none'} _hover={{bg: 'transparent'}}>
+              <AccordionButton>
+                <Box as='span' flex='1' textAlign='left' fontFamily={'inherit'} fontSize={16} fontWeight={500}>
+                  Cars
+                </Box>
+                <AccordionIcon />
+              </AccordionButton>
+              <AccordionPanel pb={0}>
+                <Box width={'100%'}>
+                  <Box onClick={carListings} width={'100%'} cursor={'pointer'} _hover={{color: useColorModeValue('blue.700', 'gray.100')}} rounded={4} fontWeight={500} textAlign={'start'} py={2.5} px={5} fontSize={16}>Car Listings</Box>
+                </Box>
+                <Box width={'100%'}>
+                  <Box onClick={handleCarListings} width={'100%'} cursor={'pointer'} _hover={{color: useColorModeValue('blue.700', 'gray.100')}} rounded={4} fontWeight={500} textAlign={'start'} py={2.5} px={5} fontSize={16}>Create Car Listings </Box>
+                </Box>
+              </AccordionPanel>
+            </AccordionItem>
+          </Accordion>
+
+          <Accordion allowMultiple width={'100%'} pl={1}>
+            <AccordionItem border={'none'} _hover={{bg: 'transparent'}}>
+              <AccordionButton>
+                <Box as='span' flex='1' textAlign='left' fontFamily={'inherit'} fontSize={16} fontWeight={500}>
+                  Accessories
+                </Box>
+                <AccordionIcon />
+              </AccordionButton>
+              <AccordionPanel pb={0}>
+                <Box width={'100%'}>
+                  <Box onClick={handleAccessListing} width={'100%'} cursor={'pointer'} _hover={{color: useColorModeValue('blue.700', 'gray.100')}} rounded={4} fontWeight={500} textAlign={'start'} py={2.5} px={5} fontSize={16}>Accessories Listings</Box>
+                </Box>
+                <Box width={'100%'}>
+                  <Box onClick={handleCreateAccess} width={'100%'} cursor={'pointer'} _hover={{color: useColorModeValue('blue.700', 'gray.100')}} rounded={4} fontWeight={500} textAlign={'start'} py={2.5} px={5} fontSize={16}>Create Accessories</Box>
+                </Box>
+              </AccordionPanel>
+            </AccordionItem>
+          </Accordion>
+          
         </Flex>
       </Box>
       <Box bg={useColorModeValue('white', '')} flex={'1'} flexWrap={'wrap'}>

@@ -102,8 +102,8 @@ export default function CarList() {
                                 <IoStar className='text-gray-300'/>
                               </Flex>
                               <Flex justifyContent={'space-between'} mt={{md: 6, base: 4}}>
-                                <Text color={useColorModeValue('gray.600', 'gray.200')} fontSize={13} className='font-bold'>Exterior Color: <span className='font-medium'>{car.exteriorColor}</span></Text>
-                                <Text color={useColorModeValue('gray.600', 'gray.200')} fontSize={13} className='font-bold'>Interior Color: <span className='font-medium'>{car.interiorColor}</span></Text>
+                                <Text width={'45%'} color={useColorModeValue('gray.600', 'gray.200')} fontSize={13} className='font-bold'>Exterior Color: <span className='font-medium'>{car.exteriorColor.slice(0, 30)}</span></Text>
+                                <Text width={'45%'} color={useColorModeValue('gray.600', 'gray.200')} fontSize={13} className='font-bold'>Interior Color: <span className='font-medium'>{car.interiorColor.slice(0, 30)}</span></Text>
                               </Flex>
                               <Flex justifyContent={'space-between'} mt={2}>
                                 <Text color={useColorModeValue('gray.600', 'gray.200')} fontSize={13} className='font-bold'>Make: <span className='font-medium'>{car.make}</span></Text>
