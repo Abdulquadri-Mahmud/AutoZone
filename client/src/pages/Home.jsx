@@ -11,6 +11,7 @@ import PopularBrand from '../components/PopularBrand';
 import BlogLoader from '../components/Loaders/BlogLoader';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import ListOfCars from '../components/ListOfCars';
 
 const AllBlogs = React.lazy(() => {
   return new Promise((resolve) => {
@@ -34,6 +35,9 @@ export default function Home() {
             <Box>
               <img src={schedule} alt="speaker" />
             </Box>
+          </Box>
+          <Box>
+            <ListOfCars/>
           </Box>
           <Suspense fallback={<BlogLoader/>}>
             <AllBlogs/>

@@ -42,11 +42,14 @@ export default function BlogDetailes() {
     <Box>
       <Header/>
       <Box padding={{md:'2rem', base:'2rem'}} my={'3rem'} bg={useColorModeValue('gray.200', 'gray.800')} fontWeight={500} color={useColorModeValue('black')}>
-        <Box w={{md: '45%', base: '100%'}} mx={'auto'}>
-          <Image src={blogId.imageUrl} width={'100%'} rounded={10}/>
+        <Box w={{md: '65%', base: '100%'}} bg={useColorModeValue('', 'gray.700')} p={10} >
+          <Box >
+            <Image src={blogId.imageUrl} width={'100%'} rounded={10}/>
+          </Box>
+
         </Box>
-        <Box mt={4} w={{md: '60%', base: '100%'}}>
-          <Text fontSize={32} color={'blue.500'}>{blogId.title}</Text>
+        <Box w={{md: '90%', base: '100%'}} bg={useColorModeValue('', 'gray.700')} p={5}>
+          <Text fontSize={32} color={''}>{blogId.title}</Text>
           <Text mt={4}>{blogId.body}</Text>
           {
             !currentAdmin ? (

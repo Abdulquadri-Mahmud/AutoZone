@@ -2,6 +2,7 @@ import React, { Suspense, useEffect, useState } from 'react'
 
 import BlogLoader from '../components/Loaders/BlogLoader';
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 export default function Blogs() {
   
@@ -19,6 +20,7 @@ export default function Blogs() {
       <Suspense fallback={<BlogLoader/>}>
         <ListOfBlogs/>
       </Suspense>
+      <Footer/>
     </>
   )
 }

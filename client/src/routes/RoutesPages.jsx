@@ -2,7 +2,6 @@ import React from 'react'
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import Home from '../pages/Home'
 import Header from '../components/Header'
-import CreateBlog from '../pages/CreateBlog'
 import Footer from '../components/Footer'
 import Blogs from '../pages/Blogs'
 import BlogDetailes from '../pages/BlogDetailes'
@@ -17,7 +16,6 @@ import Admin from '../pages/Admin'
 import ForgotPassword from '../pages/ForgotPassword'
 import CarProducts from '../pages/CarProducts'
 import CarDetailsPage from '../pages/CarDetails'
-import CreateCarListing from '../pages/CreateCarListing'
 import AdminDashboardPage from '../pages/AdminDashboardPage'
 import CarGridPage from '../pages/CarGridPage'
 import CarListPage from '../pages/CarListPage'
@@ -105,7 +103,7 @@ export default function RoutesPages() {
           
           {/* blog routes */}
           <Route path='/blogs' element={<Blogs/>}/>
-          <Route path='/createblog' element={<CreateBlog/>}/>
+          {/* <Route path='/createblog' element={<CreateBlog/>}/> */}
           <Route path='/update-blog/:blogID' element={<UpdateBlog/>}/>
           <Route element={<PrivateRoute/>}>
             <Route path='/blogDetailes/:blogID' element={<BlogDetailes/>}/>
@@ -116,9 +114,6 @@ export default function RoutesPages() {
           <Route path='/car-details/:carID' element={<CarDetailsPage/>}/>
           <Route path='/car-reviews/:carID' element={<CarReviews/>}/>
           
-          <Route element={<PrivateRoute/>}>
-            <Route path='/create-car-listings' element={<CreateCarListing/>}/>
-          </Route>
           <Route path='/car-grid' element={<CarGridPage/>}/>
           <Route path='/car-listtings' element={<CarListPage/>}/>
           

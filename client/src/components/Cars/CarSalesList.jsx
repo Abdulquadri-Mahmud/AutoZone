@@ -288,7 +288,7 @@ export default function CarSalesList() {
                       {
                         cars.length > 0 ? (
                           cars.map((car) => (
-                            <Box key={car._id} width={{lg: '32%',md: '45%', base: '100%'}} height={'400px'} overflowY={'scroll'} padding={3} shadow={'md'} 
+                            <Box key={car._id} width={{md: '300px', base: '100%'}} height={'400px'} overflowY={'scroll'} padding={3} shadow={'md'} 
                               rounded={5} borderWidth={1} borderColor={useColorModeValue('blue.', 'gray.600')} bg={useColorModeValue('white', 'gray.700')} borderRadi3s={5} position={'relative'} className='font-medium scroll'>
                               <Box width={'100%'} mt={4} position={'relative'}>
                                 <Image src={car.carimage[0]} alt={car.name} maxW={'100%'} objectFit={'contain'}></Image>
@@ -316,16 +316,16 @@ export default function CarSalesList() {
                                 <IoStar className='text-gray-300'/>
                               </Flex>
                               <Flex justifyContent={'space-between'} mt={{md: 6, base: 4}}>
-                                <Text color={useColorModeValue('gray.600', 'gray.200')} fontSize={13} className='font-bold'>Exterior Color: <span className='font-medium'>{car.exteriorColor}</span></Text>
-                                <Text color={useColorModeValue('gray.600', 'gray.200')} fontSize={13} className='font-bold'>Interior Color: <span className='font-medium'>{car.interiorColor}</span></Text>
+                                <Text color={useColorModeValue('gray.600', 'gray.200')} fontSize={15} className='font-bold'>Exterior Color: <span className='font-medium'>{car.exteriorColor}</span></Text>
+                                <Text color={useColorModeValue('gray.600', 'gray.200')} fontSize={15} className='font-bold'>Interior Color: <span className='font-medium'>{car.interiorColor}</span></Text>
                               </Flex>
                               <Flex justifyContent={'space-between'} mt={2}>
-                                <Text color={useColorModeValue('gray.600', 'gray.200')} fontSize={13} className='font-bold'>Make: <span className='font-medium'>{car.make}</span></Text>
-                                <Text color={useColorModeValue('gray.600', 'gray.200')} fontSize={13} className='font-bold'>Model: <span className='font-medium'>{car.model}</span></Text>
+                                <Text color={useColorModeValue('gray.600', 'gray.200')} fontSize={15} className='font-bold'>Make: <span className='font-medium'>{car.make}</span></Text>
+                                <Text color={useColorModeValue('gray.600', 'gray.200')} fontSize={15} className='font-bold'>Model: <span className='font-medium'>{car.model}</span></Text>
                               </Flex>
                               <Flex justifyContent={'space-between'} mt={2}>
-                                <Text color={useColorModeValue('gray.600', 'gray.200')} fontSize={13} className='font-bold'>Transmission: <span className='font-medium'>{car.transmission}</span></Text>
-                                <Text color={useColorModeValue('gray.600', 'gray.200')} fontSize={13} className='font-bold'>Deal: <span className='font-medium'>{car.deal}</span></Text>
+                                <Text color={useColorModeValue('gray.600', 'gray.200')} fontSize={15} className='font-bold'>Transmission: <span className='font-medium'>{car.transmission}</span></Text>
+                                <Text color={useColorModeValue('gray.600', 'gray.200')} fontSize={15} className='font-bold'>Deal: <span className='font-medium'>{car.deal}</span></Text>
                               </Flex>
                               <Flex justifyContent={'space-between'} mt={2}>
                                 <Text className='flex items-center gap-1 font-bold'>Price: <span className='flex items-center font-medium'><BsCurrencyDollar className='text-sm'/>{car.price}</span></Text>
@@ -354,7 +354,7 @@ export default function CarSalesList() {
                       {
                         cars.length > 0 ? (
                           cars.map((car) => (
-                            <Flex gap={{md: 10, base: 3}} justifyContent={'start'} flexWrap={'wrap'} rounded={5} key={car._id} bg={useColorModeValue('white')} mb={3} padding={3} position={'relative'}>
+                            <Flex gap={{md: 10, base: 3}} justifyContent={'start'} flexWrap={'wrap'} rounded={5} key={car._id} bg={useColorModeValue('white', 'gray.700')} mb={3} padding={3} position={'relative'}>
                               <Box width={{md: '30%', base: '100%'}} bg={useColorModeValue('white')} mt={4} position={'relative'}>
                                 <Image src={car.carimage[0]} alt={car.name} maxW={'100%'} height={'250px'} objectFit={'contain'}></Image>
                                 <Box position={'absolute'} bottom={0} bg={useColorModeValue('gray.100')} px={2} py={1} rounded={4}>
@@ -379,16 +379,16 @@ export default function CarSalesList() {
                               </Box>
                               <Box width={{md: '30%', base: '100%'}} >
                                 <Flex justifyContent={'space-between'} mt={{md: 6, base: 4}}>
-                                  <Text color={useColorModeValue('gray.600', 'gray.200')} fontSize={13} className='font-bold'>Exterior Color: <span className='font-medium'>{car.exteriorColor}</span></Text>
-                                  <Text color={useColorModeValue('gray.600', 'gray.200')} fontSize={13} className='font-bold'>Interior Color: <span className='font-medium'>{car.interiorColor}</span></Text>
+                                  <Text color={useColorModeValue('gray.600', 'gray.200')} fontSize={15} className='font-bold'>Exterior Color: <span className='font-medium'>{car.exteriorColor}</span></Text>
+                                  <Text color={useColorModeValue('gray.600', 'gray.200')} fontSize={15} className='font-bold'>Interior Color: <span className='font-medium'>{car.interiorColor}</span></Text>
                                 </Flex>
                                 <Flex justifyContent={'space-between'} mt={2}>
-                                  <Text color={useColorModeValue('gray.600', 'gray.200')} fontSize={13} className='font-bold'>Make: <span className='font-medium'>{car.make}</span></Text>
-                                  <Text color={useColorModeValue('gray.600', 'gray.200')} fontSize={13} className='font-bold'>Model: <span className='font-medium'>{car.model}</span></Text>
+                                  <Text color={useColorModeValue('gray.600', 'gray.200')} fontSize={15} className='font-bold'>Make: <span className='font-medium'>{car.make}</span></Text>
+                                  <Text color={useColorModeValue('gray.600', 'gray.200')} fontSize={15} className='font-bold'>Model: <span className='font-medium'>{car.model}</span></Text>
                                 </Flex>
                                 <Flex justifyContent={'space-between'} mt={2}>
-                                  <Text color={useColorModeValue('gray.600', 'gray.200')} fontSize={13} className='font-bold'>Transmission: <span className='font-medium'>{car.transmission}</span></Text>
-                                  <Text color={useColorModeValue('gray.600', 'gray.200')} fontSize={13} className='font-bold'>Deal: <span className='font-medium'>{car.deal}</span></Text>
+                                  <Text color={useColorModeValue('gray.600', 'gray.200')} fontSize={15} className='font-bold'>Transmission: <span className='font-medium'>{car.transmission}</span></Text>
+                                  <Text color={useColorModeValue('gray.600', 'gray.200')} fontSize={15} className='font-bold'>Deal: <span className='font-medium'>{car.deal}</span></Text>
                                 </Flex>
                                 <Flex justifyContent={'space-between'} mt={2}>
                                   <Text className='flex items-center gap-1 font-bold' color={useColorModeValue('gray.600', 'gray.200')}>Price: <spa3 className='flex items-center font-medium'><BsCurrencyDollar className='text-sm'/>{car.price}</spa3></Text>

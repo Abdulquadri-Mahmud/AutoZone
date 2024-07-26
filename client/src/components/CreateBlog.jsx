@@ -223,7 +223,7 @@ export default function CreateBlog() {
                   <>
                     <AlertDialog isOpen={isOpen} leastDestructiveRef={cancelRef} onClose={onClose}>
                       <AlertDialogOverlay>
-                        <AlertDialogContent>
+                        <AlertDialogContent>carlisting
                           <AlertDialogBody>
                             Blog Posted Successfully
                           </AlertDialogBody>
