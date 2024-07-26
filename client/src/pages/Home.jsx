@@ -11,7 +11,7 @@ import PopularBrand from '../components/PopularBrand';
 import BlogLoader from '../components/Loaders/BlogLoader';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import ListOfCars from '../components/ListOfCars';
+import HomeListOfCars from '../components/Cars/HomeListOfCars';
 
 const AllBlogs = React.lazy(() => {
   return new Promise((resolve) => {
@@ -37,7 +37,7 @@ export default function Home() {
             </Box>
           </Box>
           <Box>
-            <ListOfCars/>
+            <HomeListOfCars/>
           </Box>
           <Suspense fallback={<BlogLoader/>}>
             <AllBlogs/>

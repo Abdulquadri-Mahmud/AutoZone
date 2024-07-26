@@ -25,8 +25,12 @@ export const carListController = async (req, res, next) => {
 }
 
 export const getAllCarsControllers = async (req, res, next) => {
+    const limit = parseInt(req.query.limit) || 6;
+    const startIndex = parseInt(req.query.startIndex) || 0;
+
+
     try {
-        const allCars = await CarLists.find({}).sort({createdAt: -1});
+        const allCars = await CarLists.find({}).sort({createdAt: -1}).limit(limit).skip(startIndex);
 
         res.status(200).json(allCars);
     } catch (error) {

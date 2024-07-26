@@ -54,7 +54,7 @@ export default function CarList() {
         <Header modCars={modCars}/>
       </CartContext.Provider>
       <Box py={'3rem'}>
-      <Box bg={useColorModeValue('gray.200')} ml={{md: 5, base: 0}} padding={{md: 3, base: 0}} shadow={'lg'} position={'relative'}>
+        <Box bg={useColorModeValue('gray.200')} ml={{md: 5, base: 0}} padding={{md: 3, base: 0}} shadow={'lg'} position={'relative'}>
           <Flex>
             <Box>
               <Tabs position={'relative'} variant='unstyled'>
