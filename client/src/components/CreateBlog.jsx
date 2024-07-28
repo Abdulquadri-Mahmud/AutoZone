@@ -171,20 +171,11 @@ export default function CreateBlog() {
 
   return (
     <Box>
-        <Flex justifyContent={'space-between'} bg={useColorModeValue('blue.500', 'gray.700')} p={4} color={'black'}>
-            <Heading fontSize={25} fontWeight={500} fontFamily={'oblique'} color={useColorModeValue('white', 'gray.400')} >Create Blog</Heading>
-            <Flex gap={1} alignItems={'center'} bg={'white'} pr={4} rounded={5}>
-                <AdminThemes/>
-                <Link to={'/'}>
-                    <FaHome className='text-2xl'/>
-                </Link>
-            </Flex>
-        </Flex>
         <form onSubmit={handleSubmit} className='w-full'>
-          <Flex justifyContent={'space-around'} flexWrap={'wrap'} gap={3} mx={5} my={'3rem'} rounded={5} bg={useColorModeValue('blue.500','gray.700')} p={6}>
+          <Flex justifyContent={'space-around'} flexWrap={'wrap'} gap={3} mx={5} my={'3rem'} rounded={5} bg={useColorModeValue('blue.500','gray.700')} p={{md: 6, base: 3}}>
 
             {/* First part */}
-            <Box w={{'2xl':'55%',md:'45%', base: '350px'}} color={useColorModeValue('white')}>
+            <Box w={{'2xl':'55%',md:'45%', base: '100%'}} color={useColorModeValue('white')}>
               <Box>
                 <Box color={useColorModeValue('black', 'white')} bg={useColorModeValue('white', 'gray.600')} py={1} px={2} rounded={5}>
                   <input type="text" ref={title} onChange={handleChange} id="title" placeholder="Post title" name="title"  className='bg-transparent border-0 outline-none font-medium w-[100%] my-2 rounded-[5px]'/>
@@ -214,9 +205,6 @@ export default function CreateBlog() {
                       </Alert>
                   ) : ''
                 }
-              <Flex justifyContent={'center'} mt={4}>
-                <Button bg={useColorModeValue('white','gray.600')} onClick={onOpen} color={useColorModeValue('gray.700', 'white')} fontWeight={500} type='submit' className='w-[100px] py-2 rounded-[5px]'>Post Blog</Button>
-              </Flex>
 
               {
                 success ? (
@@ -287,6 +275,10 @@ export default function CreateBlog() {
                   </Button>
                 </Flex>
               </Box>
+
+              <Flex justifyContent={'center'} mt={4}>
+                <Button bg={useColorModeValue('white','gray.600')} width={'200px'} onClick={onOpen} color={useColorModeValue('gray.700', 'white')} fontWeight={500} type='submit' className='w-[100px] py-2 rounded-[5px]'>Post Blog</Button>
+              </Flex>
           </Flex>
         </form>
     </Box>

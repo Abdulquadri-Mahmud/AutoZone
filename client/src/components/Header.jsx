@@ -45,7 +45,7 @@ export default function Header() {
     <Flex justifyContent={'space-between'} height={{md: '110px', base: '80px'}} bg={useColorModeValue('white', 'gray.800')} position={'sticky'} top={'0'} zIndex={100} className='shadow'>
       <Flex justifyContent={{md:'center', base: 'start'}} p={{md: 0, base: 2}} alignItems={'center'} width={{md:'200px', base: '190px'}} bg={useColorModeValue('blue.500', 'gray.700')} color={useColorModeValue('white')} className='clip-path'>
         <Link to={'/'}>
-          <Heading fontWeight={500} fontSize={{md:30, base: 25}} fontStyle={'oblique'}>AutoZone</Heading>
+          <Heading fontWeight={500} fontSize={{md:30, base: 25}} fontStyle={'inherit'}>AutoZone</Heading>
         </Link>
       </Flex>
       <Box width={'100%'} height={'100%'} fontWeight={500} position={'relative'}>

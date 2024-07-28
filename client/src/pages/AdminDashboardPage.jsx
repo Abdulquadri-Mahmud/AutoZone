@@ -11,7 +11,7 @@ export default function AdminDashboardPage() {
   useEffect(() => {
     const fetCars = async () => {
       try {
-        const res = await fetch('/api/cars/allcarlists');
+        const res = await fetch('/api/cars/allcar');
 
         const data = await res.json();
         setCars(data);

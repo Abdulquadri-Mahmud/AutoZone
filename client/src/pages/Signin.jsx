@@ -154,20 +154,20 @@ export default function Signin() {
             <form onSubmit={handleSubmit}>
                 <Box my={4} fontWeight={500} position={'relative'}>
                     <Box mt={2} _focus={{bg: useColorModeValue('', 'black')}}>
-                        <input type="email" id='email' ref={email} onChange={handleChange} className='w-full rounded-[5px] p-3 border-0 outline-none focus:bg-slate-200 focus:text-black font-medium pl-[3rem] bg-slate-200' placeholder='Enter Email'/>
+                        <input type="email" id='email' ref={email} onChange={handleChange} className='w-full rounded-[5px] p-3 border-0 outline-none focus:bg-slate-900 text-black focus:text-white font-medium pl-[3rem] bg-slate-200' placeholder='Enter Email'/>
                         <Button bg={'transparent'} _hover={{bg: 'transparent'}} position={'absolute'} top={1} left={0} color={useColorModeValue('black', 'black')}><MdEmail className='text-xl'/></Button>
                     </Box>
                 </Box>
                 <Box my={4} fontWeight={500}>
                     <Box position={'relative'}>
-                        <input type="password" id='password' ref={password} onChange={handleChange} className='w-full rounded-[5px] p-3 border-0 outline-none focus:bg-slate-200 focus:text-black font-medium pl-[3rem] bg-slate-200' placeholder='Enter Password'/>
-                        <Button bg={'transparent'} _hover={{bg: 'transparent'}} onClick={handleLockPassword} ref={lockPassword} position={'absolute'} top={1} right={0}><FaEyeSlash/></Button>
+                        <input type="password" id='password' ref={password} onChange={handleChange} className='w-full rounded-[5px] p-3 border-0 outline-none focus:bg-slate-900 text-black focus:text-white font-medium pl-[3rem] bg-slate-200' placeholder='Enter Password'/>
+                        <Button bg={'transparent'} _hover={{bg: 'transparent'}} onClick={handleLockPassword} ref={lockPassword} position={'absolute'} top={1} right={0} color={useColorModeValue('black', 'black')}><FaEyeSlash/></Button>
                         <Button bg={'transparent'} _hover={{bg: 'transparent'}} position={'absolute'} top={1} left={0} color={useColorModeValue('black', 'black')}><RiLockPasswordFill className='text-xl'/></Button>
                     </Box>
                     <Box my={4} fontWeight={500}>
                         <Box position={'relative'}>
-                            <input type="password" id='password' ref={confirmPassword} onChange={handleChange} className='w-full rounded-[5px] p-3 border-0 outline-none focus:bg-slate-200 focus:text-black font-medium pl-[3rem] bg-slate-200' placeholder='Confirm Password'/>
-                            <Button bg={'transparent'} _hover={{bg: 'transparent'}} onClick={handleLockPassword2} ref={lockPassword2} position={'absolute'} top={1} right={0}><FaEyeSlash/></Button>
+                            <input type="password" id='password' ref={confirmPassword} onChange={handleChange} className='w-full rounded-[5px] p-3 border-0 outline-none focus:bg-slate-900 text-black focus:text-white font-medium pl-[3rem] bg-slate-200' placeholder='Confirm Password'/>
+                            <Button bg={'transparent'} _hover={{bg: 'transparent'}} onClick={handleLockPassword2} ref={lockPassword2} position={'absolute'} top={1} right={0} color={useColorModeValue('black', 'black')}><FaEyeSlash/></Button>
                             <Button bg={'transparent'} _hover={{bg: 'transparent'}} position={'absolute'} top={1} left={0} color={useColorModeValue('black', 'black')}><RiLockPasswordFill className='text-xl'/></Button>
                         </Box>
                     </Box>
@@ -187,7 +187,7 @@ export default function Signin() {
                         _hover={{bg:useColorModeValue('blue.600')}} type='submit' onChange={handleChange} className='uppercase'>
                         {
                             loading ? <Flex gap={3}>Loading... 
-                                    <Spinner thickness='4px' speed='0.65s' emptyColor='gray.200' color='green.700' size='md'/>
+                                    <Spinner thickness='4px' speed='0.65s' emptyColor='gray.200' color='gray.700' size='md'/>
                                 </Flex> : 'Sign In'
                         }
                         </Button>

@@ -5,8 +5,8 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-import img1 from '/car4.jpg';
-import img2 from '/car3.jpg';
+import img1 from '/car-bg.jpeg';
+import img2 from '/car2.jpg';
 import img3 from '/car1.jpg';
 
 import { Link } from 'react-router-dom';
@@ -52,8 +52,8 @@ export default function Hero() {
   return (
     <Box h={{md:'90vh', base: '100vh'}} w={'full'} >
         <Slider {...settings}>
-            <Box position={'relative'} backgroundPosition="top" backgroundRepeat="no-repeat" backgroundSize="cover" backgroundImage={`url(${img1})`} h={{md:'90vh', base: '100vh'}} w={'full'} className='deep'>
-                <Box position="absolute" top={0} left={0} w="full" h="full" bg="#0f0f0f" opacity={0.4} bgBlendMode="multiply"/>
+            <Box position={'relative'} backgroundPosition="center" backgroundRepeat="no-repeat" backgroundSize="cover" backgroundImage={`url(${img1})`} h={{md:'90vh', base: '100vh'}} w={'full'} className='deep'>
+                <Box position="absolute" top={0} left={0} w="full" h="full" bg="gray.900" opacity={0.4} bgBlendMode="multiply"/>
                 <Flex justifyContent={'start'} alignItems={'center'} h={'full'} padding={{base: 2, md:10}} zIndex={20}>
                     <Stack flexDirection={'column'} w={{base:'full',md: '100%', xl: '50%'}} p={6} rounded={8} className='herotext'>
                         <Heading color={'white'} bg={'blue.500'} p={3} width={{md:'50%', base: '70%'}} rounded={5} zIndex={20} fontWeight={500} textAlign={{md: 'start', base: 'start'}} fontSize={{ base: '2xl', md: '2xl' }} >TOP BRANDS 20221</Heading>
@@ -74,8 +74,8 @@ export default function Hero() {
                     </Stack>
                 </Flex>
             </Box>
-            <Box position={'relative'} backgroundPosition="bottom" backgroundRepeat="no-repeat" backgroundSize="cover" backgroundImage={`url(${img2})`} h={{md:'90vh', base: '100vh'}} w={'full'}>
-                <Box position="absolute" top={0} left={0} w="full" h="full" bg="#0f0f0f" opacity={0.4} bgBlendMode="multiply"/>
+            <Box position={'relative'} backgroundPosition="top" backgroundRepeat="no-repeat" backgroundSize="cover" backgroundImage={`url(${img2})`} h={{md:'90vh', base: '100vh'}} w={'full'}>
+                <Box position="absolute" top={0} left={0} w="full" h="full" bg="gray.900" opacity={0.4} bgBlendMode="multiply"/>
                 <Flex justifyContent={'start'} alignItems={'center'} h={'full'} padding={{base: 2, md:10}} zIndex={20}  >
                     <Stack flexDirection={'column'} w={{base:'full',md: '100%', xl: '50%'}} p={6} rounded={8} className='herotext'>
                         <Heading color={'white'} bg={'blue.500'} p={3} width={{md:'50%', base: '70%'}} rounded={5} zIndex={20} fontWeight={500} textAlign={{md: 'start', base: 'start'}} fontSize={{ base: '2xl', md: '2xl' }} >TOP BRANDS 20221</Heading>
@@ -97,7 +97,7 @@ export default function Hero() {
                 </Flex>
             </Box>
             <Box position={'relative'} backgroundPosition="left" backgroundRepeat="no-repeat" backgroundSize="cover" backgroundImage={`url(${img3})`} h={{md:'90vh', base: '100vh'}} w={'full'}>
-                <Box position="absolute" top={0} left={0} w="full" h="full" bg="#0f0f0f" opacity={0.4} bgBlendMode="multiply"/>
+                <Box position="absolute" top={0} left={0} w="full" h="full" bg="gray.900" opacity={0.4} bgBlendMode="multiply"/>
                 <Flex justifyContent={'start'} alignItems={'center'} h={'full'} padding={{base: 2, md:10}} zIndex={20}  >
                     <Stack flexDirection={'column'} w={{base:'full',md: '100%', xl: '50%'}} p={6} rounded={8} className='herotext'>
                       <Heading color={'white'} bg={'blue.500'} p={3} width={{md:'50%', base: '70%'}} rounded={5} zIndex={20} fontWeight={500} textAlign={{md: 'start', base: 'start'}} fontSize={{ base: '2xl', md: '2xl' }} >TOP BRANDS 20221</Heading>

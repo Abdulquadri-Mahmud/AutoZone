@@ -76,7 +76,6 @@ export default function CreateCarListing() {
             [e.target.id] : e.target.value
         });
     }
-    console.log(carForms);
 
    const handleUpload = (e) => {
         if (files.length > 0 && files.length + carForms.carimage.length < 30) {
@@ -245,27 +244,20 @@ export default function CreateCarListing() {
 
   return (
     <Box>
-        <Flex justifyContent={'space-between'} bg={useColorModeValue('blue.500', 'gray.700')} p={4} color={'black'}>
-            <Heading fontSize={25} fontWeight={500} fontFamily={'oblique'} color={useColorModeValue('white', 'gray.400')} >Create Car Listings</Heading>
-            <Flex gap={1} alignItems={'center'} bg={'white'} pr={4} rounded={5}>
-                <AdminThemes/>
-                <FaHome className='text-2xl'/>
-            </Flex>
-        </Flex>
-        <Box maxW={{md: '100%', base: '100%'}} mx={{md: 'auto', base: 4}} py={{md: 5, base: 5}} px={{md: 5, base: 0}} bg={useColorModeValue('white')} height={{'2xl' : '90vh' ,md:'580px'}} overflowY={'scroll'} className='scroll'>
+        <Box maxW={{md: '100%', base: '100%'}} mx={{md: 'auto', base: 4}} py={{md: 5, base: 5}} px={{md: 5, base: 0}} bg={useColorModeValue('white')} overflowY={'scroll'} className='scroll'>
         <Flex flexWrap={'wrap'} gap={3} flexDir={'column'} justifyContent={'space-between'}>
             <Flex justifyContent={'center'} flexWrap={'wrap'} padding={5} bg={useColorModeValue('blue.500', 'gray.700')} rounded={'md'} shadow={'md'}>
                 <form onSubmit={handleSubmit} className=' flex justify-between gap-1 w-full flex-wrap'>
                     <Box width={'49%'}>
-                        <Box color={useColorModeValue('black', 'gray.400')}>
+                        <Box color={useColorModeValue('white', 'gray.400')}>
                             <span className='font-medium text-sm'>Car Name:</span>
-                            <Box bg={useColorModeValue('white', 'gray.800')} py={3} px={2} rounded={5}>
+                            <Box bg={useColorModeValue('white', 'gray.800')} color={useColorModeValue('black', 'gray.400')} py={3} px={2} rounded={5}>
                                 <input type="text" id='name' ref={name} onChange={handleChange} className='w-full border-0 outline-none bg-transparent input' placeholder='Car name'/>
                             </Box>
                         </Box>
-                        <Box mt={4} color={useColorModeValue('black', 'gray.400')}>
+                        <Box mt={4} color={useColorModeValue('white', 'gray.400')}>
                             <span className="font-medium text-center text-sm">Condition:</span>
-                            <Box bg={useColorModeValue('white', 'gray.800')} py={3} px={2} rounded={5}>
+                            <Box bg={useColorModeValue('white', 'gray.800')} color={useColorModeValue('black', 'gray.400')} py={3} px={2} rounded={5}>
                                 <select ref={condition} className='w-full bg-transparent text-sm font-medium border-none outline-none'
                                     onChange={handleChange} id='condition'>
                                     <option className='text-black' value="new">New</option>
@@ -273,9 +265,9 @@ export default function CreateCarListing() {
                                 </select>
                             </Box>
                         </Box>
-                        <Box mt={4} color={useColorModeValue('black', 'gray.400')}>
+                        <Box mt={4} color={useColorModeValue('white', 'gray.400')}>
                             <span className="font-medium text-center text-sm">Make</span>
-                            <Box bg={useColorModeValue('white', 'gray.800')} py={3} px={2} rounded={5}>
+                            <Box bg={useColorModeValue('white', 'gray.800')} color={useColorModeValue('black', 'gray.400')} py={3} px={2} rounded={5}>
                                 <select ref={make} className='w-full bg-transparent text-sm  font-medium border-none outline-none'
                                 onChange={handleChange} id='make' value={carForms.make}>
                                     <option className='text-black' value="all">All Make</option>
@@ -289,9 +281,9 @@ export default function CreateCarListing() {
                                 </select>
                             </Box>
                         </Box>
-                        <Box mt={4} color={useColorModeValue('black', 'gray.400')}>
+                        <Box mt={4} color={useColorModeValue('white', 'gray.400')}>
                             <span className="font-medium text-center text-sm">Model</span>
-                            <Box bg={useColorModeValue('white', 'gray.800')} py={3} px={2} rounded={5}>
+                            <Box bg={useColorModeValue('white', 'gray.800')} color={useColorModeValue('black', 'gray.400')} py={3} px={2} rounded={5}>
                                 <select ref={model} className='w-full bg-transparent text-sm  font-medium border-none outline-none'
                                     onChange={handleChange} id='model'>
                                     <option className='text-black' value="all">All Model</option>
@@ -319,9 +311,9 @@ export default function CreateCarListing() {
                                 </select>
                             </Box>
                         </Box>
-                        <Box mt={4} color={useColorModeValue('black', 'gray.400')}>
+                        <Box mt={4} color={useColorModeValue('white', 'gray.400')}>
                             <span className='font-medium text-sm'>Location:</span>
-                            <Box bg={useColorModeValue('white', 'gray.800')} py={3} px={2} rounded={5}>
+                            <Box bg={useColorModeValue('white', 'gray.800')} color={useColorModeValue('black', 'gray.400')} py={3} px={2} rounded={5}>
                                 <select ref={location} className='w-full bg-transparent text-sm  font-medium border-none outline-none'
                                     onChange={handleChange} id='location'>
                                     <option className='text-black' value="Lagos">Lagos</option>
@@ -336,9 +328,9 @@ export default function CreateCarListing() {
                                 </select>
                             </Box>
                         </Box>
-                        <Box mt={4} color={useColorModeValue('black', 'gray.400')}>
+                        <Box mt={4} color={useColorModeValue('white', 'gray.400')}>
                             <span className='font-medium text-sm'>Year:</span>
-                            <Box bg={useColorModeValue('white', 'gray.800')} py={3} px={2} rounded={5}>
+                            <Box bg={useColorModeValue('white', 'gray.800')} color={useColorModeValue('black', 'gray.400')} py={3} px={2} rounded={5}>
                                 <select ref={year} className='w-full bg-transparent text-sm  font-medium border-none outline-none'
                                     onChange={handleChange} id='year'>
                                     <option className='text-black' value="2017">2015</option>
@@ -354,29 +346,29 @@ export default function CreateCarListing() {
                                 </select>
                             </Box>
                         </Box>
-                        <Box mt={4} color={useColorModeValue('black', 'gray.400')}>
+                        <Box mt={4} color={useColorModeValue('white', 'gray.400')}>
                             <span className='font-medium text-sm'>Miles:</span>
-                            <Box bg={useColorModeValue('white', 'gray.800')} py={3} px={2} rounded={5}>
+                            <Box bg={useColorModeValue('white', 'gray.800')} color={useColorModeValue('black', 'gray.400')} py={3} px={2} rounded={5}>
                                 <input type="text" ref={miles} onChange={handleChange} id='miles' className='w-full border-0 outline-none bg-transparent' placeholder='Miles'/>
                             </Box>
                         </Box>
                     </Box>
                     <Box  width={'49%'}>
-                        <Box>
+                        <Box color={useColorModeValue('white', 'gray.400')}>
                             <span className='font-medium text-sm'>Car Price:</span>
-                            <Box bg={useColorModeValue('white', 'gray.800')} py={3} px={2} rounded={5}>
+                            <Box bg={useColorModeValue('white', 'gray.800')} color={useColorModeValue('black', 'gray.400')} py={3} px={2} rounded={5}>
                                 <input type="text" ref={price} onChange={handleChange} id='price' className='w-full border-0 outline-none bg-transparent' placeholder='Car price'/>
                             </Box>
                         </Box>
-                        <Box mt={4} color={useColorModeValue('black', 'gray.400')}>
+                        <Box mt={4} color={useColorModeValue('white', 'gray.400')}>
                             <span className='font-medium text-sm'>Color:</span>
-                            <Box bg={useColorModeValue('white', 'gray.800')} py={3} px={2} rounded={5}>
+                            <Box bg={useColorModeValue('white', 'gray.800')} color={useColorModeValue('black', 'gray.400')} py={3} px={2} rounded={5}>
                                 <input type="text" ref={color} onChange={handleChange} id='colors' className='w-full border-0 outline-none bg-transparent' placeholder='Colors'/>
                             </Box>
                         </Box>
-                        <Box mt={4} color={useColorModeValue('black', 'gray.400')}>
+                        <Box mt={4} color={useColorModeValue('white', 'gray.400')}>
                             <span className='font-medium text-sm'>Deal:</span>
-                            <Box bg={useColorModeValue('white', 'gray.800')} py={3} px={2} rounded={5}>
+                            <Box bg={useColorModeValue('white', 'gray.800')} color={useColorModeValue('black', 'gray.400')} py={3} px={2} rounded={5}>
                                 <select ref={deal} className='w-full bg-transparent text-sm  font-medium border-none outline-none'
                                 onChange={handleChange} id='deal'>
                                     <option className='text-black' value="great">Great</option>
@@ -384,21 +376,21 @@ export default function CreateCarListing() {
                                 </select>
                             </Box>
                         </Box>
-                        <Box mt={4} color={useColorModeValue('black', 'gray.400')}>
+                        <Box mt={4} color={useColorModeValue('white', 'gray.400')}>
                             <span className='font-medium text-sm'>Exterior Color:</span>
-                            <Box bg={useColorModeValue('white', 'gray.800')} py={3} px={2} rounded={5}>
+                            <Box bg={useColorModeValue('white', 'gray.800')} color={useColorModeValue('black', 'gray.400')} py={3} px={2} rounded={5}>
                                 <input type="text" ref={exteriorColor} onChange={handleChange} id='exteriorColor' className='w-full border-0 outline-none bg-transparent' placeholder='Exterior Color'/>
                             </Box>
                         </Box>
-                        <Box mt={4} color={useColorModeValue('black', 'gray.400')}>
+                        <Box mt={4} color={useColorModeValue('white', 'gray.400')}>
                             <span className='font-medium text-sm'>Interior Color:</span>
-                            <Box bg={useColorModeValue('white', 'gray.800')} py={3} px={2} rounded={5}>
+                            <Box bg={useColorModeValue('white', 'gray.800')} color={useColorModeValue('black', 'gray.400')} py={3} px={2} rounded={5}>
                                 <input type="text" ref={interiorColor} onChange={handleChange} id='interiorColor' className='w-full border-0 outline-none bg-transparent' placeholder='Interior Color'/>
                             </Box>
                         </Box>
-                        <Box mt={4} color={useColorModeValue('black', 'gray.400')}>
+                        <Box mt={4} color={useColorModeValue('white', 'gray.400')}>
                             <span className='font-medium text-sm'>Transmission:</span>
-                            <Box bg={useColorModeValue('white', 'gray.800')} py={3} px={2} rounded={5}>
+                            <Box bg={useColorModeValue('white', 'gray.800')} color={useColorModeValue('black', 'gray.400')} py={3} px={2} rounded={5}>
                                 <select ref={transmission} className='w-full bg-transparent text-sm  font-medium border-none outline-none'
                                     onChange={handleChange} id='transmission'>
                                     <option className='text-black' value="automatic">Automatic</option>
@@ -406,9 +398,9 @@ export default function CreateCarListing() {
                                 </select>
                             </Box>
                         </Box>
-                        <Box mt={4} color={useColorModeValue('black', 'gray.400')}>
+                        <Box mt={4} color={useColorModeValue('white', 'gray.400')}>
                             <span className='font-medium text-sm'>Engine:</span>
-                            <Box bg={useColorModeValue('white', 'gray.800')} py={3} px={2} rounded={5}>
+                            <Box bg={useColorModeValue('white', 'gray.800')} color={useColorModeValue('black', 'gray.400')} py={3} px={2} rounded={5}>
                                 <input type="text" ref={engine} onChange={handleChange} id='engine' className='w-full border-0 outline-none bg-transparent' placeholder='Engine'/>
                             </Box>
                         </Box>
@@ -422,7 +414,7 @@ export default function CreateCarListing() {
                     {/* upload images section */}
                     <Box width={'100%'} mt={8} py={5} rounded={8} bg={useColorModeValue('white', 'gray.800')} p={{md: 5, base: 2}}>
                         <Flex justifyContent={'space-around'} flexWrap={'wrap'} gap={5} maxW={'100%'} mx={'auto'}>
-                            <Flex justifyContent={'center'} gap={5} alignItems={'center'} width={{md: '300px', base: '97%'}} height={'250px'} position={'relative'} rounded={5} bg={useColorModeValue('blue.500', 'gray.700')}>
+                            <Flex justifyContent={'center'} gap={5} alignItems={'center'} width={{md: '45%', base: '97%'}} height={'250px'} position={'relative'} rounded={5} bg={useColorModeValue('blue.500', 'gray.700')}>
                                 <Box>
                                     <input type="file" onChange={(e) => setFile(e.target.files)} ref={fileRef} id="carimage"  accept='image/*' className='hidden' multiple/>
                                 </Box>
@@ -433,7 +425,7 @@ export default function CreateCarListing() {
                                     <MdAddPhotoAlternate className='text-3xl'/>
                                 </Box>
                             </Flex>
-                            <Box color={useColorModeValue('white')} width={{md: '60%', base: '97%'}} height={'250px'} overflowY={'scroll'} className='scroll' bg={useColorModeValue('blue.500', 'gray.700')} rounded={5}>
+                            <Box color={useColorModeValue('white')} width={{md: '45%', base: '97%'}} height={'250px'} overflowY={'scroll'} className='scroll' bg={useColorModeValue('blue.500', 'gray.700')} rounded={5}>
                                 <Box width={'100%'}>
                                     {
                                         carForms.carimage.length > 0 && carForms.carimage.map((url, index) => (
@@ -450,15 +442,15 @@ export default function CreateCarListing() {
                                 </Box>
                             </Box>
                         </Flex>
-                        <Flex justifyContent={'space-between'} alignItems={'center'} flexWrap={'wrap'} mt={4} width={'full'}>
-                            <Box width={{md: '45%', base: '97%'}}>
+                        <Flex justifyContent={{md: 'space-between', base: 'center'}} alignItems={'center'} flexWrap={'wrap'} mt={4} width={'full'}>
+                            <Flex justifyContent={{md: 'start', base: 'center'}} width={{md: '45%', base: '100%'}}>
                                 <Button type='button' onClick={handleUpload} bg={useColorModeValue('blue.500', 'gray.700')} color={useColorModeValue('white', 'gray.100')} _hover={{color: useColorModeValue('black', 'gray.800')}} width={'300px'} 
                                     rounded={2}>
                                     {
                                         uploadProgress ? 'Uploading...' : 'Upload Image'
                                     }
                                 </Button>
-                            </Box>
+                            </Flex>
                             <Box width={{md: '45%', base: '97%'}}>
                                 {
                                     filesError ? (

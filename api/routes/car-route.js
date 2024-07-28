@@ -1,5 +1,6 @@
 import express from 'express'
 import { carListController,
+    getAllCars,
     getAllCarsControllers,
     getSingleCarlist,
     searchCar 
@@ -9,6 +10,7 @@ const app = express();
 
 app.post('/uploadcar', carListController);
 app.get('/allcarlists', getAllCarsControllers);
+app.get('/allcar', getAllCars);
 app.get('/singlecarlists/:id', getSingleCarlist);
 app.get('/search-car', searchCar);
 

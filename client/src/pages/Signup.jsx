@@ -197,14 +197,14 @@ export default function Signup() {
                 <Box my={4} fontWeight={500}>
                     <Box mt={1} _focus={{bg: useColorModeValue('', 'black')}} color={useColorModeValue('black', 'black')} position={'relative'}>
                         <input type="password" id='password' ref={password} onChange={handleChange} className='border-0 outline-none w-full rounded-[5px] p-3 font-medium pl-[3rem] bg-slate-200' placeholder='Enter Password'/>
-                        <Button bg={'transparent'} _hover={{bg: 'transparent'}} onClick={handleLockPassword} ref={lockPassword} position={'absolute'} top={1} right={0}><FaEyeSlash/></Button>
+                        <Button bg={'transparent'} _hover={{bg: 'transparent'}} onClick={handleLockPassword} ref={lockPassword} position={'absolute'} top={1} right={0} color={useColorModeValue('black', 'black')}><FaEyeSlash/></Button>
                         <Button bg={'transparent'} _hover={{bg: 'transparent'}} position={'absolute'} top={1} left={0} color={useColorModeValue('black', 'black')}><RiLockPasswordFill className='text-xl'/></Button>
                     </Box>
                 </Box>
                 <Box my={4} fontWeight={500}>
                     <Box mt={1} _focus={{bg: useColorModeValue('', 'black')}} color={useColorModeValue('black', 'black')} position={'relative'}>
                         <input type="password" id='password' ref={confirmPassword} onChange={handleChange} className='border-0 outline-none w-full rounded-[5px] p-3 font-medium pl-[3rem] bg-slate-200' placeholder='Enter Confirm Password'/>
-                        <Button bg={'transparent'} _hover={{bg: 'transparent'}} onClick={handleLockPassword2} ref={lockPassword2} position={'absolute'} top={1} right={0}><FaEyeSlash/></Button>
+                        <Button bg={'transparent'} _hover={{bg: 'transparent'}} onClick={handleLockPassword2} ref={lockPassword2} position={'absolute'} top={1} right={0} color={useColorModeValue('black', 'black')}><FaEyeSlash/></Button>
                         <Button bg={'transparent'} _hover={{bg: 'transparent'}} position={'absolute'} top={1} left={0} color={useColorModeValue('black', 'black')}><RiLockPasswordFill className='text-xl'/></Button>
                     </Box>
                 </Box>

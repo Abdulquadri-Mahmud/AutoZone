@@ -38,6 +38,17 @@ export const getAllCarsControllers = async (req, res, next) => {
     }
 }
 
+// getting all cars for dashboard
+export const getAllCars = async (req, res, next) => {
+    try {
+        const allCars = await CarLists.find({}).sort({createdAt: -1});
+
+        res.status(200).json(allCars);
+    } catch (error) {
+        next(error)
+    }
+}
+
 export const getSingleCarlist = async (req, res, next) => {
     const { id } = req.params;
 

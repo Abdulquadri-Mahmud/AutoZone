@@ -1,7 +1,12 @@
 import { Box, Flex, Heading, Text, useColorModeValue } from '@chakra-ui/react'
 import React, {useRef, useState } from 'react';
 import { MdDashboardCustomize } from "react-icons/md";
-import { FaShoppingCart } from "react-icons/fa";
+import { FaHome, FaShoppingCart } from "react-icons/fa";
+import { IoMenuSharp } from "react-icons/io5";
+import { FaBloggerB } from "react-icons/fa6";
+import { IoCarSportSharp } from 'react-icons/io5'
+import { FaTools } from "react-icons/fa";
+
 import Dashboard from './Dashboard';
 import CreateBlog from './CreateBlog';
 import Order from './Order';
@@ -18,8 +23,12 @@ import {
   AccordionPanel,
   AccordionIcon,
 } from '@chakra-ui/react'
+import AdminThemes from './AdminThemes';
+import { Link } from 'react-router-dom';
 
 export default function AdminDashboard() {
+  const [open, setOpen] = useState(true);
+
   const dashboard = useRef();
   const blogs = useRef();
   const order = useRef();
@@ -216,30 +225,36 @@ export default function AdminDashboard() {
 
   const handleCreateAccess = () => {
     createAccessListingFunction();
+   }
+
+  const handleMenu = () => {
+    if (open) {
+      setOpen(false);
+    }else{
+      setOpen(true);
+    }
   }
 
   return (
-    <Flex width={'100%'} height={{'2xl': '110vh',md: '100vh', base: '100%'}} bg={useColorModeValue('blue.500', '')} p={0} fontFamily={'inherit'}>
-      <Box width={'250px'} overflowY={'scroll'} p={3} bg={useColorModeValue('blue.500', 'gray.700')} color={useColorModeValue('white', 'gray.400')} className='scroll'>
-        <Flex px={5} justifyContent={'start'} alignItems={'center'} width={'100%'}  height={'50px'} 
-        rounded={5}>
-          <Heading fontSize={30} fontWeight={500} fontFamily={'inherit'} color={useColorModeValue('white', 'white')}>AutoZone</Heading>
-        </Flex>
-        <Flex flexDir={'column'} justifyContent={'start'} alignItems={'start'} gap={1} mt={{'2xl':20, md: 14}} width={'100%'}>
+    <Flex width={'100%'} height={'100%'} bg={useColorModeValue('blue.500', '')} p={0} fontFamily={'inherit'}>
+      <Box overflowY={'scroll'} bg={useColorModeValue('blue.500', 'gray.700')} color={useColorModeValue('white', 'gray.400')} className={`${open ? 'w-[0px]' : 'w-[250px] fixed h-full px-3'} z-10 lg:w-[250px] duration-300 scroll`}>
+        <Flex flexDir={'column'} justifyContent={'start'} alignItems={'start'} gap={1} mt={{'2xl':20, md: 20, base: 20}} width={'100%'}>
           <Box width={'100%'}>
-            <Flex onClick={handleDashboard} cursor={'pointer'} alignItems={'center'} _hover={{color: useColorModeValue('blue.700', 'gray.100')}} gap={1} width={'100%'}rounded={4} fontWeight={500} textAlign={'start'} py={2.5} px={5} fontSize={16}>Dashborad</Flex>
+            <Flex onClick={handleDashboard} cursor={'pointer'} alignItems={'center'} _hover={{color: useColorModeValue('blue.700', 'gray.100')}} gap={1} width={'100%'}rounded={4} fontWeight={500} textAlign={'start'} py={2.5} px={5} fontSize={16}>
+             <MdDashboardCustomize/> Dashborad
+            </Flex>
           </Box>
           <Accordion allowMultiple width={'100%'} pl={1}>
             <AccordionItem border={'none'} _hover={{bg: 'transparent'}}>
                 <AccordionButton>
-                  <Box as='span' flex='1' textAlign='left' fontFamily={'inherit'} fontSize={16} fontWeight={500}>
-                    Blogs
-                  </Box>
+                  <Flex alignItems={'center'} gap={1} as='span' flex='1' textAlign='left' fontFamily={'inherit'} fontSize={16} fontWeight={500}>
+                    <FaBloggerB/> Blogs
+                  </Flex>
                   <AccordionIcon />
                 </AccordionButton>
               <AccordionPanel pb={0}>
                 <Box width={'100%'}>
-                  <Flex onClick={handleBlogs} cursor={'pointer'} alignItems={'center'} _hover={{color: useColorModeValue('blue.700', 'gray.100')}} gap={1} width={'100%'}rounded={4} fontWeight={500} textAlign={'start'} py={2.5} px={5} fontSize={16}>Blogs</Flex>
+                  <Flex onClick={handleBlogs} cursor={'pointer'} alignItems={'center'} _hover={{color: useColorModeValue('blue.700', 'gray.100')}} gap={1} width={'100%'}rounded={4} fontWeight={500} textAlign={'start'} py={2.5} px={5} fontSize={16}><FaBloggerB/> Blogs</Flex>
                 </Box>
                 <Box width={'100%'}>
                   <Box onClick={handleCreateBlog} cursor={'pointer'} _hover={{color: useColorModeValue('blue.700', 'gray.100')}}  width={'100%'}rounded={4} fontWeight={500} textAlign={'start'} py={2.5} px={5} fontSize={16}>Create Blog</Box>
@@ -248,15 +263,15 @@ export default function AdminDashboard() {
             </AccordionItem>
           </Accordion>
           <Box width={'100%'}>
-            <Flex onClick={handleOrder} alignItems={'center'} _hover={{color: useColorModeValue('blue.700', 'gray.100')}} gap={1} cursor={'pointer'} width={'100%'} rounded={4} fontWeight={500} textAlign={'start'} py={1} px={5} fontSize={16}>Orders</Flex>
+            <Flex onClick={handleOrder} alignItems={'center'} _hover={{color: useColorModeValue('blue.700', 'gray.100')}} gap={1} cursor={'pointer'} width={'100%'} rounded={4} fontWeight={500} textAlign={'start'} py={1} px={5} fontSize={16}> <FaShoppingCart/> Orders</Flex>
           </Box>
           
           <Accordion allowMultiple width={'100%'} pl={1}>
             <AccordionItem border={'none'} _hover={{bg: 'transparent'}}>
               <AccordionButton>
-                <Box as='span' flex='1' textAlign='left' fontFamily={'inherit'} fontSize={16} fontWeight={500}>
-                  Cars
-                </Box>
+                <Flex alignItems={'center'} gap={1} as='span' flex='1' textAlign='left' fontFamily={'inherit'} fontSize={16} fontWeight={500}>
+                  <IoCarSportSharp/> Cars
+                </Flex>
                 <AccordionIcon />
               </AccordionButton>
               <AccordionPanel pb={0}>
@@ -273,9 +288,9 @@ export default function AdminDashboard() {
           <Accordion allowMultiple width={'100%'} pl={1}>
             <AccordionItem border={'none'} _hover={{bg: 'transparent'}}>
               <AccordionButton>
-                <Box as='span' flex='1' textAlign='left' fontFamily={'inherit'} fontSize={16} fontWeight={500}>
-                  Accessories
-                </Box>
+                <Flex alignItems={'center'} gap={1} as='span' flex='1' textAlign='left' fontFamily={'inherit'} fontSize={16} fontWeight={500}>
+                  <FaTools/> Accessories
+                </Flex>
                 <AccordionIcon />
               </AccordionButton>
               <AccordionPanel pb={0}>
@@ -291,7 +306,21 @@ export default function AdminDashboard() {
           
         </Flex>
       </Box>
-      <Box bg={useColorModeValue('white', '')} flex={'1'} flexWrap={'wrap'}>
+      <Box bg={useColorModeValue('white', '')} flex={'1'}>
+        <Flex justifyContent={'space-between'} bg={useColorModeValue('blue.500', 'gray.700')} p={4} color={useColorModeValue('black', 'gray.300')}>
+          <Flex alignItems={'center'} gap={3}>
+            <Box color={useColorModeValue('white', 'gray.400')} cursor={'pointer'} onClick={handleMenu} className='block lg:hidden z-20'>
+              <IoMenuSharp className='text-3xl'/>
+            </Box>
+            <Heading fontSize={25} fontWeight={500} fontFamily={'inherit'} color={useColorModeValue('white', 'gray.400')}>AutoZone</Heading>
+          </Flex>
+          <Flex gap={1} alignItems={'center'} bg={useColorModeValue('white', 'gray.600')} pr={4} rounded={5}>
+              <AdminThemes/>
+              <Link to={'/'}>
+                  <FaHome className='text-2xl'/>
+              </Link>
+          </Flex>
+        </Flex>
         <Box ref={dashboard} className='block'>
           <Dashboard/>
         </Box>

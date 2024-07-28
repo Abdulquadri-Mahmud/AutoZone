@@ -76,7 +76,7 @@ export default function PopularBrand() {
           ]
       };
   return (
-    <Box mt={'4rem'} position={'relative'}>
+    <Box pb={'4rem'} position={'relative'}>
         <Box maxW={{md: '80%', base: '100%'}} mx={'auto'} padding={'15px'} position={'relative'} bg={useColorModeValue('gray.200')}>
             <Box borderBottomWidth={2} borderBottomColor={'gray.400'}>
                 <Box width={'300px'} padding={4} bg={useColorModeValue('blue.500', 'gray.700')}>
