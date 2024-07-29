@@ -21,7 +21,9 @@ import {
     AlertDialogContent,
     AlertDialogOverlay,
     AlertDialogCloseButton,
-} from '@chakra-ui/react'
+} from '@chakra-ui/react';
+
+import { useToast } from '@chakra-ui/react'
 
   
 export default function CreateCarListing() {
@@ -325,17 +327,22 @@ export default function CreateCarListing() {
                                     <option className='text-black' value="C-Class">C-Class</option>
                                     
                                     <option className='text-black font-semibold text-center disabled' >Cheverolet Models</option>
+
                                     <option className='text-black' value="EQUINOX LS">EQUINOX LS</option>
-                                    <option className='text-black' value="Chevrolet Camaro">Chevrolet Camaro</option>
+                                    <option className='text-black' value="EQUINOX LS">EQUINOX LS</option>
+                                    <option className='text-black' value="Camaro">Camaro</option>
                                     <option className='text-black' value="Chevrolet Corvette">Chevrolet Corvette</option>
                                     <option className='text-black' value="Silverado">Silverado</option>
                                     <option className='text-black' value="Trax Ls">Trax Ls</option>
+                                    <option className='text-black' value="Traverse">Traverse</option>
                                     <option className='text-black' value="Suzuki Carry">Suzuki Carry</option>
                                     <option className='text-black' value="Chevrolet Aveo">Chevrolet Aveo</option>
                                     <option className='text-black' value="Chevrolet Corvair">Chevrolet Corvair</option>
                                     <option className='text-black' value="Chevrolet Colorado"> Chevrolet Colorado</option>
                                     <option className='text-black' value="Chevrolet Spark">Chevrolet Spark</option>
                                     <option className='text-black' value="Captiva">Captiva</option>
+                                    <option className='text-black' value="Blaza">Blaza</option>
+                                    <option className='text-black' value="Blaza EV">Blaza EV</option>
                                 </select>
                             </Box>
                         </Box>
@@ -472,19 +479,29 @@ export default function CreateCarListing() {
                     {/* upload images section */}
                     <Box width={'100%'} mt={8} py={5} rounded={8} bg={useColorModeValue('white', 'gray.800')} p={{md: 5, base: 2}}>
                         <Flex justifyContent={'space-around'} flexWrap={'wrap'} gap={5} maxW={'100%'} mx={'auto'}>
-                            <Flex justifyContent={'center'} gap={5} alignItems={'center'} width={{md: '45%', base: '97%'}} height={'250px'} position={'relative'} rounded={5} bg={useColorModeValue('blue.500', 'gray.700')}>
-                                <Box>
-                                    <input type="file" onChange={(e) => setFile(e.target.files)} ref={fileRef} id="carimage"  accept='image/*' className='hidden' multiple/>
-                                </Box>
-                                <Box p={3}>
-                                    <Image maxW={'300px'} rounded={5} src={carForms.carimage[0]}/>
-                                </Box>
-                                <Box position={'absolute'}  onClick={() => fileRef.current.click()} cursor={'pointer'} color={useColorModeValue('white', 'gray.100')}>
-                                    <MdAddPhotoAlternate className='text-3xl'/>
-                                </Box>
-                            </Flex>
-                            <Box color={useColorModeValue('white')} width={{md: '45%', base: '97%'}} height={'250px'} overflowY={'scroll'} className='scroll' bg={useColorModeValue('blue.500', 'gray.700')} rounded={5}>
-                                <Box width={'100%'}>
+                            <Box width={{md: '45%', base: '97%'}}>
+                                <Flex justifyContent={'center'} gap={5} alignItems={'center'} height={'250px'} position={'relative'} rounded={5} bg={useColorModeValue('blue.500', 'gray.700')}>
+                                    <Box>
+                                        <input type="file" onChange={(e) => setFile(e.target.files)} ref={fileRef} id="carimage"  accept='image/*' className='hidden' multiple/>
+                                    </Box>
+                                    <Box p={3}>
+                                        <Image maxW={'300px'} rounded={5} src={carForms.carimage[0]}/>
+                                    </Box>
+                                    <Box position={'absolute'}  onClick={() => fileRef.current.click()} cursor={'pointer'} color={useColorModeValue('white', 'gray.100')}>
+                                        <MdAddPhotoAlternate className='text-3xl'/>
+                                    </Box>
+                                </Flex>
+                                <Flex justifyContent={'center'} width={'100%'} mt={6}>
+                                    <Button type='button' onClick={handleUpload} bg={useColorModeValue('blue.500', 'gray.700')} color={useColorModeValue('white', 'gray.100')} _hover={{color: useColorModeValue('black', 'gray.800')}} width={'300px'} 
+                                        rounded={2}>
+                                        {
+                                            uploadProgress ? 'Uploading...' : 'Upload Image'
+                                        }
+                                    </Button>
+                                </Flex>
+                            </Box>
+                            <Box color={useColorModeValue('white')} width={{md: '45%', base: '97%'}}>
+                                <Box width={'100%'} height={'250px'} overflowY={'scroll'} className='scroll' bg={useColorModeValue('blue.500', 'gray.700')} rounded={5}>
                                     {
                                         carForms.carimage.length > 0 && carForms.carimage.map((url, index) => (
                                             <Flex key={index} justifyContent={'space-between'} alignItems={'center'} width={'100%'} my={2} bg={useColorModeValue('white', 'gray.600')} py={3} px={2} rounded={5}>
@@ -498,26 +515,16 @@ export default function CreateCarListing() {
                                         ))
                                     }
                                 </Box>
-                            </Box>
-                        </Flex>
-                        <Flex justifyContent={{md: 'space-between', base: 'center'}} alignItems={'center'} flexWrap={'wrap'} mt={4} width={'full'}>
-                            <Flex justifyContent={{md: 'start', base: 'center'}} width={{md: '45%', base: '100%'}}>
-                                <Button type='button' onClick={handleUpload} bg={useColorModeValue('blue.500', 'gray.700')} color={useColorModeValue('white', 'gray.100')} _hover={{color: useColorModeValue('black', 'gray.800')}} width={'300px'} 
-                                    rounded={2}>
+                                <Box width={'100%'} mt={6}>
                                     {
-                                        uploadProgress ? 'Uploading...' : 'Upload Image'
+                                        filesError ? (
+                                            <Alert status='error' mt={2} rounded={3} height={'40px'}>
+                                                <AlertIcon />
+                                                <AlertDescription>{filesError && filesError}</AlertDescription>
+                                            </Alert>
+                                        ) : ''
                                     }
-                                </Button>
-                            </Flex>
-                            <Box width={{md: '45%', base: '97%'}}>
-                                {
-                                    filesError ? (
-                                        <Alert status='error' mt={2} rounded={3} height={'40px'}>
-                                            <AlertIcon />
-                                            <AlertDescription>{filesError && filesError}</AlertDescription>
-                                        </Alert>
-                                    ) : ''
-                                }
+                                </Box>
                             </Box>
                         </Flex>
                     </Box>

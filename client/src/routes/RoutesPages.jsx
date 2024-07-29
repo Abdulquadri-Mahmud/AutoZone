@@ -91,7 +91,10 @@ import SignalLightReviewPage from '../pages/Accessories/Reviews/SignalLightRevie
 import SignalLightReviewPage2 from '../pages/Accessories/Reviews/reviews2/SignalLightReviewPage2'
 import CarReviews from '../pages/CarReviews'
 import SearchPage from '../pages/SearchPage'
-import CreateCarListing from '../components/CreateCarListing'
+import CreateCarListingPage from '../pages/CreateCarListingPage'
+import BlogsPage from '../pages/BlogsPage'
+import CarListingPage from '../pages/CarListingPage'
+import CreateBlogPage from '../pages/CreateBlogPage'
 
 export default function RoutesPages() {
 
@@ -201,7 +204,10 @@ export default function RoutesPages() {
 
           <Route path='/admin' element={<Admin/>}/>
           <Route path='/admin-dashboard' element={<AdminDashboardPage/>}/>
-          <Route path='/create-car-listing' element={<CreateCarListing/>}/>
+          <Route path='/create-car-listings' element={<CreateCarListingPage/>}/>
+          <Route path='/admin-car-listings' element={<CarListingPage/>}/>
+          <Route path='/admin-blog' element={<BlogsPage/>}/>
+          <Route path='/admin-create-blog' element={<CreateBlogPage/>}/>
           
           {/* admin forgot password */}
           <Route path='/forgot-password' element={<ForgotPassword/>}/>

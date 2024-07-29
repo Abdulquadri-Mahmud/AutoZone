@@ -86,7 +86,7 @@ export default function CarDetails() {
                 {
                   item.carimage && item.carimage.length > 0 && item.carimage.map((img, index) => (
                     <Box key={index} height={'100%'}>
-                      <Image rounded={5} maxW={'100%'} maxH={'100%'} src={img} />
+                      <Image rounded={5} maxW={'100%'} h={'400px'} src={img} />
                     </Box>
                     ))
                 }

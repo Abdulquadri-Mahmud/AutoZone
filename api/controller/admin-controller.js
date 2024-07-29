@@ -5,20 +5,22 @@ import jwt from 'jsonwebtoken';
 
 export const adminController = async (req, res, next) => {
 
+    const {email, password} = req.body;
+
     try {
         // getting the admin password from the .env file;
-        const adminemail = process.env.AdminEmail;
-        const adminpassword = process.env.AdminPassword;
+        // const adminemail = process.env.AdminEmail;
+        // const adminpassword = process.env.AdminPassword;
 
         // hashin gthe admin password
-        const hashedPassword = bcryptjs.hashSync(adminpassword, 10);
+        const hashedPassword = bcryptjs.hashSync(password, 10);
 
         // pushing the admin email and password into the db
-        const admin = new Admin({email: adminemail, password: hashedPassword});
+        const admin = new Admin({email: email, password: hashedPassword});
         //  saving the admin email and password to the db
         await admin.save();
 
-        res.status(200).json('');
+        res.status(200).json('admin created successfully!');
 
     } catch (error) {
         next(error);

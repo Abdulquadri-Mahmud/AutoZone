@@ -7,7 +7,6 @@ import { FaBloggerB } from "react-icons/fa6";
 import { IoCarSportSharp } from 'react-icons/io5'
 import { FaTools } from "react-icons/fa";
 
-import Dashboard from './Dashboard';
 
 import {
   Accordion,
@@ -16,11 +15,13 @@ import {
   AccordionPanel,
   AccordionIcon,
 } from '@chakra-ui/react'
-import AdminThemes from './AdminThemes';
+// import AdminThemes from './AdminThemes';
 import { Link } from 'react-router-dom';
+import AdminThemes from '../components/AdminThemes';
+import CreateCarListing from '../components/CreateCarListing';
 
-export default function AdminDashboard() {
-  const [open, setOpen] = useState(true);
+export default function CreateCarListingPage() {
+    const [open, setOpen] = useState(true);
 
   const handleMenu = () => {
     if (open) {
@@ -33,7 +34,7 @@ export default function AdminDashboard() {
   return (
     <Flex width={'100%'} height={'100%'} bg={useColorModeValue('blue.500', '')} p={0} fontFamily={'inherit'}>
       <Box overflowY={'scroll'} bg={useColorModeValue('blue.500', 'gray.700')} color={useColorModeValue('white', 'gray.400')} className={`${open ? 'w-[0px]' : 'w-[250px] fixed h-full px-3'} z-10 lg:w-[250px] duration-300 scroll`}>
-        <Flex flexDir={'column'} justifyContent={'start'} alignItems={'start'} gap={1} mt={{'2xl':20, md: 20, base: 20}} width={'100%'}>
+      <Flex flexDir={'column'} justifyContent={'start'} alignItems={'start'} gap={1} mt={{'2xl':20, md: 20, base: 20}} width={'100%'}>
           <Box width={'100%'}>
             <Flex cursor={'pointer'} alignItems={'center'} _hover={{color: useColorModeValue('blue.700', 'gray.100')}} gap={1} width={'100%'}rounded={4} fontWeight={500} textAlign={'start'} py={2.5} px={5} fontSize={16}>
              <Link to='/admin-dashboard' className='flex items-center gap-1'><MdDashboardCustomize/> Dashborad</Link>
@@ -130,7 +131,11 @@ export default function AdminDashboard() {
           </Flex>
         </Flex>
         <Box>
-          <Dashboard/>
+          <Flex  fontSize={13} px={4} pt={5} display={{md: 'none', base: 'block'}} color={useColorModeValue('', 'gray.500')} alignItems={'center'} gap={1}>
+            <Text>Dashboard / </Text>
+            <Link to='/create-car-listings'>Create Car Listings</Link>
+          </Flex>
+            <CreateCarListing/>
         </Box>
       </Box>
     </Flex>

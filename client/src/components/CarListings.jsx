@@ -1,7 +1,6 @@
 import { Box, Flex, Heading, Image, Text, useColorModeValue } from '@chakra-ui/react'
-import React, { useEffect, useState } from 'react'
-import AdminThemes from './AdminThemes'
-import { FaHome } from 'react-icons/fa';
+import React, { createContext, useEffect, useState } from 'react'
+
 import { MdCarCrash } from "react-icons/md";
 import { TbAutomaticGearbox } from 'react-icons/tb';
 import { GrManual } from 'react-icons/gr';
@@ -13,9 +12,17 @@ import { MdDelete } from "react-icons/md";
 import { LuClipboardEdit } from "react-icons/lu";
 
 import { Link } from 'react-router-dom';
+import AutomaticPag from './Paginations/CarListingsPaginations/AutomaticPag';
+
+export const AutomaticPagContext = createContext();
 
 export default function CarListings() {
   const [cars, setCars] = useState({});
+  const [automaticCurrentPage, setAutomaticCurrentPage] = useState(1);
+  const [automaticPostPerPage] = useState(4); 
+
+  const [manualCurrentPage, setManualCurrentPage] = useState(1);
+  const [manualPostPerPage, setManualPostPerPage] = useState(4);
 
   useEffect(() => {
     const fetCars = async () => {
@@ -68,6 +75,17 @@ export default function CarListings() {
     });
   }
     
+  const indexOfAutomaticLastPost = automaticCurrentPage * automaticPostPerPage;
+  const indexOfAutomaticFirstPost = indexOfAutomaticLastPost - automaticPostPerPage;
+  const automaticCurrentPost = automaticList.slice(indexOfAutomaticFirstPost, indexOfAutomaticLastPost);
+  
+  const paginate = pageNumber => setAutomaticCurrentPage(pageNumber);
+
+  const manualStartIndex = manualCurrentPage * manualPostPerPage;
+  const manualLastIndex = manualStartIndex - manualPostPerPage;
+
+  const manualCurrentPages = manualList.slice(manualLastIndex, manualStartIndex);
+
   return (
     <Box>
         {/* <Box p={4} color={'black'}>
@@ -75,21 +93,21 @@ export default function CarListings() {
         </Box> */}
         <Flex gap={5} justifyContent={{md: 'center', base: 'start'}} flexWrap={'wrap'} color={'white'} mt={5} px={4}>
           <Box width={{'2xl':'19%', xl:'18%', md:'47%', base:'47%'}} bg={useColorModeValue('blue.500', 'gray.700')} rounded={8} p={4}>
-              <Flex alignItems={'center'} gap={2}>
-                  <Flex justifyContent={'center'} alignItems={'center'} boxSize={35} bg={useColorModeValue('white', 'gray.600')} color={useColorModeValue('black', 'gray.300')} rounded={8}>
-                      <IoCarSportSharp className='text-2xl'/>
-                  </Flex>
-                  <Text fontSize={{'2xl': 20, md: 16}} fontWeight={500} color={useColorModeValue('white', 'gray.400')}>Total Cars List</Text>
-              </Flex>
-              <Flex justifyContent={'space-between'} alignItems={'center'} mt={10}>
-                <CircularProgress value={Math.round(cars.length * 1 / 100 * 100)} color='red.500' thickness='8px'>
-                  <CircularProgressLabel>{Math.round(cars.length * 1 / 100 * 100)}%</CircularProgressLabel>
-                </CircularProgress>
-                <Flex justifyContent={'center'} alignItems={'center'} rounded={5} boxSize={35} bg={useColorModeValue('white', 'gray.600')}>
-                    <Text fontWeight={500} fontSize={{'2xl': 20, md: 16}} color={useColorModeValue('black', 'gray.400')}>{cars.length}</Text>
+            <Flex alignItems={'center'} gap={2}>
+                <Flex justifyContent={'center'} alignItems={'center'} boxSize={35} bg={useColorModeValue('white', 'gray.600')} color={useColorModeValue('black', 'gray.300')} rounded={8}>
+                    <IoCarSportSharp className='text-2xl'/>
                 </Flex>
+                <Text fontSize={{'2xl': 20, md: 16}} fontWeight={500} color={useColorModeValue('white', 'gray.400')}>Total Cars List</Text>
+            </Flex>
+            <Flex justifyContent={'space-between'} alignItems={'center'} mt={10}>
+              <CircularProgress value={Math.round(cars.length * 1 / 100 * 100)} color='red.500' thickness='8px'>
+                <CircularProgressLabel>{Math.round(cars.length * 1 / 100 * 100)}%</CircularProgressLabel>
+              </CircularProgress>
+              <Flex justifyContent={'center'} alignItems={'center'} rounded={5} boxSize={35} bg={useColorModeValue('white', 'gray.600')}>
+                  <Text fontWeight={500} fontSize={{'2xl': 20, md: 16}} color={useColorModeValue('black', 'gray.400')}>{cars.length}</Text>
               </Flex>
-            </Box>
+            </Flex>
+          </Box>
             <Box width={{'2xl':'19%', xl:'18%', md:'47%', base:'47%'}} bg={useColorModeValue('blue.500', 'gray.700')} rounded={8} p={4}>
               <Flex alignItems={'center'} gap={2}>
                   <Flex justifyContent={'center'} alignItems={'center'} boxSize={35} bg={useColorModeValue('white', 'gray.600')} color={useColorModeValue('black', 'gray.300')} rounded={8}>
@@ -159,9 +177,9 @@ export default function CarListings() {
         <Flex gap={7} justifyContent={'space-between'} flexWrap={'wrap'} my={16} px={5}>
           <Box width={{md: '48%', base: '97%'}} overflow='auto'>
             <Heading fontSize={{'2xl': 20, md: 16}} fontWeight={500} color={useColorModeValue('black', 'gray.400')}>Automatic Cars</Heading>
-            <Flex mt={{md: 5, base: 7}} flexDir={'column'} justifyContent={'center'} gap={3} rounded={5} overflow={'hidden'} height={{md: '300px', base: '400px'}} bg={useColorModeValue('blue.500', 'gray.700')} p={2} className='scroll carListHover'>
+            <Flex mt={{md: 5, base: 7}} flexDir={'column'} justifyContent={'center'} gap={3} rounded={5} overflow={'hidden'} height={{md: '400px', base: '400px'}} bg={useColorModeValue('blue.500', 'gray.700')} p={2} className='scroll carListHover'>
                 {
-                  automaticList.length > 0 && automaticList.map((item, index) => (
+                  automaticCurrentPost.length > 0 && automaticCurrentPost.map((item, index) => (
                     <Flex gap={2} alignItems={'center'} justifyContent={'space-between'} key={index} bg={useColorModeValue('white', 'gray.800')} rounded={5} px={2} py={2}>
                       <Flex alignItems={'center'} boxSize={{md:'70px', base: '50px'}}>
                         <Image maxW={'100%'} objectFit={'contain'} rounded={5} src={item.carimage}/>
@@ -175,12 +193,16 @@ export default function CarListings() {
                   ))
                 }
             </Flex>
+            <Box>
+              <AutomaticPag automaticPostPerPage={automaticPostPerPage} automaticTotalPost={automaticList.length} paginate={paginate}/>
+            </Box>
           </Box>
+
           <Box width={{md: '48%', base: '97%'}}mt={{md: 0, base: 7}}>
             <Heading fontSize={{'2xl': 20, md: 16}} fontWeight={500} color={useColorModeValue('black', 'gray.400')}>Manual Cars</Heading>
-            <Flex mt={{md: 5, base: 7}} flexDir={'column'} justifyContent={'center'} gap={3} rounded={5} overflow={'hidden'} height={{md: '300px', base: '400px'}} bg={useColorModeValue('blue.500', 'gray.700')} p={2} className='scroll carListHover'>
+            <Flex mt={{md: 5, base: 7}} flexDir={'column'} justifyContent={'center'} gap={3} rounded={5} overflow={'hidden'} height={{md: '400px', base: '400px'}} bg={useColorModeValue('blue.500', 'gray.700')} p={2} className='scroll carListHover'>
                 {
-                  manualList.length > 0 && manualList.map((item, index) => (
+                  manualCurrentPages.length > 0 && manualCurrentPages.map((item, index) => (
                     <Flex gap={2} alignItems={'center'} justifyContent={'space-between'} key={index} bg={useColorModeValue('white', 'gray.800')} rounded={5} px={2} py={2}>
                       <Flex alignItems={'center'} boxSize={{md:'70px', base: '50px'}}>
                         <Image maxW={'100%'} objectFit={'contain'} rounded={5} src={item.carimage}/>
@@ -197,7 +219,7 @@ export default function CarListings() {
           </Box>
           <Box width={{md: '48%', base: '97%'}} mt={{md: 0, base: 7}}>
             <Heading fontSize={{'2xl': 20, md: 20}} fontWeight={500} color={useColorModeValue('black', 'gray.400')}>Used Cars</Heading>
-            <Flex mt={{md: 5, base: 7}} flexDir={'column'} justifyContent={'center'} gap={3} rounded={5} overflow={'hidden'} height={{md: '300px', base: '400px'}} bg={useColorModeValue('blue.500', 'gray.700')} p={2} className='scroll carListHover'>
+            <Flex mt={{md: 5, base: 7}} flexDir={'column'} justifyContent={'center'} gap={3} rounded={5} overflow={'hidden'} height={{md: '400px', base: '400px'}} bg={useColorModeValue('blue.500', 'gray.700')} p={2} className='scroll carListHover'>
                 {
                   usedCarList.length > 0 && usedCarList.map((item, index) => (
                     <Flex gap={2} alignItems={'center'} justifyContent={'space-between'} key={index} bg={useColorModeValue('white', 'gray.800')} rounded={5} px={2} py={2}>
@@ -216,7 +238,7 @@ export default function CarListings() {
           </Box>
           <Box width={{md: '48%', base: '97%'}} mt={{md: 0, base: 7}}>
             <Heading fontSize={{'2xl': 20, md: 20}} fontWeight={500} color={useColorModeValue('black', 'gray.400')}>New Cars</Heading>
-            <Flex mt={{md: 5, base: 7}} flexDir={'column'} justifyContent={'center'} gap={3} rounded={5} overflow={'hidden'} height={{md: '300px', base: '400px'}} bg={useColorModeValue('blue.500', 'gray.700')} p={2} className='scroll carListHover'>
+            <Flex mt={{md: 5, base: 7}} flexDir={'column'} justifyContent={'center'} gap={3} rounded={5} overflow={'hidden'} height={{md: '400px', base: '400px'}} bg={useColorModeValue('blue.500', 'gray.700')} p={2} className='scroll carListHover'>
                 {
                   newCarList.length > 0 && newCarList.map((item, index) => (
                     <Flex gap={2} alignItems={'center'} justifyContent={'space-between'} key={index} bg={useColorModeValue('white', 'gray.800')} rounded={5} px={2} py={2}>
