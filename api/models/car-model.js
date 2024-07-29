@@ -29,17 +29,24 @@ var carSalesSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    colors: {
-        type: String,
-        required: true
-    },
     deal: {
         type: String,
         required: true
     },
     year: {
-        type: Number,
+        type: String,
         required: true
+    },
+    driveTrain: {
+        type: String,
+        required: true
+    },
+    fuelEfficiency: {
+        type: String,
+        required: true
+    },
+    fuelType: {
+        type: String,
     },
     description: {
         type: String,
@@ -58,6 +65,17 @@ var carSalesSchema = new mongoose.Schema({
         required: true
     },
     engine: {
+        type: String,
+        required: true
+    },
+    engineSize: {
+        type: String,
+    },
+    waranty: {
+        type: String,
+        required: true
+    },
+    seatingCapacity: {
         type: String,
         required: true
     },

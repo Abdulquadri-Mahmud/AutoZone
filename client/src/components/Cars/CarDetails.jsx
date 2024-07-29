@@ -14,6 +14,7 @@ import { useContext, useRef, useState, useEffect } from 'react';
 import { CarDetailsContext } from '../../pages/CarDetails'
 import { IoLocationOutline, IoStar } from 'react-icons/io5';
 import { BsCurrencyDollar } from 'react-icons/bs';
+import { FaLongArrowAltRight } from "react-icons/fa";
 import { useSelector } from 'react-redux';
 
 import Slider from "react-slick";
@@ -40,27 +41,28 @@ function SamplePrevArrow(props) {
 export default function CarDetails() {
   const item = useContext(CarDetailsContext);
 
-  let emptyCart = []
+  // let emptyCart = []
 
-  const cartItem = {
-    name: item.name,
-    make: item.make,
-    model: item.model,
-    price: item.price,
-    condition: item.condition,
-    miles: item.miles,
-    location: item.location,
-    deal: item.deal,
-    year: item.year,
-    exteriorColor: item.exteriorColor,
-    interiorColor: item.interiorColor,
-    transmission: item.transmission,
-    image: item.carimage
-  };
-  const handleAddToCart = () => {
-    emptyCart.push({...cartItem});
-    localStorage.setItem('Selected Item', JSON.stringify(emptyCart));
-  }
+  // const cartItem = {
+  //   name: item.name,
+  //   make: item.make,
+  //   model: item.model,
+  //   price: item.price,
+  //   condition: item.condition,
+  //   miles: item.miles,
+  //   location: item.location,
+  //   deal: item.deal,
+  //   year: item.year,
+  //   exteriorColor: item.exteriorColor,
+  //   interiorColor: item.interiorColor,
+  //   transmission: item.transmission,
+  //   image: item.carimage
+  // };
+
+  // const handleAddToCart = () => {
+  //   emptyCart.push({...cartItem});
+  //   localStorage.setItem('Selected Item', JSON.stringify(emptyCart));
+  // }
 
   const settings = {
     dots: false,
@@ -76,8 +78,8 @@ export default function CarDetails() {
   
   return (
     <Flex flexWrap={'wrap'} gap={5} maxW={{md: '95%', base: '97%'}} mx={'auto'} rounded={5} padding={{md: 8, base: 4}} color={useColorModeValue('black')} bg={useColorModeValue('gray.200', 'gray.700')} mt={'3rem'}>
-      <Box width={{md: '45%', base: '100%'}} position={'relative'} rounded={5}>
-        <Box height={{md: '400px'}}>
+      <Box width={{md: '45%', base: '100%'}} height={{md: '400px'}} position={'relative'} rounded={5}>
+        <Box>
           {
             item.carimage === undefined ? '' : (
               <Slider {...settings}>
@@ -92,7 +94,7 @@ export default function CarDetails() {
             )
           }
         </Box>
-        <Box position={'absolute'} bottom={{md: 9, base: 3}} bg={useColorModeValue('gray.200', 'gray.700')} px={2} py={2} roundedTopRight={4}>
+        <Box position={'absolute'} bottom={-4} bg={useColorModeValue('blue.500', 'gray.700')} px={2} py={2} roundedTopRight={4}>
           {
             item.carimage === undefined ? '' : (
               <>
@@ -108,8 +110,7 @@ export default function CarDetails() {
         </Flex>
       </Box>
       <Box width={{md: '50%', base: '100%'}} bg={useColorModeValue('')} color={useColorModeValue('black','gray.300')}>
-        <Heading fontSize={30}>{item.name}</Heading>
-        <Text fontWeight={400} mt={4}>{item.description}</Text>
+        <Heading fontSize={25}>{item.name}</Heading>
         <Box>
           <Flex alignItems={'center'} gap={1} className="rate" mt={8}>
             <Text fontWeight={500}>Rating </Text>
@@ -135,10 +136,17 @@ export default function CarDetails() {
             <Text className='flex items-center gap-1 font-normal'>Price: <span className='flex items-center font-medium'><BsCurrencyDollar className='text-sm'/>{item.price}</span></Text>
             <Text className='flex items-center gap-1 font-normal'><span className='flex items-center font-medium'><IoLocationOutline className='text-blue-500'/>{item.location}</span></Text>
           </Flex>
-          <Box mt={4}>
-            <Button onClick={handleAddToCart} bg={useColorModeValue('blue.500')} _hover={{bg: useColorModeValue('blue.400')}} color={useColorModeValue('white')}>Add To cart</Button>
-          </Box>
+          <Flex justifyContent={'space-between'} alignItems={'center'} mt={4}>
+            <Flex alignItems={'center'} gap={2}>
+              <Text color={useColorModeValue('black','gray.500')} fontSize={14}>Do you love it?</Text>
+              <FaLongArrowAltRight/>
+            </Flex>
+            <Button bg={useColorModeValue('blue.500', 'blue.500')} _hover={{bg: useColorModeValue('blue.400', 'blue.400')}} rounded={3} width={'160px'} color={useColorModeValue('white')}>Buy Now</Button>
+          </Flex>
         </Box>
+      </Box>
+      <Box width={'100%'} mt={10}>
+        <Text fontWeight={500} fontSize={15} mt={4} lineHeight={2}>{item.description}</Text>
       </Box>
       <Box width={'100%'} mt={10}>
         <Heading textAlign={'center'} fontWeight={500} fontSize={20}>Addintional Info</Heading>
@@ -153,9 +161,6 @@ export default function CarDetails() {
                 <Th color={useColorModeValue('black', 'gray.300')} fontWeight={500} fontSize={14} fontStyle={'oblique'}>miles</Th>
                 <Th color={useColorModeValue('black', 'gray.300')} fontWeight={500} fontSize={14} fontStyle={'oblique'}>Deal</Th>
                 <Th color={useColorModeValue('black', 'gray.300')} fontWeight={500} fontSize={14} fontStyle={'oblique'}>year</Th>
-                <Th color={useColorModeValue('black', 'gray.300')} fontWeight={500} fontSize={14} fontStyle={'oblique'}>Exterior color</Th>
-                <Th color={useColorModeValue('black', 'gray.300')} fontWeight={500} fontSize={14} fontStyle={'oblique'}>Interior color</Th>
-                <Th color={useColorModeValue('black', 'gray.300')} fontWeight={500} fontSize={14} fontStyle={'oblique'}>Transmission</Th>
               </Tr>
             </Thead>
             <Tbody>
@@ -165,9 +170,29 @@ export default function CarDetails() {
               <Td color={useColorModeValue('black', 'gray.300')} fontWeight={500} fontSize={14} fontStyle={'oblique'}>{item.miles}</Td>
               <Td color={useColorModeValue('black', 'gray.300')} fontWeight={500} fontSize={14} fontStyle={'oblique'}>{item.deal}</Td>
               <Td color={useColorModeValue('black', 'gray.300')} fontWeight={500} fontSize={14} fontStyle={'oblique'}>{item.year}</Td>
-              <Td color={useColorModeValue('black', 'gray.300')} fontWeight={500} fontSize={14} fontStyle={'oblique'}>{item.exteriorColor}</Td>
-              <Td color={useColorModeValue('black', 'gray.300')} fontWeight={500} fontSize={14} fontStyle={'oblique'}>{item.interiorColor}</Td>
-              <Td color={useColorModeValue('black', 'gray.300')} fontWeight={500} fontSize={14} fontStyle={'oblique'}>{item.transmission}</Td>
+            </Tbody>
+          </Table>
+        </TableContainer>
+        <TableContainer bg={useColorModeValue('white', 'gray.800')}p={4} mt={4} rounded={5} className='scroll'>
+          <Table variant={'simple'}>
+            {/* <TableCaption fontWeight={500} fontSize={20} color={useColorModeValue('gray.800')} textDecor={'underline'}>More Details</TableCaption> */}
+            <Thead>
+              <Tr>
+                <Th color={useColorModeValue('black', 'gray.300')} fontWeight={500} fontSize={14} fontStyle={'oblique'}>driveTrain</Th>
+                <Th color={useColorModeValue('black', 'gray.300')} fontWeight={500} fontSize={14} fontStyle={'oblique'}>fuelEfficiency</Th>
+                <Th color={useColorModeValue('black', 'gray.300')} fontWeight={500} fontSize={14} fontStyle={'oblique'}>fuelType</Th>
+                <Th color={useColorModeValue('black', 'gray.300')} fontWeight={500} fontSize={14} fontStyle={'oblique'}>engineSize</Th>
+                <Th color={useColorModeValue('black', 'gray.300')} fontWeight={500} fontSize={14} fontStyle={'oblique'}>waranty</Th>
+                <Th color={useColorModeValue('black', 'gray.300')} fontWeight={500} fontSize={14} fontStyle={'oblique'}>seatingCapacity</Th>
+              </Tr>
+            </Thead>
+            <Tbody>
+              <Td color={useColorModeValue('black', 'gray.300')} fontWeight={500} fontSize={14} fontStyle={'oblique'}>{item.driveTrain}</Td>
+              <Td color={useColorModeValue('black', 'gray.300')} fontWeight={500} fontSize={14} fontStyle={'oblique'}>{item.fuelEfficiency}</Td>
+              <Td color={useColorModeValue('black', 'gray.300')} fontWeight={500} fontSize={14} fontStyle={'oblique'}>{item.fuelType}</Td>
+              <Td color={useColorModeValue('black', 'gray.300')} fontWeight={500} fontSize={14} fontStyle={'oblique'}>{item.engineSize}</Td>
+              <Td color={useColorModeValue('black', 'gray.300')} fontWeight={500} fontSize={14} fontStyle={'oblique'}>{item.waranty}</Td>
+              <Td color={useColorModeValue('black', 'gray.300')} fontWeight={500} fontSize={14} fontStyle={'oblique'}>{item.seatingCapacity}</Td>
             </Tbody>
           </Table>
         </TableContainer>

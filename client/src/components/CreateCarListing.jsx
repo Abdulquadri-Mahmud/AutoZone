@@ -34,14 +34,19 @@ export default function CreateCarListing() {
     const model = useRef();
     const location = useRef();
     const year = useRef();
+    const driveTrain = useRef();
     const miles = useRef();
     const price = useRef();
-    const color = useRef();
     const deal = useRef();
     const exteriorColor = useRef();
     const interiorColor = useRef();
     const transmission = useRef();
     const engine = useRef();
+    const engineSize = useRef();
+    const waranty = useRef();
+    const seatingCapacity = useRef();
+    const fuelEfficiency = useRef();
+    const fuelType = useRef();
 
     const fileRef = useRef();
 
@@ -59,14 +64,19 @@ export default function CreateCarListing() {
         model: 'all model',
         location: 'lagos',
         year: 'year',
+        driveTrain: 'year',
+        fuelEfficiency: 'year',
+        fuelType: 'year',
         price: '',
         deal: 'great',
         miles: '',
-        colors: '',
         exteriorColor: '',
         interiorColor: '',
         transmission: 'automatic',
         engine: '',
+        engineSize: '',
+        waranty: '',
+        seatingCapacity: '',
         description: ''
     });
 
@@ -128,6 +138,7 @@ export default function CreateCarListing() {
         })
    }
 
+   console.log(carForms);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -140,12 +151,17 @@ export default function CreateCarListing() {
         const checkyear = year.current.value === '';
         const checkmiles = miles.current.value === '';
         const checkprice = price.current.value === '';
-        const checkcolor = color.current.value === '';
         const checkdeal = deal.current.value === '';
         const checkexteriorColor = exteriorColor.current.value === '';
         const checkinteriorColor = interiorColor.current.value === '';
         const checktransmission = transmission.current.value === '';
         const checkengine = engine.current.value === '';
+        const checkdriveTrain = engine.current.value === '';
+        const checkfuelEfficiency = engine.current.value === '';
+        const checkfuelType = engine.current.value === '';
+        const checkengineSize = engine.current.value === '';
+        const checkwaranty = engine.current.value === '';
+        const checkseatingCapacity = engine.current.value === '';
         
         try {
             setLoading(true);
@@ -182,10 +198,6 @@ export default function CreateCarListing() {
                 setError('Price input field is required!');
                 return;
             };
-            if (checkcolor) {
-                setError('Color input field is required!');
-                return;
-            };
             if (checkdeal) {
                 setError('Deal input field is required!');
                 return;
@@ -204,6 +216,22 @@ export default function CreateCarListing() {
             };
             if (checkengine) {
                 setError('Engine input field is required!');
+                return;
+            };
+            if (checkdriveTrain) {
+                setError('Driventrain input field is required!');
+                return;
+            };
+            if (checkfuelEfficiency) {
+                setError('Fuel Effieciency input field is required!');
+                return;
+            };
+            if (checkwaranty) {
+                setError('Waranty input field is required!');
+                return;
+            };
+            if (checkseatingCapacity) {
+                setError('Seating Capacity input field is required!');
                 return;
             };
 
@@ -352,6 +380,24 @@ export default function CreateCarListing() {
                                 <input type="text" ref={miles} onChange={handleChange} id='miles' className='w-full border-0 outline-none bg-transparent' placeholder='Miles'/>
                             </Box>
                         </Box>
+                        <Box mt={4} color={useColorModeValue('white', 'gray.400')}>
+                            <span className='font-medium text-sm'>Waranty:</span>
+                            <Box bg={useColorModeValue('white', 'gray.800')} color={useColorModeValue('black', 'gray.400')} py={3} px={2} rounded={5}>
+                                <input type="text" ref={waranty} onChange={handleChange} id='waranty' className='w-full border-0 outline-none bg-transparent' placeholder='Waranty'/>
+                            </Box>
+                        </Box>
+                        <Box mt={4} color={useColorModeValue('white', 'gray.400')}>
+                            <span className='font-medium text-sm'>Fuel Type:</span>
+                            <Box bg={useColorModeValue('white', 'gray.800')} color={useColorModeValue('black', 'gray.400')} py={3} px={2} rounded={5}>
+                                <input type="text" ref={fuelType} onChange={handleChange} id='engine' className='w-full border-0 outline-none bg-transparent' placeholder='Fuel Type'/>
+                            </Box>
+                        </Box>
+                        <Box mt={4} color={useColorModeValue('white', 'gray.400')}>
+                            <span className='font-medium text-sm'>Seating Capacity:</span>
+                            <Box bg={useColorModeValue('white', 'gray.800')} color={useColorModeValue('black', 'gray.400')} py={3} px={2} rounded={5}>
+                                <input type="text" ref={seatingCapacity} onChange={handleChange} id='seatingCapacity' className='w-full border-0 outline-none bg-transparent' placeholder='Seating Capacity'/>
+                            </Box>
+                        </Box>
                     </Box>
                     <Box  width={'49%'}>
                         <Box color={useColorModeValue('white', 'gray.400')}>
@@ -361,9 +407,9 @@ export default function CreateCarListing() {
                             </Box>
                         </Box>
                         <Box mt={4} color={useColorModeValue('white', 'gray.400')}>
-                            <span className='font-medium text-sm'>Color:</span>
+                            <span className='font-medium text-sm'>Drivetrain:</span>
                             <Box bg={useColorModeValue('white', 'gray.800')} color={useColorModeValue('black', 'gray.400')} py={3} px={2} rounded={5}>
-                                <input type="text" ref={color} onChange={handleChange} id='colors' className='w-full border-0 outline-none bg-transparent' placeholder='Colors'/>
+                                <input type="text" ref={driveTrain} onChange={handleChange} id='driveTrain' className='w-full border-0 outline-none bg-transparent' placeholder='Drivetrain'/>
                             </Box>
                         </Box>
                         <Box mt={4} color={useColorModeValue('white', 'gray.400')}>
@@ -404,6 +450,18 @@ export default function CreateCarListing() {
                                 <input type="text" ref={engine} onChange={handleChange} id='engine' className='w-full border-0 outline-none bg-transparent' placeholder='Engine'/>
                             </Box>
                         </Box>
+                        <Box mt={4} color={useColorModeValue('white', 'gray.400')}>
+                            <span className='font-medium text-sm'>Engine Size:</span>
+                            <Box bg={useColorModeValue('white', 'gray.800')} color={useColorModeValue('black', 'gray.400')} py={3} px={2} rounded={5}>
+                                <input type="text" ref={engineSize} onChange={handleChange} id='engineSize' className='w-full border-0 outline-none bg-transparent' placeholder='engineSize'/>
+                            </Box>
+                        </Box>
+                        <Box mt={4} color={useColorModeValue('white', 'gray.400')}>
+                            <span className='font-medium text-sm'>Fuel Efficiency:</span>
+                            <Box bg={useColorModeValue('white', 'gray.800')} color={useColorModeValue('black', 'gray.400')} py={3} px={2} rounded={5}>
+                                <input type="text" ref={fuelEfficiency} onChange={handleChange} id='fuelEfficiency' className='w-full border-0 outline-none bg-transparent' placeholder='Fuel Efficiency'/>
+                            </Box>
+                        </Box>
                     </Box>
                     <Flex justifyContent={'center'} mt={4} color={useColorModeValue('black', 'gray.400')} width={'full'} bg={useColorModeValue('white', 'gray.800')} py={3} px={2} rounded={5}>
                         <textarea className='w-full h-[150px] outline-none border-0 font-medium rounded p-5 bg-transparent' placeholder='Car Descriptions' onChange={handleChange} id='description'>
@@ -419,7 +477,7 @@ export default function CreateCarListing() {
                                     <input type="file" onChange={(e) => setFile(e.target.files)} ref={fileRef} id="carimage"  accept='image/*' className='hidden' multiple/>
                                 </Box>
                                 <Box p={3}>
-                                    <Image maxW={'100%'} rounded={5} src={carForms.carimage[0]}/>
+                                    <Image maxW={'300px'} rounded={5} src={carForms.carimage[0]}/>
                                 </Box>
                                 <Box position={'absolute'}  onClick={() => fileRef.current.click()} cursor={'pointer'} color={useColorModeValue('white', 'gray.100')}>
                                     <MdAddPhotoAlternate className='text-3xl'/>

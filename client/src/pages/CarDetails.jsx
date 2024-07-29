@@ -17,13 +17,7 @@ const ListOfCars = React.lazy(() => {
   })
 })
 
-const CarDetails = React.lazy(() => {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve(import('../components/Cars/CarDetails'))
-    }, 2000);
-  })
-})
+const CarDetails = React.lazy(() => import('../components/Cars/CarDetails'));
 
 export default function CarDetailsPage() {
   const {carID} = useParams();

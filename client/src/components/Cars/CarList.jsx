@@ -16,7 +16,7 @@ export const CartContext = createContext()
 
 export default function CarList() {
   const [cars, setCar] = useState({});
-  const [modCars, setModCars] = useState([]);
+  // const [modCars, setModCars] = useState([]);
 
   useEffect(() => {
     const fetCars = async () => {
@@ -34,25 +34,26 @@ export default function CarList() {
   fetCars();
   }, []);
 
-  useEffect(() => {
-    const oldCars = localStorage.getItem("cars");
-    if (oldCars) {
-      setModCars(JSON.parse(oldCars));
-    }
-  }, []);
+  // useEffect(() => {
+  //   const oldCars = localStorage.getItem("cars");
+  //   if (oldCars) {
+  //     setModCars(JSON.parse(oldCars));
+  //   }
+  // }, []);
   
-  const handleAddToCart = (car) => {
-    const updatedModCars = [...modCars, car];
-    setModCars(updatedModCars);
-    localStorage.setItem("cars", JSON.stringify(updatedModCars));
-  } 
+  // const handleAddToCart = (car) => {
+  //   const updatedModCars = [...modCars, car];
+  //   setModCars(updatedModCars);
+  //   localStorage.setItem("cars", JSON.stringify(updatedModCars));
+  // } 
 
 
   return (
     <>
-      <CartContext.Provider value={modCars}>
+      {/* <CartContext.Provider value={modCars}>
         <Header modCars={modCars}/>
-      </CartContext.Provider>
+      </CartContext.Provider> */}
+      <Header/>
       <Box py={'3rem'}>
         <Box bg={useColorModeValue('gray.200')} ml={{md: 5, base: 0}} padding={{md: 3, base: 0}} shadow={'lg'} position={'relative'}>
           <Flex>
@@ -69,11 +70,11 @@ export default function CarList() {
                 <TabIndicator mt='-1.5px' height='2px' bg='blue.500' borderRadius='1px' />
                 <TabPanels>
                   <TabPanel>
-                    <Flex justifyContent={'start'} flexWrap={'wrap'} gap={2}>
+                    <Flex justifyContent={'start'} flexWrap={'wrap'} gap={2} width={'100%'}>
                       {
                         cars.length > 0 ? (
                           cars.map((car) => (
-                            <Box key={car._id} width={{lg: '32%',md: '45%', base: '100%'}} padding={3} shadow={'md'} 
+                            <Box key={car._id} width={{lg: '350px',md: '45%', base: '100%'}} padding={3} shadow={'md'} 
                               rounded={5} borderWidth={1} borderColor={useColorModeValue('blue.', 'gray.600')} bg={useColorModeValue('white', 'gray.700')} borderRadi3s={5} position={'relative'} className='font-medium'>
                               
                               <Box width={'100%'} mt={4} position={'relative'} height={{md: '250px', base: ''}} bg={useColorModeValue('white', 'gray.800')} rounded={5}>
@@ -95,21 +96,14 @@ export default function CarList() {
                                   {/* <SaveCar/> */}
                                 </Box>
                               </Flex>
-                              <Flex gap={1} className="rate" mt={2}>
-                                <IoStar className='text-yellow-300'/>
-                                <IoStar className='text-yellow-300'/>
-                                <IoStar className='text-yellow-300'/>
-                                <IoStar className='text-yellow-300'/>
-                                <IoStar className='text-gray-300'/>
-                              </Flex>
                               <Flex justifyContent={'space-between'} mt={{md: 6, base: 4}}>
                                 <Text width={'45%'} color={useColorModeValue('gray.600', 'gray.200')} fontSize={15} className='font-bold'>Exterior Color: <span className='font-medium'>{car.exteriorColor.slice(0, 30)}</span></Text>
                                 <Text width={'45%'} color={useColorModeValue('gray.600', 'gray.200')} fontSize={15} className='font-bold'>Interior Color: <span className='font-medium'>{car.interiorColor.slice(0, 30)}</span></Text>
                               </Flex>
-                              <Flex justifyContent={'space-between'} mt={2}>
+                              {/* <Flex justifyContent={'space-between'} mt={2}>
                                 <Text color={useColorModeValue('gray.600', 'gray.200')} fontSize={15} className='font-bold'>Make: <span className='font-medium'>{car.make}</span></Text>
                                 <Text color={useColorModeValue('gray.600', 'gray.200')} fontSize={15} className='font-bold'>Model: <span className='font-medium'>{car.model}</span></Text>
-                              </Flex>
+                              </Flex> */}
                               <Flex justifyContent={'space-between'} mt={2}>
                                 <Text color={useColorModeValue('gray.600', 'gray.200')} fontSize={15} className='font-bold'>Transmission: <span className='font-medium'>{car.transmission}</span></Text>
                                 <Text color={useColorModeValue('gray.600', 'gray.200')} fontSize={15} className='font-bold'>Deal: <span className='font-medium'>{car.deal}</span></Text>
@@ -118,13 +112,8 @@ export default function CarList() {
                                 <Text className='flex items-center gap-1 font-bold'>Price: <span className='flex items-center font-medium'><BsCurrencyDollar className='text-sm'/>{car.price}</span></Text>
                                 <Text className='flex items-center gap-1 font-bold'><span className='flex items-center font-medium'><IoLocationOutline className='text-blue-500'/>{car.location}</span></Text>
                               </Flex>
-                              <Flex justifyContent={'space-between'} alignItems={'center'} pt={3} mt={2} borderTop={'2px'} borderTopColor={'gray.300'}>
-                                <Box>
-                                  <Link to={`/car-details/${car._id}`} className='text-blue-500'>Review</Link>
-                                </Box>
-                                <Box>
-                                  <Button onClick={() => handleAddToCart(car)}><LuShoppingCart className='text-xl text-blue-500'/></Button>
-                                </Box>
+                              <Flex justifyContent={'center'} alignItems={'center'} mt={4} bg={'gray.100'} width={'100%'} py={3} rounded={2}>
+                                <Link to={`/car-details/${car._id}`} className='text-blue-500 font-medium text-center'>Check This Out</Link>
                               </Flex>
                             </Box>
                           ))
@@ -153,13 +142,6 @@ export default function CarList() {
                                   <Heading color={useColorModeValue('gray.600', 'gray.200')} fontSize={30} fontWeight={500}><span>{car.year} </span>{car.name}</Heading>
                                   <Text className='flex items-center gap-1 text-sm text-gray-300 font-medium'><span className='text-gray-300'><IoIosSpeedometer/></span> {car.miles} miles</Text>
                                 </Flex>
-                                <Flex gap={1} className="rate" mt={2}>
-                                    <IoStar className='text-yellow-300'/>
-                                    <IoStar className='text-yellow-300'/>
-                                    <IoStar className='text-yellow-300'/>
-                                    <IoStar className='text-yellow-300'/>
-                                    <IoStar className='text-gray-300'/>
-                                  </Flex>
                                   <Box mt={4} rounded={5} bg={useColorModeValue('gray.100', 'gray.800')} height={{md: '150px'}} p={4} width={'full'}>
                                     <Text color={useColorModeValue('gray.600', 'gray.200')} fontWeight={500}>{car.description.slice(0, 150)}...</Text>
                                   </Box>
@@ -169,10 +151,10 @@ export default function CarList() {
                                   <Text color={useColorModeValue('gray.600', 'gray.200')} fontSize={15} className='font-bold'>Exterior Color: <span className='font-medium'>{car.exteriorColor}</span></Text>
                                   <Text color={useColorModeValue('gray.600', 'gray.200')} fontSize={15} className='font-bold'>Interior Color: <span className='font-medium'>{car.interiorColor}</span></Text>
                                 </Flex>
-                                <Flex justifyContent={'space-between'} mt={2}>
+                                {/* <Flex justifyContent={'space-between'} mt={2}>
                                   <Text color={useColorModeValue('gray.600', 'gray.200')} fontSize={15} className='font-bold'>Make: <span className='font-medium'>{car.make}</span></Text>
                                   <Text color={useColorModeValue('gray.600', 'gray.200')} fontSize={15} className='font-bold'>Model: <span className='font-medium'>{car.model}</span></Text>
-                                </Flex>
+                                </Flex> */}
                                 <Flex justifyContent={'space-between'} mt={2}>
                                   <Text color={useColorModeValue('gray.600', 'gray.200')} fontSize={15} className='font-bold'>Transmission: <span className='font-medium'>{car.transmission}</span></Text>
                                   <Text color={useColorModeValue('gray.600', 'gray.200')} fontSize={15} className='font-bold'>Deal: <span className='font-medium'>{car.deal}</span></Text>
@@ -181,13 +163,8 @@ export default function CarList() {
                                   <Text className='flex items-center gap-1 font-bold' color={useColorModeValue('gray.600', 'gray.200')}>Price: <spa3 className='flex items-center font-medium'><BsCurrencyDollar className='text-sm'/>{car.price}</spa3></Text>
                                   <Text className='flex items-center gap-1 font-bold' color={useColorModeValue('gray.600', 'gray.200')}><span class3ame='flex items-center font-medium'><IoLocationOutline className='text-blue-500'/>{car.location}</span></Text>
                                 </Flex>
-                                <Flex justifyContent={'space-between'} alignItems={'center'} pt={3} mt={2} borderTop={'2px'} borderTopColor={'gray.300'}>
-                                  <Box bg={'gray.100'} p={2} rounded={4}>
-                                    <Link to={`/car-details/${car._id}`} className='text-blue-500 font-medium'>Review</Link>
-                                  </Box>
-                                  <Box>
-                                    <Button onClick={() => handleAddToCart(car)}><LuShoppingCart className='text-xl text-blue-500'/></Button>
-                                  </Box>
+                                <Flex justifyContent={'center'} alignItems={'center'} mt={4} bg={'gray.100'} width={'100%'} py={3} rounded={2}>
+                                  <Link to={`/car-details/${car._id}`} className='text-blue-500 font-medium text-center'>Check This Out</Link>
                                 </Flex>
                               </Box>
                               <Box bg={useColorModeValue('blue.500','gray.700')} px={3} py={1} color={'white'}  position={'absolute'} top={5} rounded={3} left={2}>

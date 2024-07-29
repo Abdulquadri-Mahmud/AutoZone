@@ -196,7 +196,7 @@ export default function CarListings() {
             </Flex>
           </Box>
           <Box width={{md: '48%', base: '97%'}} mt={{md: 0, base: 7}}>
-            <Heading fontSize={{'2xl': 20, md: 20}} fontWeight={500} color={useColorModeValue('black', 'gray.400')}>New Cars</Heading>
+            <Heading fontSize={{'2xl': 20, md: 20}} fontWeight={500} color={useColorModeValue('black', 'gray.400')}>Used Cars</Heading>
             <Flex mt={{md: 5, base: 7}} flexDir={'column'} justifyContent={'center'} gap={3} rounded={5} overflow={'hidden'} height={{md: '300px', base: '400px'}} bg={useColorModeValue('blue.500', 'gray.700')} p={2} className='scroll carListHover'>
                 {
                   usedCarList.length > 0 && usedCarList.map((item, index) => (
@@ -215,7 +215,7 @@ export default function CarListings() {
             </Flex>
           </Box>
           <Box width={{md: '48%', base: '97%'}} mt={{md: 0, base: 7}}>
-            <Heading fontSize={{'2xl': 20, md: 20}} fontWeight={500} color={useColorModeValue('black', 'gray.400')}>Used Cars</Heading>
+            <Heading fontSize={{'2xl': 20, md: 20}} fontWeight={500} color={useColorModeValue('black', 'gray.400')}>New Cars</Heading>
             <Flex mt={{md: 5, base: 7}} flexDir={'column'} justifyContent={'center'} gap={3} rounded={5} overflow={'hidden'} height={{md: '300px', base: '400px'}} bg={useColorModeValue('blue.500', 'gray.700')} p={2} className='scroll carListHover'>
                 {
                   newCarList.length > 0 && newCarList.map((item, index) => (

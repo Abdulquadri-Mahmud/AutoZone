@@ -91,6 +91,7 @@ import SignalLightReviewPage from '../pages/Accessories/Reviews/SignalLightRevie
 import SignalLightReviewPage2 from '../pages/Accessories/Reviews/reviews2/SignalLightReviewPage2'
 import CarReviews from '../pages/CarReviews'
 import SearchPage from '../pages/SearchPage'
+import CreateCarListing from '../components/CreateCarListing'
 
 export default function RoutesPages() {
 
@@ -200,6 +201,7 @@ export default function RoutesPages() {
 
           <Route path='/admin' element={<Admin/>}/>
           <Route path='/admin-dashboard' element={<AdminDashboardPage/>}/>
+          <Route path='/create-car-listing' element={<CreateCarListing/>}/>
           
           {/* admin forgot password */}
           <Route path='/forgot-password' element={<ForgotPassword/>}/>

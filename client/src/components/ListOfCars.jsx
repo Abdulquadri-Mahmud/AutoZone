@@ -75,13 +75,8 @@ export default function ListOfCars() {
                       <Text className='flex items-center gap-1 font-bold' color={useColorModeValue('black', 'gray.400')}>Price: <span className='flex items-center font-medium'><BsCurrencyDollar className='text-sm'/>{car.price}</span></Text>
                       <Text className='flex items-center gap-1 font-bold' color={useColorModeValue('black', 'gray.400')}><span className='flex items-center font-medium'><IoLocationOutline className='text-blue-500'/>{car.location}</span></Text>
                     </Flex>
-                    <Flex justifyContent={'space-between'} alignItems={'center'} pt={3} mt={2} borderTop={'2px'} borderTopColor={useColorModeValue('gray.300', 'gray.600')}>
-                      <Box bg={useColorModeValue('white', 'gray.800')} p={2} rounded={4} >
-                        <Link to={`/car-reviews/${car._id}`} className='text-blue-500 hover:text-gray-100 font-medium'>Review</Link>
-                      </Box>
-                      <Box>
-                        <Button bg={useColorModeValue('white', 'gray.800')}><LuShoppingCart className='text-xl text-blue-500 hover:text-gray-100'/></Button>
-                      </Box>
+                    <Flex justifyContent={'center'} alignItems={'center'} mt={4} bg={'gray.100'} width={'100%'} py={3} rounded={2}>
+                      <Link to={`/car-details/${car._id}`} className='text-blue-500 font-medium text-center'>Check This Out</Link>
                     </Flex>
                   </Box>
                   <Box bg={useColorModeValue('blue.500', 'gray.700')} px={3} py={1} color={'white'}  position={'absolute'} top={10} roundedBottomRight={3} left={6}>

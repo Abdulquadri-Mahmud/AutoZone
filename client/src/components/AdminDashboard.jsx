@@ -321,25 +321,25 @@ export default function AdminDashboard() {
               </Link>
           </Flex>
         </Flex>
-        <Box ref={dashboard} className='block'>
+        <Box>
           <Dashboard/>
         </Box>
-        <Box ref={blogs} className='hidden'>
+        <Box>
           <Blogs/>
         </Box>
-        <Box ref={order} className='hidden'>
+        <Box>
           <Order/>
         </Box>
-        <Box ref={createBlog} className='hidden'>
+        <Box>
           <CreateBlog/>
         </Box>
-        <Box ref={carListing} className='hidden'>
+        <Box>
           <CarListings/>
         </Box>
-        <Box ref={createCarListing} className='hidden'>
+        <Box>
           <CreateCarListing/>
         </Box>
-        <Box ref={accessListing} className='hidden'>
+        <Box>
           <AccessoriesListings/>
         </Box>
         <Box ref={createAccessListing} className='hidden'>
