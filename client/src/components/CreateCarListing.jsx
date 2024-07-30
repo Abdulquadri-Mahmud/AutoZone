@@ -274,11 +274,11 @@ export default function CreateCarListing() {
 
   return (
     <Box>
-        <Box maxW={{md: '100%', base: '100%'}} mx={{md: 'auto', base: 4}} py={{md: 5, base: 5}} px={{md: 5, base: 0}} bg={useColorModeValue('white')} overflowY={'scroll'} className='scroll'>
+        <Box maxW={{md: '100%', base: '100%'}} mx={{md: 'auto', base: 4}} py={{md: 5, base: 5}} px={{md: 5, base: 0}} bg={useColorModeValue('gray.200')} overflowY={'scroll'} className='scroll'>
         <Flex flexWrap={'wrap'} gap={3} flexDir={'column'} justifyContent={'space-between'}>
             <Flex justifyContent={'center'} flexWrap={'wrap'} padding={5} bg={useColorModeValue('blue.500', 'gray.700')} rounded={'md'} shadow={'md'}>
                 <form onSubmit={handleSubmit} className=' flex justify-between gap-1 w-full flex-wrap'>
-                    <Box width={'49%'}>
+                    <Box width={{md: '33%', base: '97%'}}>
                         <Box color={useColorModeValue('white', 'gray.400')}>
                             <span className='font-medium text-sm'>Car Name:</span>
                             <Box bg={useColorModeValue('white', 'gray.800')} color={useColorModeValue('black', 'gray.400')} py={3} px={2} rounded={5}>
@@ -301,13 +301,17 @@ export default function CreateCarListing() {
                                 <select ref={make} className='w-full bg-transparent text-sm  font-medium border-none outline-none'
                                 onChange={handleChange} id='make' value={carForms.make}>
                                     <option className='text-black' value="all">All Make</option>
-                                    <option className='text-black' value="Camry">Toyota</option>
-                                    <option className='text-black' value="Honda City">Honda City</option>
-                                    <option className='text-black' value="Honda">Honda Accord</option>
-                                    <option className='text-black' value="Honda">Honda Elevate</option>
-                                    <option className='text-black' value="Honda CR-V">Honda CR-V</option>
+                                    <option className='text-black' value="Toyota">Toyota</option>
+                                    <option className='text-black' value="Farrari">Farrari</option>
+                                    <option className='text-black' value="BMW">BMW</option>
+                                    <option className='text-black' value="Ford">Ford</option>
+                                    <option className='text-black' value="Acura">Acura</option>
+                                    <option className='text-black' value="Bentley">Bentley</option>
+                                    <option className='text-black' value="Mazda">Mazda</option>
+                                    <option className='text-black' value="Lamborghini">Lamborghini</option>
                                     <option className='text-black' value="Mercedes Benz">Mercedes Benz</option>
                                     <option className='text-black' value="Cheverolet">Cheverolet</option>
+                                    <option className='text-black' value="Jeep">Jeep</option>
                                 </select>
                             </Box>
                         </Box>
@@ -317,12 +321,14 @@ export default function CreateCarListing() {
                                 <select ref={model} className='w-full bg-transparent text-sm  font-medium border-none outline-none'
                                     onChange={handleChange} id='model'>
                                     <option className='text-black' value="all">All Model</option>
+                                    <option className='text-black font-semibold text-center disabled' >Toyota Models</option>
                                     <option className='text-black' value="Corolla Cross">Corolla Cross</option>
                                     <option className='text-black' value="Camry">Camry</option>
                                     <option className='text-black' value="Honda City">Honda City</option>
                                     <option className='text-black' value="Honda Accord">Honda Accord</option>
                                     <option className='text-black' value="Honda Elevate">Honda Elevate</option>
                                     <option className='text-black' value="Honda CR-V">Honda CR-V</option>
+
                                     <option className='text-black font-semibold text-center disabled' >Mercedes Benz Models</option>
                                     <option className='text-black' value="C-Class">C-Class</option>
                                     
@@ -381,6 +387,31 @@ export default function CreateCarListing() {
                                 </select>
                             </Box>
                         </Box>
+                    </Box>
+
+                    <Box width={{md: '33%', base: '97%'}}>
+                        <Box color={useColorModeValue('white', 'gray.400')}>
+                            <span className='font-medium text-sm'>Car Price:</span>
+                            <Box bg={useColorModeValue('white', 'gray.800')} color={useColorModeValue('black', 'gray.400')} py={3} px={2} rounded={5}>
+                                <input type="text" ref={price} onChange={handleChange} id='price' className='w-full border-0 outline-none bg-transparent' placeholder='Car price'/>
+                            </Box>
+                        </Box>
+                        <Box mt={4} color={useColorModeValue('white', 'gray.400')}>
+                            <span className='font-medium text-sm'>Drivetrain:</span>
+                            <Box bg={useColorModeValue('white', 'gray.800')} color={useColorModeValue('black', 'gray.400')} py={3} px={2} rounded={5}>
+                                <input type="text" ref={driveTrain} onChange={handleChange} id='driveTrain' className='w-full border-0 outline-none bg-transparent' placeholder='Drivetrain'/>
+                            </Box>
+                        </Box>
+                        <Box mt={4} color={useColorModeValue('white', 'gray.400')}>
+                            <span className='font-medium text-sm'>Deal:</span>
+                            <Box bg={useColorModeValue('white', 'gray.800')} color={useColorModeValue('black', 'gray.400')} py={3} px={2} rounded={5}>
+                                <select ref={deal} className='w-full bg-transparent text-sm  font-medium border-none outline-none'
+                                onChange={handleChange} id='deal'>
+                                    <option className='text-black' value="great">Great</option>
+                                    <option className='text-black' value="good">Good</option>
+                                </select>
+                            </Box>
+                        </Box>
                         <Box mt={4} color={useColorModeValue('white', 'gray.400')}>
                             <span className='font-medium text-sm'>Miles:</span>
                             <Box bg={useColorModeValue('white', 'gray.800')} color={useColorModeValue('black', 'gray.400')} py={3} px={2} rounded={5}>
@@ -406,30 +437,10 @@ export default function CreateCarListing() {
                             </Box>
                         </Box>
                     </Box>
-                    <Box  width={'49%'}>
+
+                    <Box  width={{md: '33%', base: '97%'}}>
+                        
                         <Box color={useColorModeValue('white', 'gray.400')}>
-                            <span className='font-medium text-sm'>Car Price:</span>
-                            <Box bg={useColorModeValue('white', 'gray.800')} color={useColorModeValue('black', 'gray.400')} py={3} px={2} rounded={5}>
-                                <input type="text" ref={price} onChange={handleChange} id='price' className='w-full border-0 outline-none bg-transparent' placeholder='Car price'/>
-                            </Box>
-                        </Box>
-                        <Box mt={4} color={useColorModeValue('white', 'gray.400')}>
-                            <span className='font-medium text-sm'>Drivetrain:</span>
-                            <Box bg={useColorModeValue('white', 'gray.800')} color={useColorModeValue('black', 'gray.400')} py={3} px={2} rounded={5}>
-                                <input type="text" ref={driveTrain} onChange={handleChange} id='driveTrain' className='w-full border-0 outline-none bg-transparent' placeholder='Drivetrain'/>
-                            </Box>
-                        </Box>
-                        <Box mt={4} color={useColorModeValue('white', 'gray.400')}>
-                            <span className='font-medium text-sm'>Deal:</span>
-                            <Box bg={useColorModeValue('white', 'gray.800')} color={useColorModeValue('black', 'gray.400')} py={3} px={2} rounded={5}>
-                                <select ref={deal} className='w-full bg-transparent text-sm  font-medium border-none outline-none'
-                                onChange={handleChange} id='deal'>
-                                    <option className='text-black' value="great">Great</option>
-                                    <option className='text-black' value="good">Good</option>
-                                </select>
-                            </Box>
-                        </Box>
-                        <Box mt={4} color={useColorModeValue('white', 'gray.400')}>
                             <span className='font-medium text-sm'>Exterior Color:</span>
                             <Box bg={useColorModeValue('white', 'gray.800')} color={useColorModeValue('black', 'gray.400')} py={3} px={2} rounded={5}>
                                 <input type="text" ref={exteriorColor} onChange={handleChange} id='exteriorColor' className='w-full border-0 outline-none bg-transparent' placeholder='Exterior Color'/>

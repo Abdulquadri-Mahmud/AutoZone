@@ -177,14 +177,14 @@ export default function CreateBlog() {
             {/* First part */}
             <Box w={{'2xl':'55%',md:'45%', base: '100%'}} color={useColorModeValue('white')}>
               <Box>
-                <Box color={useColorModeValue('black', 'white')} bg={useColorModeValue('white', 'gray.600')} py={1} px={2} rounded={5}>
+                <Box color={useColorModeValue('black', 'white')} bg={useColorModeValue('white', 'gray.800')} py={1} px={2} rounded={5}>
                   <input type="text" ref={title} onChange={handleChange} id="title" placeholder="Post title" name="title"  className='bg-transparent border-0 outline-none font-medium w-[100%] my-2 rounded-[5px]'/>
                 </Box>
-                <Box mt={3} color={useColorModeValue('black', 'white')} bg={useColorModeValue('white', 'gray.600')} py={1} px={2} rounded={5}>
+                <Box mt={3} color={useColorModeValue('black', 'white')} bg={useColorModeValue('white', 'gray.800')} py={1} px={2} rounded={5}>
                   <input type="date" ref={date} onChange={handleChange} id="date" placeholder="Select Date" className='bg-transparent border-0 outline-none font-medium w-[100%] my-2 rounded-[5px]'/>
                 </Box>
               </Box>
-              <Box my={3} bg={useColorModeValue('white', 'gray.600')} py={3} px={2} rounded={5}>
+              <Box my={3} bg={useColorModeValue('white', 'gray.800')} py={3} px={2} rounded={5}>
                 <Box color={useColorModeValue('black')}>
                   <select onChange={handleChange} id="postedBy" className='w-full bg-transparent outline-none border-0 text-md font-medium rounded-md'>
                     <option value="admin" className='text-black'>Postes By</option>
@@ -193,7 +193,7 @@ export default function CreateBlog() {
                 </Box>
               </Box>
               <Box>
-                <Box color={useColorModeValue('black', 'white')} bg={useColorModeValue('white', 'gray.600')} py={1} px={2} rounded={5}>
+                <Box color={useColorModeValue('black', 'white')} bg={useColorModeValue('white', 'gray.800')} py={1} px={2} rounded={5}>
                   <textarea type="text" ref={body} onChange={handleChange} id="body" placeholder="Blog body" name="body"  className='bg-transparent border-0 outline-none font-medium w-[100%] my-2 rounded-[5px] h-[150px]'></textarea>
                 </Box>
               </Box>
@@ -232,7 +232,7 @@ export default function CreateBlog() {
             <Box w={{md:'45%', base: '350px'}}>
                 <Text color={useColorModeValue('white', 'gray.400')} pb={2} textAlign={'center'}><strong>Image: </strong><span className="font-normal">The first image will be the cover (max 6)</span></Text>
                 
-                <Flex position={'relative'} justifyContent={'center'} alignItems={'center'} width={'100%'} height={'200px'} rounded={5} bg={useColorModeValue('white', 'gray.600')}>
+                <Flex position={'relative'} justifyContent={'center'} alignItems={'center'} width={'100%'} height={'200px'} rounded={5} bg={useColorModeValue('white', 'gray.800')}>
                   <input type="file" onChange={(e) => setFile(e.target.files)} 
                   ref={fileRef} className='outline-none border-0 hidden' 
                   id='imageUrl' accept='image/*' multiple/>
@@ -256,19 +256,19 @@ export default function CreateBlog() {
                 <Box>
                   {
                     blogData.imageUrl.length > 0 && blogData.imageUrl.map((url, index) => (
-                      <Flex key={index} justifyContent={'space-between'} alignItems={'center'} width={'100%'} my={2} bg={useColorModeValue('white', 'gray.600')} py={3} px={2} rounded={5}>
+                      <Flex key={index} justifyContent={'space-between'} alignItems={'center'} width={'100%'} my={2} bg={useColorModeValue('white', 'gray.800')} py={3} px={2} rounded={5}>
                         <Box>
                           <Image src={url} maxW={'100px'} rounded={5}/>
                         </Box>
                         <Box>
-                          <Button onClick={() => handleRemoveImage(index)} bg={useColorModeValue('white', 'gray.700')} color={'red.500'}>Delete</Button>
+                          <Button onClick={() => handleRemoveImage(index)} bg={useColorModeValue('white', 'gray.800')} color={'red.500'}>Delete</Button>
                         </Box>
                       </Flex>
                     ))
                   }
                 </Box>
                 <Flex mt={3} justifyContent={'center'}>
-                  <Button type='button' disabled={uploadProgress} onClick={handleImagesUpload} bg={useColorModeValue('white', 'gray.600')} fontWeight={400} color={useColorModeValue('black', 'white')} rounded={3}>
+                  <Button type='button' disabled={uploadProgress} onClick={handleImagesUpload} bg={useColorModeValue('white', 'gray.800')} fontWeight={400} color={useColorModeValue('black', 'white')} rounded={3}>
                     {
                       uploadProgress ? 'Uploading' : 'Upload Image'
                     }
@@ -277,7 +277,7 @@ export default function CreateBlog() {
               </Box>
 
               <Flex justifyContent={'center'} mt={4}>
-                <Button bg={useColorModeValue('white','gray.600')} width={'200px'} onClick={onOpen} color={useColorModeValue('gray.700', 'white')} fontWeight={500} type='submit' className='w-[100px] py-2 rounded-[5px]'>Post Blog</Button>
+                <Button bg={useColorModeValue('white','gray.800')} width={'200px'} rounded={3} py={6} onClick={onOpen} color={useColorModeValue('gray.700', 'white')} fontWeight={500} type='submit' className='w-[100px] py-2 rounded-[5px]'>Post Blog</Button>
               </Flex>
           </Flex>
         </form>

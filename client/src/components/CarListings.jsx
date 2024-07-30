@@ -13,16 +13,28 @@ import { LuClipboardEdit } from "react-icons/lu";
 
 import { Link } from 'react-router-dom';
 import AutomaticPag from './Paginations/CarListingsPaginations/AutomaticPag';
+import ManualPagination from './Paginations/CarListingsPaginations/ManualPagination';
+import UsedCarPgaination from './Paginations/CarListingsPaginations/UsedCarPgaination';
+import NewCarPagination from './Paginations/CarListingsPaginations/NewCarPagination';
 
 export const AutomaticPagContext = createContext();
 
 export default function CarListings() {
   const [cars, setCars] = useState({});
+  const [error, setError] = useState(false);
+
   const [automaticCurrentPage, setAutomaticCurrentPage] = useState(1);
   const [automaticPostPerPage] = useState(4); 
 
-  const [manualCurrentPage, setManualCurrentPage] = useState(1);
+  const [manualCurrentPaget, setManualCurrentPage] = useState(1);
   const [manualPostPerPage, setManualPostPerPage] = useState(4);
+
+  const [ usedCarCurrentPage, setUsedCarCurrentPage ] = useState(1);
+  const [ usedCarPostPerPage, setUsedcarPostPerPage] = useState(4);
+
+  const [newCarCurrentPage, setNewCarCurrentPage] = useState(1);
+  const [newCarPostPerPage, setNewCarPostPerPage] = useState(4);
+  
 
   useEffect(() => {
     const fetCars = async () => {
@@ -78,13 +90,30 @@ export default function CarListings() {
   const indexOfAutomaticLastPost = automaticCurrentPage * automaticPostPerPage;
   const indexOfAutomaticFirstPost = indexOfAutomaticLastPost - automaticPostPerPage;
   const automaticCurrentPost = automaticList.slice(indexOfAutomaticFirstPost, indexOfAutomaticLastPost);
-  
+  console.log(automaticPostPerPage);
+  // console.log(automaticList);
   const paginate = pageNumber => setAutomaticCurrentPage(pageNumber);
 
-  const manualStartIndex = manualCurrentPage * manualPostPerPage;
+  // manual car paginate
+  const manualStartIndex = manualCurrentPaget * manualPostPerPage;
   const manualLastIndex = manualStartIndex - manualPostPerPage;
+  const manualPost = manualList.slice(manualLastIndex, manualStartIndex);
 
-  const manualCurrentPages = manualList.slice(manualLastIndex, manualStartIndex);
+  const manualPaginate = manualPaginate => setManualCurrentPage(manualPaginate)
+
+  // used car pagination
+  const usedCarStartIndex = usedCarCurrentPage * usedCarPostPerPage;
+  const usedCarLastIndex = usedCarStartIndex - usedCarPostPerPage;
+
+  const usedCarPost = usedCarList.slice(usedCarStartIndex, usedCarLastIndex);
+  const usedCarPaginate = usedCarPaginate => setUsedCarCurrentPage(usedCarPaginate);
+
+  // New car paginate
+  const newCarStartIndex = newCarCurrentPage * newCarPostPerPage;
+  const newCarLastIndex = newCarStartIndex - newCarCurrentPage;
+
+  const newCarPosts = newCarList.slice(newCarStartIndex, newCarLastIndex)
+  const newCarPaginate = newCarPaginate => setNewCarPostPerPage(newCarPaginate);
 
   return (
     <Box>
@@ -202,7 +231,7 @@ export default function CarListings() {
             <Heading fontSize={{'2xl': 20, md: 16}} fontWeight={500} color={useColorModeValue('black', 'gray.400')}>Manual Cars</Heading>
             <Flex mt={{md: 5, base: 7}} flexDir={'column'} justifyContent={'center'} gap={3} rounded={5} overflow={'hidden'} height={{md: '400px', base: '400px'}} bg={useColorModeValue('blue.500', 'gray.700')} p={2} className='scroll carListHover'>
                 {
-                  manualCurrentPages.length > 0 && manualCurrentPages.map((item, index) => (
+                  manualPost.length > 0 && manualPost.map((item, index) => (
                     <Flex gap={2} alignItems={'center'} justifyContent={'space-between'} key={index} bg={useColorModeValue('white', 'gray.800')} rounded={5} px={2} py={2}>
                       <Flex alignItems={'center'} boxSize={{md:'70px', base: '50px'}}>
                         <Image maxW={'100%'} objectFit={'contain'} rounded={5} src={item.carimage}/>
@@ -216,12 +245,15 @@ export default function CarListings() {
                   ))
                 }
             </Flex>
+            <Box>
+              <ManualPagination manualPostPerPage={manualPostPerPage} totalManualPost={manualList.length} manualPaginate={manualPaginate}/>
+            </Box>
           </Box>
           <Box width={{md: '48%', base: '97%'}} mt={{md: 0, base: 7}}>
             <Heading fontSize={{'2xl': 20, md: 20}} fontWeight={500} color={useColorModeValue('black', 'gray.400')}>Used Cars</Heading>
             <Flex mt={{md: 5, base: 7}} flexDir={'column'} justifyContent={'center'} gap={3} rounded={5} overflow={'hidden'} height={{md: '400px', base: '400px'}} bg={useColorModeValue('blue.500', 'gray.700')} p={2} className='scroll carListHover'>
                 {
-                  usedCarList.length > 0 && usedCarList.map((item, index) => (
+                  usedCarPost.length > 0 && usedCarPost.map((item, index) => (
                     <Flex gap={2} alignItems={'center'} justifyContent={'space-between'} key={index} bg={useColorModeValue('white', 'gray.800')} rounded={5} px={2} py={2}>
                       <Flex alignItems={'center'} boxSize={{md:'70px', base: '50px'}}>
                         <Image maxW={'100%'} objectFit={'contain'} rounded={5} src={item.carimage}/>
@@ -235,12 +267,15 @@ export default function CarListings() {
                   ))
                 }
             </Flex>
+            <Box>
+              <UsedCarPgaination usedCarPostPerPage={usedCarPostPerPage} usedCarTotalPost={usedCarList.length} usedCarPaginate={usedCarPaginate}/>
+            </Box>
           </Box>
           <Box width={{md: '48%', base: '97%'}} mt={{md: 0, base: 7}}>
             <Heading fontSize={{'2xl': 20, md: 20}} fontWeight={500} color={useColorModeValue('black', 'gray.400')}>New Cars</Heading>
             <Flex mt={{md: 5, base: 7}} flexDir={'column'} justifyContent={'center'} gap={3} rounded={5} overflow={'hidden'} height={{md: '400px', base: '400px'}} bg={useColorModeValue('blue.500', 'gray.700')} p={2} className='scroll carListHover'>
                 {
-                  newCarList.length > 0 && newCarList.map((item, index) => (
+                  newCarPosts.length > 0 && newCarPosts.map((item, index) => (
                     <Flex gap={2} alignItems={'center'} justifyContent={'space-between'} key={index} bg={useColorModeValue('white', 'gray.800')} rounded={5} px={2} py={2}>
                       <Flex alignItems={'center'} boxSize={{md:'70px', base: '50px'}}>
                         <Image maxW={'100%'} objectFit={'contain'} rounded={5} src={item.carimage}/>
@@ -254,6 +289,9 @@ export default function CarListings() {
                   ))
                 }
             </Flex>
+            <Box>
+              <NewCarPagination newCarPostPerPage={newCarPostPerPage} totalPostPerPage={newCarList.length} newCarPaginate={newCarPaginate}/>
+            </Box>
           </Box>
         </Flex>
     </Box>

@@ -70,6 +70,48 @@ export const getSingleCarlist = async (req, res, next) => {
     }
 }
 
+export const deleteCar = async (req, res, next) => {
+    try {
+        const { id } = req.params;
+
+        if (!mongoose.Types.ObjectId.isValid(id)) {
+            return next(errorHandler(404, 'Car can not be found!'))
+        }
+
+        const findCar = await CarLists.findOneAndDelete({_id: id});
+
+        if (!findCar) {
+            return next(errorHandler(404, 'Car Not Found!'));
+        }
+
+        res.status(200).json('Car deleted successfully!');
+
+    } catch (error) {
+        next(error);
+    }
+}
+
+export const updateCar = async (req, res, next) => {
+    try {
+        const { id } = req.params;
+
+        if (!mongoose.Types.ObjectId.isValid(id)) {
+            next(errorHandler(404, 'Car can nt be found!'));
+        }
+
+        const findCar = await CarLists.findOneAndUpdate({_id: id}, {...req.body}).sort({createdAt : -1});
+
+        if (!findCar) {
+            return next(errorHandler(404, 'Car is not found!'));
+        }
+
+        res.status(200).json('Car has been updated!');
+
+    } catch (error) {
+        next(error);
+    }
+}
+
 export const searchCar = async (req, res, next) => {
     try {
         const limit = parseInt(req.query.limit) || 6;

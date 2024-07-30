@@ -15,8 +15,6 @@ import { IoIosSpeedometer } from "react-icons/io";
 import { Link, useNavigate } from 'react-router-dom';
 import { useContext, useEffect, useState } from 'react';
 import { CarListContext } from '../../pages/CarProducts';
-import SaveCar from '../SaveCar';
-import { model } from 'mongoose';
 
 export default function CarSalesList() {
   const [cars, setCar] = useState({});

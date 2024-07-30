@@ -10,7 +10,7 @@ import users from './routes/user.routes.js';
 import admin from './routes/admin.js';
 
 import carList from './routes/car-route.js';
-import carAccessories from './routes/accessories-routes.js';
+import carAccessories from './routes/Accessory-Route.js';
 
 dotenv.config();
 
@@ -29,14 +29,14 @@ mongoose.connect(process.env.db)
         console.log(error);
     });
 
-app.use('/api/blogs', blogRoute);
-app.use('/api/cars', carList);
+    app.use('/api/blogs', blogRoute);
+    app.use('/api/cars', carList);
 
-app.use('/api/accessories', carAccessories);
+    app.use('/api/accessories', carAccessories);
 
-app.use('/api/auth', userAuthentication);
-app.use('/api/user', users);
-app.use('/api/adminauth', admin);
+    app.use('/api/auth', userAuthentication);
+    app.use('/api/user', users);
+    app.use('/api/adminauth', admin);
 
 app.use((err, req, res, next) => {
     const statusCode = err.statusCode || 500;

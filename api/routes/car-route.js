@@ -1,9 +1,11 @@
 import express from 'express'
 import { carListController,
+    deleteCar,
     getAllCars,
     getAllCarsControllers,
     getSingleCarlist,
-    searchCar 
+    searchCar, 
+    updateCar
 }from '../controller/car-list.controller.js';
 import { verifyAdmin } from '../utils/verifyUserError.js';
 
@@ -14,5 +16,8 @@ app.get('/allcarlists', verifyAdmin,getAllCarsControllers);
 app.get('/allcar', getAllCars);
 app.get('/singlecarlists/:id', getSingleCarlist);
 app.get('/search-car', searchCar);
+
+app.patch('/update-car/:id',verifyAdmin, deleteCar)
+app.delete('/delete-car/:id',verifyAdmin, updateCar)
 
 export default app;
