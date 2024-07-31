@@ -11,7 +11,7 @@ export default function HeadlightPage() {
     useEffect(()=> {
         const Headlight = async () => {
         try {
-            const res = await fetch('/api/accessories/car-headlight');
+            const res = await fetch('/api/accessories/all-accessory');
             const data =  await res.json();
             setHeadlight(data);
         } catch (error) {

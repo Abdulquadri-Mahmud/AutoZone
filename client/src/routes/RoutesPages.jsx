@@ -87,7 +87,6 @@ import LedlightReviewPage from '../pages/Accessories/Reviews/LedlightReviewPage'
 import LedlightReviewPage2 from '../pages/Accessories/Reviews/reviews2/LedlightReviewPage2'
 import OffRoadLightReviewPage from '../pages/Accessories/Reviews/OffRoadLightReviewPage'
 import OffRoadLightReviewPage2 from '../pages/Accessories/Reviews/reviews2/OffRoadLightReviewPage2'
-import SignalLightReviewPage from '../pages/Accessories/Reviews/SignalLightReviewPage'
 import SignalLightReviewPage2 from '../pages/Accessories/Reviews/reviews2/SignalLightReviewPage2'
 import CarReviews from '../pages/CarReviews'
 import SearchPage from '../pages/SearchPage'
@@ -97,6 +96,7 @@ import CarListingPage from '../pages/CarListingPage'
 import CreateBlogPage from '../pages/CreateBlogPage'
 import CreateAccessoryPage from '../pages/Accessories/CreateAccessoryPage'
 import AccessoriesPage from '../pages/Accessories/AccessoriesPage'
+import SignalLightReviewPage from '../pages/Accessories/Reviews/SignalLightReviewPage'
 
 export default function RoutesPages() {
 
@@ -173,7 +173,7 @@ export default function RoutesPages() {
           <Route path='/steeringwheel-reviews/:accessoryId' element={<SteeringWheelsReviewPage/>}/>
           <Route path='/sunshade-reviews/:accessoryId' element={<SunshadesReviewPage/>}/>
           <Route path='/foglight-reviews/:accessoryId' element={<FoglightReviewPage/>}/>
-          <Route path='/headlight-reviews/:accessoryId' element={<HedlightReviewPage/>}/>
+          <Route path='/hedlight-reviews/:accessoryId' element={<HedlightReviewPage/>}/>
           <Route path='/ledlight-reviews/:accessoryId' element={<LedlightReviewPage/>}/>
           <Route path='/offroadlight-reviews/:accessoryId' element={<OffRoadLightReviewPage/>}/>
           <Route path='/signallight-reviews/:accessoryId' element={<SignalLightReviewPage/>}/>
@@ -197,7 +197,7 @@ export default function RoutesPages() {
           <Route path='/review-sunshade-reviews/:accessoryId' element={<SunshadesReviewPage2/>}/>
           <Route path='/review-steeringwheel-reviews/:accessoryId' element={<SteeringWheelsReviewPage2/>}/>
           <Route path='/review-foglight-reviews/:accessoryId' element={<FoglightReviewPage2/>}/>
-          <Route path='/review-headlight-reviews/:accessoryId' element={<HedlightReviewPage2/>}/>
+          <Route path='/review-hedlight-reviews/:accessoryId' element={<HedlightReviewPage2/>}/>
           <Route path='/review-ledlight-reviews/:accessoryId' element={<LedlightReviewPage2/>}/>
           <Route path='/review-offroadlight-reviews/:accessoryId' element={<OffRoadLightReviewPage2/>}/>
           <Route path='/review-signallight-reviews/:accessoryId' element={<SignalLightReviewPage2/>}/>

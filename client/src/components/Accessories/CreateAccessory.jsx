@@ -213,7 +213,7 @@ export default function CreateAccessory() {
                                     <option className='text-black' value="Steering Wheels">Steering Wheels</option>
                                     <option className='text-black' value="Sun Shades">Sun Shades</option>
                                     <option className='text-black' value="Fog Lights">Fog Lights</option>
-                                    <option className='text-black' value="Headlights">Headlights</option>
+                                    <option className='text-black' value="Hedlights">Hedlights</option>
                                     <option className='text-black' value="LED Lights">LED Lights</option>
                                     <option className='text-black' value="Off-Road Lights">Off-Road Lights</option>
                                     <option className='text-black' value="Signal Lights">Signal Lights</option>

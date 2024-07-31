@@ -2,6 +2,7 @@ import { Box } from '@chakra-ui/react';
 import React, { createContext, useEffect, useState } from 'react';
 import OffRoadLight from '../../components/Accessories/OffRoadLight';
 import Header from '../../components/Header';
+import Footer from '../../components/Footer';
 
 export const OffRoadlightContext = createContext();
 
@@ -11,7 +12,7 @@ export default function OffRoadLightPage() {
     useEffect(()=> {
         const OffRoadlight = async () => {
         try {
-            const res = await fetch('/api/accessories/car-offroadlight');
+            const res = await fetch('/api/accessories/all-accessory');
             const data =  await res.json();
             setOffRoadlight(data);
         } catch (error) {
@@ -26,6 +27,7 @@ export default function OffRoadLightPage() {
       <OffRoadlightContext.Provider value={offroadlight}>
         <OffRoadLight offroadlight={offroadlight}/>
       </OffRoadlightContext.Provider>
+      <Footer/>
     </Box>
   )
 }

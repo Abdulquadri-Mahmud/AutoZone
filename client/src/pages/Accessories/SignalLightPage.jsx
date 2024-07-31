@@ -11,7 +11,7 @@ export default function SignalLightPage() {
     useEffect(()=> {
         const Signallight = async () => {
         try {
-            const res = await fetch('/api/accessories/car-signallight');
+            const res = await fetch('/api/accessories/all-accessory');
             const data =  await res.json();
             setSignallight(data);
         } catch (error) {
