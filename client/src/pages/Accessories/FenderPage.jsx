@@ -11,7 +11,7 @@ export default function FenderPage() {
     useEffect(()=> {
         const fender = async () => {
         try {
-            const res = await fetch('/api/accessories/car-fender');
+            const res = await fetch('/api/accessories/all-accessory');
             const data =  await res.json();
             setFender(data);
         } catch (error) {

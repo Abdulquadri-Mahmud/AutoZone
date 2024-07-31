@@ -2,6 +2,7 @@ import { Box } from '@chakra-ui/react';
 import React, { createContext, useEffect, useState } from 'react'
 import Hoods from '../../components/Accessories/Hoods';
 import Header from '../../components/Header';
+import Footer from '../../components/Footer';
 
 export const HoodContext = createContext();
 
@@ -11,7 +12,7 @@ export default function HoodPage() {
     useEffect(()=> {
         const Hood = async () => {
         try {
-            const res = await fetch('/api/accessories/car-hoods');
+            const res = await fetch('/api/accessories/all-accessory');
             const data =  await res.json();
             setHood(data);
         } catch (error) {
@@ -25,6 +26,7 @@ export default function HoodPage() {
       <HoodContext.Provider value={hood}>
         <Hoods hood={hood}/>
       </HoodContext.Provider>
+      <Footer/>
     </Box>
   )
 }

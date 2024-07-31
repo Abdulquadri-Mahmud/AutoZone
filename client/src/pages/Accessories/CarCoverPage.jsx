@@ -11,7 +11,7 @@ export default function CarCoverPage() {
     useEffect(()=> {
         const CarCover = async () => {
         try {
-            const res = await fetch('/api/accessories/car-car-cover');
+            const res = await fetch('/api/accessories/all-accessory');
             const data =  await res.json();
             setCarCover(data);
         } catch (error) {

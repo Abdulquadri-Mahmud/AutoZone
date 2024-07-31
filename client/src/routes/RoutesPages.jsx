@@ -95,6 +95,8 @@ import CreateCarListingPage from '../pages/CreateCarListingPage'
 import BlogsPage from '../pages/BlogsPage'
 import CarListingPage from '../pages/CarListingPage'
 import CreateBlogPage from '../pages/CreateBlogPage'
+import CreateAccessoryPage from '../pages/Accessories/CreateAccessoryPage'
+import AccessoriesPage from '../pages/Accessories/AccessoriesPage'
 
 export default function RoutesPages() {
 
@@ -152,9 +154,9 @@ export default function RoutesPages() {
           <Route path='/signallights' element={<SignalLightPage/>}/>
   
           {/* Accessories Reviews */}
-          <Route path='/stereo-reviews/:accessoryId' element={<StereoReviewPage/>}/>
+          <Route path='/steroes-reviews/:accessoryId' element={<StereoReviewPage/>}/>
           <Route path='/speaker-reviews/:accessoryId' element={<SpeakerReviewPage/>}/>
-          <Route path='/amplifier-reviews/:accessoryId' element={<AmplifierReviewPage/>}/>
+          <Route path='/amplifire-reviews/:accessoryId' element={<AmplifierReviewPage/>}/>
           <Route path='/subwoofer-reviews/:accessoryId' element={<SubwooferReviewPage/>}/>
           <Route path='/hoods-reviews/:accessoryId' element={<HoodsReviewPage/>}/>
           <Route path='/bumper-reviews/:accessoryId' element={<BumperReviewPage/>}/>
@@ -168,17 +170,17 @@ export default function RoutesPages() {
           <Route path='/custom-gauges-reviews/:accessoryId' element={<CustomGaugesReviewPage/>}/>
           <Route path='/dash-kits-reviews/:accessoryId' element={<DashkitReviewPage/>}/>
           <Route path='/seat-cover-reviews/:accessoryId' element={<SeatCoverReviewPage/>}/>
-          <Route path='/sunshade-reviews/:accessoryId' element={<SunshadesReviewPage/>}/>
           <Route path='/steeringwheel-reviews/:accessoryId' element={<SteeringWheelsReviewPage/>}/>
+          <Route path='/sunshade-reviews/:accessoryId' element={<SunshadesReviewPage/>}/>
           <Route path='/foglight-reviews/:accessoryId' element={<FoglightReviewPage/>}/>
           <Route path='/headlight-reviews/:accessoryId' element={<HedlightReviewPage/>}/>
           <Route path='/ledlight-reviews/:accessoryId' element={<LedlightReviewPage/>}/>
           <Route path='/offroadlight-reviews/:accessoryId' element={<OffRoadLightReviewPage/>}/>
           <Route path='/signallight-reviews/:accessoryId' element={<SignalLightReviewPage/>}/>
 
-          <Route path='/review-stereo-reviews/:accessoryId' element={<StereoReviewsPage2/>}/>
+          <Route path='/review-steroes-reviews/:accessoryId' element={<StereoReviewsPage2/>}/>
           <Route path='/review-speaker-reviews/:accessoryId' element={<SpeakerReviewPage2/>}/>
-          <Route path='/review-amplifier-reviews/:accessoryId' element={<AmplifierPage2/>}/>
+          <Route path='/review-amplifire-reviews/:accessoryId' element={<AmplifierPage2/>}/>
           <Route path='/review-subwoofer-reviews/:accessoryId' element={<SubwooferReviewPage2/>}/>
           <Route path='/review-hoods-reviews/:accessoryId' element={<HoodsReviewPage2/>}/>
           <Route path='/review-bumper-reviews/:accessoryId' element={<BumperReviewPage2/>}/>
@@ -208,6 +210,8 @@ export default function RoutesPages() {
           <Route path='/admin-car-listings' element={<CarListingPage/>}/>
           <Route path='/admin-blog' element={<BlogsPage/>}/>
           <Route path='/admin-create-blog' element={<CreateBlogPage/>}/>
+          <Route path='/admin-create-accessory' element={<CreateAccessoryPage/>}/>
+          <Route path='/admin-accessory' element={<AccessoriesPage/>}/>
           
           {/* admin forgot password */}
           <Route path='/forgot-password' element={<ForgotPassword/>}/>

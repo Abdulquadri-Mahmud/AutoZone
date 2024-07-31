@@ -5,19 +5,20 @@ import { Link, useParams } from 'react-router-dom';
 import { BsCurrencyDollar } from 'react-icons/bs';
 import { LuShoppingCart } from 'react-icons/lu';
 import Amplifier from '../../../components/Accessories/Reviews/Amplifier';
+import Footer from '../../../components/Footer';
+import Header from '../../../components/Header';
 
 export const AmplifierReviewContext = createContext();
 
 export default function AmplifierReviewPage() {
     const [review, setReview] = useState({});
-    const [item, setItem] = useState({});
 
     const {accessoryId} = useParams();
 
 
     useEffect(() => {
         const getItem = async () => {
-        const fetchItem = await fetch(`/api/accessories/car-amplifier/${accessoryId}`);
+        const fetchItem = await fetch(`/api/accessories//single-accessory/${accessoryId}`);
         const item = await fetchItem.json();
         setReview(item);
         }
@@ -25,21 +26,23 @@ export default function AmplifierReviewPage() {
     }, []);
 
     
+    const [items, setItems] = useState({});
     useEffect(()=> {
-        const getItem = async () => {
-            try {
-                const res = await fetch('/api/accessories/car-amplifier');
-                const data =  await res.json();
-                setItem(data);
-            } catch (error) {
-                console.log(error);
-            }
+        const Items = async () => {
+        try {
+            const res = await fetch('/api/accessories/all-accessory');
+            const data =  await res.json();
+            setItems(data);
+        } catch (error) {
+            console.log(error);
         }
-        getItem();
+        }
+        Items();
     }, []);
     
   return (
     <Box>
+        <Header/>
       <AmplifierReviewContext.Provider value={review}>
         <Amplifier review={review}/>
       </AmplifierReviewContext.Provider>
@@ -54,45 +57,53 @@ export default function AmplifierReviewPage() {
           <Image src='/zigzag.png' position={'absolute'} bottom={-10}/>
         </Flex>
         <Flex mt={10} gap={3} mx={5} justifyContent={'center'} flexWrap={'wrap'}>
-            {
-                item.length > 0 ? (
-                    item.map((item) => (
-                        <Box key={item._id} width={{md: '300px', base: '100%'}} bg={useColorModeValue('gray.200')} padding={3} rounded={5}>
-                            <Flex justifyContent={'center'} width={'100%'} height={'200px'} bg={useColorModeValue('white')} p={2} rounded={5}>
-                                <Image src={item.amplifierImage[0]} maxW={'100%'} rounded={5}/>
-                            </Flex>
-                            <Box mt={4} color={'gray.800'}>
-                                <Heading mb={2} fontWeight={500} fontSize={16} color={'blue.500'}>{item.year} {item.name} {item.make}</Heading>
-                                <Box>
-                                    <Text fontWeight={500}>{item.descriptions.slice(0, 100)}...</Text>
-                                </Box>
-                                <Flex justifyContent={'space-between'} mt={4}>
-                                    <Box>
-                                        <Text fontWeight={500} fontSize={15} className='flex items-center'>Price: <BsCurrencyDollar/>{item.price}</Text>
-                                    </Box>
-                                    <Box>
-                                        <Text fontWeight={500} fontSize={15}>Deal: {item.deal}</Text>
-                                    </Box>
-                                </Flex>
-                                <Flex justifyContent={'space-between'} alignItems={'center'} pt={3} mt={2} borderTop={'2px'} borderTopColor={'gray.300'}>
-                                    <Box fontWeight={500} >
-                                        <Link to={`/review-amplifier-reviews/${item._id}`} className='text-blue-500'>Review</Link>
-                                    </Box>
-                                    <Box>
-                                        <Button bg={useColorModeValue('white')}>
-                                            <LuShoppingCart className='text-xl text-blue-500'/>
-                                        </Button>
-                                    </Box>
-                                </Flex>
+        {
+              items.length > 0 ? (
+                items.map((item) => (
+                  item.category === 'Amplifire' ? (
+                    <Box width={{md: '300px', base: '350px'}} bg={useColorModeValue('gray.200', 'gray.700')} padding={3} rounded={5}>
+                        <Flex justifyContent={'center'} width={'100%'} height={'200px'} bg={useColorModeValue('white', 'gray.800')} p={2} rounded={5}>
+                            <Image src={item.accessoryImage[0]} maxW={'100%'} rounded={5}/>
+                        </Flex>
+                        <Box mt={4} color={useColorModeValue('gray.800', 'gray.200')}>
+                            <Heading mb={2} fontWeight={500} fontSize={15} isTruncated>{item.name}</Heading>
+                            <Box>
+                                <Text fontWeight={500}>Descriptions:</Text>
+                                <Text fontSize={14} fontWeight={400} isTruncated>{item.descriptions.slice(0,100)}</Text>
                             </Box>
+                            <Flex justifyContent={'space-between'} mt={4}>
+                                <Box>
+                                    <Text fontWeight={500}>Make: <span className='font-normal text-sm'>{item.make}</span></Text>
+                                </Box>
+                                <Box>
+                                    <Text fontWeight={500}>Model: <span className='font-normal text-sm'>{item.model}</span></Text>
+                                </Box>
+                            </Flex>
+                            <Flex justifyContent={'space-between'} mt={4}>
+                                <Box>
+                                    <Text fontWeight={500} fontSize={14} className='flex items-center'>Price: <BsCurrencyDollar/>{item.price}</Text>
+                                </Box>
+                                <Box>
+                                    <Text fontWeight={500} fontSize={14}>Deal: {item.deal}</Text>
+                                </Box>
+                            </Flex>
+                            <Flex justifyContent={'center'} alignItems={'center'} pt={3} mt={2} borderTop={'1px'} borderTopColor={'gray.600'}>
+                                <Flex justifyContent={'center'} alignItems={'center'} fontWeight={500} bg={useColorModeValue('blue.500', 'white')} color={useColorModeValue('white', 'black')} width={'100%'} height={'40px'} rounded={3}>
+                                    <Link to={`/review-amplifire-reviews/${item._id}`} className=''>Review</Link>
+                                </Flex>
+                            </Flex>
                         </Box>
-                    ))
-                ) : (
-                    <Text>No blogs to display</Text>
-                )
-            }
+                    </Box>
+                ) : '')
+
+                  )
+            ) : (
+                <Text>No Items to display</Text>
+            )
+          }
         </Flex>
       </Box>
+      <Footer/>
     </Box>
   )
 }

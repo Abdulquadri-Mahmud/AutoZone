@@ -11,7 +11,7 @@ export default function SeatCoverPage() {
     useEffect(()=> {
         const SeatCover = async () => {
         try {
-            const res = await fetch('/api/accessories/car-seat-cover');
+            const res = await fetch('/api/accessories/all-accessory');
             const data =  await res.json();
             setSeatCover(data);
         } catch (error) {

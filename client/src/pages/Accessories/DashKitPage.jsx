@@ -2,6 +2,7 @@ import { Box } from '@chakra-ui/react';
 import React, { createContext, useEffect, useState } from 'react'
 import DashKit from '../../components/Accessories/DashKit';
 import Header from '../../components/Header';
+import Footer from '../../components/Footer';
 
 export const DashKItsContext = createContext();
 
@@ -11,7 +12,7 @@ export default function DashKitPage() {
     useEffect(()=> {
         const DashKit = async () => {
         try {
-            const res = await fetch('/api/accessories/car-dash-kits');
+            const res = await fetch('/api/accessories/all-accessory');
             const data =  await res.json();
             setDashKit(data);
         } catch (error) {
@@ -26,6 +27,7 @@ export default function DashKitPage() {
       <DashKItsContext.Provider value={dashkit}>
         <DashKit dashkit={dashkit}/>
       </DashKItsContext.Provider>
+      <Footer/>
     </Box>
   )
 }

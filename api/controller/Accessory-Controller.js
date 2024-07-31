@@ -1,3 +1,4 @@
+import mongoose from "mongoose";
 import Accessory from "../models/Accessory-Model.js";
 import { errorHandler } from "../utils/errorHanlder.js";
 
@@ -5,14 +6,15 @@ export const createAccessory = async (req, res, next) => {
     const { 
         name,make, model, year,category,screenSize,
         descriptions, price,connectivityTech,prevprice,specialFeatures,
-        deal,quantity,accessoryImage
+        deal,quantity,condition,location,waranty,accessoryImage
     } = req.body;
 
     try {
         
         const stereoAccessory = await Accessory.create({
             name,make,model,prevprice,specialFeatures, year,category, screenSize,
-            descriptions, price,connectivityTech, deal,quantity,accessoryImage
+            descriptions, price,connectivityTech, deal,quantity,condition,location
+            ,waranty,accessoryImage
         });
 
         await stereoAccessory.save();

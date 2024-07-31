@@ -34,7 +34,6 @@ export default function CarListings() {
 
   const [newCarCurrentPage, setNewCarCurrentPage] = useState(1);
   const [newCarPostPerPage, setNewCarPostPerPage] = useState(4);
-  
 
   useEffect(() => {
     const fetCars = async () => {

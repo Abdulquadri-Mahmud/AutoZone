@@ -1,6 +1,6 @@
 import express from 'express';
 import { createAccessory, deleteAccessory,
-    getAllAccessory, updateAccessory 
+    getAllAccessory, getSinglAccessory, updateAccessory 
 } from '../controller/Accessory-Controller.js';
 
 import { verifyAdmin } from '../utils/verifyUserError.js';
@@ -9,7 +9,8 @@ const app = express();
 
 app.post('/create-accessory', verifyAdmin,createAccessory);
 app.get('/all-accessory',getAllAccessory);
-app.patch('/update-accessory', verifyAdmin,updateAccessory);
-app.delete('/delete-accessory', verifyAdmin,deleteAccessory);
+app.get('/single-accessory/:id',getSinglAccessory);
+app.patch('/update-accessory/:id', verifyAdmin,updateAccessory);
+app.delete('/delete-accessory/:id', verifyAdmin,deleteAccessory);
 
 export default app;

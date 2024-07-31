@@ -5,6 +5,10 @@ var accessorySchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    condition: {
+        type: String,
+        required: true
+    },
     category: {
         type: String,
         required: true
@@ -17,13 +21,20 @@ var accessorySchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    location: {
+        type: String,
+        required: true
+    },
+    waranty: {
+        type: String,
+        required: true
+    },
     year: {
         type: String,
         required: true
     },
     screenSize: {
         type: String,
-        required: true
     },
     specialFeatures: {
         type: String,
@@ -36,16 +47,11 @@ var accessorySchema = new mongoose.Schema({
         required: true
     },
     price:{
-        type: Number,
+        type: String,
         required: true
     },
     prevprice:{
-        type: Number,
-        required: true
-    },
-    deal:{
         type: String,
-        required: true
     },
     quantity:{
         type: Number,

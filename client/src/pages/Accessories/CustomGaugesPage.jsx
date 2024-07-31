@@ -2,6 +2,7 @@ import { Box } from '@chakra-ui/react';
 import React, { createContext, useEffect, useState } from 'react'
 import CustomGauges from '../../components/Accessories/CustomGauges';
 import Header from '../../components/Header';
+import Footer from '../../components/Footer';
 
 export const CustomGaugesContext = createContext();
 
@@ -11,7 +12,7 @@ export default function CustomGaugesPage() {
     useEffect(()=> {
         const CustomGuages = async () => {
         try {
-            const res = await fetch('/api/accessories/car-custom-gauges');
+            const res = await fetch('/api/accessories/all-accessory');
             const data =  await res.json();
             setCustomGauges(data);
         } catch (error) {
@@ -26,6 +27,7 @@ export default function CustomGaugesPage() {
       <CustomGaugesContext.Provider value={customGauges}>
         <CustomGauges customGauges={customGauges}/>
       </CustomGaugesContext.Provider>
+      <Footer/>
     </Box>
   )
 }

@@ -1,32 +1,24 @@
 import { Box, Flex,Button, Heading, useColorModeValue, Text, Image, useDisclosure } from '@chakra-ui/react'
 import React, { useRef } from 'react'
-import AdminThemes from './AdminThemes'
-import { FaHome } from 'react-icons/fa'
 import { useState } from 'react';
 import { MdAddPhotoAlternate } from 'react-icons/md';
-import { getDownloadURL, getStorage, ref, uploadBytesResumable } from 'firebase/storage';
-import { app } from '../firebase';
 
 import {
     Alert,
     AlertIcon,
-    AlertTitle,
     AlertDescription,
 } from '@chakra-ui/react';
 import {
     AlertDialog,
     AlertDialogBody,
     AlertDialogFooter,
-    AlertDialogHeader,
     AlertDialogContent,
     AlertDialogOverlay,
-    AlertDialogCloseButton,
 } from '@chakra-ui/react';
+import { getDownloadURL, getStorage, ref, uploadBytesResumable } from 'firebase/storage';
+import { app } from '../../firebase';
 
-import { useToast } from '@chakra-ui/react'
-
-  
-export default function CreateCarListing() {
+export default function CreateAccessory() {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const cancelRef = useRef()
 
@@ -36,21 +28,35 @@ export default function CreateCarListing() {
     const model = useRef();
     const location = useRef();
     const year = useRef();
-    const driveTrain = useRef();
-    const miles = useRef();
+    const category = useRef();
     const price = useRef();
-    const deal = useRef();
-    const exteriorColor = useRef();
-    const interiorColor = useRef();
-    const transmission = useRef();
-    const engine = useRef();
-    const engineSize = useRef();
+    const prevprice = useRef();
+    const screenSize = useRef();
+    const specialFeatures = useRef();
+    const connectivityTech = useRef();
+    const quantity = useRef();
     const waranty = useRef();
-    const seatingCapacity = useRef();
-    const fuelEfficiency = useRef();
-    const fuelType = useRef();
+    const descriptions = useRef();
 
     const fileRef = useRef();
+
+    const [accessoryForm, setAccessoryForm] = useState({accessoryImage: [],
+        name: '',
+        condition: 'new',
+        make: 'Toyota',
+        model: 'Corolla Cross',
+        year: '2015',
+        location: 'lagos',
+        category: 'Steroes',
+        price: '',
+        prevprice: '',
+        screenSize: '',
+        specialFeatures: '',
+        connectivityTech: '',
+        quantity: '',
+        waranty: '',
+        descriptions: ''
+    });
 
     const [filesError, setFilesError] = useState(false);
     const [error, setError] = useState(false);
@@ -59,38 +65,17 @@ export default function CreateCarListing() {
 
     const [files, setFile] = useState([]);
     const [uploadProgress, setUploadProgress] = useState(false);
-    const [carForms, setCarForm] = useState({carimage: [],
-        name: '',
-        condition: 'new',
-        make: 'all make',
-        model: 'all model',
-        location: 'lagos',
-        year: 'year',
-        driveTrain: 'year',
-        fuelEfficiency: 'year',
-        fuelType: 'year',
-        price: '',
-        deal: 'great',
-        miles: '',
-        exteriorColor: '',
-        interiorColor: '',
-        transmission: 'automatic',
-        engine: '',
-        engineSize: '',
-        waranty: '',
-        seatingCapacity: '',
-        description: ''
-    });
 
     const handleChange = (e) => {
-        setCarForm({
-            ...carForms,
+        setAccessoryForm({
+            ...accessoryForm,
             [e.target.id] : e.target.value
-        });
+        })
     }
 
-   const handleUpload = (e) => {
-        if (files.length > 0 && files.length + carForms.carimage.length < 30) {
+    
+    const handleUpload = () => {
+        if (files.length > 0 && files.length + accessoryForm.accessoryImage.length < 10) {
             setUploadProgress(true);
             setFilesError(false);
             
@@ -100,8 +85,8 @@ export default function CreateCarListing() {
                 storeImages.push(getAllImagesUrls(files[i]));
             }
             Promise.all(storeImages).then((urls) => {
-                setCarForm({
-                    ...carForms, carimage: carForms.carimage.concat(urls)
+                setAccessoryForm({
+                    ...accessoryForm, accessoryImage: accessoryForm.accessoryImage.concat(urls)
                 });
                 setFilesError(false);
                 setUploadProgress(false);
@@ -111,12 +96,12 @@ export default function CreateCarListing() {
                 setUploadProgress(false);
             });
         }else{
-            setFilesError('You can only upload at 20 images per listing!');
+            setFilesError('You can only upload at 10 images per listing!');
             setUploadProgress(false);
         }
-   }
+    }
 
-   const getAllImagesUrls = async (file) => {
+    const getAllImagesUrls = async (file) => {
         return new Promise((resolve, reject) => {
             const storage = getStorage(app);
 
@@ -140,109 +125,20 @@ export default function CreateCarListing() {
         })
    }
 
-   console.log(carForms);
-
+   console.log(accessoryForm);
+   console.log(files);
+    
     const handleSubmit = async (e) => {
         e.preventDefault();
         
-        const checkname = name.current.value === '';
-        const checkcondition = condition.current.value === '';
-        const checkmake = make.current.value === '';
-        const checkmodel = model.current.value === '';
-        const checklocation = location.current.value === '';
-        const checkyear = year.current.value === '';
-        const checkmiles = miles.current.value === '';
-        const checkprice = price.current.value === '';
-        const checkdeal = deal.current.value === '';
-        const checkexteriorColor = exteriorColor.current.value === '';
-        const checkinteriorColor = interiorColor.current.value === '';
-        const checktransmission = transmission.current.value === '';
-        const checkengine = engine.current.value === '';
-        const checkdriveTrain = engine.current.value === '';
-        const checkfuelEfficiency = engine.current.value === '';
-        const checkfuelType = engine.current.value === '';
-        const checkengineSize = engine.current.value === '';
-        const checkwaranty = engine.current.value === '';
-        const checkseatingCapacity = engine.current.value === '';
-        
         try {
             setLoading(true);
+            const endpoint = '/api/accessories/create-accessory';
 
-            if (checkname) {
-                setError('Name input field is required!');
-                return;
-            };
-            if (checkcondition) {
-                setError('Condition input field is required!');
-                return;
-            };
-            if (checkmake) {
-                setError('Make input field is required!');
-                return;
-            };
-            if (checkmodel) {
-                setError('Model input field is required!');
-                return;
-            };
-            if (checklocation) {
-                setError('Location input field is required!');
-                return;
-            };
-            if (checkyear) {
-                setError('Year input field is required!');
-                return;
-            };
-            if (checkmiles) {
-                setError('Miles input field is required!');
-                return;
-            };
-            if (checkprice) {
-                setError('Price input field is required!');
-                return;
-            };
-            if (checkdeal) {
-                setError('Deal input field is required!');
-                return;
-            };
-            if (checkexteriorColor) {
-                setError('Exterior Color input field is required!');
-                return;
-            };
-            if (checkinteriorColor) {
-                setError('Interior Color input field is required!');
-                return;
-            };
-            if (checktransmission) {
-                setError('Transmission input field is required!');
-                return;
-            };
-            if (checkengine) {
-                setError('Engine input field is required!');
-                return;
-            };
-            if (checkdriveTrain) {
-                setError('Driventrain input field is required!');
-                return;
-            };
-            if (checkfuelEfficiency) {
-                setError('Fuel Effieciency input field is required!');
-                return;
-            };
-            if (checkwaranty) {
-                setError('Waranty input field is required!');
-                return;
-            };
-            if (checkseatingCapacity) {
-                setError('Seating Capacity input field is required!');
-                return;
-            };
-
-            const url = `/api/cars/uploadcar`;
-
-            const res = await fetch(url, {
-                method: 'POST', 
+            const res = await fetch(endpoint, {
+                method: 'POST',
                 headers: {'Content-Type' : 'application/json'},
-                body: JSON.stringify(carForms)
+                body: JSON.stringify(accessoryForm)
             });
 
             const data = await res.json();
@@ -253,24 +149,22 @@ export default function CreateCarListing() {
                 setSuccess(false);
                 return;
             }
-
             setError(false);
             setLoading(false);
             setSuccess(true);
-
         } catch (error) {
             setError(true);
             setLoading(false);
             setSuccess(false);
         }
     }
-
-   const handleRemoveImage = (index) => {
-    setCarForm({
-        ...carForms, carimage: 
-        carForms.carimage.filter((_, i) => i !== index)
-    })
-   }
+    
+    const handleRemoveImage = (index) => {
+        setAccessoryForm({
+            ...accessoryForm,
+            accessoryImage: accessoryForm.accessoryImage.filter((_, i) => i !== index)
+        })
+    }
 
   return (
     <Box>
@@ -278,17 +172,17 @@ export default function CreateCarListing() {
         <Flex flexWrap={'wrap'} gap={3} flexDir={'column'} justifyContent={'space-between'}>
             <Flex justifyContent={'center'} flexWrap={'wrap'} padding={5} bg={useColorModeValue('blue.500', 'gray.700')} rounded={'md'} shadow={'md'}>
                 <form onSubmit={handleSubmit} className=' flex justify-between gap-1 w-full flex-wrap'>
-                    <Box width={{md: '33%', base: '97%'}}>
+                    <Box width={{md: '49%', base: '97%'}}>
                         <Box color={useColorModeValue('white', 'gray.400')}>
-                            <span className='font-medium text-sm'>Car Name:</span>
+                            <span className='font-medium text-sm'>Name:</span>
                             <Box bg={useColorModeValue('white', 'gray.800')} color={useColorModeValue('black', 'gray.400')} py={3} px={2} rounded={5}>
-                                <input type="text" id='name' ref={name} onChange={handleChange} className='w-full border-0 outline-none bg-transparent input' placeholder='Car name'/>
+                                <input type="text" id='name' ref={name} onChange={handleChange} className='w-full border-0 outline-none placeholder:text-gray-600 placeholder:text-sm bg-transparent input' placeholder='Car name'/>
                             </Box>
                         </Box>
                         <Box mt={4} color={useColorModeValue('white', 'gray.400')}>
                             <span className="font-medium text-center text-sm">Condition:</span>
                             <Box bg={useColorModeValue('white', 'gray.800')} color={useColorModeValue('black', 'gray.400')} py={3} px={2} rounded={5}>
-                                <select ref={condition} className='w-full bg-transparent text-sm font-medium border-none outline-none'
+                                <select ref={condition} className='w-full bg-transparent text-sm  font-medium border-none outline-none'
                                     onChange={handleChange} id='condition'>
                                     <option className='text-black' value="new">New</option>
                                     <option className='text-black' value="used">Used</option>
@@ -296,11 +190,41 @@ export default function CreateCarListing() {
                             </Box>
                         </Box>
                         <Box mt={4} color={useColorModeValue('white', 'gray.400')}>
+                            <span className="font-medium text-center text-sm">Category</span>
+                            <Box bg={useColorModeValue('white', 'gray.800')} color={useColorModeValue('black', 'gray.400')} py={3} px={2} rounded={5}>
+                                <select ref={category} className='w-full bg-transparent text-sm   font-medium border-none outline-none'
+                                onChange={handleChange} id='category' value={accessoryForm.category}>
+                                    <option className='text-black' value="Steroes">Steroes</option>
+                                    <option className='text-black' value="Amplifire">Amplifire</option>
+                                    <option className='text-black' value="Speaker">Speaker</option>
+                                    <option className='text-black' value="Subwoofers">Subwoofers</option>
+                                    <option className='text-black' value="Hoods">Hoods</option>
+                                    <option className='text-black' value="Bumpers">Bumpers</option>
+                                    <option className='text-black' value="Doors">Doors</option>
+                                    <option className='text-black' value="Fenders">Fenders</option>
+                                    <option className='text-black' value="Grilles">Grilles</option>
+                                    <option className='text-black' value="Body Kit">Body Kit</option>
+                                    <option className='text-black' value="Custom Grilles">Custom Grilles</option>
+                                    <option className='text-black' value="Car Covers">Car Covers</option>
+                                    <option className='text-black' value="Offroad Bumper">Offroad Bumper</option>
+                                    <option className='text-black' value="Custom Gauges">Custom Gauges</option>
+                                    <option className='text-black' value="Dash Kits">Dash Kits</option>
+                                    <option className='text-black' value="Seat Cover">Seat Cover</option>
+                                    <option className='text-black' value="Steering Wheels">Steering Wheels</option>
+                                    <option className='text-black' value="Sun Shades">Sun Shades</option>
+                                    <option className='text-black' value="Fog Lights">Fog Lights</option>
+                                    <option className='text-black' value="Headlights">Headlights</option>
+                                    <option className='text-black' value="LED Lights">LED Lights</option>
+                                    <option className='text-black' value="Off-Road Lights">Off-Road Lights</option>
+                                    <option className='text-black' value="Signal Lights">Signal Lights</option>
+                                </select>
+                            </Box>
+                        </Box>
+                        <Box mt={4} color={useColorModeValue('white', 'gray.400')}>
                             <span className="font-medium text-center text-sm">Make</span>
                             <Box bg={useColorModeValue('white', 'gray.800')} color={useColorModeValue('black', 'gray.400')} py={3} px={2} rounded={5}>
-                                <select ref={make} className='w-full bg-transparent text-sm  font-medium border-none outline-none'
-                                onChange={handleChange} id='make' value={carForms.make}>
-                                    <option className='text-black' value="all">All Make</option>
+                                <select ref={make} className='w-full bg-transparent text-sm   font-medium border-none outline-none'
+                                onChange={handleChange} id='make' value={accessoryForm.make}>
                                     <option className='text-black' value="Toyota">Toyota</option>
                                     <option className='text-black' value="Farrari">Farrari</option>
                                     <option className='text-black' value="BMW">BMW</option>
@@ -318,11 +242,10 @@ export default function CreateCarListing() {
                         <Box mt={4} color={useColorModeValue('white', 'gray.400')}>
                             <span className="font-medium text-center text-sm">Model</span>
                             <Box bg={useColorModeValue('white', 'gray.800')} color={useColorModeValue('black', 'gray.400')} py={3} px={2} rounded={5}>
-                                <select ref={model} className='w-full bg-transparent text-sm  font-medium border-none outline-none'
+                                <select ref={model} className='w-full bg-transparent text-sm   font-medium border-none outline-none'
                                     onChange={handleChange} id='model'>
-                                    <option className='text-black' value="all">All Model</option>
-                                    <option className='text-black font-semibold text-center disabled' >Toyota Models</option>
                                     <option className='text-black' value="Corolla Cross">Corolla Cross</option>
+                                    <option className='text-black font-semibold text-center disabled' >Toyota Models</option>
                                     <option className='text-black' value="Camry">Camry</option>
                                     <option className='text-black' value="Honda City">Honda City</option>
                                     <option className='text-black' value="Honda Accord">Honda Accord</option>
@@ -372,7 +295,7 @@ export default function CreateCarListing() {
                         <Box mt={4} color={useColorModeValue('white', 'gray.400')}>
                             <span className='font-medium text-sm'>Location:</span>
                             <Box bg={useColorModeValue('white', 'gray.800')} color={useColorModeValue('black', 'gray.400')} py={3} px={2} rounded={5}>
-                                <select ref={location} className='w-full bg-transparent text-sm  font-medium border-none outline-none'
+                                <select ref={location} className='w-full bg-transparent text-sm   font-medium border-none outline-none'
                                     onChange={handleChange} id='location'>
                                     <option className='text-black' value="Lagos">Lagos</option>
                                     <option className='text-black' value="Ogun">Ogun</option>
@@ -389,7 +312,7 @@ export default function CreateCarListing() {
                         <Box mt={4} color={useColorModeValue('white', 'gray.400')}>
                             <span className='font-medium text-sm'>Year:</span>
                             <Box bg={useColorModeValue('white', 'gray.800')} color={useColorModeValue('black', 'gray.400')} py={3} px={2} rounded={5}>
-                                <select ref={year} className='w-full bg-transparent text-sm  font-medium border-none outline-none'
+                                <select ref={year} className='w-full bg-transparent text-sm   font-medium border-none outline-none'
                                     onChange={handleChange} id='year'>
                                     <option className='text-black' value="2017">2015</option>
                                     <option className='text-black' value="2017">2016</option>
@@ -406,100 +329,53 @@ export default function CreateCarListing() {
                         </Box>
                     </Box>
 
-                    <Box width={{md: '33%', base: '97%'}}>
+                    <Box width={{md: '49%', base: '97%'}}>
                         <Box color={useColorModeValue('white', 'gray.400')}>
-                            <span className='font-medium text-sm'>Car Price:</span>
+                            <span className='font-medium text-sm'>Price:</span>
                             <Box bg={useColorModeValue('white', 'gray.800')} color={useColorModeValue('black', 'gray.400')} py={3} px={2} rounded={5}>
-                                <input type="text" ref={price} onChange={handleChange} id='price' className='w-full border-0 outline-none bg-transparent' placeholder='Car price'/>
+                                <input type="text" ref={price} onChange={handleChange} id='price' className='w-full border-0 outline-none placeholder:text-gray-600 placeholder:text-sm bg-transparent' placeholder='Car price'/>
+                            </Box>
+                        </Box>
+                        <Box color={useColorModeValue('white', 'gray.400')}>
+                            <span className='font-medium text-sm'>Old Price:</span>
+                            <Box bg={useColorModeValue('white', 'gray.800')} color={useColorModeValue('black', 'gray.400')} py={3} px={2} rounded={5}>
+                                <input type="text" ref={prevprice} onChange={handleChange} id='prevprice' className='w-full border-0 outline-none placeholder:text-gray-600 placeholder:text-sm bg-transparent' placeholder='Old price'/>
                             </Box>
                         </Box>
                         <Box mt={4} color={useColorModeValue('white', 'gray.400')}>
-                            <span className='font-medium text-sm'>Drivetrain:</span>
+                            <span className='font-medium text-sm'>Screen Size:</span>
                             <Box bg={useColorModeValue('white', 'gray.800')} color={useColorModeValue('black', 'gray.400')} py={3} px={2} rounded={5}>
-                                <input type="text" ref={driveTrain} onChange={handleChange} id='driveTrain' className='w-full border-0 outline-none bg-transparent' placeholder='Drivetrain'/>
+                                <input type="text" ref={screenSize} onChange={handleChange} id='screenSize' className='w-full border-0 outline-none placeholder:text-gray-600 placeholder:text-sm bg-transparent' placeholder='screenSize'/>
                             </Box>
                         </Box>
                         <Box mt={4} color={useColorModeValue('white', 'gray.400')}>
-                            <span className='font-medium text-sm'>Deal:</span>
+                            <span className='font-medium text-sm'>Special Features:</span>
                             <Box bg={useColorModeValue('white', 'gray.800')} color={useColorModeValue('black', 'gray.400')} py={3} px={2} rounded={5}>
-                                <select ref={deal} className='w-full bg-transparent text-sm  font-medium border-none outline-none'
-                                onChange={handleChange} id='deal'>
-                                    <option className='text-black' value="great">Great</option>
-                                    <option className='text-black' value="good">Good</option>
-                                </select>
+                                <input type="text" ref={specialFeatures} onChange={handleChange} id='specialFeatures' className='w-full border-0 outline-none placeholder:text-gray-600 placeholder:text-sm bg-transparent' placeholder='Special Features'/>
                             </Box>
                         </Box>
+                        
                         <Box mt={4} color={useColorModeValue('white', 'gray.400')}>
-                            <span className='font-medium text-sm'>Miles:</span>
+                            <span className='font-medium text-sm'>Connectivity Technology:</span>
                             <Box bg={useColorModeValue('white', 'gray.800')} color={useColorModeValue('black', 'gray.400')} py={3} px={2} rounded={5}>
-                                <input type="text" ref={miles} onChange={handleChange} id='miles' className='w-full border-0 outline-none bg-transparent' placeholder='Miles'/>
+                                <input type="text" ref={connectivityTech} onChange={handleChange} id='connectivityTech' className='w-full border-0 outline-none placeholder:text-gray-600 placeholder:text-sm bg-transparent' placeholder='Connectivity Technology'/>
                             </Box>
                         </Box>
                         <Box mt={4} color={useColorModeValue('white', 'gray.400')}>
                             <span className='font-medium text-sm'>Waranty:</span>
                             <Box bg={useColorModeValue('white', 'gray.800')} color={useColorModeValue('black', 'gray.400')} py={3} px={2} rounded={5}>
-                                <input type="text" ref={waranty} onChange={handleChange} id='waranty' className='w-full border-0 outline-none bg-transparent' placeholder='Waranty'/>
+                                <input type="text" ref={waranty} onChange={handleChange} id='waranty' className='w-full border-0 outline-none placeholder:text-gray-600 placeholder:text-sm bg-transparent' placeholder='Waranty'/>
                             </Box>
                         </Box>
                         <Box mt={4} color={useColorModeValue('white', 'gray.400')}>
-                            <span className='font-medium text-sm'>Fuel Type:</span>
+                            <span className='font-medium text-sm'>Quantity:</span>
                             <Box bg={useColorModeValue('white', 'gray.800')} color={useColorModeValue('black', 'gray.400')} py={3} px={2} rounded={5}>
-                                <input type="text" ref={fuelType} onChange={handleChange} id='engine' className='w-full border-0 outline-none bg-transparent' placeholder='Fuel Type'/>
-                            </Box>
-                        </Box>
-                        <Box mt={4} color={useColorModeValue('white', 'gray.400')}>
-                            <span className='font-medium text-sm'>Seating Capacity:</span>
-                            <Box bg={useColorModeValue('white', 'gray.800')} color={useColorModeValue('black', 'gray.400')} py={3} px={2} rounded={5}>
-                                <input type="text" ref={seatingCapacity} onChange={handleChange} id='seatingCapacity' className='w-full border-0 outline-none bg-transparent' placeholder='Seating Capacity'/>
-                            </Box>
-                        </Box>
-                    </Box>
-
-                    <Box  width={{md: '33%', base: '97%'}}>
-                        
-                        <Box color={useColorModeValue('white', 'gray.400')}>
-                            <span className='font-medium text-sm'>Exterior Color:</span>
-                            <Box bg={useColorModeValue('white', 'gray.800')} color={useColorModeValue('black', 'gray.400')} py={3} px={2} rounded={5}>
-                                <input type="text" ref={exteriorColor} onChange={handleChange} id='exteriorColor' className='w-full border-0 outline-none bg-transparent' placeholder='Exterior Color'/>
-                            </Box>
-                        </Box>
-                        <Box mt={4} color={useColorModeValue('white', 'gray.400')}>
-                            <span className='font-medium text-sm'>Interior Color:</span>
-                            <Box bg={useColorModeValue('white', 'gray.800')} color={useColorModeValue('black', 'gray.400')} py={3} px={2} rounded={5}>
-                                <input type="text" ref={interiorColor} onChange={handleChange} id='interiorColor' className='w-full border-0 outline-none bg-transparent' placeholder='Interior Color'/>
-                            </Box>
-                        </Box>
-                        <Box mt={4} color={useColorModeValue('white', 'gray.400')}>
-                            <span className='font-medium text-sm'>Transmission:</span>
-                            <Box bg={useColorModeValue('white', 'gray.800')} color={useColorModeValue('black', 'gray.400')} py={3} px={2} rounded={5}>
-                                <select ref={transmission} className='w-full bg-transparent text-sm  font-medium border-none outline-none'
-                                    onChange={handleChange} id='transmission'>
-                                    <option className='text-black' value="automatic">Automatic</option>
-                                    <option className='text-black' value="manual">Manual</option>
-                                </select>
-                            </Box>
-                        </Box>
-                        <Box mt={4} color={useColorModeValue('white', 'gray.400')}>
-                            <span className='font-medium text-sm'>Engine:</span>
-                            <Box bg={useColorModeValue('white', 'gray.800')} color={useColorModeValue('black', 'gray.400')} py={3} px={2} rounded={5}>
-                                <input type="text" ref={engine} onChange={handleChange} id='engine' className='w-full border-0 outline-none bg-transparent' placeholder='Engine'/>
-                            </Box>
-                        </Box>
-                        <Box mt={4} color={useColorModeValue('white', 'gray.400')}>
-                            <span className='font-medium text-sm'>Engine Size:</span>
-                            <Box bg={useColorModeValue('white', 'gray.800')} color={useColorModeValue('black', 'gray.400')} py={3} px={2} rounded={5}>
-                                <input type="text" ref={engineSize} onChange={handleChange} id='engineSize' className='w-full border-0 outline-none bg-transparent' placeholder='engineSize'/>
-                            </Box>
-                        </Box>
-                        <Box mt={4} color={useColorModeValue('white', 'gray.400')}>
-                            <span className='font-medium text-sm'>Fuel Efficiency:</span>
-                            <Box bg={useColorModeValue('white', 'gray.800')} color={useColorModeValue('black', 'gray.400')} py={3} px={2} rounded={5}>
-                                <input type="text" ref={fuelEfficiency} onChange={handleChange} id='fuelEfficiency' className='w-full border-0 outline-none bg-transparent' placeholder='Fuel Efficiency'/>
+                                <input type="text" ref={quantity} onChange={handleChange} id='quantity' className='w-full border-0 outline-none placeholder:text-gray-600 placeholder:text-sm bg-transparent' placeholder='Quantity'/>
                             </Box>
                         </Box>
                     </Box>
                     <Flex justifyContent={'center'} mt={4} color={useColorModeValue('black', 'gray.400')} width={'full'} bg={useColorModeValue('white', 'gray.800')} py={3} px={2} rounded={5}>
-                        <textarea className='w-full h-[150px] outline-none border-0 font-medium rounded p-5 bg-transparent' placeholder='Car Descriptions' onChange={handleChange} id='description'>
+                        <textarea className='w-full h-[150px] outline-none border-0 font-medium rounded p-5 bg-transparent placeholder:text-gray-600' ref={descriptions} placeholder='Car Descriptions' onChange={handleChange} id='descriptions'>
 
                         </textarea>
                     </Flex>
@@ -508,13 +384,13 @@ export default function CreateCarListing() {
                     <Box width={'100%'} mt={8} py={5} rounded={8} bg={useColorModeValue('white', 'gray.800')} p={{md: 5, base: 2}}>
                         <Flex justifyContent={'space-around'} flexWrap={'wrap'} gap={5} maxW={'100%'} mx={'auto'}>
                             <Box width={{md: '45%', base: '97%'}}>
-                                <Flex justifyContent={'center'} gap={5} alignItems={'center'} height={'250px'} position={'relative'} rounded={5} bg={useColorModeValue('blue.500', 'gray.700')}>
+                                <Flex justifyContent={'center'} alignItems={'center'} height={'250px'} position={'relative'} rounded={5} bg={useColorModeValue('blue.500', 'gray.700')}>
                                     <Box>
-                                        <input type="file" onChange={(e) => setFile(e.target.files)} ref={fileRef} id="carimage"  accept='image/*' className='hidden' multiple/>
+                                        <input type="file" onChange={(e) => setFile(e.target.files)} ref={fileRef} id="accessoryImage"  accept='image/*' className='hidden' multiple/>
                                     </Box>
-                                    <Box p={3}>
-                                        <Image maxW={'300px'} rounded={5} src={carForms.carimage[0]}/>
-                                    </Box>
+                                    <Flex justifyContent={'center'} alignItems={'center'} width={'100%'} p={3}>
+                                        <Image maxW={'200px'} rounded={5} src={accessoryForm.accessoryImage[0]}/>
+                                    </Flex>
                                     <Box position={'absolute'}  onClick={() => fileRef.current.click()} cursor={'pointer'} color={useColorModeValue('white', 'gray.100')}>
                                         <MdAddPhotoAlternate className='text-3xl'/>
                                     </Box>
@@ -531,10 +407,10 @@ export default function CreateCarListing() {
                             <Box color={useColorModeValue('white')} width={{md: '45%', base: '97%'}}>
                                 <Box width={'100%'} height={'250px'} overflowY={'scroll'} className='scroll' bg={useColorModeValue('blue.500', 'gray.700')} rounded={5}>
                                     {
-                                        carForms.carimage.length > 0 && carForms.carimage.map((url, index) => (
+                                        accessoryForm.accessoryImage.length > 0 && accessoryForm.accessoryImage.map((url, index) => (
                                             <Flex key={index} justifyContent={'space-between'} alignItems={'center'} width={'100%'} my={2} bg={useColorModeValue('white', 'gray.600')} py={3} px={2} rounded={5}>
-                                                <Box>
-                                                    <Image src={url} maxW={'100px'} rounded={5}/>
+                                                <Box py={1}>
+                                                    <Image src={url} maxW={'60px'} rounded={5}/>
                                                 </Box>
                                                 <Box>
                                                     <Button onClick={() => handleRemoveImage(index)} bg={useColorModeValue('white', 'gray.700')} color={'red.500'}>Delete</Button>

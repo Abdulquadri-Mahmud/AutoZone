@@ -6,26 +6,26 @@ import Header from '../../components/Header';
 export const SpeakerContext = createContext();
 
 export default function SpeakerPage() {
-    const [speaker, setSpeaker] = useState({});
-
+  const [item, setItems] = useState({});
   useEffect(()=> {
-    const speaker = async () => {
+    const fetchItems = async () => {
       try {
-        const res = await fetch('/api/accessories/car-speaker');
+        const res = await fetch('/api/accessories/all-accessory');
         const data =  await res.json();
-        setSpeaker(data);
+        setItems(data);
+        
       } catch (error) {
         console.log(error);
       }
     }
-    speaker();
+    fetchItems();
   }, []);
 
   return (
     <Box>
       <Header/>
-      <SpeakerContext.Provider value={speaker}>
-        <Speaker speaker={speaker}/>
+      <SpeakerContext.Provider value={item}>
+        <Speaker item={item}/>
       </SpeakerContext.Provider>
     </Box>
   )

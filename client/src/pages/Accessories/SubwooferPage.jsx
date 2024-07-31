@@ -11,7 +11,7 @@ export default function SubwooferPage() {
     useEffect(()=> {
         const amplifier = async () => {
         try {
-            const res = await fetch('/api/accessories/car-subwoofer');
+            const res = await fetch('/api/accessories/all-accessory');
             const data =  await res.json();
             setSubwoofer(data);
         } catch (error) {

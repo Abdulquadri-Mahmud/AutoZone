@@ -11,7 +11,7 @@ export default function GrillPage() {
     useEffect(()=> {
         const Grill = async () => {
         try {
-            const res = await fetch('/api/accessories/car-grill');
+            const res = await fetch('/api/accessories/all-accessory');
             const data =  await res.json();
             setGrill(data);
         } catch (error) {

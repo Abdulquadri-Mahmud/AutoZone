@@ -70,11 +70,11 @@ export default function CarList() {
                 <TabIndicator mt='-1.5px' height='2px' bg='blue.500' borderRadius='1px' />
                 <TabPanels>
                   <TabPanel>
-                    <Flex justifyContent={'start'} flexWrap={'wrap'} gap={2} width={'100%'}>
+                    <Flex justifyContent={'center'} flexWrap={'wrap'} gap={2} width={'100%'}>
                       {
                         cars.length > 0 ? (
                           cars.map((car) => (
-                            <Box key={car._id} width={{lg: '350px',md: '45%', base: '100%'}} padding={3} shadow={'md'} 
+                            <Box key={car._id} width={{lg: '30%',md: '45%', base: '100%'}} padding={3} shadow={'md'} 
                               rounded={5} borderWidth={1} borderColor={useColorModeValue('blue.', 'gray.600')} bg={useColorModeValue('white', 'gray.700')} borderRadi3s={5} position={'relative'} className='font-medium'>
                               
                               <Box width={'100%'} mt={4} position={'relative'} height={{md: '250px', base: ''}} bg={useColorModeValue('white', 'gray.800')} rounded={5}>

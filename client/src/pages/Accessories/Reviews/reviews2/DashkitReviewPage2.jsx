@@ -5,17 +5,19 @@ import { GrStatusGood } from 'react-icons/gr';
 import { IoStar } from 'react-icons/io5';
 import { LuShoppingCart } from 'react-icons/lu';
 import { Link, useParams } from 'react-router-dom';
+import Footer from '../../../../components/Footer';
+import Header from '../../../../components/Header';
+import { IoMdImages } from 'react-icons/io';
 
 export default function DashkitReviewPage2() {
     const [review, setReview] = useState({});
-    const [item, setItem] = useState({});
+    const [items, setItem] = useState({});
 
     const {accessoryId} = useParams();
 
-
     useEffect(() => {
         const getItem = async () => {
-            const fetchItem = await fetch(`/api/accessories/car-dash-kits/${accessoryId}`);
+            const fetchItem = await fetch(`/api/accessories/single-accessory/${accessoryId}`);
             const item = await fetchItem.json();
             setReview(item);
         }
@@ -26,7 +28,7 @@ export default function DashkitReviewPage2() {
     useEffect(()=> {
         const Stereo = async () => {
             try {
-                const res = await fetch('/api/accessories/car-dash-kits');
+                const res = await fetch('/api/accessories/all-accessory');
                 const data =  await res.json();
                 setItem(data);
             } catch (error) {
@@ -45,29 +47,31 @@ export default function DashkitReviewPage2() {
 
   return (
     <Box>
-        <Flex mt={10} gap={6} px={3} py={7} width={{md: '90%', base: '100%'}} mx={'auto'} bg={'gray.200'}>
-            <Box width={{md: '300px', base: '100%'}}>
-                <Flex justifyContent={{md: 'start', base: 'center'}}>
+        <Header/>
+        <Flex mt={10} flexWrap={'wrap'} gap={6} alignItems={''} px={3} py={7} width={{md: '90%', base: '97%'}} rounded={5} mx={'auto'} bg={useColorModeValue('gray.200', 'gray.700')}>
+            <Box width={{md: '40%', base: '100%'}} bg={useColorModeValue('white', 'gray.800')} rounded={10}>
+                <Flex justifyContent={{md: 'center', base: 'center'}}>
                     {
-                        review.DashKitImage === undefined ? '' : (
-                            <Flex justifyContent={'center'} alignItems={'center'} bg={useColorModeValue('white')}
-                            position={'relative'} height={{md:'350px', base: '300px'}} width={{md:'350px', base: '300px'}} p={3} rounded={5}>
-                                <Image src={review.DashKitImage[0]} ref={display} maxW={'100%'} rounded={5}/>
-                                <Flex justifyContent={'center'} position={'absolute'} top={0} left={0} width={'70px'} borderTopLeftRadius={5} py={1} bg={'gray.200'}>
-                                    <Text fontWeight={500}>{review.DashKitImage.length} Photo</Text>
+                        review.accessoryImage === undefined ? '' : (
+                            <Flex justifyContent={'center'} alignItems={'center'} position={'relative'} height={{md:'350px', base: '350px'}} width={{md:'350px', base: '300px'}} p={3} rounded={5}>
+                                <Image src={review.accessoryImage[0]} ref={display} w={'100%'} rounded={5}/>
+                                <Flex alignItems={'center'} gap={1} position={'absolute'} bottom={0} bg={useColorModeValue('gray.200', 'gray.700')}  px={4} py={2} roundedTopRight={5}>
+                                    <IoMdImages/>
+                                    <Text className='text-sm'>({review.accessoryImage.length})</Text>
+                                    <Text>Photos</Text>
                                 </Flex>
                             </Flex>
                         )
                     }
                 </Flex>
-                <Flex alignItems={'center'} justifyContent={'center'} bg={useColorModeValue('')} gap={3} flexWrap={'wrap'}  p={1}>
+                <Flex mt={7} mb={4} alignItems={'center'} justifyContent={'center'} bg={useColorModeValue('')} gap={3} flexWrap={'wrap'}  p={1}>
                     {
-                        review.DashKitImage === undefined ? '' : (
+                        review.accessoryImage === undefined ? '' : (
                             <>
                                 {
-                                    review.DashKitImage.map((img, index) => (
-                                        <Flex justifyContent={'center'} alignItems={'center'} p={2} width={'100px'} height={'100px'} rounded={5} bg={useColorModeValue('white')}>
-                                            <Image src={img} alt={''} ref={switchImage} key={index} onClick={() => handleClick(img)} maxW={'100%'} objectFit={'cover'} rounded={5}/>
+                                    review.accessoryImage.map((img, index) => (
+                                        <Flex cursor={'pointer'} justifyContent={'center'} alignItems={'center'} p={2} width={'50px'} height={'50px'} rounded={5} bg={useColorModeValue('gray.200', 'gray.700')}>
+                                            <Image src={img} alt={''} ref={switchImage} key={index} onMouseOver={() => handleClick(img)} maxW={'100%'} objectFit={'cover'} rounded={5}/>
                                         </Flex>
                                     ))
                                 }
@@ -76,8 +80,8 @@ export default function DashkitReviewPage2() {
                     }
                 </Flex>
             </Box>
-            <Box width={{md:'60%', base:'97%'}} mt={5}>
-                <Heading fontWeight={500} fontSize={30} isTruncated>{review.name}</Heading>
+            <Box mt={5} flex={1}>
+                <Heading fontWeight={500} fontSize={{md: 30, base: 20}}>{review.name}</Heading>
                 <Flex alignItems={'center'} gap={1} className="rate" mt={4}>
                     <Text className='font-medium'>rating: </Text>
                     <IoStar className='text-yellow-300'/>
@@ -86,22 +90,51 @@ export default function DashkitReviewPage2() {
                     <IoStar className='text-yellow-300'/>
                     <IoStar className='text-gray-300'/>
                 </Flex>
-                <Text fontWeight={500} mt={3}>{review.descriptions}</Text>
+                <Text fontWeight={500} mt={3} fontSize={{md:14, base:14}} wordBreak={'break-word'}>{review.descriptions}</Text>
                 <Flex gap={4} mt={2}>
-                    <Text className='font-medium'>Make: <span className='font-normal'>{item.make}</span></Text> |
-                    <Text className='font-medium'>Year: <span className='font-normal'>{item.year}</span></Text>
+                    <Text className='font-medium'>Make: <span className='font-normal'>{review.make}</span></Text> |
+                    <Text className='font-medium'>Year: <span className='font-normal'>{review.year}</span></Text>
                 </Flex>
-                <Flex gap={8} alignItems={'center'}>
-                    {
-                        review.deal === 'Great' ? (
-                            <Text fontWeight={500} my={3} className='flex items-center gap-1'>Deal: <GrStatusGood className='text-green-500'/>{review.deal}</Text>
-                        ) : (
-                            <Text fontWeight={500} my={3} className='flex items-center gap-1'>Deal: <GrStatusGood className='text-blue-500'/>{review.deal}</Text>
+                {
+                        review.specialFeatures && (
+                            <Flex gap={2} mt={3} alignItems={'center'}>
+                                <Text fontWeight={500} color={useColorModeValue('', 'gray.200')}>Special Features: </Text>
+                                <Text fontWeight={500} color={useColorModeValue('', 'gray.400')} fontSize={13}>{review.specialFeatures}</Text>
+                            </Flex>
                         )
                     }
-                    <Text fontWeight={500} my={3} className='flex items-center'>Price: <BsCurrencyDollar/> {review.price}</Text>
-                    <Button bg={useColorModeValue('white')} color={useColorModeValue('blue.500')}>
-                        <LuShoppingCart className='text-xl'/>
+                    {
+                        review.screenSize && (
+                            <Text fontWeight={500} mt={4} color={'blue.500'} fontSize={17}>Screen Size: <span className='text-sm text-white font-medium'>{review.screenSize}</span></Text>
+                        )
+                    }
+                    {
+                        review.quantity && review.quantity >= 15 ? (
+                            <Box py={1} mt={3} px={2} bg={'white'} width={'200px'} rounded={4}>
+                                <Flex gap={2} alignItems={'center'}>
+                                    <Text fontWeight={500} color={useColorModeValue('', 'gray.700')}>Quantity: </Text>
+                                    <Text fontWeight={500} color={'red.500'} fontSize={13}>In Stock</Text>
+                                </Flex>
+                            </Box>
+                        ) : ''
+                    }
+                <Box mt={3} py={1} px={2} bg={'white'} width={'200px'} rounded={4}>
+                    <Flex gap={2} alignItems={'center'}>
+                        <Text fontWeight={500} color={useColorModeValue('', 'gray.700')}>Price: </Text>
+                        <Flex alignItems={'center'} fontWeight={500} color={'red.500'} fontSize={15}>
+                            <BsCurrencyDollar/> {review.price}.00
+                        </Flex>
+                    </Flex>
+                    {
+                        review.prevprice && (
+                            <Text fontWeight={500} color={useColorModeValue('', 'gray.500')} fontSize={12} className='flex items-center'>Old-Price: <span className='text-[12px] font-medium flex items-center'><BsCurrencyDollar/> {review.prevprice}</span></Text>
+                        )
+                    }
+                </Box>
+                <Flex gap={4} alignItems={'center'}mt={3}>
+                    <Button bg={useColorModeValue('white', 'gray.800')} _hover={{bg: useColorModeValue('', 'gray.600')}} color={useColorModeValue('')}>
+                        {/* <LuShoppingCart className='text-xl'/> */}
+                        Add To cart
                     </Button>
                 </Flex>
             </Box>
@@ -111,46 +144,54 @@ export default function DashkitReviewPage2() {
                 <Heading fontWeight={500} fontSize={26} textAlign={'center'}>YOU MAY ALSO LIKE</Heading>
                 <Image src='/zigzag.png' position={'absolute'} bottom={-10}/>
             </Flex>
-            <Flex mt={10} gap={3} mx={5} justifyContent={'center'} flexWrap={'wrap'}>
+            <Flex mt={20} gap={3} justifyContent={'center'} flexWrap={'wrap'}>
                 {
-                    item.length > 0 ? (
-                        item.map((item) => (
-                            <Box width={{md: '300px', base: '100%'}} bg={useColorModeValue('gray.200')} padding={3} rounded={5}>
-                                <Flex justifyContent={'center'} width={'100%'} height={'200px'} bg={useColorModeValue('white')} p={2} rounded={5}>
-                                    <Image src={item.DashKitImage[0]} maxW={'100%'} rounded={5}/>
+                    items.length > 0 ? (
+                        items.map((item) => (
+                        item.category === 'Dash Kits' ? (
+                            <Box width={{md: '300px', base: '350px'}} bg={useColorModeValue('gray.200', 'gray.700')} padding={3} rounded={5}>
+                                <Flex justifyContent={'center'} width={'100%'} height={'200px'} bg={useColorModeValue('white', 'gray.800')} p={2} rounded={5}>
+                                    <Image src={item.accessoryImage[0]} maxW={'100%'} rounded={5}/>
                                 </Flex>
-                                <Box mt={4} color={'gray.800'}>
-                                    <Heading mb={2} fontWeight={500} fontSize={16} color={'blue.500'}>{item.year} {item.name} {item.make}</Heading>
+                                <Box mt={4} color={useColorModeValue('gray.800', 'gray.200')}>
+                                    <Heading mb={2} fontWeight={500} fontSize={15} isTruncated>{item.name}</Heading>
                                     <Box>
-                                        <Text fontWeight={500}>{item.descriptions.slice(0, 100)}...</Text>
+                                        <Text fontWeight={500}>Descriptions:</Text>
+                                        <Text fontSize={14} fontWeight={400} isTruncated>{item.descriptions.slice(0,100)}</Text>
                                     </Box>
                                     <Flex justifyContent={'space-between'} mt={4}>
                                         <Box>
-                                            <Text fontWeight={500} fontSize={15} className='flex items-center'>Price: <sup><BsCurrencyDollar/> </sup>{item.price}</Text>
+                                            <Text fontWeight={500}>Make: <span className='font-normal text-sm'>{item.make}</span></Text>
                                         </Box>
                                         <Box>
-                                            <Text fontWeight={500} fontSize={15}>Deal: {item.deal}</Text>
+                                            <Text fontWeight={500}>Model: <span className='font-normal text-sm'>{item.model}</span></Text>
                                         </Box>
                                     </Flex>
-                                    <Flex justifyContent={'space-between'} alignItems={'center'} pt={3} mt={2} borderTop={'2px'} borderTopColor={'gray.300'}>
-                                        <Box fontWeight={500} >
-                                            <Link to={`/dash-kits-reviews/${item._id}`} className='text-blue-500'>Review</Link>
+                                    <Flex justifyContent={'space-between'} mt={4}>
+                                        <Box>
+                                            <Text fontWeight={500} fontSize={14} className='flex items-center'>Price: <BsCurrencyDollar/>{item.price}.00</Text>
                                         </Box>
                                         <Box>
-                                            <Button bg={useColorModeValue('white')}>
-                                                <LuShoppingCart className='text-xl text-blue-500'/>
-                                            </Button>
+                                            <Text fontWeight={500} fontSize={14}>Deal: {item.deal}</Text>
                                         </Box>
+                                    </Flex>
+                                    <Flex justifyContent={'center'} alignItems={'center'} pt={3} mt={2} borderTop={'1px'} borderTopColor={'gray.600'}>
+                                        <Flex justifyContent={'center'} alignItems={'center'} fontWeight={500} bg={useColorModeValue('blue.500', 'white')} color={useColorModeValue('white', 'black')} width={'100%'} height={'40px'} rounded={3}>
+                                            <Link to={`/dash-kits-reviews/${item._id}`} className=''>Review</Link>
+                                        </Flex>
                                     </Flex>
                                 </Box>
                             </Box>
-                        ))
+                        ) : '')
+
+                        )
                     ) : (
-                        <Text>No blogs to display</Text>
+                        <Text>No Items to display</Text>
                     )
                 }
             </Flex>
-      </Box>
+        </Box>
+      <Footer/>
     </Box>
   )
 }

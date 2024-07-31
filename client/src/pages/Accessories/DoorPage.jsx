@@ -11,7 +11,7 @@ export default function DoorPage() {
     useEffect(()=> {
         const amplifier = async () => {
         try {
-            const res = await fetch('/api/accessories/car-door');
+            const res = await fetch('/api/accessories/all-accessory');
             const data =  await res.json();
             setDoor(data);
         } catch (error) {

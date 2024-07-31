@@ -11,7 +11,7 @@ export default function BumperPage() {
     useEffect(()=> {
         const Bumpers = async () => {
             try {
-                const res = await fetch('/api/accessories/car-bumper');
+                const res = await fetch('/api/accessories/all-accessory');
                 const data =  await res.json();
                 setBumpers(data);
             } catch (error) {

@@ -7,7 +7,6 @@ import { FaBloggerB } from "react-icons/fa6";
 import { IoCarSportSharp } from 'react-icons/io5'
 import { FaTools } from "react-icons/fa";
 
-import Dashboard from './Dashboard';
 
 import {
   Accordion,
@@ -16,19 +15,20 @@ import {
   AccordionPanel,
   AccordionIcon,
 } from '@chakra-ui/react'
-import AdminThemes from './AdminThemes';
 import { Link } from 'react-router-dom';
+import Accessories from '../../components/Accessories/Accessories';
+import AdminThemes from '../../components/AdminThemes';
 
-export default function AdminDashboard() {
-  const [open, setOpen] = useState(true);
+export default function AccessoriesPage() {
+    const [open, setOpen] = useState(true);
 
-  const handleMenu = () => {
-    if (open) {
-      setOpen(false);
-    }else{
-      setOpen(true);
+    const handleMenu = () => {
+        if (open) {
+        setOpen(false);
+        }else{
+        setOpen(true);
+        }
     }
-  }
 
   return (
     <Flex width={'100%'} height={'100%'} bg={useColorModeValue('blue.500', '')} p={0} fontFamily={'inherit'}>
@@ -130,7 +130,7 @@ export default function AdminDashboard() {
           </Flex>
         </Flex>
         <Box>
-          <Dashboard/>
+          <Accessories/>
         </Box>
       </Box>
     </Flex>

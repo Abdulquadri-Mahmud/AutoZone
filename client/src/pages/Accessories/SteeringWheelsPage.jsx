@@ -11,7 +11,7 @@ export default function SteeringWheelsPage() {
     useEffect(()=> {
         const SteeringWheels = async () => {
         try {
-            const res = await fetch('/api/accessories/car-steeringwheels');
+            const res = await fetch('/api/accessories/all-accessory');
             const data =  await res.json();
             setSteeringWheels(data);
         } catch (error) {

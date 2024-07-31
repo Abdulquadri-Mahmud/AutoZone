@@ -12,8 +12,8 @@ import { verifyAdmin } from '../utils/verifyUserError.js';
 const app = express();
 
 app.post('/uploadcar', verifyAdmin,carListController);
-app.get('/allcarlists', verifyAdmin,getAllCarsControllers);
-app.get('/allcar', getAllCars);
+app.get('/allcarlists',getAllCarsControllers);
+app.get('/allcar',verifyAdmin, getAllCars);
 app.get('/singlecarlists/:id', getSingleCarlist);
 app.get('/search-car', searchCar);
 
