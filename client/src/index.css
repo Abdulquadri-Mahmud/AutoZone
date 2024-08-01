@@ -21,27 +21,22 @@ input, textarea{
     clip-path: polygon(0% 0%, 75% 0%, 100% 50%, 75% 100%, 0% 100%);
 }
 .herotext{
-    /* background: rgba(141, 141, 141, 0.25); */
+    background: rgba(20, 20, 20, 0.25);
     -webkit-backdrop-filter: blur(7px);
     backdrop-filter: blur(7px);
-    border: 1px solid rgba(255,255,255,0.125);
+    border: 1px solid rgba(151, 151, 151, 0.125);
     width: 45%;
 }
 
 .deep{
-    animation: deep 4s linear infinite;
+    background: rgb(194, 193, 193);
 }
-@keyframes deep {
+.car{
+    animation: car 3s linear infinite;
+}
+@keyframes car {
     from{
-        /* -webkit-transform: scale(1) translateY(0); */
-        /* transform: scale(1) translateY(0); */
-        /* -webkit-transform-origin: 50% 16%; */
-        /* transform-origin: 50% 16%; */
-    /* }to{
-        -webkit-transform: scale(1.06); */
-    /* transform: scale(1.5) translateY(-15px); */
-    /* -webkit-transform-origin: top; */
-    /* transform-origin: top; */
+        transform: scale(.5);
     }
 }
 
@@ -59,7 +54,12 @@ input, textarea{
     width: 100%;
     padding: 15px;
 }
-
+.glass{
+    background: rgba(48, 48, 47, 0.25);
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(107, 107, 107, 0.125);
+}
 .testimonial{
     background: rgba(91, 180, 231, 0.25);
     -webkit-backdrop-filter: blur(4px);
@@ -74,8 +74,24 @@ input, textarea{
     .smaller-screen{
         /* width: 70%;
         background-color: black; */
+        /* color: #3b82f6; */
     }
 }
+.searchbg{
+    background-image: url('/');
+}
+
+.section3{
+    background-color: #a09b9b;
+    background-blend-mode: multiply;
+    color: #ffffff;
+}
+@media screen and (max-width: 420px) {
+    .section3{
+        width: 100%;
+    }
+}
+
 
 select option{
     color: #ffffff;

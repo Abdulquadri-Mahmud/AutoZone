@@ -115,7 +115,7 @@ export default function CreateBlog() {
     const checkTitle = title.current.value === '';
     const checkBody = body.current.value === '';
     const checkDate = date.current.value === '';
-    const fileRef = fileRef.current.value === '';
+    // const fileRef = fileRef.current.value === '';
 
     try {
       setLoading(true);
@@ -132,10 +132,10 @@ export default function CreateBlog() {
         setError('Date is required!');
         return;
       }
-      if (fileRef) {
-        setError('You must upload 1 image!');
-        return;
-      }
+      // if (fileRef) {
+      //   setError('You must upload 1 image!');
+      //   return;
+      // }
       const url = `/api/blogs/postBlog`;
 
       const res = await fetch(url, {
@@ -169,6 +169,8 @@ export default function CreateBlog() {
     })
   }
 
+  console.log(blogData);
+
   return (
     <Box>
         <form onSubmit={handleSubmit} className='w-full'>
@@ -178,15 +180,15 @@ export default function CreateBlog() {
             <Box w={{'2xl':'55%',md:'45%', base: '100%'}} color={useColorModeValue('white')}>
               <Box>
                 <Box color={useColorModeValue('black', 'white')} bg={useColorModeValue('white', 'gray.800')} py={1} px={2} rounded={5}>
-                  <input type="text" ref={title} onChange={handleChange} id="title" placeholder="Post title" name="title"  className='bg-transparent border-0 outline-none font-medium w-[100%] my-2 rounded-[5px]'/>
+                  <input type="text" ref={title} onChange={handleChange} id="title" placeholder="Post title" name="title"  className='bg-transparent text-sm font-normal border-0 outline-none w-[100%] my-2 rounded-[5px]'/>
                 </Box>
                 <Box mt={3} color={useColorModeValue('black', 'white')} bg={useColorModeValue('white', 'gray.800')} py={1} px={2} rounded={5}>
-                  <input type="date" ref={date} onChange={handleChange} id="date" placeholder="Select Date" className='bg-transparent border-0 outline-none font-medium w-[100%] my-2 rounded-[5px]'/>
+                  <input type="date" ref={date} onChange={handleChange} id="date" placeholder="Select Date" className='bg-transparent border-0 text-sm font-normal outline-none w-[100%] my-2 rounded-[5px]'/>
                 </Box>
               </Box>
               <Box my={3} bg={useColorModeValue('white', 'gray.800')} py={3} px={2} rounded={5}>
                 <Box color={useColorModeValue('black')}>
-                  <select onChange={handleChange} id="postedBy" className='w-full bg-transparent outline-none border-0 text-md font-medium rounded-md'>
+                  <select onChange={handleChange} id="postedBy" className='w-full bg-transparent text-sm font-normal outline-none border-0 text-md rounded-md'>
                     <option value="admin" className='text-black'>Postes By</option>
                     <option value="admin" className='text-black'>Admin</option>
                   </select>
@@ -194,7 +196,7 @@ export default function CreateBlog() {
               </Box>
               <Box>
                 <Box color={useColorModeValue('black', 'white')} bg={useColorModeValue('white', 'gray.800')} py={1} px={2} rounded={5}>
-                  <textarea type="text" ref={body} onChange={handleChange} id="body" placeholder="Blog body" name="body"  className='bg-transparent border-0 outline-none font-medium w-[100%] my-2 rounded-[5px] h-[150px]'></textarea>
+                  <textarea type="text" ref={body} onChange={handleChange} id="body" placeholder="Blog body" name="body"  className='bg-transparent text-sm border-0 outline-none font-normal w-[100%] my-2 rounded-[5px] h-[150px]'></textarea>
                 </Box>
               </Box>
                 {
@@ -261,7 +263,7 @@ export default function CreateBlog() {
                           <Image src={url} maxW={'100px'} rounded={5}/>
                         </Box>
                         <Box>
-                          <Button onClick={() => handleRemoveImage(index)} bg={useColorModeValue('white', 'gray.800')} color={'red.500'}>Delete</Button>
+                          <Button onClick={() => handleRemoveImage(index)} fontSize={14} bg={useColorModeValue('white', 'gray.700')} color={'red.500'}>Delete</Button>
                         </Box>
                       </Flex>
                     ))
@@ -277,7 +279,7 @@ export default function CreateBlog() {
               </Box>
 
               <Flex justifyContent={'center'} mt={4}>
-                <Button bg={useColorModeValue('white','gray.800')} width={'200px'} rounded={3} py={6} onClick={onOpen} color={useColorModeValue('gray.700', 'white')} fontWeight={500} type='submit' className='w-[100px] py-2 rounded-[5px]'>Post Blog</Button>
+                <Button bg={useColorModeValue('white','gray.800')} fontSize={16} width={'200px'} rounded={3} py={6} onClick={onOpen} color={useColorModeValue('gray.700', 'white')} fontWeight={500} type='submit' className='w-[100px] py-2 rounded-[5px]'>Post Blog</Button>
               </Flex>
           </Flex>
         </form>

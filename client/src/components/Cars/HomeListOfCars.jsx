@@ -1,4 +1,4 @@
-import { Box, Button, Flex, Heading, Image, TabIndicator, Text, useColorModeValue } from '@chakra-ui/react'
+ import { Box, Button, Flex, Heading, Image, Stack, TabIndicator, Text, useColorModeValue } from '@chakra-ui/react'
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react';
 import React, { createContext, useEffect, useState } from 'react'
 
@@ -33,62 +33,45 @@ export default function HomeListOfCars() {
       }, []);
       
   return (
-    <Box p={{md: '1rem', base: '0.5rem'}} px={5} py={{md: 10, base: 10}} mt={'10vh'} maxW={{md: '95%', base: '100%'}} mx={'auto'} rounded={10} bg={useColorModeValue('gray.200', 'gray.700')} shadow={'md'}>
-        <Box width={'300px'} ml={useColorModeValue(0, 6)} mb={10} bg={useColorModeValue('blue.500', 'gray.800')} rounded={5} p={4} borderBottomWidth={1} borderBottomColor={useColorModeValue('gray.300', 'gray.700')}>
-            <Heading fontWeight={500} fontSize={30} color={'white'}>Latest Cars</Heading>
+    <Box p={{md: '1rem', base: '0.5rem'}} px={5} py={{md: 10, base: 10}} mt={'10vh'} maxW={{md: '95%', base: '100%'}} mx={'auto'} rounded={10} bg={useColorModeValue('white', 'gray.700')}>
+        <Box mb={10}>
+            <Text mb={2} textAlign={'center'}>We Have The Best Car For You Here</Text>
+            <Heading fontWeight={500} fontSize={30} textAlign={'center'} color={useColorModeValue('black')}>QUICK LOOK</Heading>
         </Box>
-        <Flex justifyContent={'start'} flexWrap={'wrap'} gap={2}>
+        <Flex justifyContent={'center'} flexWrap={'wrap'} gap={{md: 4, base: 5}}>
             {
                 cars.length > 0 ? (
                     cars.map((car) => (
-                        <Box key={car._id} width={{lg: '32%',md: '45%', base: '100%'}} padding={3} shadow={'md'} rounded={5} borderWidth={1} borderColor={useColorModeValue('blue.', 'gray.600')} bg={useColorModeValue('white', 'gray.700')} borderRadi3s={5} position={'relative'} className='font-medium'>
-                            <Box width={'100%'} mt={4} position={'relative'} height={{md: '250px', base: ''}} bg={useColorModeValue('white', 'gray.800')} rounded={5}>
+                        <Box key={car._id} width={{md: '24%', base: '350px'}} shadow={'md'} rounded={5} bg={useColorModeValue('white', 'gray.800')} borderRadi3s={5} position={'relative'} className='font-medium'>
+                            <Box width={'100%'} position={'relative'} height={{md: '250px', base: ''}} p={3} bg={useColorModeValue('white', 'gray.800')} rounded={5}>
                                 <Image src={car.carimage[0]} alt={car.name} w={'100%'} rounded={5} maxHeight={'100%'} objectFit={'cover'}></Image>
-                                <Flex alignItems={'center'} gap={1} position={'absolute'} bottom={0} bg={useColorModeValue('gray.200', 'gray.700')}  px={4} py={2} roundedTopRight={5}>
+                                <Flex alignItems={'center'} gap={1} position={'absolute'} bottom={0} bg={useColorModeValue('white', 'gray.800')}  px={4} py={2} roundedTopRight={5}>
                                     <IoMdImages/>
                                     <Text className='text-sm'>({car.carimage.length})</Text>
                                     <Text>Photos</Text>
                                 </Flex>
                             </Box>
-                            <Box my={5} px={0} className=''>
-                                <Flex justifyContent={'space-between'} mt={4}>
-                                    <Text>{car.name}</Text>
-                                    {/* <Text className='flex items-center gap-1 text-sm'><span className='text-gray-500'><IoIosSpeedometer/></span> {car.miles} miles</Text> */}
-                                </Flex>
+                            <Box my={0} px={3} className=''>
+                                <Stack justifyContent={'space-between'} mt={4}>
+                                    <Text isTruncated color={useColorModeValue('black')}>{car.name}</Text>
+                                </Stack>
                                 <Flex justifyContent={'space-between'} alignItems={'center'}>
-                                    <Box bg={useColorModeValue('blue.500','gray.700')} px={3} py={1} color={'white'}  position={'absolute'} top={2} rounded={3} left={2}>
+                                    <Box bg={useColorModeValue('green.500','gray.800')} px={3} py={1} color={'white'}  position={'absolute'} top={0} rounded={3} left={0}>
                                         <Text>{car.condition}</Text>
                                     </Box>
-                                    <Box  position={'absolute'} top={2} right={2}>
-                                        {/* <SaveCar/> */}
-                                    </Box>
                                 </Flex>
-                                {/* <Flex gap={1} className="rate" mt={2}>
-                                    <IoStar className='text-yellow-300'/>
-                                    <IoStar className='text-yellow-300'/>
-                                    <IoStar className='text-yellow-300'/>
-                                    <IoStar className='text-yellow-300'/>
-                                    <IoStar className='text-gray-300'/>
-                                </Flex> */}
-                                <Flex justifyContent={'space-between'} mt={{md: 4, base: 4}}>
-                                    <Text width={'45%'} color={useColorModeValue('gray.600', 'gray.400')} fontSize={14} className='font-bold'>Exterior Color: <span className='font-medium'>{car.exteriorColor.slice(0, 30)}</span></Text>
-                                    <Text width={'45%'} color={useColorModeValue('gray.600', 'gray.400')} fontSize={14} className='font-bold'>Interior Color: <span className='font-medium'>{car.interiorColor.slice(0, 30)}</span></Text>
-                                </Flex>
-                                {/* <Flex justifyContent={'space-between'} mt={2}>
-                                    <Text color={useColorModeValue('gray.600', 'gray.400')} fontSize={14} className='font-bold'>Make: <span className='font-medium'>{car.make}</span></Text>
-                                    <Text color={useColorModeValue('gray.600', 'gray.400')} fontSize={14} className='font-bold'>Model: <span className='font-medium'>{car.model}</span></Text>
-                                </Flex> */}
+                                
                                 <Flex justifyContent={'space-between'} mt={2}>
-                                    <Text color={useColorModeValue('gray.600', 'gray.400')} fontSize={14} className='font-bold'>Transmission: <span className='font-medium'>{car.transmission}</span></Text>
-                                    <Text color={useColorModeValue('gray.600', 'gray.400')} fontSize={14} className='font-bold'>Deal: <span className='font-medium'>{car.deal}</span></Text>
+                                    <Text color={useColorModeValue('black', 'gray.400')} fontSize={14} className='font-bold'>Transmission: <span className='font-medium'>{car.transmission}</span></Text>
+                                    <Text color={useColorModeValue('black', 'gray.400')} fontSize={14} className='font-bold'>Deal: <span className='font-medium'>{car.deal}</span></Text>
                                 </Flex>
                                 <Flex justifyContent={'space-between'} mt={2}>
-                                    <Text className='flex items-center gap-1 font-bold' color={useColorModeValue('gray.600', 'gray.400')} fontSize={14} >Price: <span className='flex items-center font-medium'><BsCurrencyDollar className='text-sm'/>{car.price}</span></Text>
-                                    <Text className='flex items-center gap-1 font-bold' color={useColorModeValue('gray.600', 'gray.400')} fontSize={14} ><span className='flex items-center font-medium'><IoLocationOutline className='text-blue-500'/>{car.location}</span></Text>
+                                    <Text className='flex items-center gap-1 font-bold' color={useColorModeValue('black', 'gray.400')} fontSize={14} >Price: <span className='flex items-center font-medium'><BsCurrencyDollar className='text-sm'/>{car.price}</span></Text>
+                                    <Text className='flex items-center gap-1 font-bold' color={useColorModeValue('black', 'gray.400')} fontSize={14} ><span className='flex items-center font-medium'><IoLocationOutline className='text-blue-500'/>{car.location}</span></Text>
                                 </Flex>
                             </Box>
-                            <Flex justifyContent={'center'} alignItems={'center'} pt={3} mt={2} borderTop={'1px'} borderTopColor={'gray.600'}>
-                                <Box bg={useColorModeValue('blue.500', 'gray.100')} color={useColorModeValue('white', 'blue.500')} width={'100%'} py={3}  rounded={4} textAlign={'center'}>
+                            <Flex justifyContent={'center'} p={3}>
+                                <Box bg={useColorModeValue('green.500', 'gray.100')} color={useColorModeValue('white', 'black')} width={'100%'} py={3}  rounded={4} textAlign={'center'}>
                                     <Link to={`/car-details/${car._id}`} className=''>Check This Out</Link>
                                 </Box>
                             </Flex>

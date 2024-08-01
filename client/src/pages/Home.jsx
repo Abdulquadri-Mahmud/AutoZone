@@ -3,15 +3,14 @@ import {Box, useColorModeValue } from '@chakra-ui/react';
 // import AllBlogs from '';
 import Hero from '../components/Hero';
 import Testimonial from '../components/Testimonial';
-import SearchHomepage from '../components/SearchHomepage';
-
-import speakers from '../assets/img/speakers.png';
-import schedule from '../assets/img/schedule.png';
 import PopularBrand from '../components/PopularBrand';
 import BlogLoader from '../components/Loaders/BlogLoader';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import HomeListOfCars from '../components/Cars/HomeListOfCars';
+import Section2 from '../components/Section2';
+import Section3 from '../components/Section3';
+import Section4 from '../components/Section4';
 
 const AllBlogs = React.lazy(() => {
   return new Promise((resolve) => {
@@ -23,29 +22,23 @@ const AllBlogs = React.lazy(() => {
 
 export default function Home() {
   return (
-    <>
+    <Box bg={useColorModeValue('gray.200')}>
       <Header/>
-      <Box fontStyle={''} bg={useColorModeValue('gray.200', 'gray.800')}>
+      <Box fontStyle={''} bg={useColorModeValue('', 'gray.800')}>
           <Hero/>
-          <SearchHomepage/>
-          <Box maxW={{md: '80%', base: '100%'}} mx={'auto'} padding={{md: 5, base: 2}} className='grid grid-cols-2 gap-5'>
-            <Box>
-              <img src={speakers} alt="speaker" />
-            </Box>
-            <Box>
-              <img src={schedule} alt="speaker" />
-            </Box>
-          </Box>
+          <Section2/>
+          <Section3/>
           <Box>
             <HomeListOfCars/>
           </Box>
+          {/* <Section4/> */}
           <Suspense fallback={<BlogLoader/>}>
             <AllBlogs/>
           </Suspense>
           <Testimonial/>
-          <PopularBrand/>
+          {/* <PopularBrand/> */}
       </Box>
       <Footer/>
-    </>
+    </Box>
   )
 }

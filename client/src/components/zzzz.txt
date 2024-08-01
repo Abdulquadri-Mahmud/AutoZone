@@ -1,0 +1,38 @@
+<Stack flexDirection={'column'} w={{base:'full',md: '100%', xl: '50%'}} p={6} rounded={8} className='herotext'>
+                        {/* <Heading color={'white'} bg={'blue.500'} p={3} width={{md:'50%', base: '70%'}} rounded={5} zIndex={20} fontWeight={500} textAlign={{md: 'start', base: 'start'}} fontSize={{ base: '2xl', md: '2xl' }} >TOP BRANDS 20221</Heading> */}
+                        <Heading color={'white'} zIndex={20} fontWeight={400} textAlign={{md: 'start', base: 'start'}} fontSize={{ base: '3xl', md: '4xl'}} mt={2}>MORDEN-CLASSIC</Heading>
+                        <Heading color={'white'} zIndex={20} fontWeight={600} textAlign={{md: 'start', base: 'start'}} fontSize={{ base: '5xl', md: '7xl'}} >INCREDIBLE</Heading>
+                        <Text color={'gray.700'} fontWeight={500}>GET 40% OFF ON SELECTED ITEMS</Text>
+                        <Text color={'white'} zIndex={10} fontSize={{md:16, base: 16}} pt={{md:0, base: 0}} fontWeight={500}>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum dolore iste placeat nemo eligendi facere voluptas hic dolorum sint quae? Dicta, illum. Dolore ullam velit suscipit non quo, cupiditate sint... 
+                        </Text>
+                        {/* <Flex gap={4} mt={8}>
+                            <Button w={{base: 200, md: 200}} height={'45px'} bg={useColorModeValue('blue.500','gray.700')} color={'white'} _hover={{bg : useColorModeValue('blue.600','gray.600')}}>
+                              <Link to='/about'>Read More</Link>
+                            </Button>
+                            <Button w={{base: 200, md: 200}} height={'45px'} bg={'whiteAlpha.400'} color={'white'} _hover={{bg: 'whiteAlpha.500'}}>
+                              <Link to='/contact'>Contact Us</Link>
+                            </Button>
+                        </Flex> */}
+                    </Stack>
+<Stack flexDirection={'column'} w={{base:'full',md: '100%', xl: '50%'}} p={6} rounded={8} className='herotext'>
+                        {/* <Heading color={'white'} bg={'blue.500'} p={3} width={{md:'50%', base: '70%'}} rounded={5} zIndex={20} fontWeight={500} textAlign={{md: 'start', base: 'start'}} fontSize={{ base: '2xl', md: '2xl' }} >TOP BRANDS 20221</Heading> */}
+                        <Heading color={'white'} zIndex={20} fontWeight={400} textAlign={{md: 'start', base: 'start'}} fontSize={{ base: '3xl', md: '4xl'}} mt={2}>MORDEN-CLASSIC</Heading>
+                        <Heading color={'white'} zIndex={20} fontWeight={600} textAlign={{md: 'start', base: 'start'}} fontSize={{ base: '5xl', md: '7xl'}} >INCREDIBLE</Heading>
+                        <Text color={'gray.700'} fontWeight={500}>GET 40% OFF ON SELECTED ITEMS</Text>
+                        <Text color={'white'} zIndex={10} fontSize={{md:16, base: 16}} pt={{md:0, base: 0}} fontWeight={500}>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum dolore iste placeat nemo eligendi facere voluptas hic dolorum sint quae? Dicta, illum. Dolore ullam velit suscipit non quo, cupiditate sint... 
+                        </Text>
+                        {/* <Flex gap={4} mt={8}>
+                            <Button w={{base: 200, md: 200}} height={'45px'} bg={useColorModeValue('blue.500','gray.700')} color={'white'} _hover={{bg : useColorModeValue('blue.600','gray.600')}}>
+                              <Link to='/about'>Read More</Link>
+                            </Button>
+                            <Button w={{base: 200, md: 200}} height={'45px'} bg={'whiteAlpha.400'} color={'white'} _hover={{bg: 'whiteAlpha.500'}}>
+                              <Link to='/contact'>Contact Us</Link>
+                            </Button>
+                        </Flex> */}
+                    </Stack>
+
+                    <Flex justifyContent={'center'} height={'100%'} alignItems={'end'} width={'100%'} pos={'absolute'} bottom={0} className='car'>
+                  <Image width={'40%'} src='/homeImg.png'/>
+                </Flex>

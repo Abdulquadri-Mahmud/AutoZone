@@ -7,15 +7,15 @@ import { FaPhoneVolume } from 'react-icons/fa';
 
 export default function Footer() {
   return (
-    <Box mt={'3rem'} bg={useColorModeValue('blue.700', 'gray.800')} color={'white'}>
+    <Box mt={'3rem'} bg={useColorModeValue('green.800', 'gray.800')} color={'white'}>
       <Box position={'relative'} backgroundPosition="left" backgroundRepeat="no-repeat" backgroundSize="cover" backgroundImage={`url(${img})`} h={{md:'40vh', base: '45vh'}} w={'full'}>
         <Box position="absolute" top={0} left={0} w="full" h="full" bg="#0f0f0f" opacity={0.8} bgBlendMode="multiply"/>
         <Box width={'100%'} position={'absolute'} top={'50%'} left={'50%'} className='translate-x-[-50%] translate-y-[-50%]'>
           <Heading fontWeight={500} fontSize={25} textAlign={'center'}>NEWSLETTER</Heading> 
           <Heading fontWeight={500} fontSize={{md: 30, base: 20}} color={'white'} textAlign={'center'} pt={3}>GET NOFITFIED OF ANY UPDATES!</Heading>
           <Flex alignItems={'center'} justifyContent={'center'} flexWrap={'wrap'} gap={1} px={{base: 4, md: 0}} mt={4}>
-            <Input w={{md: '50%', base: '90%'}} height={'55.7px'} bg={useColorModeValue('gray.200', 'gray.200')} type="email" className='py-4 md:w-[50%] sm:w-[90%] w-full pl-5 outline-none border-0 rounded-none text-black font-medium' placeholder='Enter your email address'/>
-            <Button py={7} rounded={'none'} px={{base: 6, md: 8}} bg={'blue.500'} color={'white'} _hover={{bg: 'blue.600'}}>SUBSCRIBE</Button>
+            <Input w={{md: '50%', base: '90%'}} height={'55.7px'} bg={useColorModeValue('green.200', 'gray.200')} type="email" className='py-4 md:w-[50%] sm:w-[90%] w-full pl-5 outline-none border-0 rounded-none text-black font-medium' placeholder='Enter your email address'/>
+            <Button py={7} rounded={'none'} px={{base: 6, md: 8}} bg={useColorModeValue('green.500', 'gray.700')} color={'white'} _hover={{bg: 'blue.600'}}>SUBSCRIBE</Button>
           </Flex>
         </Box>
       </Box>
