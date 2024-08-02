@@ -31,8 +31,8 @@ export default function CreateBlogPage() {
     }
   
     return (
-      <Flex width={'100%'} height={'100%'} bg={useColorModeValue('blue.500', '')} p={0} fontFamily={'inherit'}>
-        <Box overflowY={'scroll'} bg={useColorModeValue('blue.500', 'gray.700')} color={useColorModeValue('white', 'gray.400')} className={`${open ? 'w-[0px]' : 'w-[250px] fixed h-full px-3'} z-10 lg:w-[250px] duration-300 scroll`}>
+      <Flex width={'100%'} height={'100%'} bg={useColorModeValue('green.500', '')} p={0} fontFamily={'inherit'}>
+        <Box overflowY={'scroll'} bg={useColorModeValue('green.500', 'gray.700')} color={useColorModeValue('white', 'gray.400')} className={`${open ? 'w-[0px]' : 'w-[250px] fixed h-full px-3'} z-10 lg:w-[250px] duration-300 scroll`}>
             <Flex flexDir={'column'} justifyContent={'start'} alignItems={'start'} gap={1} mt={{'2xl':20, md: 20, base: 20}} width={'100%'}>
             <Box width={'100%'}>
                 <Flex cursor={'pointer'} alignItems={'center'} _hover={{color: useColorModeValue('blue.700', 'gray.100')}} gap={1} width={'100%'}rounded={4} fontWeight={500} textAlign={'start'} py={2.5} px={5} fontSize={16}>
@@ -114,8 +114,8 @@ export default function CreateBlogPage() {
             
             </Flex>
         </Box>
-        <Box bg={useColorModeValue('white', '')} flex={'1'}>
-            <Flex justifyContent={'space-between'} bg={useColorModeValue('blue.500', 'gray.700')} p={4} color={useColorModeValue('black', 'gray.300')}>
+        <Box bg={useColorModeValue('gray.200', '')} flex={'1'}>
+            <Flex justifyContent={'space-between'} bg={useColorModeValue('green.500', 'gray.700')} p={4} color={useColorModeValue('black', 'gray.300')}>
             <Flex alignItems={'center'} gap={3}>
                 <Box color={useColorModeValue('white', 'gray.400')} cursor={'pointer'} onClick={handleMenu} className='block lg:hidden z-20'>
                 <IoMenuSharp className='text-3xl'/>

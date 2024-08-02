@@ -60,7 +60,7 @@ export default function Hero() {
                     <Heading color={'white'} fontWeight={400} textAlign={{md: 'start', base: 'start'}} fontSize={{ base: '3xl', md: '4xl'}} mt={2}>MORDEN-CLASSIC</Heading>
                     <Heading color={'white'} fontWeight={600} textAlign={{md: 'start', base: 'start'}} fontSize={{ base: '5xl', md: '7xl'}} >INCREDIBLE</Heading>
                     <Text color={'white'} py={5} fontWeight={500}>GET 40% OFF ON SELECTED ITEMS</Text>
-                    <Text color={'white'} fontSize={{md:16, base: 16}} pt={{md:0, base: 0}} fontWeight={500}>
+                    <Text color={'white'} fontSize={{md:16, base: 16}} pt={{md:0, base: 0}} fontWeight={400}>
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum dolore iste placeat nemo eligendi facere voluptas hic dolorum sint quae? Dicta, illum. Dolore ullam velit suscipit non quo, cupiditate sint... 
                     </Text>
                     <Button w={{base: 170, md:170}} height={'40px'} mt={5} bg={useColorModeValue('green.500', 'gray.800')} color={'white'} rounded={3}>

@@ -38,7 +38,7 @@ export default function CarDetailsPage() {
     }, []);
 
   return (
-    <Box>
+    <Box bg={useColorModeValue('gray.200')}>
       <Header/>
       <CarDetailsContext.Provider value={getCarId}>
         <Suspense fallback={'loading'}>

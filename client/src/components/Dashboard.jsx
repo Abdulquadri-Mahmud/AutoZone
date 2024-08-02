@@ -43,7 +43,7 @@ export default function Dashboard() {
   return (
     <Box>
         <Flex gap={5} justifyContent={{md: 'center', base: 'start'}} flexWrap={'wrap'} color={'white'} mt={5} px={4}>
-            <Box width={{'2xl':'24%', xl:'23%', md:'47%', base:'47%'}} bg={useColorModeValue('blue.500', 'gray.700')} rounded={8} p={4}>
+            <Box width={{'2xl':'24%', xl:'23%', md:'47%', base:'47%'}} bg={useColorModeValue('green.500', 'gray.700')} rounded={8} p={4}>
                 <Flex alignItems={'center'} gap={2}>
                     <Flex justifyContent={'center'} alignItems={'center'} boxSize={35} bg={useColorModeValue('white', 'gray.600')} color={useColorModeValue('black', 'gray.300')} rounded={8}>
                         <IoCarSportSharp className='text-2xl'/>
@@ -59,7 +59,7 @@ export default function Dashboard() {
                     </Flex>
                 </Flex>
             </Box>
-            <Box width={{'2xl':'24%', xl:'23%', md:'47%', base:'47%'}} bg={useColorModeValue('blue.500', 'gray.700')} rounded={8} p={4}>
+            <Box width={{'2xl':'24%', xl:'23%', md:'47%', base:'47%'}} bg={useColorModeValue('green.500', 'gray.700')} rounded={8} p={4}>
                 <Flex alignItems={'center'} gap={2}>
                     <Flex justifyContent={'center'} alignItems={'center'} boxSize={35} bg={useColorModeValue('white', 'gray.600')} color={useColorModeValue('black', 'gray.300')} rounded={8}>
                         <TbAutomaticGearbox className='text-2xl'/>
@@ -75,7 +75,7 @@ export default function Dashboard() {
                     </Flex>
                 </Flex>
             </Box>
-            <Box width={{'2xl':'24%', xl:'23%', md:'47%', base:'47%'}} bg={useColorModeValue('blue.500', 'gray.700')} rounded={8} p={4}>
+            <Box width={{'2xl':'24%', xl:'23%', md:'47%', base:'47%'}} bg={useColorModeValue('green.500', 'gray.700')} rounded={8} p={4}>
                 <Flex alignItems={'center'} gap={2}>
                     <Flex justifyContent={'center'} alignItems={'center'} boxSize={35} bg={useColorModeValue('white', 'gray.600')} color={useColorModeValue('black', 'gray.300')} rounded={8}>
                         <GrManual className='text-2xl'/>
@@ -91,7 +91,7 @@ export default function Dashboard() {
                     </Flex>
                 </Flex>
             </Box>
-            <Box width={{'2xl':'24%', xl:'23%', md:'47%', base:'47%'}} bg={useColorModeValue('blue.500', 'gray.700')} rounded={8} p={4}>
+            <Box width={{'2xl':'24%', xl:'23%', md:'47%', base:'47%'}} bg={useColorModeValue('green.500', 'gray.700')} rounded={8} p={4}>
                 <Flex alignItems={'center'} gap={2}>
                     <Flex justifyContent={'center'} alignItems={'center'} boxSize={35} bg={useColorModeValue('white', 'gray.600')} color={useColorModeValue('black', 'gray.300')} rounded={8}>
                         <FaUser className='text-2xl'/>

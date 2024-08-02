@@ -23,6 +23,7 @@ export default function HomeListOfCars() {
     
             const data = await res.json();
             setCar(data);
+            console.log(data);
           } catch (error) {
             // setError(error);
             console.log(error);

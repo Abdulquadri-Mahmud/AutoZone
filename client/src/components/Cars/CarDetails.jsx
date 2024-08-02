@@ -20,11 +20,12 @@ import { useSelector } from 'react-redux';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { IoMdImages } from 'react-icons/io';
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
   return (
-    <Box top={{md: '35vh', base: ''}} _hover={{bg: useColorModeValue('blue.400', 'gray.700')}} rounded={'50%'} pl={3} pt={3} bg={useColorModeValue('blue.500', 'gray.800')} boxSize={45} className={className}
+    <Box top={{'2xl': '25vh',md: '35vh', base: ''}} _hover={{bg: useColorModeValue('green.400', 'gray.700')}} rounded={'50%'} pl={3} pt={3} bg={useColorModeValue('green.500', 'gray.800')} boxSize={45} className={className}
       style={{ ...style, display: "block", right: '2vh'}} onClick={onClick}/>
   );
 }
@@ -32,7 +33,7 @@ function SampleNextArrow(props) {
 function SamplePrevArrow(props) {
   const { className, style, onClick } = props;
   return (
-      <Box top={{md: '35vh', base: ''}} _hover={{bg: useColorModeValue('blue.400', 'gray.700')}} rounded={'50%'} pl={3} pt={3} bg={useColorModeValue('blue.500', 'gray.800')} boxSize={45} className={className}
+      <Box top={{'2xl': '25vh',md: '35vh', base: ''}} _hover={{bg: useColorModeValue('green.400', 'gray.700')}} rounded={'50%'} pl={3} pt={3} bg={useColorModeValue('green.500', 'gray.800')} boxSize={45} className={className}
       style={{ ...style, display: "block",left: '2vh', zIndex: '1'}} onClick={onClick}/>
   );
 }
@@ -77,8 +78,8 @@ export default function CarDetails() {
 };
   
   return (
-    <Flex flexWrap={'wrap'} gap={5} maxW={{md: '95%', base: '97%'}} mx={'auto'} rounded={5} padding={{md: 8, base: 4}} color={useColorModeValue('black')} bg={useColorModeValue('gray.200', 'gray.700')} mt={'3rem'}>
-      <Box width={{md: '45%', base: '100%'}} height={{md: '400px'}} position={'relative'} rounded={5}>
+    <Flex flexWrap={'wrap'} gap={5} maxW={{md: '95%', base: '97%'}} mx={'auto'} rounded={5} padding={{md: 8, base: 4}} color={useColorModeValue('black')} bg={useColorModeValue('white', 'gray.700')} mt={'3rem'}>
+      <Box width={{md: '45%', base: '100%'}} height={{md: '450px'}} bg={useColorModeValue('gray.200')} p={5} position={'relative'} rounded={5}>
         <Box>
           {
             item.carimage === undefined ? '' : (
@@ -94,17 +95,21 @@ export default function CarDetails() {
             )
           }
         </Box>
-        <Box position={'absolute'} bottom={-4} bg={useColorModeValue('blue.500', 'gray.700')} px={2} py={2} roundedTopRight={4}>
+        <Box position={'absolute'} bottom={0} bg={useColorModeValue('white', 'gray.800')}  px={4} py={2}  roundedTopRight={4}>
           {
             item.carimage === undefined ? '' : (
               <>
-                <Text className='text-sm' color={useColorModeValue('black')} fontWeight={500}>{item.carimage.length} Photos</Text>
+                <Flex roundedTopRight={5}>
+                  <IoMdImages/>
+                  <Text className='text-sm'>({item.carimage.length})</Text>
+                  <Text>Photos</Text>
+                </Flex>
               </>
             )
           }
         </Box>
         <Flex justifyContent={'space-between'} alignItems={'center'}>
-          <Box bg={'blue.500'} px={3} py={1} color={'white'}  position={'absolute'} top={2} rounded={3} left={2}>
+          <Box bg={useColorModeValue('green.500', 'gray.700')} px={3} py={1} color={'white'}  position={'absolute'} top={2} rounded={3} left={2}>
             <Text>{item.condition}</Text>
           </Box>
         </Flex>
@@ -120,6 +125,9 @@ export default function CarDetails() {
             <IoStar className='text-yellow-300'/>
             <IoStar className='text-gray-300'/>
           </Flex>
+          <Box width={'100%'} mt={10}>
+            <Text fontWeight={500} fontSize={15} mt={4} lineHeight={2}>{item.description}</Text>
+          </Box>
           <Flex justifyContent={'space-between'} mt={{md: 8, base: 4}}>
             <Text color={useColorModeValue('black','gray.300')} fontSize={15} className='font-normal'>Exterior Color: <span className='font-medium'>{item.exteriorColor}</span></Text>
             <Text color={useColorModeValue('black','gray.300')} fontSize={15} className='font-normal'>Interior Color: <span className='font-medium'>{item.interiorColor}</span></Text>
@@ -141,15 +149,12 @@ export default function CarDetails() {
               <Text color={useColorModeValue('black','gray.500')} fontSize={14}>Do you love it?</Text>
               <FaLongArrowAltRight/>
             </Flex>
-            <Button bg={useColorModeValue('blue.500', 'blue.500')} _hover={{bg: useColorModeValue('blue.400', 'blue.400')}} rounded={3} width={'160px'} color={useColorModeValue('white')}>Buy Now</Button>
+            <Button bg={useColorModeValue('green.500', 'blue.500')} _hover={{bg: useColorModeValue('green.400', 'blue.400')}} rounded={3} width={'160px'} color={useColorModeValue('white')}>Buy Now</Button>
           </Flex>
         </Box>
       </Box>
-      <Box width={'100%'} mt={10}>
-        <Text fontWeight={500} fontSize={15} mt={4} lineHeight={2}>{item.description}</Text>
-      </Box>
-      <Box width={'100%'} mt={10}>
-        <Heading textAlign={'center'} fontWeight={500} fontSize={20}>Addintional Info</Heading>
+      <Box width={'100%'} mt={10} bg={useColorModeValue('green.500')} rounded={5} p={5}>
+        <Heading textAlign={'center'} fontWeight={500} fontSize={25} py={3} color={'white'}>Addintional Info</Heading>
         <TableContainer bg={useColorModeValue('white', 'gray.800')}p={4} mt={4} rounded={5} className='scroll'>
           <Table variant={'simple'}>
             {/* <TableCaption fontWeight={500} fontSize={20} color={useColorModeValue('gray.800')} textDecor={'underline'}>More Details</TableCaption> */}

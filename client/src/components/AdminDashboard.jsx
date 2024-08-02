@@ -31,7 +31,7 @@ export default function AdminDashboard() {
   }
 
   return (
-    <Flex width={'100%'} height={'100%'} bg={useColorModeValue('blue.500', '')} p={0} fontFamily={'inherit'}>
+    <Flex width={'100%'} height={'100%'} bg={useColorModeValue('green.500', '')} p={0} fontFamily={'inherit'}>
       <Box overflowY={'scroll'} bg={useColorModeValue('blue.500', 'gray.700')} color={useColorModeValue('white', 'gray.400')} className={`${open ? 'w-[0px]' : 'w-[250px] fixed h-full px-3'} z-10 lg:w-[250px] duration-300 scroll`}>
         <Flex flexDir={'column'} justifyContent={'start'} alignItems={'start'} gap={1} mt={{'2xl':20, md: 20, base: 20}} width={'100%'}>
           <Box width={'100%'}>

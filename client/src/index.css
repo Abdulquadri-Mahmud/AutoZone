@@ -40,6 +40,9 @@ input, textarea{
     }
 }
 
+.blog{
+    background: rgb(84, 94, 84);
+}
 .about{
     background-blend-mode: multiply;
     height: 100%;
